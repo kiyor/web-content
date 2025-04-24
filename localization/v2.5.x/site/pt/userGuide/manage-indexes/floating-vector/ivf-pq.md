@@ -56,14 +56,14 @@ summary: >-
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/ivf-pq-1.png" alt="Ivf Pq 1" class="doc-image" id="ivf-pq-1" />
    </span> <span class="img-wrapper"> <span>Ivf Pq 1</span> </span></p>
 <ol>
-<li><p><strong>Decomposição da dimensão</strong>: O algoritmo começa por decompor cada vetor de alta dimensão em <code translate="no">m</code> sub-vectores de igual dimensão. Esta decomposição transforma o espaço original D-dimensional em <code translate="no">m</code> subespaços disjuntos, em que cada subespaço contém <em>D/m</em> dimensões. O parâmetro <code translate="no">m</code> controla a granularidade da decomposição e influencia diretamente a taxa de compressão.</p></li>
-<li><p><strong>Geração do livro de códigos do subespaço</strong>: Dentro de cada subespaço, o algoritmo aplica <a href="https://en.wikipedia.org/wiki/K-means_clustering">o agrupamento k-means</a> para aprender um conjunto de vectores representativos (centróides). Estes centróides formam coletivamente um livro de códigos para esse subespaço. O número de centróides em cada livro de códigos é determinado pelo parâmetro <code translate="no">nbits</code>, em que cada livro de códigos contém 2^{\textit{nbits}} centróides. Por exemplo, se <code translate="no">nbits = 8</code>, cada livro de códigos conterá 256 centróides. A cada centróide é atribuído um índice único com <code translate="no">nbits</code> bits.</p></li>
+<li><p><strong>Decomposição da dimensão</strong>: O algoritmo começa por decompor cada vetor de alta dimensão em <code translate="no">m</code> sub-vectores de igual dimensão. Esta decomposição transforma o espaço D-dimensional original em <code translate="no">m</code> subespaços disjuntos, em que cada subespaço contém <em>D/m</em> dimensões. O parâmetro <code translate="no">m</code> controla a granularidade da decomposição e influencia diretamente a taxa de compressão.</p></li>
+<li><p><strong>Geração do livro de códigos do subespaço</strong>: Dentro de cada subespaço, o algoritmo aplica <a href="https://en.wikipedia.org/wiki/K-means_clustering">o agrupamento k-means</a> para aprender um conjunto de vectores representativos (centróides). Estes centróides formam coletivamente um livro de códigos para esse subespaço. O número de centróides em cada livro de códigos é determinado pelo parâmetro <code translate="no">nbits</code>, em que cada livro de códigos contém $2^{\textit{nbits}}$ centróides. Por exemplo, se <code translate="no">nbits = 8</code>, cada livro de códigos conterá 256 centróides. A cada centróide é atribuído um índice único com <code translate="no">nbits</code> bits.</p></li>
 <li><p><strong>Quantização</strong><strong>do vetor</strong>: Para cada sub-vetor do vetor original, a PQ identifica o seu centróide mais próximo no subespaço correspondente utilizando um tipo de métrica específico. Este processo mapeia efetivamente cada sub-vetor para o seu vetor representativo mais próximo no livro de códigos. Em vez de armazenar as coordenadas completas do sub-vetor, apenas o índice do centróide correspondente é retido.</p></li>
-<li><p><strong>Representação comprimida</strong>: A representação comprimida final consiste em <code translate="no">m</code> índices, um de cada subespaço, coletivamente referidos como <strong>códigos PQ</strong>. Esta codificação reduz o requisito de armazenamento de <em>D × 32</em> bits (assumindo números de vírgula flutuante de 32 bits) para <em>m</em> × <em>nbits</em> bits, conseguindo uma compressão substancial ao mesmo tempo que preserva a capacidade de aproximar as distâncias vectoriais.</p></li>
+<li><p><strong>Representação comprimida</strong>: A representação comprimida final consiste em <code translate="no">m</code> índices, um de cada subespaço, coletivamente designados por <strong>códigos PQ</strong>. Esta codificação reduz o requisito de armazenamento de <em>D × 32</em> bits (assumindo números de vírgula flutuante de 32 bits) para <em>m</em> × <em>nbits</em> bits, conseguindo uma compressão substancial ao mesmo tempo que preserva a capacidade de aproximar as distâncias vectoriais.</p></li>
 </ol>
-<p>Para obter mais detalhes sobre a afinação e otimização de parâmetros, consulte <a href="/docs/pt/ivf-pq.md#Index-params">Parâmetros de índice</a>.</p>
+<p>Para mais detalhes sobre a afinação e otimização de parâmetros, consulte <a href="/docs/pt/ivf-pq.md#Index-params">Parâmetros de índice</a>.</p>
 <div class="alert note">
-<p>Considere um vetor com <em>D = 128</em> dimensões usando números de ponto flutuante de 32 bits. Com os parâmetros PQ <em>m = 64</em> (sub-vectores) e <em>nbits = 8</em> (portanto <em>k =</em> 2^8 <em>= 256</em> centróides por subespaço), podemos comparar os requisitos de armazenamento:</p>
+<p>Considere um vetor com <em>D = 128</em> dimensões usando números de ponto flutuante de 32 bits. Com os parâmetros PQ <em>m = 64</em> (sub-vectores) e <em>nbits = 8</em> (portanto <em>k =</em> $2^8$ <em>= 256</em> centróides por subespaço), podemos comparar os requisitos de armazenamento:</p>
 <ul>
 <li><p>Vetor original: 128 dimensões × 32 bits = 4.096 bits</p></li>
 <li><p>Vetor comprimido por PQ: 64 sub-vectores × 8 bits = 512 bits</p></li>
@@ -76,13 +76,13 @@ summary: >-
 <li><p><strong>Pré-processamento da consulta</strong></p>
 <ul>
 <li><p>O vetor de consulta é decomposto em <code translate="no">m</code> sub-vectores, correspondendo à estrutura de decomposição PQ original.</p></li>
-<li><p>Para cada sub-vetor de consulta e o seu livro de códigos correspondente (contendo 2^{\textit{nbits}} centróides), calcular e armazenar as distâncias a todos os centróides.</p></li>
-<li><p>Isto gera <code translate="no">m</code> tabelas de pesquisa, em que cada tabela contém 2^{\textit{nbits}} distâncias.</p></li>
+<li><p>Para cada sub-vetor de consulta e o seu livro de códigos correspondente (contendo $2^{\textit{nbits}}$ centróides), calcular e armazenar as distâncias a todos os centróides.</p></li>
+<li><p>Isto gera <code translate="no">m</code> tabelas de pesquisa, em que cada tabela contém $2^{\textit{nbits}}$ distâncias.</p></li>
 </ul></li>
 <li><p><strong>Aproximação da distância</strong></p>
 <p>Para qualquer vetor da base de dados representado por códigos PQ, a sua distância aproximada ao vetor de consulta é calculada da seguinte forma:</p>
 <ul>
-<li><p>Para cada um dos <code translate="no">m</code> sub-vectores, recupere a distância pré-computada da tabela de pesquisa correspondente utilizando o índice do centróide armazenado.</p></li>
+<li><p>Para cada um dos <code translate="no">m</code> sub-vectores, recupere a distância pré-computada da tabela de pesquisa correspondente utilizando o índice centróide armazenado.</p></li>
 <li><p>Somar estas <code translate="no">m</code> distâncias para obter a distância aproximada com base num tipo de métrica específico (por exemplo, distância euclidiana).</p></li>
 </ul></li>
 </ol>
@@ -153,7 +153,7 @@ index_params.add_index(
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Depois de o índice ser criado e as entidades serem inseridas, pode efetuar pesquisas de semelhança no índice.</p>
+    </button></h2><p>Depois de o índice ser construído e as entidades serem inseridas, pode efetuar pesquisas de semelhança no índice.</p>
 <pre><code translate="no" class="language-python">search_params = {
     <span class="hljs-string">&quot;params&quot;</span>: {
         <span class="hljs-string">&quot;nprobe&quot;</span>: <span class="hljs-number">10</span>, <span class="hljs-comment"># Number of clusters to search</span>
@@ -213,13 +213,13 @@ res = MilvusClient.search(
      <td><p><code translate="no">m</code></p></td>
      <td><p>O número de sub-vectores (utilizados para quantização) para dividir cada vetor de alta dimensão durante o processo de quantização.</p></td>
      <td><p><strong>Tipo</strong>: Inteiro <strong>Intervalo</strong>: [1, 65536]</p><p><strong>Valor predefinido</strong>: Nenhum</p></td>
-     <td><p>Um valor <code translate="no">m</code> mais elevado pode melhorar a precisão, mas também aumenta a complexidade computacional e a utilização de memória. <code translate="no">m</code> tem de ser um divisor da dimensão do vetor<em>(D</em>) para garantir uma decomposição adequada. Um valor geralmente recomendado é <em>m = D/2</em>.</p><p>Na maioria dos casos, recomendamos que defina um valor dentro deste intervalo: [D/8, D].</p></td>
+     <td><p>Um valor <code translate="no">m</code> mais elevado pode melhorar a precisão, mas também aumenta a complexidade computacional e a utilização de memória. <code translate="no">m</code> deve ser um divisor da dimensão do vetor<em>(D</em>) para garantir uma decomposição adequada. Um valor geralmente recomendado é <em>m = D/2</em>.</p><p>Na maioria dos casos, recomendamos que defina um valor dentro deste intervalo: [D/8, D].</p></td>
    </tr>
    <tr>
      <td><p><code translate="no">nbits</code></p></td>
-     <td><p>O número de bits utilizados para representar o índice do centróide de cada sub-vetor na forma comprimida. Determina diretamente o tamanho de cada livro de códigos. Cada livro de códigos conterá 2^{\textit{nbits}} centróides. Por exemplo, se <code translate="no">nbits</code> estiver definido para 8, cada sub-vetor será representado por um índice de centróide de 8 bits. Isto permite 2^8 (256) centróides possíveis no livro de códigos para esse sub-vetor.</p></td>
+     <td><p>O número de bits utilizados para representar o índice do centróide de cada sub-vetor na forma comprimida. Determina diretamente o tamanho de cada livro de códigos. Cada livro de códigos conterá $2^{\textit{nbits}}$ centróides. Por exemplo, se <code translate="no">nbits</code> estiver definido para 8, cada sub-vetor será representado por um índice de centróide de 8 bits. Isto permite $2^8$ (256) centróides possíveis no livro de códigos para esse sub-vetor.</p></td>
      <td><p><strong>Tipo</strong>: Integer <strong>Intervalo</strong>: [1, 64]</p><p><strong>Valor predefinido</strong>: <code translate="no">8</code></p></td>
-     <td><p>Um valor mais alto em <code translate="no">nbits</code> permite livros de códigos maiores, potencialmente levando a representações mais precisas dos vectores originais. No entanto, isso também significa usar mais bits para armazenar cada índice, resultando em menos compactação. Na maioria dos casos, recomendamos que defina um valor dentro deste intervalo: [1, 16].</p></td>
+     <td><p>Um valor <code translate="no">nbits</code> mais alto permite livros de códigos maiores, potencialmente levando a representações mais precisas dos vectores originais. No entanto, isso também significa usar mais bits para armazenar cada índice, resultando em menos compactação. Na maioria dos casos, recomendamos que defina um valor dentro deste intervalo: [1, 16].</p></td>
    </tr>
 </table>
 <h3 id="Index-specific-search-params" class="common-anchor-header">Parâmetros de pesquisa específicos do índice</h3><p>A tabela a seguir lista os parâmetros que podem ser configurados em <code translate="no">search_params.params</code> ao <a href="/docs/pt/ivf-pq.md#Search-on-index">pesquisar no índice</a>.</p>

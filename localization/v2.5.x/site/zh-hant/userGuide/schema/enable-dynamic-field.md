@@ -35,7 +35,7 @@ summary: 在要插入的實體中，必須包含在集合的模式中定義的�
         ></path>
       </svg>
     </button></h2><p>在 Milvus 中，您可以透過設定集合中每個欄位的名稱和資料類型來建立集合模式。當您在模式中加入欄位時，請確認此欄位包含在您要插入的實體中。如果您希望某些欄位是可選的，啟用動態欄位是一個選擇。</p>
-<p>動態欄位是一個保留欄位，名為<code translate="no">$meta</code> ，屬於 JavaScript Object Notation (JSON) 類型。實體中任何未在模式中定義的欄位，都會以鍵值對的形式儲存在這個保留的 JSON 欄位中。</p>
+<p>動態欄位是名為<strong>$meta</strong> 的保留欄位，屬於 JavaScript Object Notation (JSON) 類型。實體中任何未在模式中定義的欄位，都會以鍵值對的形式儲存在這個保留的 JSON 欄位中。</p>
 <p>對於啟用動態欄位的集合，您可以使用動態欄位中的鍵進行標量篩選，就像使用模式中明確定義的欄位一樣。</p>
 <h2 id="Enable-dynamic-field" class="common-anchor-header">啟用動態欄位<button data-href="#Enable-dynamic-field" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -321,7 +321,7 @@ curl --request POST \
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Index-a-scalar-field-in-the-dynamic-field" class="common-anchor-header">在動態欄位中索引標量欄位</h3><p>當您啟用動態欄位時，任何未定義的標量欄位都會以 JSON 格式的鍵值對儲存。Milvus 支援在這種未定義的標量字段上建立索引，有效的方式是建立一個 JSON 路徑索引。工作原理如下</p>
 <ol>
-<li><p><strong>選擇</strong>您想要索引<strong>的動態欄位關鍵字</strong>。例如，上面範例中的<code translate="no">&quot;color&quot;</code> 。</p></li>
+<li><p><strong>選擇</strong>您要索引<strong>的動態欄位關鍵字</strong>。例如，上面範例中的<code translate="no">&quot;color&quot;</code> 。</p></li>
 <li><p><strong>決定</strong>該關鍵值的<strong>轉換類型</strong>。Milvus 將解析動態欄位，擷取指定鍵下的值，並將它們轉換成您設定的類型。</p>
 <ul>
 <li><p>支援的<code translate="no">json_cast_type</code> 值為<code translate="no">bool</code> (或<code translate="no">BOOL</code>)、<code translate="no">double</code> (或<code translate="no">DOUBLE</code>) 及<code translate="no">varchar</code> (或<code translate="no">VARCHAR</code>)。</p></li>

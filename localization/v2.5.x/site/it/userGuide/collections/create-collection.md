@@ -38,7 +38,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>Una collezione è una tabella bidimensionale con colonne fisse e righe variabili. Ogni colonna rappresenta un campo e ogni riga rappresenta un'entità. Per implementare questa gestione strutturale dei dati è necessario uno schema. Ogni entità da inserire deve soddisfare i vincoli definiti nello schema.</p>
-<p>È possibile determinare ogni aspetto di una collezione, compreso il suo schema, i parametri dell'indice, il tipo di metrica e se caricarla o meno al momento della creazione, per garantire che la collezione soddisfi pienamente i propri requisiti.</p>
+<p>È possibile determinare ogni aspetto di una collezione, compresi lo schema, i parametri dell'indice, il tipo di metrica e se caricarla o meno al momento della creazione, per garantire che la collezione soddisfi pienamente i requisiti.</p>
 <p>Per creare una raccolta, è necessario</p>
 <ul>
 <li><p><a href="/docs/it/create-collection.md#Create-Schema">Creare lo schema</a></p></li>
@@ -747,6 +747,6 @@ curl --request POST \
     \&quot;params\&quot;: <span class="hljs-variable">$params</span>
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Per ulteriori informazioni sui livelli di consistenza, vedere <a href="/docs/it/consistency.md">Livello di consistenza</a>.</p>
+<p>Per ulteriori informazioni sui livelli di consistenza, vedere <a href="/docs/it/tune_consistency.md">Livello di consistenza</a>.</p>
 <h3 id="Enable-Dynamic-Field" class="common-anchor-header">Abilitare il campo dinamico</h3><p>Il campo dinamico di una collezione è un campo riservato JavaScript Object Notation (JSON) chiamato <strong>$meta</strong>. Una volta abilitato questo campo, Milvus salva tutti i campi non definiti da schemi in ogni entità e i loro valori come coppie chiave-valore nel campo riservato.</p>
 <p>Per i dettagli su come utilizzare il campo dinamico, consultare <a href="/docs/it/enable-dynamic-field.md">Campo dinamico</a>.</p>

@@ -49,7 +49,7 @@ summary: >-
 <li><p><strong>Búsqueda:</strong> Cuando se buscan los vecinos más cercanos, el algoritmo de búsqueda compara el vector de consulta con los centroides de los clústeres y selecciona el clúster o clústeres más prometedores. A continuación, la búsqueda se reduce a los vectores que se encuentran dentro de esos clusters seleccionados.</p></li>
 </ol>
 <p>Para obtener más información sobre los detalles técnicos, consulte <a href="/docs/es/ivf-flat.md">IVF_FLAT</a>.</p>
-<h3 id="PQ" class="common-anchor-header">PQ</h3><p><strong>La cuantificación de productos (PQ)</strong> es un método de compresión de vectores de alta dimensión que reduce significativamente los requisitos de almacenamiento y permite realizar rápidas operaciones de búsqueda de similitudes.</p>
+<h3 id="PQ" class="common-anchor-header">PQ</h3><p><strong>La cuantificación de productos (PQ)</strong> es un método de compresión de vectores de alta dimensión que reduce significativamente los requisitos de almacenamiento y permite operaciones rápidas de búsqueda de similitudes.</p>
 <p>El proceso PQ consta de las siguientes etapas</p>
 <p>
   
@@ -57,13 +57,13 @@ summary: >-
    </span> <span class="img-wrapper"> <span>Ivf Pq 1</span> </span></p>
 <ol>
 <li><p><strong>Descomposición dimensional</strong>: El algoritmo comienza descomponiendo cada vector de alta dimensión en <code translate="no">m</code> subvectores de igual tamaño. Esta descomposición transforma el espacio original de D dimensiones en <code translate="no">m</code> subespacios disjuntos, donde cada subespacio contiene <em>D/m</em> dimensiones. El parámetro <code translate="no">m</code> controla la granularidad de la descomposición e influye directamente en la relación de compresión.</p></li>
-<li><p><strong>Generación del libro de códigos del subespacio</strong>: Dentro de cada subespacio, el algoritmo aplica <a href="https://en.wikipedia.org/wiki/K-means_clustering">la agrupación k-means</a> para aprender un conjunto de vectores representativos (centroides). Estos centroides forman colectivamente un libro de códigos para ese subespacio. El número de centroides de cada libro de códigos viene determinado por el parámetro <code translate="no">nbits</code>, donde cada libro de códigos contiene 2^{\textit{nbits}} centroides. Por ejemplo, si <code translate="no">nbits = 8</code>, cada libro de códigos contendrá 256 centroides. A cada centroide se le asigna un índice único con <code translate="no">nbits</code> bits.</p></li>
+<li><p><strong>Generación del libro de códigos del subespacio</strong>: Dentro de cada subespacio, el algoritmo aplica <a href="https://en.wikipedia.org/wiki/K-means_clustering">la agrupación k-means</a> para aprender un conjunto de vectores representativos (centroides). Estos centroides forman colectivamente un libro de códigos para ese subespacio. El número de centroides de cada libro de códigos viene determinado por el parámetro <code translate="no">nbits</code>, donde cada libro de códigos contiene $2^{\textit{nbits}}$ centroides. Por ejemplo, si <code translate="no">nbits = 8</code>, cada libro de códigos contendrá 256 centroides. A cada centroide se le asigna un índice único con <code translate="no">nbits</code> bits.</p></li>
 <li><p><strong>Cuantificación</strong><strong>vectorial</strong>: Para cada subvector del vector original, PQ identifica su centroide más cercano dentro del subespacio correspondiente utilizando un tipo de métrica específico. Este proceso asigna cada subvector a su vector representativo más cercano en el libro de códigos. En lugar de almacenar todas las coordenadas del subvector, sólo se conserva el índice del centroide correspondiente.</p></li>
 <li><p><strong>Representación comprimida</strong>: La representación comprimida final consta de <code translate="no">m</code> índices, uno de cada subespacio, denominados colectivamente <strong>códigos PQ</strong>. Esta codificación reduce los requisitos de almacenamiento de <em>D × 32</em> bits (suponiendo números en coma flotante de 32 bits) a <em>m</em> × <em>nbits</em> bits, con lo que se consigue una compresión sustancial al tiempo que se conserva la capacidad de aproximar distancias vectoriales.</p></li>
 </ol>
 <p>Para obtener más información sobre el ajuste y la optimización de los parámetros, consulte <a href="/docs/es/ivf-pq.md#Index-params">Parámetros del índice</a>.</p>
 <div class="alert note">
-<p>Considere un vector con <em>D = 128</em> dimensiones utilizando números de coma flotante de 32 bits. Con los parámetros PQ <em>m = 64</em> (subvectores) y <em>nbits = 8</em> (por tanto <em>k =</em> 2^8 <em>= 256</em> centroides por subespacio), podemos comparar los requisitos de almacenamiento:</p>
+<p>Considere un vector con <em>D = 128</em> dimensiones utilizando números de coma flotante de 32 bits. Con los parámetros PQ <em>m = 64</em> (subvectores) y <em>nbits = 8</em> (por tanto <em>k =</em> $2^8$ <em>= 256</em> centroides por subespacio), podemos comparar los requisitos de almacenamiento:</p>
 <ul>
 <li><p>Vector original: 128 dimensiones × 32 bits = 4.096 bits</p></li>
 <li><p>Vector comprimido PQ: 64 subvectores × 8 bits = 512 bits</p></li>
@@ -76,13 +76,13 @@ summary: >-
 <li><p><strong>Preprocesamiento de la consulta</strong></p>
 <ul>
 <li><p>El vector de consulta se descompone en <code translate="no">m</code> subvectores, que coinciden con la estructura de descomposición original de PQ.</p></li>
-<li><p>Para cada subvector de consulta y su correspondiente libro de códigos (que contiene 2^{\textit{nbits}} centroides), se calculan y almacenan las distancias a todos los centroides.</p></li>
-<li><p>Esto genera <code translate="no">m</code> tablas de búsqueda, donde cada tabla contiene 2^ {\textit{nbits}} distancias.</p></li>
+<li><p>Para cada subvector de consulta y su correspondiente libro de códigos (que contiene $2^{\textit{nbits}}$ centroides), se calculan y almacenan las distancias a todos los centroides.</p></li>
+<li><p>Esto genera <code translate="no">m</code> tablas de búsqueda, donde cada tabla contiene $2^{\textit{nbits}}$ distancias.</p></li>
 </ul></li>
 <li><p><strong>Aproximación de distancias</strong></p>
 <p>Para cualquier vector de base de datos representado por códigos PQ, su distancia aproximada al vector de consulta se calcula del siguiente modo:</p>
 <ul>
-<li><p>Para cada uno de los subvectores de <code translate="no">m</code>, se recupera la distancia precalculada de la tabla de consulta correspondiente utilizando el índice centroide almacenado.</p></li>
+<li><p>Para cada uno de los subvectores de <code translate="no">m</code>, recupere la distancia precalculada de la tabla de consulta correspondiente utilizando el índice centroide almacenado.</p></li>
 <li><p>Sume estas distancias <code translate="no">m</code> para obtener la distancia aproximada basada en un tipo métrico específico (por ejemplo, la distancia euclídea).</p></li>
 </ul></li>
 </ol>
@@ -137,7 +137,7 @@ index_params.add_index(
 </ul>
 <p>Para conocer más parámetros de construcción disponibles para el índice <code translate="no">IVF_PQ</code>, consulte <a href="/docs/es/ivf-pq.md#Index-building-params">Parámetros de construcción del índice</a>.</p></li>
 </ul>
-<p>Una vez configurados los parámetros del índice, puede crear el índice utilizando directamente el método <code translate="no">create_index()</code> o pasando los parámetros del índice al método <code translate="no">create_collection</code>. Para más detalles, consulte <a href="/docs/es/create-collection.md">Crear colección</a>.</p>
+<p>Una vez configurados los parámetros del índice, puede crear el índice utilizando directamente el método <code translate="no">create_index()</code> o pasando los parámetros del índice en el método <code translate="no">create_collection</code>. Para más detalles, consulte <a href="/docs/es/create-collection.md">Crear colección</a>.</p>
 <h2 id="Search-on-index" class="common-anchor-header">Búsqueda en el índice<button data-href="#Search-on-index" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -217,7 +217,7 @@ res = MilvusClient.search(
    </tr>
    <tr>
      <td><p><code translate="no">nbits</code></p></td>
-     <td><p>El número de bits utilizados para representar el índice del centroide de cada subvector en la forma comprimida. Determina directamente el tamaño de cada libro de códigos. Cada libro de códigos contendrá 2^{\textit{nbits}} centroides. Por ejemplo, si <code translate="no">nbits</code> se establece en 8, cada subvector estará representado por un índice centroide de 8 bits. Esto permite 2^8 (256) centroides posibles en el libro de códigos para ese subvector.</p></td>
+     <td><p>El número de bits utilizados para representar el índice del centroide de cada subvector en la forma comprimida. Determina directamente el tamaño de cada libro de códigos. Cada libro de códigos contendrá $2^{\textit{nbits}}$ centroides. Por ejemplo, si <code translate="no">nbits</code> se establece en 8, cada subvector estará representado por un índice centroide de 8 bits. Esto permite que haya $2^8$ (256) centroides posibles en el libro de códigos para ese subvector.</p></td>
      <td><p><strong>Tipo</strong>: Entero <strong>Rango</strong>: [1, 64]</p><p><strong>Valor por defecto</strong>: <code translate="no">8</code></p></td>
      <td><p>Un valor más alto de <code translate="no">nbits</code> permite libros de códigos más grandes, lo que potencialmente conduce a representaciones más precisas de los vectores originales. Sin embargo, también implica utilizar más bits para almacenar cada índice, lo que se traduce en una menor compresión. En la mayoría de los casos, recomendamos establecer un valor dentro de este rango: [1, 16].</p></td>
    </tr>

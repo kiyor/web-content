@@ -40,7 +40,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p><strong>IVF_PQ</strong> steht für <strong>Inverted File with Product Quantization (Invertierte Datei mit Produktquantisierung</strong>), ein hybrider Ansatz, der Indizierung und Komprimierung für effiziente Vektorsuche und -abfrage kombiniert. Dabei werden zwei Kernkomponenten genutzt: <strong>Invertierte Datei (IVF)</strong> und <strong>Produktquantisierung (PQ)</strong>.</p>
-<h3 id="IVF" class="common-anchor-header">IVF</h3><p>IVF ist wie die Erstellung eines Index in einem Buch. Anstatt jede Seite (oder in unserem Fall jeden Vektor) zu durchsuchen, suchen Sie nach bestimmten Schlüsselwörtern (Clustern) im Index, um die relevanten Seiten (Vektoren) schnell zu finden. In unserem Szenario werden die Vektoren in Clustern gruppiert, und der Algorithmus sucht in einigen Clustern, die dem Abfragevektor nahe kommen.</p>
+<h3 id="IVF" class="common-anchor-header">IVF</h3><p>IVF ist wie die Erstellung eines Index in einem Buch. Anstatt jede Seite (oder in unserem Fall jeden Vektor) zu durchsuchen, suchen Sie nach bestimmten Schlüsselwörtern (Clustern) im Index, um die relevanten Seiten (Vektoren) schnell zu finden. In unserem Szenario werden die Vektoren in Clustern gruppiert, und der Algorithmus sucht in einigen wenigen Clustern, die nahe am Abfragevektor liegen.</p>
 <p>Und so funktioniert's:</p>
 <ol>
 <li><p><strong>Clustering:</strong> Ihr Vektordatensatz wird mithilfe eines Clustering-Algorithmus wie k-means in eine bestimmte Anzahl von Clustern unterteilt. Jeder Cluster hat einen Zentroid (einen repräsentativen Vektor für den Cluster).</p></li>
@@ -57,13 +57,13 @@ summary: >-
    </span> <span class="img-wrapper"> <span>Ivf Pq 1</span> </span></p>
 <ol>
 <li><p><strong>Dekomposition der Dimensionen</strong>: Der Algorithmus beginnt mit der Zerlegung jedes hochdimensionalen Vektors in <code translate="no">m</code> gleich große Untervektoren. Durch diese Zerlegung wird der ursprünglich D-dimensionale Raum in <code translate="no">m</code> disjunkte Unterräume transformiert, wobei jeder Unterraum <em>D/m</em> Dimensionen enthält. Der Parameter <code translate="no">m</code> steuert die Granularität der Zerlegung und beeinflusst direkt die Kompressionsrate.</p></li>
-<li><p><strong>Erzeugung eines Unterraum-Codebuchs</strong>: In jedem Unterraum wendet der Algorithmus das <a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means-Clustering</a> an, um einen Satz repräsentativer Vektoren (Zentroide) zu lernen. Diese Zentroide bilden zusammen ein Codebuch für diesen Unterraum. Die Anzahl der Zentroide in jedem Codebuch wird durch den Parameter <code translate="no">nbits</code> bestimmt, wobei jedes Codebuch 2^{\textit{nbits}} Zentroide enthält. Wenn beispielsweise <code translate="no">nbits = 8</code> verwendet wird, enthält jedes Codebuch 256 Zentroide. Jedem Zentroid wird ein eindeutiger Index mit <code translate="no">nbits</code> Bits zugewiesen.</p></li>
+<li><p><strong>Erzeugung eines Unterraum-Codebuchs</strong>: In jedem Unterraum wendet der Algorithmus das <a href="https://en.wikipedia.org/wiki/K-means_clustering">k-means-Clustering</a> an, um einen Satz repräsentativer Vektoren (Zentroide) zu lernen. Diese Zentroide bilden zusammen ein Codebuch für diesen Unterraum. Die Anzahl der Zentroide in jedem Codebuch wird durch den Parameter <code translate="no">nbits</code> bestimmt, wobei jedes Codebuch $2^{\textit{nbits}}$ Zentroide enthält. Wenn beispielsweise <code translate="no">nbits = 8</code> gewählt wird, enthält jedes Codebuch 256 Zentroide. Jedem Zentroid wird ein eindeutiger Index mit <code translate="no">nbits</code> Bits zugewiesen.</p></li>
 <li><p><strong>Vektorquantisierung</strong>: Für jeden Untervektor des ursprünglichen Vektors identifiziert PQ den nächstgelegenen Zentroid innerhalb des entsprechenden Unterraums unter Verwendung eines bestimmten metrischen Typs. Durch diesen Prozess wird jeder Untervektor effektiv auf den nächstgelegenen repräsentativen Vektor im Codebuch abgebildet. Anstatt die vollständigen Koordinaten des Untervektors zu speichern, wird nur der Index des übereinstimmenden Schwerpunkts beibehalten.</p></li>
 <li><p><strong>Komprimierte Darstellung</strong>: Die endgültige komprimierte Darstellung besteht aus <code translate="no">m</code> Indizes, einem aus jedem Unterraum, die zusammen als <strong>PQ-Codes</strong> bezeichnet werden. Diese Kodierung reduziert den Speicherbedarf von <em>D × 32</em> Bits (unter der Annahme von 32-Bit-Gleitkommazahlen) auf <em>m</em> × <em>n Bits</em>, wodurch eine erhebliche Komprimierung erreicht wird, während die Fähigkeit zur Annäherung der Vektorabstände erhalten bleibt.</p></li>
 </ol>
 <p>Weitere Einzelheiten zur Parametereinstellung und -optimierung finden Sie unter <a href="/docs/de/ivf-pq.md#Index-params">Indexparameter</a>.</p>
 <div class="alert note">
-<p>Betrachten wir einen Vektor mit <em>D = 128</em> Dimensionen unter Verwendung von 32-Bit-Gleitkommazahlen. Mit den PQ-Parametern <em>m = 64</em> (Untervektoren) und <em>nbits = 8</em> (also <em>k =</em> 2^8 <em>= 256</em> Zentroide pro Unterraum) können wir die Speicheranforderungen vergleichen:</p>
+<p>Betrachten wir einen Vektor mit <em>D = 128</em> Dimensionen unter Verwendung von 32-Bit-Gleitkommazahlen. Mit den PQ-Parametern <em>m = 64</em> (Untervektoren) und <em>nbits = 8</em> (also <em>k =</em> $2^8$ <em>= 256</em> Zentroide pro Unterraum) können wir die Speicheranforderungen vergleichen:</p>
 <ul>
 <li><p>Originalvektor: 128 Dimensionen × 32 Bits = 4.096 Bits</p></li>
 <li><p>PQ-komprimierter Vektor: 64 Untervektoren × 8 Bits = 512 Bits</p></li>
@@ -76,8 +76,8 @@ summary: >-
 <li><p><strong>Vorverarbeitung der Abfrage</strong></p>
 <ul>
 <li><p>Der Abfragevektor wird in <code translate="no">m</code> Untervektoren zerlegt, die der ursprünglichen PQ-Zerlegungsstruktur entsprechen.</p></li>
-<li><p>Für jeden Untervektor der Abfrage und sein entsprechendes Codebuch (das 2^{\textit{nbits}} Zentren enthält) werden die Abstände zu allen Zentren berechnet und gespeichert.</p></li>
-<li><p>Dies erzeugt <code translate="no">m</code> Nachschlagetabellen, wobei jede Tabelle 2^{\textit{nbits}} Abstände enthält.</p></li>
+<li><p>Für jeden Untervektor der Abfrage und sein entsprechendes Codebuch (das $2^{\textit{nbits}}$-Zentroide enthält) werden die Abstände zu allen Zentroiden berechnet und gespeichert.</p></li>
+<li><p>Dies erzeugt <code translate="no">m</code> Nachschlagetabellen, wobei jede Tabelle $2^{\textit{nbits}}$ Abstände enthält.</p></li>
 </ul></li>
 <li><p><strong>Annäherung der Abstände</strong></p>
 <p>Für jeden Datenbankvektor, der durch PQ-Codes dargestellt wird, wird sein ungefährer Abstand zum Abfragevektor wie folgt berechnet:</p>
@@ -137,7 +137,7 @@ index_params.add_index(
 </ul>
 <p>Weitere Informationen zu den für den Index <code translate="no">IVF_PQ</code> verfügbaren Parametern finden Sie unter <a href="/docs/de/ivf-pq.md#Index-building-params">Parameter für den Indexaufbau</a>.</p></li>
 </ul>
-<p>Sobald die Index-Parameter konfiguriert sind, können Sie den Index erstellen, indem Sie die Methode <code translate="no">create_index()</code> direkt verwenden oder die Index-Parameter in der Methode <code translate="no">create_collection</code> übergeben. Einzelheiten finden Sie unter <a href="/docs/de/create-collection.md">Sammlung erstellen</a>.</p>
+<p>Sobald die Index-Parameter konfiguriert sind, können Sie den Index erstellen, indem Sie die Methode <code translate="no">create_index()</code> direkt verwenden oder die Index-Parameter in der Methode <code translate="no">create_collection</code> übergeben. Weitere Informationen finden Sie unter <a href="/docs/de/create-collection.md">Sammlung erstellen</a>.</p>
 <h2 id="Search-on-index" class="common-anchor-header">Suche im Index<button data-href="#Search-on-index" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -206,7 +206,7 @@ res = MilvusClient.search(
      <td><p><code translate="no">nlist</code></p></td>
      <td><p>Die Anzahl der Cluster, die mit dem k-means-Algorithmus während der Indexerstellung erstellt werden.</p></td>
      <td><p><strong>Typ</strong>: Integer <strong>Bereich</strong>: [1, 65536]</p><p><strong>Standardwert</strong>: <code translate="no">128</code></p></td>
-     <td><p>Größere <code translate="no">nlist</code> Werte verbessern die Wiederauffindbarkeit (Recall) durch die Erstellung von feineren Clustern, erhöhen aber die Indexerstellungszeit. Optimieren Sie den Wert anhand der Größe des Datensatzes und der verfügbaren Ressourcen. In den meisten Fällen wird empfohlen, einen Wert innerhalb dieses Bereichs festzulegen: [32, 4096].</p></td>
+     <td><p>Größere <code translate="no">nlist</code> Werte verbessern die Wiederauffindbarkeit durch die Erstellung von feineren Clustern, erhöhen aber die Indexerstellungszeit. Optimieren Sie den Wert anhand der Größe des Datensatzes und der verfügbaren Ressourcen. In den meisten Fällen wird empfohlen, einen Wert innerhalb dieses Bereichs festzulegen: [32, 4096].</p></td>
    </tr>
    <tr>
      <td rowspan="2"><p>PQ</p></td>
@@ -217,7 +217,7 @@ res = MilvusClient.search(
    </tr>
    <tr>
      <td><p><code translate="no">nbits</code></p></td>
-     <td><p>Die Anzahl der Bits, die verwendet werden, um den Index des Schwerpunkts jedes Untervektors in komprimierter Form darzustellen. Sie bestimmt direkt die Größe der einzelnen Codebücher. Jedes Codebuch enthält 2^{\textit{nbits}} Zentroide. Wenn <code translate="no">nbits</code> beispielsweise auf 8 gesetzt ist, wird jeder Untervektor durch einen 8-Bit-Index des Schwerpunkts dargestellt. Dies ermöglicht 2^8 (256) mögliche Zentroide im Codebuch für diesen Untervektor.</p></td>
+     <td><p>Die Anzahl der Bits, die verwendet werden, um den Index des Schwerpunkts jedes Untervektors in komprimierter Form darzustellen. Sie bestimmt direkt die Größe der einzelnen Codebücher. Jedes Codebuch enthält $2^{\textit{nbits}}$ Zentroide. Wenn <code translate="no">nbits</code> beispielsweise auf 8 gesetzt ist, wird jeder Untervektor durch einen 8-Bit-Index des Schwerpunkts dargestellt. Dies ermöglicht $2^8$ (256) mögliche Zentroide im Codebuch für diesen Untervektor.</p></td>
      <td><p><strong>Typ</strong>: Integer <strong>Bereich</strong>: [1, 64]</p><p><strong>Standardwert</strong>: <code translate="no">8</code></p></td>
      <td><p>Ein höherer Wert von <code translate="no">nbits</code> ermöglicht größere Codebücher, was zu genaueren Darstellungen der ursprünglichen Vektoren führen kann. Allerdings bedeutet dies auch, dass mehr Bits zum Speichern jedes Index verwendet werden, was zu einer geringeren Komprimierung führt. In den meisten Fällen wird empfohlen, einen Wert innerhalb dieses Bereichs zu wählen: [1, 16].</p></td>
    </tr>
@@ -236,6 +236,6 @@ res = MilvusClient.search(
      <td><p><code translate="no">nprobe</code></p></td>
      <td><p>Die Anzahl der Cluster, in denen nach Kandidaten gesucht wird.</p></td>
      <td><p><strong>Typ</strong>: Integer <strong>Bereich</strong>: [1, <em>nlist</em>]</p><p><strong>Standardwert</strong>: <code translate="no">8</code></p></td>
-     <td><p>Höhere Werte ermöglichen die Suche nach mehr Clustern, was die Wiederauffindbarkeit durch Erweiterung des Suchbereichs verbessert, allerdings auf Kosten einer erhöhten Abfragelatenz. Stellen Sie <code translate="no">nprobe</code> proportional zu <code translate="no">nlist</code> ein, um Geschwindigkeit und Genauigkeit auszugleichen.</p><p>In den meisten Fällen wird empfohlen, einen Wert innerhalb dieses Bereichs festzulegen: [1, nlist].</p></td>
+     <td><p>Höhere Werte ermöglichen die Suche nach mehr Clustern, was die Wiederauffindbarkeit durch Erweiterung des Suchbereichs verbessert, allerdings auf Kosten einer erhöhten Abfragelatenz. Stellen Sie <code translate="no">nprobe</code> proportional zu <code translate="no">nlist</code> ein, um Geschwindigkeit und Genauigkeit auszugleichen.</p><p>In den meisten Fällen wird empfohlen, einen Wert innerhalb dieses Bereichs einzustellen: [1, nlist].</p></td>
    </tr>
 </table>

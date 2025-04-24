@@ -5,7 +5,7 @@ summary: >-
   Pode criar uma coleção instantaneamente definindo o seu nome e a
   dimensionalidade do campo vetorial. O Milvus indexa automaticamente o campo
   vetorial e carrega a coleção aquando da sua criação. Esta página demonstra
-  como criar uma coleção instantaneamente com as definições por defeito.
+  como criar uma coleção instantaneamente com as predefinições.
 ---
 <h1 id="Create-Collection-Instantly" class="common-anchor-header">Criar coleção instantaneamente<button data-href="#Create-Collection-Instantly" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -22,7 +22,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>Pode criar uma coleção instantaneamente definindo o seu nome e a dimensionalidade do campo vetorial. O Milvus indexa automaticamente o campo vetorial e carrega a coleção aquando da sua criação. Esta página demonstra como criar uma coleção instantaneamente com as predefinições.</p>
+    </button></h1><p>Pode criar uma coleção instantaneamente definindo o seu nome e a dimensionalidade do campo vetorial. O Milvus indexa automaticamente o campo vetorial e carrega a coleção aquando da sua criação. Esta página demonstra como criar uma coleção instantaneamente com as configurações padrão.</p>
 <h2 id="Overview" class="common-anchor-header">Descrição geral<button data-href="#Overview" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -39,7 +39,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>Uma coleção é uma tabela bidimensional com colunas fixas e linhas variantes. Cada coluna representa um campo e cada linha representa uma entidade. É necessário um esquema para implementar esta gestão estrutural de dados. Cada entidade a inserir tem de cumprir os condicionalismos definidos no esquema.</p>
-<p>As aplicações AIGC utilizam geralmente bases de dados vectoriais como base de conhecimentos para gerir os dados gerados durante a interação entre os utilizadores e os grandes modelos linguísticos (LLM). Estas bases de conhecimentos são praticamente semelhantes. Para acelerar a utilização dos agregados Milvus em tais cenários, está disponível um método instantâneo para criar uma coleção com apenas dois parâmetros, nomeadamente o nome da coleção e a dimensionalidade do campo vetorial.</p>
+<p>As aplicações AIGC utilizam geralmente bases de dados vectoriais como base de conhecimentos para gerir os dados gerados durante a interação entre os utilizadores e os grandes modelos linguísticos (LLM). Estas bases de conhecimentos são quase semelhantes. Para acelerar a utilização dos agregados Milvus em tais cenários, está disponível um método instantâneo para criar uma coleção com apenas dois parâmetros, nomeadamente o nome da coleção e a dimensionalidade do campo vetorial.</p>
 <p>Quando cria uma coleção instantaneamente com as predefinições, aplicam-se as seguintes definições:</p>
 <ul>
 <li><p>Os campos primário e vetorial são adicionados ao esquema<strong>(id</strong> e <strong>vetor</strong>).</p></li>

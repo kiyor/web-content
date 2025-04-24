@@ -501,7 +501,7 @@ curl --request POST \
     \&quot;collectionName\&quot;: \&quot;customized_setup_2\&quot;
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Milvus 还为您提供了即时创建 Collection 的方法。详情请参阅<a href="/docs/zh/create-collection-instantly.md">即时创建 Collection</a>。</p>
+<p>Milvus 还为您提供了一种即时创建 Collection 的方法。详情请参阅<a href="/docs/zh/create-collection-instantly.md">即时创建 Collection</a>。</p>
 <h2 id="Set-Collection-Properties" class="common-anchor-header">设置 Collections 属性<button data-href="#Set-Collection-Properties" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -744,6 +744,6 @@ curl --request POST \
     \&quot;params\&quot;: <span class="hljs-variable">$params</span>
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>有关一致性级别的更多信息，请参阅<a href="/docs/zh/consistency.md">一致性</a>级别。</p>
+<p>有关一致性级别的更多信息，请参阅<a href="/docs/zh/tune_consistency.md">一致性</a>级别。</p>
 <h3 id="Enable-Dynamic-Field" class="common-anchor-header">启用动态字段</h3><p>Collections 中的动态字段是一个保留的 JavaScript Object Notation (JSON) 字段，名为<strong>$meta</strong>。启用该字段后，Milvus 会将每个实体中携带的所有非 Schema 定义字段及其值作为键值对保存在保留字段中。</p>
 <p>有关如何使用动态字段的详细信息，请参阅<a href="/docs/zh/enable-dynamic-field.md">动态字段</a>。</p>

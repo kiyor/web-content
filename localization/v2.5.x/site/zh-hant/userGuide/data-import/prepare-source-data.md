@@ -350,7 +350,7 @@ writer = RemoteBulkWriter(
 <span class="hljs-type">RemoteBulkWriter</span> <span class="hljs-variable">remoteBulkWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RemoteBulkWriter</span>(remoteBulkWriterParam);
 <button class="copy-code-btn"></button></code></pre>
 <div class="language-python">
-<p>除了<code translate="no">connect_param</code> 之外，建立<strong>RemoteBulkWriter</strong>的參數幾乎與<strong>LocalBulkWriter</strong> 的參數相同。有關參數設定的詳細資訊，請參閱 SDK 參考資料中的<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/RemoteBulkWriter.md">RemoteBulkWriter</a>與<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/S3ConnectParam.md">ConnectParam</a>。</p>
+<p>除了<code translate="no">connect_param</code> 之外，建立<strong>RemoteBulkWriter</strong>的參數幾乎與<strong>LocalBulkWriter</strong> 的參數相同。有關參數設定的詳細資訊，請參閱 SDK 參考資料中的<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/RemoteBulkWriter.md">RemoteBulkWriter</a>和<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/S3ConnectParam.md">ConnectParam</a>。</p>
 </div>
 <div class="language-java">
 <p>創建<strong>RemoteBulkWriter</strong>的參數與<strong>LocalBulkWriter</strong> 的參數幾乎相同，除了<code translate="no">StorageConnectParam</code> 。有關參數設定的詳細資訊，請參閱 SDK 參考資料中的 RemoteBulkWriter 和 StorageConnectParam。</p>
@@ -604,17 +604,17 @@ writer = RemoteBulkWriter(
 <span class="hljs-comment">#  [&#x27;d4220a9e-45be-4ccb-8cb5-bf09304b9f23/2.parquet&#x27;]]</span>
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-java"><span class="hljs-comment">// localBulkWriter.getBatchFiles();</span>
-remoteBulkWriter.<span class="hljs-title function_">getBatchFiles</span>();
+remoteBulkWriter.getBatchFiles();
 
 <span class="hljs-comment">// </span>
 
 <span class="hljs-comment">// Close the BulkWriter</span>
 <span class="hljs-keyword">try</span> {
-    localBulkWriter.<span class="hljs-title function_">close</span>();
-    remoteBulkWriter.<span class="hljs-title function_">close</span>();            
-} <span class="hljs-keyword">catch</span> (<span class="hljs-title class_">Exception</span> e) {
+    localBulkWriter.close();
+    remoteBulkWriter.close();            
+} <span class="hljs-keyword">catch</span> (Exception e) {
     <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> handle exception</span>
-    e.<span class="hljs-title function_">printStackTrace</span>();
+    e.printStackTrace();
 }
 <button class="copy-code-btn"></button></code></pre>
 <p><strong>BulkWriter</strong>會產生 UUID，在提供的輸出路徑中使用 UUID 建立子資料夾，並將所有產生的檔案放入子資料夾中。<a href="https://assets.zilliz.com/bulk_writer.zip">點選此</a>處下載準備好的範例資料。</p>
@@ -622,10 +622,10 @@ remoteBulkWriter.<span class="hljs-title function_">getBatchFiles</span>();
 <pre><code translate="no" class="language-bash"><span class="hljs-comment"># JSON</span>
 ├── folder
 │   └── 45ae1139-1d87-4aff-85f5-0039111f9e6b
-│       └── <span class="hljs-number">1.j</span>son 
+│       └── 1.json 
 
 <span class="hljs-comment"># Parquet</span>
 ├── folder
 │   └── 45ae1139-1d87-4aff-85f5-0039111f9e6b
-│       └── <span class="hljs-number">1.</span>parquet 
+│       └── 1.parquet 
 <button class="copy-code-btn"></button></code></pre>
