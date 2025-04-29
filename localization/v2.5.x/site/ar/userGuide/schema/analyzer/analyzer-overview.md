@@ -2,8 +2,8 @@
 id: analyzer-overview.md
 title: نظرة عامة على المحلل
 summary: >-
-  في معالجة النصوص، يعد المحلل مكونًا أساسيًا يحول النص الخام إلى تنسيق منظم
-  وقابل للبحث. يتكون كل محلل عادةً من عنصرين أساسيين: مُحلل الرموز والمرشح.
+  في معالجة النصوص، يعتبر المحلل عنصرًا أساسيًا في تحويل النص الخام إلى تنسيق
+  منظم وقابل للبحث. يتكون كل محلل عادةً من عنصرين أساسيين: مُحلل الرموز والمرشح.
   يقومان معًا بتحويل النص المدخل إلى رموز، وتنقيح هذه الرموز، وإعدادها للفهرسة
   والاسترجاع بكفاءة.
 ---
@@ -461,7 +461,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
 <pre><code translate="no" class="language-bash"><span class="hljs-comment"># curl</span>
 <button class="copy-code-btn"></button></code></pre></li>
 </ol>
-<h3 id="Step-3-Add-fields-to-the-schema" class="common-anchor-header">الخطوة 3: إضافة حقول إلى المخطط</h3><p>الآن بعد أن تحققت من تكوينات المحلّل، أضفها إلى حقول المخطط:</p>
+<h3 id="Step-3-Add-fields-to-the-schema" class="common-anchor-header">الخطوة 3: إضافة حقول إلى المخطط</h3><p>الآن بعد أن تحقّقت من تكوينات المحلّل، أضفها إلى حقول المخطط:</p>
 <div class="multipleCode">
    <a href="#python">بايثون</a> <a href="#java">جافا جافا</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Add VARCHAR field &#x27;title_en&#x27; using the built-in analyzer configuration</span>
@@ -567,7 +567,7 @@ schema.addField(AddFieldReq.builder()
 <pre><code translate="no" class="language-bash"><span class="hljs-comment"># restful</span>
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Step-4-Prepare-index-parameters-and-create-the-collection" class="common-anchor-header">الخطوة 4: إعداد معلمات الفهرس وإنشاء المجموعة</h3><div class="multipleCode">
-   <a href="#python">بايثون</a> <a href="#java">جافا</a> <a href="#javascript">جافا NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
+   <a href="#python">بايثون</a> <a href="#java">جافا جافا</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set up index parameters for the vector field</span>
 index_params = client.prepare_index_params()
 index_params.add_index(field_name=<span class="hljs-string">&quot;embedding&quot;</span>, metric_type=<span class="hljs-string">&quot;COSINE&quot;</span>, index_type=<span class="hljs-string">&quot;AUTOINDEX&quot;</span>)

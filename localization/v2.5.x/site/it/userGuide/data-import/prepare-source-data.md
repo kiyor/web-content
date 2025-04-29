@@ -42,7 +42,7 @@ summary: >-
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/map-data-to-schema.png" alt="Map data to schema" class="doc-image" id="map-data-to-schema" />
    </span> <span class="img-wrapper"> <span>Mappare i dati allo schema</span> </span></p>
-<p>È necessario esaminare attentamente i dati e progettare lo schema della raccolta di destinazione di conseguenza.</p>
+<p>È necessario esaminare attentamente i dati e progettare di conseguenza lo schema della raccolta di destinazione.</p>
 <p>Prendendo come esempio i dati JSON nel diagramma precedente, ci sono due entità nell'elenco delle righe e ogni riga ha sei campi. Lo schema della collezione ne include selettivamente quattro: <strong>id</strong>, <strong>vector</strong>, <strong>scalar_1</strong> e <strong>scalar_2</strong>.</p>
 <p>Ci sono altre due cose da considerare quando si progetta lo schema:</p>
 <ul>
@@ -265,7 +265,7 @@ writer = LocalBulkWriter(
 <p>Per informazioni dettagliate sulle impostazioni dei parametri, consultare <a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/LocalBulkWriter/LocalBulkWriter.md">LocalBulkWriter</a> nel riferimento dell'SDK.</p>
 </div>
 <div class="language-java">
-<p>Quando si crea un <strong>LocalBulkWriter</strong>, occorre:</p>
+<p>Quando si crea un <strong>LocalBulkWriter</strong>, si deve:</p>
 <ul>
 <li>Fare riferimento allo schema creato in <code translate="no">CollectionSchema()</code>.</li>
 <li>Impostare la directory di output in <code translate="no">withLocalPath()</code>.</li>
@@ -373,7 +373,7 @@ writer = RemoteBulkWriter(
         ></path>
       </svg>
     </button></h2><div class="language-python">
-<p>Un <strong>BulkWriter</strong> ha due metodi: <code translate="no">append_row()</code> aggiunge una riga da un set di dati di origine e <code translate="no">commit()</code> esegue il commit delle righe aggiunte in un file locale o in un bucket remoto.</p>
+<p>Un <strong>BulkWriter</strong> ha due metodi: <code translate="no">append_row()</code> aggiunge una riga da un set di dati di origine e <code translate="no">commit()</code> commette le righe aggiunte in un file locale o in un bucket remoto.</p>
 </div>
 <div class="language-java">
 <p>Un <strong>BulkWriter</strong> ha due metodi: <code translate="no">appendRow()</code> aggiunge una riga da un set di dati di origine e <code translate="no">commit()</code> esegue il commit delle righe aggiunte in un file locale o in un bucket remoto.</p>

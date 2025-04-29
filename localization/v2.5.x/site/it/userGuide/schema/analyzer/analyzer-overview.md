@@ -567,7 +567,7 @@ schema.addField(AddFieldReq.builder()
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-bash"><span class="hljs-comment"># restful</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Step-4-Prepare-index-parameters-and-create-the-collection" class="common-anchor-header">Passo 4: Preparare i parametri dell'indice e creare la collezione</h3><div class="multipleCode">
+<h3 id="Step-4-Prepare-index-parameters-and-create-the-collection" class="common-anchor-header">Passo 4: preparare i parametri dell'indice e creare la collezione</h3><div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set up index parameters for the vector field</span>
 index_params = client.prepare_index_params()

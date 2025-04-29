@@ -3,7 +3,7 @@ id: load-and-release.md
 title: Carregar e libertar
 summary: >-
   O carregamento de uma coleção é o pré-requisito para a realização de pesquisas
-  e consultas por semelhança em colecções. Esta página centra-se nos
+  e consultas por semelhança nas colecções. Esta página centra-se nos
   procedimentos de carregamento e libertação de uma coleção.
 ---
 <h1 id="Load--Release" class="common-anchor-header">Carregar e libertar<button data-href="#Load--Release" class="anchor-icon" translate="no">
@@ -38,7 +38,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>Quando se carrega uma coleção, o Milvus carrega os arquivos de índice e os dados brutos de todos os campos na memória para uma resposta rápida às pesquisas e consultas. As entidades inseridas após o carregamento de uma coleção são automaticamente indexadas e carregadas.</p>
-<p>Os seguintes trechos de código demonstram como carregar uma coleção.</p>
+<p>Os trechos de código a seguir demonstram como carregar uma coleção.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient
@@ -293,7 +293,7 @@ fmt.Println(state)
 <pre><code translate="no" class="language-bash"><span class="hljs-comment"># REST</span>
 Not support yet
 <button class="copy-code-btn"></button></code></pre>
-<p>Se optar por carregar campos específicos, vale a pena notar que apenas os campos incluídos em <code translate="no">load_fields</code> podem ser usados como filtros e campos de saída em pesquisas e consultas. Deve sempre incluir os nomes do campo primário e pelo menos um campo vetorial em <code translate="no">load_fields</code>.</p>
+<p>Se optar por carregar campos específicos, é importante notar que apenas os campos incluídos em <code translate="no">load_fields</code> podem ser utilizados como filtros e campos de saída em pesquisas e consultas. Deve incluir sempre os nomes do campo primário e pelo menos um campo vetorial em <code translate="no">load_fields</code>.</p>
 <p>Também é possível usar <code translate="no">skip_load_dynamic_field</code> para determinar se o campo dinâmico deve ser carregado. O campo dinâmico é um campo JSON reservado denominado <strong>$meta</strong> e guarda todos os campos não definidos pelo esquema e os respectivos valores em pares de valores chave. Ao carregar o campo dinâmico, todas as chaves nos campos são carregadas e estão disponíveis para filtragem e saída. Se todas as chaves do campo dinâmico não estiverem envolvidas na filtragem e saída de metadados, defina <code translate="no">skip_load_dynamic_field</code> como <code translate="no">True</code>.</p>
 <p>Para carregar mais campos após o carregamento da coleção, é necessário liberar a coleção primeiro para evitar possíveis erros causados por alterações de índice.</p>
 <h2 id="Release-Collection" class="common-anchor-header">Liberar coleção<button data-href="#Release-Collection" class="anchor-icon" translate="no">

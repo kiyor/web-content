@@ -350,7 +350,7 @@ writer = RemoteBulkWriter(
 <span class="hljs-type">RemoteBulkWriter</span> <span class="hljs-variable">remoteBulkWriter</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">RemoteBulkWriter</span>(remoteBulkWriterParam);
 <button class="copy-code-btn"></button></code></pre>
 <div class="language-python">
-<p>除了<code translate="no">connect_param</code> 之外，建立<strong>RemoteBulkWriter</strong>的參數幾乎與<strong>LocalBulkWriter</strong> 的參數相同。有關參數設定的詳細資訊，請參閱 SDK 參考資料中的<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/RemoteBulkWriter.md">RemoteBulkWriter</a>和<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/S3ConnectParam.md">ConnectParam</a>。</p>
+<p>除了<code translate="no">connect_param</code> 之外，建立<strong>RemoteBulkWriter</strong>的參數幾乎與<strong>LocalBulkWriter</strong> 的參數相同。有關參數設定的詳細資訊，請參閱 SDK 參考資料中的<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/RemoteBulkWriter.md">RemoteBulkWriter</a>與<a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/RemoteBulkWriter/S3ConnectParam.md">ConnectParam</a>。</p>
 </div>
 <div class="language-java">
 <p>創建<strong>RemoteBulkWriter</strong>的參數與<strong>LocalBulkWriter</strong> 的參數幾乎相同，除了<code translate="no">StorageConnectParam</code> 。有關參數設定的詳細資訊，請參閱 SDK 參考資料中的 RemoteBulkWriter 和 StorageConnectParam。</p>

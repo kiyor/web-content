@@ -108,7 +108,7 @@ analyzerParams.put(<span class="hljs-string">&quot;stop_words&quot;</span>, Arra
        &quot;stop_words&quot;: [&quot;a&quot;, &quot;an&quot;, &quot;for&quot;]
     }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>La configuration de l'analyseur intégré <code translate="no">standard</code> ci-dessus est équivalente à la configuration d'un <a href="/docs/fr/analyzer-overview.md#Custom-analyzer">analyseur personnalisé</a> avec les paramètres suivants, où les options <code translate="no">tokenizer</code> et <code translate="no">filter</code> sont explicitement définies pour obtenir une fonctionnalité similaire :</p>
+<p>La configuration de l'analyseur intégré <code translate="no">standard</code> ci-dessus est équivalente à la configuration d'un <a href="/docs/fr/analyzer-overview.md#Custom-analyzer">analyseur personnalisé</a> avec les paramètres suivants, où les options <code translate="no">tokenizer</code> et <code translate="no">filter</code> sont explicitement définies pour obtenir des fonctionnalités similaires :</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">analyzer_params = {
@@ -166,7 +166,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
 <li><p><code translate="no">chinese</code>: Spécialisé pour le traitement de textes chinois, avec une tokénisation adaptée aux structures de la langue chinoise.</p></li>
 </ul>
 <p>Pour obtenir une liste des analyseurs intégrés et de leurs paramètres personnalisables, reportez-vous à la section <a href="/docs/fr/built-in-analyzers">Référence des analyseurs intégrés</a>.</p>
-<h3 id="Custom-analyzer" class="common-anchor-header">Analyseur personnalisé</h3><p>Pour un traitement de texte plus avancé, les analyseurs personnalisés de Milvus vous permettent de construire un pipeline de traitement de texte personnalisé en spécifiant à la fois un <strong>tokenizer</strong> et des <strong>filtres</strong>. Cette configuration est idéale pour les cas d'utilisation spécialisés nécessitant un contrôle précis.</p>
+<h3 id="Custom-analyzer" class="common-anchor-header">Analyseur personnalisé</h3><p>Pour un traitement de texte plus avancé, les analyseurs personnalisés de Milvus vous permettent de construire un pipeline de traitement de texte sur mesure en spécifiant à la fois un <strong>tokenizer</strong> et des <strong>filtres</strong>. Cette configuration est idéale pour les cas d'utilisation spécialisés nécessitant un contrôle précis.</p>
 <h4 id="Tokenizer" class="common-anchor-header">Tokenizer</h4><p>Le <strong>tokenizer</strong> est un composant <strong>obligatoire</strong> pour un analyseur personnalisé, qui initie le pipeline de l'analyseur en décomposant le texte d'entrée en unités discrètes ou en <strong>tokens</strong>. La tokenisation suit des règles spécifiques, telles que la division par des espaces blancs ou la ponctuation, en fonction du type de tokenizer. Ce processus permet un traitement plus précis et indépendant de chaque mot ou phrase.</p>
 <p>Par exemple, un tokenizer convertit le texte <code translate="no">&quot;Vector Database Built for Scale&quot;</code> en jetons distincts :</p>
 <pre><code translate="no" class="language-plaintext">[&quot;Vector&quot;, &quot;Database&quot;, &quot;Built&quot;, &quot;for&quot;, &quot;Scale&quot;]
@@ -309,7 +309,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
 <li><p>L'autre utilise un analyseur personnalisé.</p></li>
 </ul></li>
 </ul>
-<h3 id="Step-1-Initialize-MilvusClient-and-create-schema" class="common-anchor-header">Étape 1 : initialisation de MilvusClient et création du schéma</h3><p>Commencez par configurer le client Milvus et par créer un nouveau schéma.</p>
+<h3 id="Step-1-Initialize-MilvusClient-and-create-schema" class="common-anchor-header">Etape 1 : Initialisation de MilvusClient et création du schéma</h3><p>Commencez par configurer le client Milvus et par créer un nouveau schéma.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient, DataType

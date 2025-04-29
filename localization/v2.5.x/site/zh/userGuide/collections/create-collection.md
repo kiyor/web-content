@@ -501,7 +501,7 @@ curl --request POST \
     \&quot;collectionName\&quot;: \&quot;customized_setup_2\&quot;
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Milvus 还为您提供了一种即时创建 Collection 的方法。详情请参阅<a href="/docs/zh/create-collection-instantly.md">即时创建 Collection</a>。</p>
+<p>Milvus 还为您提供了即时创建 Collection 的方法。详情请参阅<a href="/docs/zh/create-collection-instantly.md">即时创建 Collection</a>。</p>
 <h2 id="Set-Collection-Properties" class="common-anchor-header">设置 Collections 属性<button data-href="#Set-Collection-Properties" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

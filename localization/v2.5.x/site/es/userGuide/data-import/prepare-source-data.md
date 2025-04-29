@@ -46,7 +46,7 @@ summary: >-
 <p>Tomando como ejemplo los datos JSON del diagrama anterior, hay dos entidades en la lista de filas y cada fila tiene seis campos. El esquema de la colección incluye selectivamente cuatro: <strong>id</strong>, <strong>vector</strong>, <strong>scalar_1</strong> y <strong>scalar_2</strong>.</p>
 <p>Hay dos cosas más a considerar cuando se diseña el esquema:</p>
 <ul>
-<li><p><strong>Si activar AutoID</strong></p>
+<li><p><strong>Si se activa AutoID</strong></p>
 <p>El campo <strong>id</strong> sirve como campo primario de la colección. Para que el campo primario se incremente automáticamente, puede activar <strong>AutoID</strong> en el esquema. En este caso, debe excluir el campo <strong>id</strong> de cada fila de los datos de origen.</p></li>
 <li><p><strong>Habilitar o no campos dinámicos</strong></p>
 <p>La colección de destino también puede almacenar campos no incluidos en su esquema predefinido si el esquema habilita los campos dinámicos. El campo <strong>$meta</strong> es un campo JSON reservado para contener campos dinámicos y sus valores en pares clave-valor. En el diagrama anterior, los campos <strong>dynamic_field_1</strong> y <strong>dynamic_field_2</strong> y los valores se guardarán como pares clave-valor en el campo <strong>$meta</strong>.</p></li>

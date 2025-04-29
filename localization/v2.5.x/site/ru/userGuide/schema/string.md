@@ -49,7 +49,7 @@ summary: >-
 <li><p><code translate="no">varchar_field2</code>: хранит до 200 символов, допускает нулевые значения, но не имеет значения по умолчанию.</p></li>
 </ul>
 <div class="alert note">
-<p>Если вы установите <code translate="no">enable_dynamic_fields=True</code> при определении схемы, Milvus позволит вам вставлять скалярные поля, которые не были определены заранее. Однако это может повысить сложность запросов и управления, что потенциально может повлиять на производительность. Дополнительную информацию см. в разделе <a href="/docs/ru/enable-dynamic-field.md">Динамическое поле</a>.</p>
+<p>Если вы установите <code translate="no">enable_dynamic_fields=True</code> при определении схемы, Milvus позволит вам вставлять скалярные поля, которые не были определены заранее. Однако это может увеличить сложность запросов и управления, что потенциально может повлиять на производительность. Дополнительную информацию см. в разделе <a href="/docs/ru/enable-dynamic-field.md">Динамическое поле</a>.</p>
 </div>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>

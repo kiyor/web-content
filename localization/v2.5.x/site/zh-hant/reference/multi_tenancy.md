@@ -20,7 +20,7 @@ title: 多租户策略
         ></path>
       </svg>
     </button></h1><p>在許多用例中，開發人員希望運行一個 Milvus 集群並為多個租戶提供服務，例如幾個產品團隊或數百萬的最終用戶。本指南說明在 Milvus 上實現多租戶的幾種不同策略。</p>
-<p>Milvus 的設計支援資料庫、集合或分割層級的多重租用。多租用的目的是將資料和資源彼此分開。在不同的層級實施多租用可以達到不同程度的隔離，但也涉及不同的開銷。在此，我們將解釋它們之間的權衡。</p>
+<p>Milvus 的設計支援資料庫、集合或分割層級的多重租用。多租用的目的是將資料和資源彼此分開。在不同的層級實施多租用可以達到不同程度的隔離，但也會涉及不同的開銷。在此，我們將解釋它們之間的權衡。</p>
 <h2 id="Database-oriented-multi-tenancy" class="common-anchor-header">面向資料庫的多租戶<button data-href="#Database-oriented-multi-tenancy" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

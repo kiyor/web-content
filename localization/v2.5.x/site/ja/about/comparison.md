@@ -62,7 +62,7 @@ summary: この記事では、Milvusと他のベクトル検索ソリューシ�
 </thead>
 <tbody>
 <tr><td>展開モード</td><td>SaaSのみ</td><td>Milvus Lite、オンプレミスタンドアロン＆クラスタ、クラウドSaaS＆BYOC</td><td>Milvusはより柔軟なデプロイメントモードを提供します。</td></tr>
-<tr><td>サポートSDK</td><td>Python、JavaScript/TypeScript</td><td>Python、Java、NodeJS、Go、Restful API、C#、Rust</td><td>Milvusはより幅広いプログラミング言語をサポートしています。</td></tr>
+<tr><td>対応SDK</td><td>Python、JavaScript/TypeScript</td><td>Python、Java、NodeJS、Go、Restful API、C#、Rust</td><td>Milvusはより幅広いプログラミング言語をサポートしています。</td></tr>
 <tr><td>オープンソースステータス</td><td>クローズド</td><td>オープンソース</td><td>Milvusはオープンソースのベクターデータベースです。</td></tr>
 <tr><td>スケーラビリティ</td><td>スケールアップ/ダウンのみ</td><td>スケールアウト/インおよびスケールアップ/ダウン</td><td>Milvusは分散アーキテクチャを採用し、スケーラビリティを強化しています。</td></tr>
 <tr><td>可用性</td><td>利用可能ゾーン内のポッドベースアーキテクチャ</td><td>利用可能ゾーンのフェイルオーバーとクロスリージョンHA</td><td>Milvus CDC (Change Data Capture)によるプライマリ/スタンバイモードによる高い可用性</td></tr>
@@ -131,7 +131,7 @@ summary: この記事では、Milvusと他のベクトル検索ソリューシ�
 <h3 id="Key-insights" class="common-anchor-header">主なインサイト</h3><ul>
 <li><p><strong>デプロイメントモード</strong>：Milvusは、ローカルデプロイメント、Docker、オンプレミスのKubernetes、クラウドSaaS、企業向けのBYOC（Bring Your Own Cloud）など、さまざまなデプロイメントオプションを提供しているが、PineconeはSaaSデプロイメントに限定されている。</p></li>
 <li><p><strong>組み込み機能</strong>：Milvusは追加のエンベッディングライブラリをサポートしており、エンベッディングモデルを直接使用してソースデータをベクトルに変換することができます。</p></li>
-<li><p><strong>データ型</strong>：Milvusは、配列やJSONなど、Pineconeよりも幅広いデータ型をサポートしています。Pineconeは文字列、数値、ブーリアン、文字列のリストを値とするフラットなメタデータ構造のみをサポートしているのに対し、MilvusはJSONフィールド内で、入れ子構造を含むあらゆるJSONオブジェクトを扱うことができます。Pineconeはメタデータのサイズをベクターあたり40KBに制限しています。</p></li>
+<li><p><strong>データ型</strong>：Milvusは、配列やJSONなど、Pineconeよりも幅広いデータ型をサポートしています。Pineconeが文字列、数値、ブーリアン、文字列のリストを値とするフラットなメタデータ構造のみをサポートしているのに対し、MilvusはJSONフィールド内で、入れ子構造を含むあらゆるJSONオブジェクトを扱うことができます。Pineconeはメタデータのサイズをベクターあたり40KBに制限しています。</p></li>
 <li><p><strong>メトリックとインデックスタイプ</strong>：Milvusはさまざまなユースケースに対応するため、メトリックとインデックスのタイプを幅広くサポートしていますが、Pineconeはより限定的な選択となっています。Milvusではベクトルに対するインデックスが必須ですが、設定プロセスを合理化するためにAUTO_INDEXオプションが用意されています。</p></li>
 <li><p><strong>スキーマ設計</strong>Milvusはスキーマ設計のために、Pineconeのようなスキーマレスエクスペリエンスのためのダイナミックスキーマによるクイックセットアップや、リレーショナルデータベース管理システム（RDBMS）のような事前定義されたスキーマフィールドとインデックスによるカスタマイズセットアップなど、柔軟な<code translate="no">create_collection</code> モードを提供します。</p></li>
 <li><p><strong>複数のベクトルフィールド</strong>：Milvusでは、1つのコレクション内に複数のベクトルフィールドを格納することができます。ベクトルフィールドは疎でも密でもよく、次元もさまざまです。Pineconeには同等の機能はありません。</p></li>
@@ -155,5 +155,5 @@ summary: この記事では、Milvusと他のベクトル検索ソリューシ�
     </button></h2><ul>
 <li><p><strong>トライアル</strong>：Milvus<a href="https://milvus.io/docs/quickstart.md">クイックスタート</a>または<a href="https://docs.zilliz.com/docs/register-with-zilliz-cloud">Zilliz Cloudにサインアップして</a>、Milvusを直接体験してください。</p></li>
 <li><p><strong>もっと知る</strong>：Milvusの<a href="/docs/ja/glossary.md">用語集と</a> <a href="https://milvus.io/docs/manage-collections.md">ユーザーガイドを</a>ご覧ください。</p></li>
-<li><p><strong>他の選択肢を探す</strong>：ベクターデータベースの選択肢をより幅広く比較するには、<a href="https://zilliz.com/comparison">この</a>ページのその他のリソースをご覧ください。</p></li>
+<li><p><strong>他の選択肢を探す</strong>：ベクターデータベースの選択肢をより幅広く比較するために、<a href="https://zilliz.com/comparison">このページの</a>その他のリソースをご覧ください。</p></li>
 </ul>

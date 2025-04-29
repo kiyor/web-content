@@ -82,7 +82,7 @@ summary: >-
 <p>수집 생성 중에 분석기 구성을 생략하는 경우, Milvus는 기본적으로 모든 텍스트 처리에 <code translate="no">standard</code> 분석기를 사용합니다. 자세한 내용은 <a href="/docs/ko/standard-analyzer.md">표준을</a> 참조하세요.</p>
 </div>
 <h3 id="Built-in-analyzer" class="common-anchor-header">기본 제공 분석기</h3><p>Milvus의 기본 제공 분석기는 특정 토큰화기 및 필터로 미리 구성되어 있으므로 이러한 구성 요소를 직접 정의할 필요 없이 즉시 사용할 수 있습니다. 각 기본 제공 분석기는 사전 설정된 토큰화 도구와 필터가 포함된 템플릿 역할을 하며, 사용자 지정을 위한 선택적 매개변수를 제공합니다.</p>
-<p>예를 들어 <code translate="no">standard</code> 기본 제공 분석기를 사용하려면 <code translate="no">standard</code> 이름을 <code translate="no">type</code> 로 지정하고 선택적으로 이 분석기 유형에 특정한 추가 구성(예: <code translate="no">stop_words</code>)을 포함하기만 하면 됩니다:</p>
+<p>예를 들어 <code translate="no">standard</code> 기본 제공 분석기를 사용하려면 <code translate="no">standard</code> 이름을 <code translate="no">type</code> 로 지정하고 선택적으로 이 분석기 유형에 특정한 추가 구성(예: <code translate="no">stop_words</code>)을 포함하면 됩니다:</p>
 <div class="multipleCode">
    <a href="#python">파이썬</a> <a href="#java">자바</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">analyzer_params = {

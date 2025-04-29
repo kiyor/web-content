@@ -221,10 +221,10 @@ schema := entity.NewSchema().WithDynamicFieldEnabled(<span class="hljs-literal">
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>特定のフィールドにインデックスを作成すると、そのフィールドに対する検索が高速化されます。インデックスは、コレクション内のエンティティの順序を記録します。以下のコードスニペットに示すように、<code translate="no">metric_type</code> と<code translate="no">index_type</code> を使って、Milvus がフィールドにインデックスを付ける適切な方法を選択し、ベクトル埋め込み間の類似性を測定することができます。</p>
+    </button></h2><p>特定のフィールドにインデックスを作成すると、このフィールドに対する検索が高速化されます。インデックスは、コレクション内のエンティティの順序を記録します。以下のコードスニペットに示すように、<code translate="no">metric_type</code> と<code translate="no">index_type</code> を使って、Milvus がフィールドにインデックスを付ける適切な方法を選択し、ベクトル埋め込み間の類似性を測定することができます。</p>
 <p>Milvusでは、すべてのベクトルフィールドのインデックスタイプとして<code translate="no">AUTOINDEX</code> 、必要に応じてメトリックタイプとして<code translate="no">COSINE</code> 、<code translate="no">L2</code> 、<code translate="no">IP</code> のいずれかを使用することができます。</p>
 <p>上記のコード・スニペットで示したように、ベクトル・フィールドにはインデックス・タイプとメトリック・タイプの両方を設定し、スカラー・フィールドにはインデックス・タイプのみを設定する必要があります。ベクトル・フィールドにはインデックスが必須であり、フィルタリング条件で頻繁に使用されるスカラー・フィールドにはインデックスを作成することをお勧めします。</p>
-<p>詳細については、「<a href="/docs/ja/index-vector-fields.md">ベクトル・フィールドのインデックス</a>」と「<a href="/docs/ja/index-scalar-fields.md">スカラー・フィールドのインデックス</a>」を参照してください。</p>
+<p>詳細は、「<a href="/docs/ja/index-vector-fields.md">ベクトル・フィールドのインデックス</a>」と「<a href="/docs/ja/index-scalar-fields.md">スカラー・フィールドのインデックス</a>」を参照してください。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># 3.3. Prepare index parameters</span>
@@ -688,7 +688,7 @@ curl --request POST \
     \&quot;params\&quot;: <span class="hljs-variable">$params</span>
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Set-Consistency-Level" class="common-anchor-header">一貫性レベルの設定</h3><p>コレクションを作成する際に、コレクション内の検索とクエリの一貫性レベルを設定することができます。また、特定の検索やクエリ中にコレクションの一貫性レベルを変更することもできます。</p>
+<h3 id="Set-Consistency-Level" class="common-anchor-header">一貫性レベルの設定</h3><p>コレクションを作成する際に、コレクション内の検索とクエリの一貫性レベルを設定できます。また、特定の検索やクエリ中にコレクションの一貫性レベルを変更することもできます。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># With consistency level</span>

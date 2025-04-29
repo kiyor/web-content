@@ -249,7 +249,7 @@ schema.WithField(entity.NewField().
         ></path>
       </svg>
     </button></h2><p>L'indexation permet d'améliorer les performances de recherche et de requête. Dans Milvus, l'indexation est obligatoire pour les champs vectoriels mais facultative pour les champs scalaires.</p>
-<p>L'exemple suivant crée des index sur le champ vectoriel <code translate="no">embedding</code> et le champ scalaire <code translate="no">varchar_field1</code>, tous deux utilisant le type d'index <code translate="no">AUTOINDEX</code>. Avec ce type, Milvus sélectionne automatiquement l'index le plus approprié en fonction du type de données. Vous pouvez également personnaliser le type d'index et les paramètres pour chaque champ. Pour plus de détails, reportez-vous à <a href="/docs/fr/index-explained.md">Index Explained</a>.</p>
+<p>L'exemple suivant crée des index sur le champ vectoriel <code translate="no">embedding</code> et le champ scalaire <code translate="no">varchar_field1</code>, tous deux utilisant le type d'index <code translate="no">AUTOINDEX</code>. Avec ce type, Milvus sélectionne automatiquement l'index le plus approprié en fonction du type de données. Vous pouvez également personnaliser le type d'index et les paramètres pour chaque champ. Pour plus de détails, voir <a href="/docs/fr/index-explained.md">Index expliqué</a>.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set index params</span>

@@ -392,7 +392,7 @@ analyzerParamsBuiltin.put(<span class="hljs-string">&quot;type&quot;</span>, <sp
 <button class="copy-code-btn"></button></code></pre></li>
 <li><p><strong>カスタム・アナライザーの設定と検証：</strong></p>
 <ul>
-<li><strong>設定：</strong>標準のトークナイザーと組み込みの小文字フィルター、トークンの長さとストップワードのカスタムフィルターを使用するカスタムアナライザーを定義します。</li>
+<li><strong>設定：</strong>標準のトークナイザーと組み込みの小文字フィルター、トークンの長さとストップワード用のカスタムフィルターを使用するカスタムアナライザーを定義します。</li>
 </ul>
 <p><div class="multipleCode">
 <a href="#python">Python</a><a href="#java">Java</a><a href="#javascript">NodeJS</a><a href="#go">Go</a><a href="#bash">cURL</a></div></p>

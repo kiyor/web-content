@@ -2,8 +2,8 @@
 id: metric.md
 title: Tipi di metriche
 summary: >-
-  Le metriche di somiglianza vengono utilizzate per misurare le somiglianze tra
-  i vettori. La scelta di una metrica di distanza appropriata aiuta a migliorare
+  Le metriche di somiglianza sono utilizzate per misurare le somiglianze tra i
+  vettori. La scelta di una metrica di distanza appropriata aiuta a migliorare
   significativamente le prestazioni di classificazione e clustering.
 ---
 <h1 id="Metric-Types" class="common-anchor-header">Tipi di metriche<button data-href="#Metric-Types" class="anchor-icon" translate="no">

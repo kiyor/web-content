@@ -249,7 +249,7 @@ schema.WithField(entity.NewField().
         ></path>
       </svg>
     </button></h2><p>Die Indizierung trägt zur Verbesserung der Such- und Abfrageleistung bei. In Milvus ist die Indexierung für Vektorfelder obligatorisch, für skalare Felder jedoch optional.</p>
-<p>Das folgende Beispiel erstellt Indizes für das Vektorfeld <code translate="no">embedding</code> und das Skalarfeld <code translate="no">varchar_field1</code>, die beide den Indextyp <code translate="no">AUTOINDEX</code> verwenden. Bei diesem Typ wählt Milvus automatisch den am besten geeigneten Index auf der Grundlage des Datentyps aus. Sie können auch den Indextyp und die Parameter für jedes Feld anpassen. Einzelheiten finden Sie unter <a href="/docs/de/index-explained.md">Index erklärt</a>.</p>
+<p>Das folgende Beispiel erstellt Indizes für das Vektorfeld <code translate="no">embedding</code> und das Skalarfeld <code translate="no">varchar_field1</code>, die beide den Indextyp <code translate="no">AUTOINDEX</code> verwenden. Bei diesem Typ wählt Milvus automatisch den am besten geeigneten Index auf der Grundlage des Datentyps aus. Sie können auch den Indextyp und die Parameter für jedes Feld anpassen. Details finden Sie unter <a href="/docs/de/index-explained.md">Index erklärt</a>.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set index params</span>

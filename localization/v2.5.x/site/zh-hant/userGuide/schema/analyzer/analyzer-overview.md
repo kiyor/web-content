@@ -392,7 +392,7 @@ analyzerParamsBuiltin.put(<span class="hljs-string">&quot;type&quot;</span>, <sp
 <button class="copy-code-btn"></button></code></pre></li>
 <li><p><strong>設定並驗證自訂分析器：</strong></p>
 <ul>
-<li><strong>配置：</strong>定義自訂分析器，該分析器使用標準的 tokenizer 以及內建的小寫篩選器和自訂的 token 長度與停止字篩選器。</li>
+<li><strong>配置：</strong>定義一個自訂分析器，該分析器使用標準的 tokenizer 以及內建的小寫篩選器和自訂的 token 長度及停止字篩選器。</li>
 </ul>
 <p><div class="multipleCode">
 <a href="#python">Python</a><a href="#java">Java</a><a href="#javascript">NodeJS</a><a href="#go">Go</a><a href="#bash">cURL</a></div></p>

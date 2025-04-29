@@ -177,7 +177,6 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
 <li><p><code translate="no">english</code>: Optimized for English-language text, with support for English stop words.</p></li>
 <li><p><code translate="no">chinese</code>: Specialized for processing Chinese text, including tokenization adapted for Chinese language structures.</p></li>
 </ul>
-<p>For a list of built-in analyzers and their customizable settings, refer to <a href="/docs/built-in-analyzers">Built-in Analyzer Reference</a>.</p>
 <h3 id="Custom-analyzer" class="common-anchor-header">Custom analyzer</h3><p>For more advanced text processing, custom analyzers in Milvus allow you to build a tailored text-handling pipeline by specifying both a <strong>tokenizer</strong> and <strong>filters</strong>. This setup is ideal for specialized use cases where precise control is required.</p>
 <h4 id="Tokenizer" class="common-anchor-header">Tokenizer</h4><p>The <strong>tokenizer</strong> is a <strong>mandatory</strong> component for a custom analyzer, which initiates the analyzer pipeline by breaking down input text into discrete units or <strong>tokens</strong>. Tokenization follows specific rules, such as splitting by whitespace or punctuation, depending on the tokenizer type. This process allows for more precise and independent handling of each word or phrase.</p>
 <p>For example, a tokenizer would convert text <code translate="no">&quot;Vector Database Built for Scale&quot;</code> into separate tokens:</p>
@@ -208,7 +207,6 @@ analyzerParams.put(<span class="hljs-string">&quot;tokenizer&quot;</span>, <span
        &quot;type&quot;: &quot;whitespace&quot;
     }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>For a list of tokenizers available to choose from, refer to <a href="/docs/tokenizers">Tokenizer Reference</a>.</p>
 <h4 id="Filter" class="common-anchor-header">Filter</h4><p><strong>Filters</strong> are <strong>optional</strong> components working on the tokens produced by the tokenizer, transforming or refining them as needed. For example, after applying a <code translate="no">lowercase</code> filter to the tokenized terms <code translate="no">[&quot;Vector&quot;, &quot;Database&quot;, &quot;Built&quot;, &quot;for&quot;, &quot;Scale&quot;]</code>, the result might be:</p>
 <pre><code translate="no" class="language-sql">[&quot;vector&quot;, &quot;database&quot;, &quot;built&quot;, &quot;for&quot;, &quot;scale&quot;]
 <button class="copy-code-btn"></button></code></pre>
@@ -309,8 +307,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
        }
     ]
 }&#x27;</span>
-<button class="copy-code-btn"></button></code></pre>
-<p>For a list of available filter types and their specific parameters, refer to <a href="/docs/filters">Filter Reference</a>.</p></li>
+<button class="copy-code-btn"></button></code></pre></li>
 </ul>
 <h2 id="Example-use" class="common-anchor-header">Example use<button data-href="#Example-use" class="anchor-icon" translate="no">
       <svg translate="no"

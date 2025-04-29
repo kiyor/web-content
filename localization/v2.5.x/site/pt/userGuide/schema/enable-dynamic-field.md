@@ -38,7 +38,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>No Milvus, é possível criar um esquema de coleção definindo os nomes e tipos de dados para cada campo da coleção. Quando se adiciona um campo ao esquema, é necessário certificar-se de que esse campo está incluído na entidade que se pretende inserir. Se pretender que alguns campos sejam opcionais, a ativação do campo dinâmico é uma opção.</p>
+    </button></h2><p>No Milvus, é possível criar um esquema de coleção definindo os nomes e tipos de dados para cada campo da coleção. Quando se adiciona um campo ao esquema, é necessário certificar-se de que esse campo está incluído na entidade que se pretende inserir. Se pretender que alguns campos sejam opcionais, uma opção é ativar o campo dinâmico.</p>
 <p>O campo dinâmico é um campo reservado denominado <strong>$meta</strong>, que é do tipo JavaScript Object Notation (JSON). Quaisquer campos nas entidades que não estejam definidos no esquema serão armazenados neste campo JSON reservado como pares de valores chave.</p>
 <p>Para uma coleção com o campo dinâmico ativado, pode utilizar chaves no campo dinâmico para filtragem escalar, tal como faria com campos explicitamente definidos no esquema.</p>
 <h2 id="Enable-dynamic-field" class="common-anchor-header">Ativar o campo dinâmico<button data-href="#Enable-dynamic-field" class="anchor-icon" translate="no">

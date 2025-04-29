@@ -52,7 +52,7 @@ summary: >-
 </ul>
 <p>Untuk detail tentang terminologi di atas, lihat <a href="/docs/id/manage-collections.md">Penjelasan Koleksi.</a></p>
 <p>Perlu dicatat bahwa membuat koleksi secara instan dengan pengaturan default tidak cocok untuk semua skenario. Anda disarankan untuk membiasakan diri dengan <a href="/docs/id/create-collection.md">prosedur pembuatan koleksi yang umum</a> sehingga Anda dapat memperoleh pemahaman yang lebih baik tentang kemampuan Milvus.</p>
-<h2 id="Quick-Setup" class="common-anchor-header">Penyiapan Cepat<button data-href="#Quick-Setup" class="anchor-icon" translate="no">
+<h2 id="Quick-Setup" class="common-anchor-header">Pengaturan Cepat<button data-href="#Quick-Setup" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"

@@ -1,7 +1,7 @@
 ---
 id: comparison.md
 title: 比较
-summary: 本文将 Milvus 与其他向量搜索解决方案进行比较。
+summary: 本文对 Milvus 与其他向量搜索解决方案进行了比较。
 ---
 <h1 id="Comparing-Milvus-with-Alternatives" class="common-anchor-header">Milvus 与替代产品的比较<button data-href="#Comparing-Milvus-with-Alternatives" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -66,8 +66,8 @@ summary: 本文将 Milvus 与其他向量搜索解决方案进行比较。
 <tr><td>开源状态</td><td>已关闭</td><td>开源</td><td>Milvus 是一个流行的开源向量数据库。</td></tr>
 <tr><td>可扩展性</td><td>仅向上/向下扩展</td><td>向外/向内扩展和向上/向下扩展</td><td>Milvus 采用分布式架构，增强了可扩展性。</td></tr>
 <tr><td>可用性</td><td>可用区域内基于 Pod 的架构</td><td>可用区域故障切换和跨区域 HA</td><td>Milvus CDC（变更数据捕获）可实现主备模式，以提高可用性。</td></tr>
-<tr><td>性能成本（每百万次查询收费）</td><td>中型数据集 0.178 美元起，大型数据集 1.222 美元起</td><td>Zilliz Cloud 中型数据集的起价为 0.148 美元，大型数据集的起价为 0.635 美元；提供免费版本</td><td>请参阅<a href="https://zilliz.com/vector-database-benchmark-tool?database=ZillizCloud,Milvus,ElasticCloud,PgVector,Pinecone,QdrantCloud,WeaviateCloud&amp;dataset=medium&amp;filter=none,low,high&amp;tab=2">成本排名报告</a>。</td></tr>
-<tr><td>GPU 加速</td><td>不支持</td><td>支持英伟达™（NVIDIA®）GPU</td><td>GPU 加速可大幅提升性能，通常可提升几个数量级。</td></tr>
+<tr><td>性能成本（每百万次查询的费用）</td><td>中型数据集 0.178 美元起，大型数据集 1.222 美元起</td><td>Zilliz Cloud 中型数据集的起价为 0.148 美元，大型数据集的起价为 0.635 美元；提供免费版本</td><td>请参阅<a href="https://zilliz.com/vector-database-benchmark-tool?database=ZillizCloud,Milvus,ElasticCloud,PgVector,Pinecone,QdrantCloud,WeaviateCloud&amp;dataset=medium&amp;filter=none,low,high&amp;tab=2">成本排名报告</a>。</td></tr>
+<tr><td>GPU 加速</td><td>不支持</td><td>支持英伟达™（NVIDIA®）图形处理器</td><td>GPU 加速可大幅提升性能，通常可提升几个数量级。</td></tr>
 </tbody>
 </table>
 <h2 id="Terminology-comparison" class="common-anchor-header">术语比较<button data-href="#Terminology-comparison" class="anchor-icon" translate="no">
@@ -122,7 +122,7 @@ summary: 本文将 Milvus 与其他向量搜索解决方案进行比较。
 <tr><td>部署模式</td><td>纯 SaaS</td><td>Milvus Lite、On-prem Standalone &amp; Cluster、Zilliz Cloud Saas &amp; BYOC</td></tr>
 <tr><td>Embeddings 功能</td><td>不可用</td><td>支持<a href="https://github.com/milvus-io/milvus-model">pymilvus[模型］</a></td></tr>
 <tr><td>数据类型</td><td>字符串、数字、布尔、字符串列表</td><td>字符串、VarChar、数（Int、Float、Double）、Bool、数组、JSON、浮点矢量、二进制矢量、BFloat16、Float16、稀疏矢量</td></tr>
-<tr><td>度量和索引类型</td><td>余弦、点、欧几里得<br/>P-家族、S-家族</td><td>余弦、IP（点）、L2（欧几里得）、汉明、雅卡<br/>FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW、SCANN、GPU 索引</td></tr>
+<tr><td>度量和索引类型</td><td>余弦、点、欧几里得<br/>P-家族、S-家族</td><td>余弦、IP（点）、L2（欧氏）、汉明、雅卡<br/>FLAT、IVF_FLAT、IVF_SQ8、IVF_PQ、HNSW、SCANN、GPU 索引</td></tr>
 <tr><td>Schema 设计</td><td>灵活模式</td><td>灵活模式、严格模式</td></tr>
 <tr><td>多个向量场</td><td>不适用</td><td>多向量和混合搜索</td></tr>
 <tr><td>工具</td><td>数据集、文本工具、Spark 连接器</td><td>Attu、Birdwatcher、备份、CLI、CDC、Spark 和 Kafka 连接器</td></tr>
@@ -135,7 +135,7 @@ summary: 本文将 Milvus 与其他向量搜索解决方案进行比较。
 <li><p><strong>度量和索引类型</strong>：Milvus 支持多种度量和索引类型，以适应各种使用情况，而 Pinecone 的选择较为有限。虽然在 Milvus 中必须为向量建立索引，但也提供了 AUTO_INDEX 选项来简化配置过程。</p></li>
 <li><p><strong>Schema 设计</strong>：Milvus 为模式设计提供了灵活的<code translate="no">create_collection</code> 模式，包括快速设置动态模式以获得类似 Pinecone 的无模式体验，以及自定义设置预定义模式字段和索引以获得类似关系数据库管理系统（RDBMS）的体验。</p></li>
 <li><p><strong>多向量字段</strong>：Milvus 支持在单个 Collections 中存储多个向量字段，这些字段可以是稀疏的，也可以是密集的，维度也可能不同。Pinecone 不提供类似功能。</p></li>
-<li><p><strong>工具</strong>：Milvus 为数据库管理和利用提供了更广泛的工具选择，如 Attu、Birdwatcher、Backup、CLI、CDC 以及 Spark 和 Kafka 连接器。</p></li>
+<li><p><strong>工具</strong>：Milvus 为数据库管理和使用提供了更广泛的工具选择，如 Attu、Birdwatcher、Backup、CLI、CDC 以及 Spark 和 Kafka 连接器。</p></li>
 </ul>
 <h2 id="Whats-next" class="common-anchor-header">下一步计划<button data-href="#Whats-next" class="anchor-icon" translate="no">
       <svg translate="no"

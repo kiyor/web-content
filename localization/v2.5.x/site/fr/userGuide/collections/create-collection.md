@@ -39,7 +39,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>Une collection est une table bidimensionnelle avec des colonnes fixes et des lignes variantes. Chaque colonne représente un champ et chaque ligne une entité. Un schéma est nécessaire pour mettre en œuvre une telle gestion structurelle des données. Chaque entité à insérer doit répondre aux contraintes définies dans le schéma.</p>
-<p>Vous pouvez déterminer tous les aspects d'une collection, y compris son schéma, ses paramètres d'index, son type de métrique, et décider de la charger ou non lors de sa création, afin de vous assurer que la collection répond pleinement à vos besoins.</p>
+<p>Vous pouvez déterminer tous les aspects d'une collection, y compris son schéma, ses paramètres d'index, son type de métrique, et décider de la charger ou non lors de sa création afin de vous assurer que la collection répond pleinement à vos besoins.</p>
 <p>Pour créer une collection, vous devez</p>
 <ul>
 <li><p><a href="/docs/fr/create-collection.md#Create-Schema">Créer un schéma</a></p></li>

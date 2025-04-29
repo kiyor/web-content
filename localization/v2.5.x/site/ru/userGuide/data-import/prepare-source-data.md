@@ -43,7 +43,7 @@ summary: >-
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/map-data-to-schema.png" alt="Map data to schema" class="doc-image" id="map-data-to-schema" />
    </span> <span class="img-wrapper"> <span>Сопоставление данных со схемой</span> </span></p>
 <p>Вам следует внимательно изучить свои данные и в соответствии с ними разработать схему целевой коллекции.</p>
-<p>Если взять в качестве примера данные JSON на приведенной выше диаграмме, то в списке строк есть две сущности, каждая строка имеет шесть полей. Схема коллекции выборочно включает четыре: <strong>id</strong>, <strong>vector</strong>, <strong>scalar_1</strong> и <strong>scalar_2</strong>.</p>
+<p>Если взять в качестве примера данные JSON на диаграмме выше, то в списке строк есть две сущности, каждая строка имеет шесть полей. Схема коллекции выборочно включает четыре: <strong>id</strong>, <strong>vector</strong>, <strong>scalar_1</strong> и <strong>scalar_2</strong>.</p>
 <p>При разработке схемы необходимо учитывать еще два момента:</p>
 <ul>
 <li><p><strong>Включать ли автоидентификацию.</strong></p>
@@ -274,7 +274,7 @@ writer = LocalBulkWriter(
 </ul>
 <p>Подробнее о настройках параметров см. в разделе LocalBulkWriter в справке SDK.</p>
 </div>
-<h3 id="Set-up-RemoteBulkWriter" class="common-anchor-header">Настройка RemoteBulkWriter</h3><p>Вместо того чтобы фиксировать добавленные данные в локальный файл, <strong>RemoteBulkWriter</strong> фиксирует их в удаленном бакете. Поэтому перед созданием <strong>RemoteBulkWriter</strong> необходимо настроить объект <strong>ConnectParam</strong>.</p>
+<h3 id="Set-up-RemoteBulkWriter" class="common-anchor-header">Настройка RemoteBulkWriter</h3><p>Вместо того чтобы фиксировать добавленные данные в локальном файле, <strong>RemoteBulkWriter</strong> фиксирует их в удаленном бакете. Поэтому перед созданием <strong>RemoteBulkWriter</strong> необходимо настроить объект <strong>ConnectParam</strong>.</p>
 <div class="multipleCode">
  <a href="#python">Python </a> <a href="#java">Java</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus.bulk_writer <span class="hljs-keyword">import</span> RemoteBulkWriter

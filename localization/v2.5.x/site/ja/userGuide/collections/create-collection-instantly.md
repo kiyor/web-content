@@ -47,7 +47,7 @@ summary: >-
 <li><p><strong>metaという</strong>名前のリザーブ・ダイナミック・フィールドは、スキーマで定義されていないフィールドとその値をキーと値のペアで保存するために有効です。</p></li>
 <li><p>コレクションは作成時に自動的にロードされます。</p></li>
 </ul>
-<p>上記の用語の詳細については、<a href="/docs/ja/manage-collections.md">コレクションを</a>参照してください。</p>
+<p>上記の用語の詳細については、「<a href="/docs/ja/manage-collections.md">コレクションの説明</a>」を参照してください。</p>
 <p>デフォルト設定で即座にコレクションを作成しても、すべてのシナリオに適合するわけではないことに注意する必要があります。Milvusの機能をより深く理解するために、<a href="/docs/ja/create-collection.md">一般的なコレクション作成手順に</a>慣れることをお勧めします。</p>
 <h2 id="Quick-Setup" class="common-anchor-header">クイックセットアップ<button data-href="#Quick-Setup" class="anchor-icon" translate="no">
       <svg translate="no"

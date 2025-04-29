@@ -22,7 +22,7 @@ summary: >-
         ></path>
       </svg>
     </button></h1><p>As métricas de semelhança são utilizadas para medir as semelhanças entre vectores. A escolha de uma métrica de distância apropriada ajuda a melhorar significativamente o desempenho da classificação e do agrupamento.</p>
-<p>Atualmente, o Milvus suporta estes tipos de métricas de semelhança: Distância euclidiana (<code translate="no">L2</code>), Inner Product (<code translate="no">IP</code>), Cosine Similarity (<code translate="no">COSINE</code>), <code translate="no">JACCARD</code>, <code translate="no">HAMMING</code>, e <code translate="no">BM25</code> (especificamente concebida para pesquisa de texto completo em vectores esparsos).</p>
+<p>Atualmente, o Milvus suporta estes tipos de métricas de semelhança: Distância euclidiana (<code translate="no">L2</code>), Inner Product (<code translate="no">IP</code>), Cosine Similarity (<code translate="no">COSINE</code>), <code translate="no">JACCARD</code>, <code translate="no">HAMMING</code>, e <code translate="no">BM25</code> (especificamente concebido para pesquisa de texto completo em vectores esparsos).</p>
 <p>A tabela abaixo resume o mapeamento entre os diferentes tipos de campos e os tipos de métricas correspondentes.</p>
 <table>
    <tr>
@@ -181,14 +181,14 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>A semelhança do cosseno utiliza o cosseno do ângulo entre dois conjuntos de vectores para medir a sua semelhança. Pode pensar nos dois conjuntos de vectores como segmentos de linha que partem do mesmo ponto, como [0,0,...], mas que apontam em direcções diferentes.</p>
+    </button></h2><p>A semelhança de cosseno utiliza o cosseno do ângulo entre dois conjuntos de vectores para medir a sua semelhança. Pode pensar nos dois conjuntos de vectores como segmentos de linha que partem do mesmo ponto, como [0,0,...], mas que apontam em direcções diferentes.</p>
 <p>Para calcular a semelhança de cosseno entre dois conjuntos de vectores <strong>A = (<sub>a0</sub>, <sub>a1</sub>,...,<sub>an-1</sub>)</strong> e <strong>B = (<sub>b0</sub>, <sub>b1</sub>,..., <sub>bn-1</sub>)</strong>, utilize a seguinte fórmula:</p>
 <p>
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/cosine-similarity.png" alt="Cosine Similarity" class="doc-image" id="cosine-similarity" />
-   </span> <span class="img-wrapper"> <span>Semelhança de cosseno</span> </span></p>
+   </span> <span class="img-wrapper"> <span>Similaridade de cosseno</span> </span></p>
 <p>A semelhança de cosseno está sempre no intervalo <strong>[-1, 1]</strong>. Por exemplo, dois vectores proporcionais têm uma semelhança de cosseno de <strong>1</strong>, dois vectores ortogonais têm uma semelhança de <strong>0</strong> e dois vectores opostos têm uma semelhança de <strong>-1</strong>. Quanto maior for o cosseno, menor é o ângulo entre os dois vectores, indicando que estes dois vectores são mais semelhantes entre si.</p>
-<p>Subtraindo a sua semelhança de cosseno de 1, obtém-se a distância de cosseno entre dois vectores.</p>
+<p>Ao subtrair a semelhança de cosseno de 1, obtém-se a distância de cosseno entre dois vectores.</p>
 <h2 id="JACCARD-distance" class="common-anchor-header">Distância JACCARD<button data-href="#JACCARD-distance" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

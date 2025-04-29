@@ -1,11 +1,11 @@
 ---
 id: string.md
-title: Campo de cadena
+title: Campo Cadena
 summary: >-
   En Milvus, VARCHAR es el tipo de datos utilizado para almacenar datos de
   cadena. Cuando se define un campo VARCHAR, hay dos parámetros obligatorios:
 ---
-<h1 id="String-Field" class="common-anchor-header">Campo de cadena<button data-href="#String-Field" class="anchor-icon" translate="no">
+<h1 id="String-Field" class="common-anchor-header">Campo Cadena<button data-href="#String-Field" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"

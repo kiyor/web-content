@@ -91,7 +91,7 @@ summary: Cet article compare Milvus à d'autres solutions de recherche vectoriel
 <tr><th>Pinecone</th><th>Milvus</th><th>Remarques</th></tr>
 </thead>
 <tbody>
-<tr><td>Index</td><td><a href="https://zilliz.com/comparison">Collection</a></td><td>Dans Pinecone, un index sert d'unité organisationnelle pour le stockage et la gestion des vecteurs de taille identique, et cet index est étroitement intégré au matériel, connu sous le nom de pods. En revanche, les collections Milvus ont un objectif similaire mais permettent de gérer plusieurs collections au sein d'une même instance.</td></tr>
+<tr><td>Index</td><td><a href="https://zilliz.com/comparison">Collection</a></td><td>Dans Pinecone, un index sert d'unité d'organisation pour le stockage et la gestion des vecteurs de taille identique, et cet index est étroitement intégré au matériel, connu sous le nom de pods. En revanche, les collections Milvus ont un objectif similaire mais permettent de gérer plusieurs collections au sein d'une même instance.</td></tr>
 <tr><td>Collection</td><td><a href="https://milvus.io/docs/milvus_backup_overview.md#Milvus-Backup">Sauvegarde</a></td><td>Dans Pinecone, une collection est essentiellement un instantané statique d'un index, utilisé principalement à des fins de sauvegarde et qui ne peut pas être interrogé. Dans Milvus, la fonction équivalente de création de sauvegardes est plus transparente et porte un nom simple.</td></tr>
 <tr><td>Espace de noms</td><td><a href="https://milvus.io/docs/use-partition-key.md#Use-Partition-Key">Clé de partition</a></td><td>Les espaces de noms permettent de partitionner les vecteurs d'un index en sous-ensembles. Milvus propose plusieurs méthodes telles que la partition ou la clé de partition pour garantir une isolation efficace des données au sein d'une collection.</td></tr>
 <tr><td>Métadonnées</td><td><a href="https://milvus.io/docs/boolean.md">Champ scalaire</a></td><td>La gestion des métadonnées de Pinecone repose sur des paires clé-valeur, alors que Milvus permet des champs scalaires complexes, y compris des types de données standard et des champs JSON dynamiques.</td></tr>
@@ -120,7 +120,7 @@ summary: Cet article compare Milvus à d'autres solutions de recherche vectoriel
 </thead>
 <tbody>
 <tr><td>Modes de déploiement</td><td>SaaS uniquement</td><td>Milvus Lite, On-prem Standalone &amp; Cluster, Zilliz Cloud Saas &amp; BYOC</td></tr>
-<tr><td>Fonctions d'intégration</td><td>Non disponible</td><td>Prise en charge avec <a href="https://github.com/milvus-io/milvus-model">pymilvus[model]</a></td></tr>
+<tr><td>Fonctions d'intégration</td><td>Non disponibles</td><td>Prise en charge avec <a href="https://github.com/milvus-io/milvus-model">pymilvus[model]</a></td></tr>
 <tr><td>Types de données</td><td>Chaîne, Nombre, Bool, Liste de chaînes</td><td>String, VarChar, Number (Int, Float, Double), Bool, Array, JSON, Float Vector, Binary Vector, BFloat16, Float16, Sparse Vector</td></tr>
 <tr><td>Types de métriques et d'indices</td><td>Cos, Dot, Euclidean<br/>Famille P, famille S</td><td>Cosinus, IP (point), L2 (euclidienne), Hamming, Jaccard<br/>FLAT, IVF_FLAT, IVF_SQ8, IVF_PQ, HNSW, SCANN, GPU Indexes</td></tr>
 <tr><td>Conception des schémas</td><td>Mode flexible</td><td>Mode flexible, mode strict</td></tr>
@@ -129,7 +129,7 @@ summary: Cet article compare Milvus à d'autres solutions de recherche vectoriel
 </tbody>
 </table>
 <h3 id="Key-insights" class="common-anchor-header">Informations clés</h3><ul>
-<li><p><strong>Modes de déploiement</strong>: Milvus offre une variété d'options de déploiement, y compris le déploiement local, Docker, Kubernetes sur site, Cloud SaaS et Bring Your Own Cloud (BYOC) pour les entreprises, alors que Pinecone est limité au déploiement SaaS.</p></li>
+<li><p><strong>Modes de déploiement</strong>: Milvus offre une variété d'options de déploiement, notamment le déploiement local, Docker, Kubernetes sur site, Cloud SaaS et Bring Your Own Cloud (BYOC) pour les entreprises, alors que Pinecone se limite au déploiement SaaS.</p></li>
 <li><p><strong>Fonctions d'intégration</strong>: Milvus prend en charge des bibliothèques d'intégration supplémentaires, permettant l'utilisation directe de modèles d'intégration pour transformer les données sources en vecteurs.</p></li>
 <li><p><strong>Types de données</strong>: Milvus prend en charge un plus large éventail de types de données que Pinecone, y compris les tableaux et JSON. Pinecone ne prend en charge qu'une structure de métadonnées plate avec des chaînes, des nombres, des booléens ou des listes de chaînes comme valeurs, alors que Milvus peut gérer n'importe quel objet JSON, y compris des structures imbriquées, dans un champ JSON. Pinecone limite la taille des métadonnées à 40 Ko par vecteur.</p></li>
 <li><p><strong>Types de métriques et d'index</strong>: Milvus prend en charge un large éventail de types de métriques et d'index pour répondre à divers cas d'utilisation, tandis que Pinecone dispose d'un choix plus limité. Alors qu'un index pour les vecteurs est obligatoire dans Milvus, une option AUTO_INDEX est disponible pour rationaliser le processus de configuration.</p></li>

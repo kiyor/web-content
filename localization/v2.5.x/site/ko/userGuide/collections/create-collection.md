@@ -628,7 +628,7 @@ curl --request POST \
     \&quot;params\&quot;: $params
 }&quot;
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Set-Collection-TTL" class="common-anchor-header">컬렉션 TTL 설정</h3><p>컬렉션의 데이터를 특정 기간 동안 삭제해야 하는 경우 TTL(Time-To-Live)을 초 단위로 설정하는 것이 좋습니다. TTL이 초과되면 Milvus는 컬렉션의 엔티티를 삭제합니다. 삭제는 비동기식으로 이루어지므로 삭제가 완료되기 전에도 검색 및 쿼리가 여전히 가능합니다.</p>
+<h3 id="Set-Collection-TTL" class="common-anchor-header">컬렉션 TTL 설정</h3><p>컬렉션의 데이터를 특정 기간 동안 삭제해야 하는 경우 TTL(Time-To-Live)을 초 단위로 설정하는 것이 좋습니다. TTL이 초과되면 Milvus는 컬렉션의 엔티티를 삭제합니다. 삭제는 비동기식으로 이루어지므로 삭제가 완료되기 전에도 검색과 쿼리가 여전히 가능합니다.</p>
 <p>다음 코드 스니펫은 TTL을 하루(86400초)로 설정합니다. TTL을 최소 이틀로 설정하는 것이 좋습니다.</p>
 <div class="multipleCode">
    <a href="#python">파이썬</a> <a href="#java">자바</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>

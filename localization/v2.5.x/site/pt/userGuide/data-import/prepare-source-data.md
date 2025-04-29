@@ -47,7 +47,7 @@ summary: >-
 <p>Há mais dois aspectos a considerar ao conceber o esquema:</p>
 <ul>
 <li><p><strong>Se deve ser ativado o AutoID</strong></p>
-<p>O campo <strong>id</strong> serve como o campo primário da coleção. Para fazer com que o campo primário seja incrementado automaticamente, pode ativar o <strong>AutoID</strong> no esquema. Neste caso, deve excluir o campo <strong>id</strong> de cada linha nos dados de origem.</p></li>
+<p>O campo <strong>id</strong> serve como o campo primário da coleção. Para fazer com que o campo primário seja automaticamente incrementado, pode ativar o <strong>AutoID</strong> no esquema. Neste caso, deve excluir o campo <strong>id</strong> de cada linha nos dados de origem.</p></li>
 <li><p><strong>Ativar ou não campos dinâmicos</strong></p>
 <p>A coleção de destino também pode armazenar campos não incluídos no seu esquema predefinido se o esquema permitir campos dinâmicos. O campo <strong>$meta</strong> é um campo JSON reservado para armazenar campos dinâmicos e seus valores em pares de valores chave. No diagrama acima, os campos <strong>dynamic_field_1</strong> e <strong>dynamic_field_2</strong> e os valores serão guardados como pares de valores chave no campo <strong>$meta</strong>.</p></li>
 </ul>
@@ -376,7 +376,7 @@ writer = RemoteBulkWriter(
 <p>Um <strong>BulkWriter</strong> tem dois métodos: <code translate="no">append_row()</code> adiciona uma linha de um conjunto de dados de origem e <code translate="no">commit()</code> confirma as linhas adicionadas em um arquivo local ou em um bucket remoto.</p>
 </div>
 <div class="language-java">
-<p>Um <strong>BulkWriter</strong> tem dois métodos: <code translate="no">appendRow()</code> adiciona uma linha de um conjunto de dados de origem e <code translate="no">commit()</code> confirma as linhas adicionadas em um arquivo local ou em um bucket remoto.</p>
+<p>Um <strong>BulkWriter</strong> tem dois métodos: <code translate="no">appendRow()</code> adiciona uma linha a partir de um conjunto de dados de origem e <code translate="no">commit()</code> confirma as linhas adicionadas num ficheiro local ou num bucket remoto.</p>
 </div>
 <p>Para fins de demonstração, o código a seguir anexa dados gerados aleatoriamente.</p>
 <div class="multipleCode">

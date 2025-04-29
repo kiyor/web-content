@@ -1,7 +1,7 @@
 ---
 id: multi_tenancy.md
 related_key: multi-tenancy
-summary: Milvus의 멀티테넌시.
+summary: Milvus의 멀티 테넌시.
 title: 멀티테넌시 전략
 ---
 <h1 id="Multi-tenancy-strategies" class="common-anchor-header">멀티테넌시 전략<button data-href="#Multi-tenancy-strategies" class="anchor-icon" translate="no">
@@ -53,7 +53,7 @@ title: 멀티테넌시 전략
         ></path>
       </svg>
     </button></h2><p>컬렉션 지향 멀티테넌시를 달성하는 방법에는 두 가지가 있습니다.</p>
-<h3 id="One-collection-for-all-tenants" class="common-anchor-header">모든 테넌트를 위한 하나의 컬렉션</h3><p>테넌트를 구분하기 위해 테넌트 필드를 추가하여 단일 컬렉션을 사용하여 멀티테넌트를 구현하는 것은 간단한 옵션입니다. 특정 테넌트에 대한 ANN 검색을 수행할 때 필터 표현식을 추가하여 다른 테넌트에 속한 모든 엔티티를 걸러내면 됩니다. 이것은 멀티테넌시를 달성하는 가장 간단한 방법입니다. 하지만 필터의 성능이 ANN 검색의 병목 현상이 될 수 있다는 점에 유의하세요. 검색 성능을 개선하려면 아래 파티션 중심의 멀티테넌시로 최적화할 수 있습니다.</p>
+<h3 id="One-collection-for-all-tenants" class="common-anchor-header">모든 테넌트를 위한 하나의 컬렉션</h3><p>테넌트를 구분하기 위해 테넌트 필드를 추가하여 단일 컬렉션을 사용하여 멀티테넌트를 구현하는 것은 간단한 옵션입니다. 특정 테넌트에 대한 ANN 검색을 수행할 때 필터 표현식을 추가하여 다른 테넌트에 속한 모든 엔티티를 필터링하면 됩니다. 이것은 멀티테넌시를 달성하는 가장 간단한 방법입니다. 하지만 필터의 성능이 ANN 검색의 병목 현상이 될 수 있다는 점에 유의하세요. 검색 성능을 개선하려면 아래 파티션 중심의 멀티테넌시로 최적화할 수 있습니다.</p>
 <h3 id="One-collection-per-tenant" class="common-anchor-header">테넌트당 하나의 컬렉션</h3><p>또 다른 접근 방식은 모든 테넌트의 데이터를 단일 컬렉션에 저장하는 대신 각 테넌트가 자체 데이터를 저장할 수 있는 컬렉션을 만드는 것입니다. 이렇게 하면 데이터 격리 및 쿼리 성능이 향상됩니다. 하지만 이 접근 방식은 스케줄링에 더 많은 리소스가 필요하고 클러스터에서 최대 10,000개의 컬렉션으로 제한된다는 점에 유의하세요.</p>
 <h2 id="Partition-oriented-multi-tenancy" class="common-anchor-header">파티션 중심 멀티테넌시<button data-href="#Partition-oriented-multi-tenancy" class="anchor-icon" translate="no">
       <svg translate="no"

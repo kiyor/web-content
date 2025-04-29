@@ -44,7 +44,7 @@ summary: >-
 <p>Cuando se crea una colección instantáneamente con los parámetros por defecto, se aplican los siguientes parámetros:</p>
 <ul>
 <li><p>Los campos primario y vectorial se añaden al esquema<strong>(id</strong> y <strong>vector</strong>).</p></li>
-<li><p>El campo primario acepta números enteros y desactiva <strong>AutoId</strong>.</p></li>
+<li><p>El campo primario acepta enteros y desactiva <strong>AutoId</strong>.</p></li>
 <li><p>El campo vector acepta incrustaciones de vectores flotantes.</p></li>
 <li><p><strong>AUTOINDEX</strong> se utiliza para crear un índice en el campo vectorial.</p></li>
 <li><p><strong>COSINE</strong> se utiliza para medir similitudes entre incrustaciones vectoriales.</p></li>

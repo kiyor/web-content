@@ -323,7 +323,7 @@ curl --request POST \
 <span class="hljs-comment">#     }</span>
 <span class="hljs-comment"># }</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Index-a-scalar-field-in-the-dynamic-field" class="common-anchor-header">Indizieren eines Skalarfelds im dynamischen Feld</h3><p>Wenn Sie ein dynamisches Feld aktivieren, werden alle undefinierten skalaren Felder als Schlüssel-Wert-Paare im JSON-Format gespeichert. Milvus unterstützt die Erstellung eines Index für ein solches undefiniertes skalares Feld, indem es einen JSON-Pfadindex erstellt. Und so funktioniert es:</p>
+<h3 id="Index-a-scalar-field-in-the-dynamic-field" class="common-anchor-header">Indizieren eines Skalarfelds im dynamischen Feld</h3><p>Wenn Sie ein dynamisches Feld aktivieren, werden alle undefinierten skalaren Felder als Schlüssel-Wert-Paare im JSON-Format gespeichert. Milvus unterstützt die Erstellung eines Indexes für ein solches undefiniertes skalares Feld, indem es einen JSON-Pfadindex erstellt. Und so funktioniert es:</p>
 <ol>
 <li><p><strong>Wählen Sie den Schlüssel des dynamischen Feldes</strong>, das Sie indizieren möchten. Zum Beispiel <code translate="no">&quot;color&quot;</code> im obigen Beispiel.</p></li>
 <li><p><strong>Entscheiden Sie sich für einen Cast-Typ</strong> für die unter diesem Schlüssel gefundenen Werte. Milvus analysiert das dynamische Feld, extrahiert die Werte unter dem angegebenen Schlüssel und ordnet sie dem von Ihnen konfigurierten Typ zu.</p>
