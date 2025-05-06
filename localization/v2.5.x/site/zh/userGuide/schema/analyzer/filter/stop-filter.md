@@ -97,7 +97,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
      <td><p>要从标记化中删除的单词列表。默认情况下，使用预定义的<code translate="no">_english_</code> 列表，其中包含常见的英文停止词。有关<code translate="no">_english_</code> 的详细信息，请<a href="https://github.com/milvus-io/milvus/blob/master/internal/core/thirdparty/tantivy/tantivy-binding/src/stop_words.rs">点击此处</a>。</p></td>
    </tr>
 </table>
-<p><code translate="no">stop</code> 过滤器对标记化器生成的词语进行操作，因此必须与标记化器结合使用。有关 Milvus 中可用的标记符号化器列表，请参阅标记符号<a href="/docs/zh/tokenizers">化器参考</a>。</p>
+<p><code translate="no">stop</code> 过滤器对标记化器生成的词语进行操作，因此必须与标记化器结合使用。有关 Milvus 中可用的标记化器列表，请参阅标记化<a href="/docs/zh/tokenizers">器参考</a>。</p>
 <p>定义<code translate="no">analyzer_params</code> 后，可以在定义 Collections Schema 时将其应用到<code translate="no">VARCHAR</code> 字段。这样，Milvus 就可以使用指定的分析器对该字段中的文本进行处理，从而实现高效的标记化和过滤。有关详情，请参阅<a href="/docs/zh/analyzer-overview.md#Example-use">示例使用</a>。</p>
 <h2 id="Examples" class="common-anchor-header">示例<button data-href="#Examples" class="anchor-icon" translate="no">
       <svg translate="no"

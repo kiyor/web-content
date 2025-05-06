@@ -31,7 +31,7 @@ title: Vue d'ensemble des intégrations
 <tr><td><a href="/docs/fr/milvus_hybrid_search_retriever.md">Milvus Hybrid Search Retriever dans LangChain</a></td><td>Recherche hybride</td><td>Milvus, LangChain</td></tr>
 <tr><td><a href="/docs/fr/integrate_with_openai.md">Recherche sémantique avec Milvus et OpenAI</a></td><td>Recherche sémantique</td><td>Milvus, OpenAI</td></tr>
 <tr><td><a href="/docs/fr/integrate_with_cohere.md">Réponse aux questions avec Milvus et Cohere</a></td><td>Recherche sémantique</td><td>Milvus, Cohere</td></tr>
-<tr><td><a href="/docs/fr/integrate_with_hugging-face.md">Réponse aux questions en utilisant Milvus et HuggingFace</a></td><td>Réponse aux questions</td><td>Milvus, HuggingFace</td></tr>
+<tr><td><a href="/docs/fr/integrate_with_hugging-face.md">Réponse aux questions avec Milvus et HuggingFace</a></td><td>Réponse aux questions</td><td>Milvus, HuggingFace</td></tr>
 <tr><td><a href="/docs/fr/integrate_with_pytorch.md">Recherche d'images avec Milvus et Pytorch</a></td><td>Recherche sémantique</td><td>Milvus, Pytorch</td></tr>
 <tr><td><a href="/docs/fr/integrate_with_sentencetransformers.md">Recherche de films avec Milvus et SentenceTransfromers</a></td><td>Recherche sémantique</td><td>Milvus, SentenceTransformers</td></tr>
 <tr><td><a href="/docs/fr/basic_usage_langchain.md">Utiliser Milvus comme magasin de vecteurs dans LangChain</a></td><td>Recherche sémantique</td><td>Milvus, LangChain</td></tr>

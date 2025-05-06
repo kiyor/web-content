@@ -131,7 +131,7 @@ indexing_pipeline.run({<span class="hljs-string">&quot;writer&quot;</span>: {<sp
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no">{'writer': {'documents_written': 3}}
 </code></pre>
-<h3 id="Create-the-retrieval-pipeline" class="common-anchor-header">创建检索管道</h3><p>创建一个检索管道，使用<code translate="no">MilvusSparseEmbeddingRetriever</code> 从 Milvus 文档存储中检索文档，该管道是<code translate="no">document_store</code> 的一个包装器。</p>
+<h3 id="Create-the-retrieval-pipeline" class="common-anchor-header">创建检索管道</h3><p>创建一个检索管道，使用<code translate="no">MilvusSparseEmbeddingRetriever</code> 从 Milvus 文档存储中检索文档，它是<code translate="no">document_store</code> 的一个封装。</p>
 <pre><code translate="no" class="language-python">retrieval_pipeline = Pipeline()
 retrieval_pipeline.add_component(
     <span class="hljs-string">&quot;retriever&quot;</span>, MilvusSparseEmbeddingRetriever(document_store=document_store)
@@ -319,7 +319,7 @@ indexing_pipeline.run({<span class="hljs-string">&quot;dense_doc_embedder&quot;<
     <span></span>
   </span>
 </p>
-<p>该图显示了混合检索与 Rerankers 流程，结合了用于关键词匹配的 BM25 和用于语义检索的密集向量搜索。来自两种方法的结果会被合并、Rerankers 并传递给 LLM 以生成最终答案。</p>
+<p>此图显示了混合检索与 Rerankers 流程，结合了用于关键词匹配的 BM25 和用于语义检索的密集向量搜索。来自两种方法的结果会被合并、Rerankers 并传递给 LLM 以生成最终答案。</p>
 <p>混合搜索兼顾了精确性和语义理解，提高了各种查询的准确性和稳健性。它通过 BM25 全文检索和向量搜索检索候选内容，同时确保语义、上下文感知和精确检索。</p>
 <p>让我们尝试使用混合搜索优化 RAG 实现。</p>
 <pre><code translate="no" class="language-python">prompt_template = <span class="hljs-string">&quot;&quot;&quot;Answer the following query based on the provided context. If the context does

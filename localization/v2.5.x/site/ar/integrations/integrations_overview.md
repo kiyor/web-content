@@ -37,7 +37,7 @@ title: نظرة عامة على عمليات التكامل
 <tr><td><a href="/docs/ar/basic_usage_langchain.md">استخدام ميلفوس كمخزن متجه في لانج تشين</a></td><td>البحث الدلالي</td><td>ميلفوس، لانجتشين</td></tr>
 <tr><td><a href="/docs/ar/full_text_search_with_langchain.md">استخدام البحث عن النص الكامل مع لانغتشين وميلفوس</a></td><td>البحث عن النص الكامل</td><td>ميلفوس، لانجتشين</td></tr>
 <tr><td><a href="/docs/ar/integrate_with_haystack.md">RAG مع ميلفوس وميلفوس وهايستاك</a></td><td>RAG</td><td>ميلفوس، هايستاك</td></tr>
-<tr><td><a href="/docs/ar/integrate_with_voxel51.md">إجراء عمليات البحث عن الرؤية باستخدام ميلفوس وفيفتي ون</a></td><td>البحث الدلالي</td><td>ميلفوس، فيفتي وان</td></tr>
+<tr><td><a href="/docs/ar/integrate_with_voxel51.md">إجراء عمليات البحث الرؤيوي باستخدام ميلفوس وفيفتي ون</a></td><td>البحث الدلالي</td><td>ميلفوس، فيفتي وان</td></tr>
 <tr><td><a href="/docs/ar/integrate_with_voyageai.md">البحث الدلالي باستخدام Milvus وVoyageAI</a></td><td>البحث الدلالي</td><td>ميلفوس، فوياج إيه آي</td></tr>
 <tr><td><a href="/docs/ar/integrate_with_bentoml.md">البحث الدلالي باستخدام Milvus و BentoML</a></td><td>RAG</td><td>ميلفوس و BentoML</td></tr>
 <tr><td><a href="/docs/ar/integrate_with_dspy.md">RAG مع Milvus و DSPy</a></td><td>RAG</td><td>ميلفوس، DSPy</td></tr>

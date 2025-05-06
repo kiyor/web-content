@@ -38,7 +38,7 @@ summary: >-
       </svg>
     </button></h2><p>عامل التصفية <code translate="no">length</code> هو عامل تصفية مخصص في ميلفوس، يتم تحديده من خلال الإعداد <code translate="no">&quot;type&quot;: &quot;length&quot;</code> في تكوين عامل التصفية. يمكنك تكوينه كقاموس داخل <code translate="no">analyzer_params</code> لتحديد حدود الطول.</p>
 <div class="multipleCode">
-   <a href="#python">بيثون</a> <a href="#java">جافا جافا</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
+   <a href="#python">بايثون</a> <a href="#java">جافا جافا</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">analyzer_params = {
     <span class="hljs-string">&quot;tokenizer&quot;</span>: <span class="hljs-string">&quot;standard&quot;</span>,
     <span class="hljs-string">&quot;filter&quot;</span>:[{
@@ -92,7 +92,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
      <td><p>يضبط الحد الأقصى لطول الرمز المميز. تتم إزالة الرموز الأطول من هذا الطول.</p></td>
    </tr>
 </table>
-<p>يعمل عامل التصفية <code translate="no">length</code> على المصطلحات التي تم إنشاؤها بواسطة أداة الترميز، لذلك يجب استخدامه مع أداة ترميز. للحصول على قائمة بالرموز الرمزية المتوفرة في ميلفوس، راجع <a href="/docs/ar/tokenizers">مرجع الرموز الرمزية</a>.</p>
+<p>يعمل عامل التصفية <code translate="no">length</code> على المصطلحات التي تم إنشاؤها بواسطة أداة الترميز، لذا يجب استخدامه مع أداة ترميز. للحصول على قائمة بالرموز الرمزية المتوفرة في ميلفوس، راجع <a href="/docs/ar/tokenizers">مرجع الرموز الرمزية</a>.</p>
 <p>بعد تحديد <code translate="no">analyzer_params</code> ، يمكنك تطبيقها على حقل <code translate="no">VARCHAR</code> عند تحديد مخطط المجموعة. يسمح ذلك لـ Milvus بمعالجة النص في ذلك الحقل باستخدام المحلل المحدد من أجل ترميز وتصفية فعالة. للحصول على التفاصيل، راجع <a href="/docs/ar/analyzer-overview.md#Example-use">أمثلة الاستخدام</a>.</p>
 <h2 id="Examples" class="common-anchor-header">أمثلة<button data-href="#Examples" class="anchor-icon" translate="no">
       <svg translate="no"

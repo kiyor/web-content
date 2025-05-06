@@ -2,7 +2,8 @@
 id: decompounder-filter.md
 title: 逆コンパウンダー
 summary: >-
-  複合語分解フィルタは、複合語を、指定された辞書に基づいて個々のコンポーネントに分割する。このフィルタは、ドイツ語など、複合語を頻繁に使用する言語で特に役立ちます。
+  複合語分解フィルタは、指定された辞書に基づいて複合語を個々のコンポーネントに分割し、複合語の部
+  分を簡単に検索できるようにする。このフィルタは、ドイツ語など、複合語を頻繁に使用する言語で特に役立ちます。
 ---
 <h1 id="Decompounder" class="common-anchor-header">逆コンパウンダー<button data-href="#Decompounder" class="anchor-icon" translate="no">
       <svg translate="no"

@@ -1298,19 +1298,19 @@
         "isMenu": true,
         "children": [
           {
-            "label": "Monitoring",
+            "label": "Controlo",
             "id": "monitoring",
             "order": 0,
             "isMenu": true,
             "children": [
               {
-                "label": "Architecture",
+                "label": "Arquitetura",
                 "id": "monitor_overview.md",
                 "order": 0,
                 "children": []
               },
               {
-                "label": "Deploy Monitoring Services",
+                "label": "Implementar serviços de monitorização",
                 "id": "monitor.md",
                 "order": 1,
                 "children": []

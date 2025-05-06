@@ -3,7 +3,7 @@ id: english-analyzer.md
 title: اللغة الإنجليزية
 summary: >-
   تم تصميم محلل اللغة الإنجليزية في Milvus لمعالجة النص الإنجليزي، وتطبيق قواعد
-  خاصة باللغة لترميز النصوص وتصفيتها.
+  خاصة باللغة لترميز وتصفية الرموز.
 ---
 <h1 id="English" class="common-anchor-header">اللغة الإنجليزية<button data-href="#English" class="anchor-icon" translate="no">
       <svg translate="no"

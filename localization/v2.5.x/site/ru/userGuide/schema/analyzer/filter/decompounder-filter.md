@@ -1,13 +1,13 @@
 ---
 id: decompounder-filter.md
-title: Расщепитель
+title: Декомпозер
 summary: >-
-  Фильтр decompounder разделяет сложные слова на отдельные компоненты на основе
-  заданного словаря, что облегчает поиск частей сложных терминов. Этот фильтр
+  Фильтр decompounder разбивает составные слова на отдельные компоненты на
+  основе заданного словаря, облегчая поиск частей сложных терминов. Этот фильтр
   особенно полезен для языков, в которых часто используются сложные слова,
   например немецкого.
 ---
-<h1 id="Decompounder" class="common-anchor-header">Расщепитель<button data-href="#Decompounder" class="anchor-icon" translate="no">
+<h1 id="Decompounder" class="common-anchor-header">Декомпозер<button data-href="#Decompounder" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"

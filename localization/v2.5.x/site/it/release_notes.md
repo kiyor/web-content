@@ -46,7 +46,7 @@ title: Note di rilascio
 <p>Milvus 2.5.10 migliora le prestazioni di ricerca e caricamento, migliora la reportistica sulle metriche e amplia il supporto SVE per il calcolo accelerato delle metriche. Questa versione include anche numerose correzioni di bug che migliorano la stabilità e la correttezza. Vi invitiamo ad aggiornare o a provare: il vostro feedback è prezioso per aiutarci a rendere Milvus ancora migliore!</p>
 <h3 id="Improvements" class="common-anchor-header">Miglioramenti</h3><ul>
 <li>Ignorare la segnalazione delle metriche degli indici per indici inesistenti<a href="https://github.com/milvus-io/milvus/pull/41296">(#41296</a>)</li>
-<li>Utilizzo della modalità di scansione per LIKE anche quando esiste un indice invertito (<a href="https://github.com/milvus-io/milvus/pull/41309">#41309</a>)</li>
+<li>Utilizza la modalità di scansione per le LIKE anche quando esiste un indice invertito (<a href="https://github.com/milvus-io/milvus/pull/41309">#41309</a>)</li>
 <li>Ottimizzazione delle prestazioni per le espressioni LIKE (<a href="https://github.com/milvus-io/milvus/pull/41222">#41222</a>)</li>
 <li>Ottimizzare il formato degli indici per migliorare le prestazioni di caricamento (<a href="https://github.com/milvus-io/milvus/pull/41041">#41041</a>)</li>
 <li>RESTful: rendere configurabile il timeout predefinito (<a href="https://github.com/milvus-io/milvus/pull/41225">#41225</a>)</li>
@@ -206,7 +206,7 @@ title: Note di rilascio
 <li>Aggiunta di altre opzioni di configurazione per <code translate="no">interimindex</code> per supportare modalità raffinate<a href="https://github.com/milvus-io/milvus/pull/40429">(#40429</a>)</li>
 <li>Utilizzare le metriche corrette dei contatori per il calcolo della WA complessiva<a href="https://github.com/milvus-io/milvus/pull/40679">(#40679</a>)</li>
 <li>Rendere aggiornabile la configurazione del segmento prune (<a href="https://github.com/milvus-io/milvus/pull/40632">#40632</a>)</li>
-<li>Aggiungere una politica di chiusura del canale basata sul blocco di L0<a href="https://github.com/milvus-io/milvus/pull/40535">(#40535</a>)</li>
+<li>Aggiungere una politica di tenuta del canale basata sul blocco di L0<a href="https://github.com/milvus-io/milvus/pull/40535">(#40535</a>)</li>
 <li>Raffinare i metadati dei task con il blocco a livello di chiave (<a href="https://github.com/milvus-io/milvus/pull/40353">#40353</a>)</li>
 <li>Rimuovere le etichette di raccolta e partizione non necessarie dalle metriche<a href="https://github.com/milvus-io/milvus/pull/40593">(#40593</a>)</li>
 <li>Migliorare i messaggi di errore di importazione (<a href="https://github.com/milvus-io/milvus/pull/40597">#40597</a>)</li>
@@ -314,7 +314,7 @@ title: Note di rilascio
 <tr><td>2.5.5</td><td>2.5.4</td><td>2.5.5</td><td>2.5.4</td></tr>
 </tbody>
 </table>
-<p>Milvus 2.5.5 apporta miglioramenti significativi al numero di collezioni e partizioni che un singolo cluster può supportare. È ora possibile eseguire Milvus con 10K collezioni e 100K partizioni. Questa versione risolve anche diversi bug critici, tra cui la mancanza di statistiche sulle partite e un problema di deadlock nelle query a più stadi. Inoltre, include numerosi miglioramenti in termini di osservabilità e sicurezza. Si consiglia vivamente a tutti gli utenti che utilizzano Milvus 2.5.x di effettuare l'aggiornamento il prima possibile.</p>
+<p>Milvus 2.5.5 apporta miglioramenti significativi al numero di collezioni e partizioni che un singolo cluster può supportare. È ora possibile eseguire Milvus con 10K collezioni e 100K partizioni. Questa versione risolve anche diversi bug critici, tra cui la mancanza di statistiche sulle partite e un problema di deadlock nelle query a più stadi. Inoltre, include numerosi miglioramenti di osservabilità e sicurezza. Si consiglia vivamente a tutti gli utenti che utilizzano Milvus 2.5.x di effettuare l'aggiornamento il prima possibile.</p>
 <h3 id="Dependency-Upgrade" class="common-anchor-header">Aggiornamento delle dipendenze</h3><p>Aggiornamento a ETCD 3.5.18 per correggere diverse CVE.</p>
 <ul>
 <li>[2.5] Aggiornato raft a cuvs<a href="https://github.com/milvus-io/milvus/pull/39221">(#39221</a>)</li>
@@ -373,7 +373,7 @@ title: Note di rilascio
 <li>[2.5] Scaricate le informazioni di pprof se l'avanzamento dell'arresto del componente è scaduto (<a href="https://github.com/milvus-io/milvus/pull/39760">#39760</a>)</li>
 <li>[2.5] Aggiunta API di gestione per controllare lo stato di bilanciamento delle querycoord (<a href="https://github.com/milvus-io/milvus/pull/39909">#39909</a>)</li>
 </ul>
-<h4 id="StatsCompactionIndex-Task-Scheduler-Optimization" class="common-anchor-header">Statistiche/Compattazione/Ottimizzazione dello scheduler dei task indice</h4><ul>
+<h4 id="StatsCompactionIndex-Task-Scheduler-Optimization" class="common-anchor-header">Statistiche/Compattazione/Ottimizzazione dello schedulatore dei task di indice</h4><ul>
 <li>Affinata la politica di pianificazione delle attività di indice (<a href="https://github.com/milvus-io/milvus/pull/40104">#40104</a>)</li>
 <li>[2.5] Limitata la velocità di generazione dei task di statistiche<a href="https://github.com/milvus-io/milvus/pull/39645">(#39645</a>)</li>
 <li>Aggiunte le configurazioni per la pianificazione della compattazione<a href="https://github.com/milvus-io/milvus/pull/39511">(#39511</a>)</li>
@@ -399,7 +399,7 @@ title: Note di rilascio
 <li>Trasmissione con notifica basata su eventi<a href="https://github.com/milvus-io/milvus/pull/39550">(#39550</a>)</li>
 <li>[2.5] Raffinato il messaggio di errore per il controllo di schemi e indici<a href="https://github.com/milvus-io/milvus/pull/39565">(#39565</a>)</li>
 <li>[2.5] Ripristinato il tipo di indice automatico predefinito per gli scalari<a href="https://github.com/milvus-io/milvus/pull/39820">(#39820</a>)</li>
-<li>[2.5] Reinserito il task di compattazione L0 quando il precontrollo non è riuscito<a href="https://github.com/milvus-io/milvus/pull/39871">(#39871</a>)</li>
+<li>[2.5] Reinserito il task di compattazione L0 quando il precheck non è riuscito<a href="https://github.com/milvus-io/milvus/pull/39871">(#39871</a>)</li>
 </ul>
 <h2 id="v254" class="common-anchor-header">v2.5.4<button data-href="#v254" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -444,7 +444,7 @@ title: Note di rilascio
 <li>Velocizzato il caricamento dei dati accelerando la generazione, la pianificazione e l'esecuzione dei task in QueryCoord<a href="https://github.com/milvus-io/milvus/pull/38905">(#38905</a>)</li>
 <li>Ridotto il blocco in DataCoord per velocizzare le operazioni di caricamento e inserimento<a href="https://github.com/milvus-io/milvus/pull/38904">(#38904</a>)</li>
 <li>Aggiunti i nomi dei campi primari in <code translate="no">SearchResult</code> e <code translate="no">QueryResults</code> <a href="https://github.com/milvus-io/milvus/pull/39222">(#39222</a>)</li>
-<li>Usato sia la dimensione del binlog che la dimensione dell'indice come standard di limitazione della quota disco (<a href="https://github.com/milvus-io/milvus/pull/38844">#38844</a>)</li>
+<li>Utilizzato sia la dimensione del binlog che quella dell'indice come standard di limitazione della quota disco (<a href="https://github.com/milvus-io/milvus/pull/38844">#38844</a>)</li>
 <li>Ottimizzato l'uso della memoria per la ricerca full-text knowhere/#1011</li>
 <li>Aggiunto il controllo di versione per gli indici scalari<a href="https://github.com/milvus-io/milvus/pull/39236">(#39236</a>)</li>
 <li>Migliorata la velocità di recupero delle informazioni sulle collezioni da RootCoord evitando copie non necessarie<a href="https://github.com/milvus-io/milvus/pull/38902">(#38902</a>)</li>
@@ -488,7 +488,7 @@ title: Note di rilascio
     </button></h2><p>Data di rilascio: 13 gennaio 2025</p>
 <table>
 <thead>
-<tr><th>Versione Milvus</th><th>Versione SDK Python</th><th>Versione dell'SDK Node.js</th><th>Versione SDK Java</th></tr>
+<tr><th>Versione di Milvus</th><th>Versione dell'SDK Python</th><th>Versione dell'SDK Node.js</th><th>Versione SDK Java</th></tr>
 </thead>
 <tbody>
 <tr><td>2.5.3</td><td>2.5.3</td><td>2.5.3</td><td>2.5.4</td></tr>
@@ -576,14 +576,14 @@ title: Note di rilascio
 <tr><td>2.5.1</td><td>2.5.2</td><td>2.5.2</td><td>2.5.2</td></tr>
 </tbody>
 </table>
-<p>Milvus 2.5.1 si concentra su una serie di correzioni di bug che riguardano il caricamento della memoria, gli elenchi RBAC, il bilanciamento dei nodi delle query e l'indicizzazione dei segmenti sigillati, oltre a migliorare l'interfaccia web e gli intercettori. Si consiglia vivamente di aggiornare alla versione 2.5.1 per migliorare la stabilità e l'affidabilità.</p>
+<p>Milvus 2.5.1 si concentra su una serie di correzioni di bug che riguardano il caricamento della memoria, gli elenchi RBAC, il bilanciamento dei nodi di query e l'indicizzazione dei segmenti sigillati, oltre a migliorare l'interfaccia web e gli intercettori. Si consiglia vivamente di aggiornare alla versione 2.5.1 per migliorare la stabilità e l'affidabilità.</p>
 <h3 id="Improvement" class="common-anchor-header">Miglioramenti</h3><ul>
 <li>Aggiornamento delle pagine di raccolta e di query dell'interfaccia web.<a href="https://github.com/milvus-io/milvus/pull/38701">(#38701</a>)</li>
 </ul>
 <h3 id="Bug-fixes" class="common-anchor-header">Correzioni di bug</h3><ul>
 <li>Risolti i problemi di OOM aggiungendo un fattore di memoria alle stime di caricamento.<a href="https://github.com/milvus-io/milvus/pull/38722">(#38722</a>)</li>
 <li>Corretta l'espansione dei gruppi di privilegi quando si elencano le politiche in RootCoord.<a href="https://github.com/milvus-io/milvus/pull/38760">(#38760</a>)</li>
-<li>Corretti i problemi relativi all'elenco dei gruppi di privilegi e delle raccolte.<a href="https://github.com/milvus-io/milvus/pull/38738">(#38738</a>)</li>
+<li>Corretti i problemi con l'elenco dei gruppi di privilegi e delle raccolte.<a href="https://github.com/milvus-io/milvus/pull/38738">(#38738</a>)</li>
 <li>Corretto il bilanciatore per evitare di sovraccaricare ripetutamente lo stesso nodo di query.<a href="https://github.com/milvus-io/milvus/pull/38724">(#38724</a>)</li>
 <li>Corretti i compiti di bilanciamento inattesi attivati dopo il riavvio di QueryCoord.<a href="https://github.com/milvus-io/milvus/pull/38725">(#38725</a>)</li>
 <li>Corretto l'aggiornamento della configurazione del carico che non si applica al caricamento delle raccolte.<a href="https://github.com/milvus-io/milvus/pull/38737">(#38737</a>)</li>
@@ -657,5 +657,5 @@ title: Note di rilascio
 <h4 id="Improved-DDL-Concurrency-Performance" class="common-anchor-header">Miglioramento delle prestazioni di concomitanza del DDL</h4><p>Ottimizzate le prestazioni di concorrenza delle operazioni del Data Definition Language (DDL).</p>
 <h4 id="RESTful-API-Feature-Alignment" class="common-anchor-header">Allineamento delle funzionalità dell'API RESTful</h4><p>Allineate le funzionalità dell'API RESTful con gli altri SDK per coerenza.</p>
 <h4 id="Security--Configuration-Updates" class="common-anchor-header">Aggiornamenti di sicurezza e configurazione</h4><p>Supportato TLS per proteggere la comunicazione tra i nodi in ambienti più complessi o aziendali. Per i dettagli, consultare la sezione <a href="/docs/it/tls.md">Configurazione della sicurezza</a>.</p>
-<h4 id="Compaction-Performance-Enhancements" class="common-anchor-header">Miglioramenti delle prestazioni di compattazione</h4><p>Eliminati i limiti massimi di segmento nella compattazione mista e ora viene data priorità ai segmenti più piccoli, migliorando l'efficienza e accelerando le query su insiemi di dati grandi o frammentati.</p>
+<h4 id="Compaction-Performance-Enhancements" class="common-anchor-header">Miglioramenti delle prestazioni di compattazione</h4><p>Eliminati i limiti massimi dei segmenti nella compattazione mista e ora viene data priorità ai segmenti più piccoli, migliorando l'efficienza e accelerando le query su insiemi di dati grandi o frammentati.</p>
 <h4 id="Score-Based-Channel-Balancing" class="common-anchor-header">Bilanciamento dei canali basato sui punteggi</h4><p>Introdotto un criterio che bilancia dinamicamente i carichi tra i canali, migliorando l'utilizzo delle risorse e la stabilità complessiva nelle distribuzioni su larga scala.</p>

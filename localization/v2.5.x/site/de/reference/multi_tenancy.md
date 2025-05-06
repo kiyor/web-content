@@ -2,9 +2,9 @@
 id: multi_tenancy.md
 related_key: multi-tenancy
 summary: Mehrmandantenfähigkeit in Milvus.
-title: Strategien für mehrere Mandanten
+title: Strategien mit mehreren Mandanten
 ---
-<h1 id="Multi-tenancy-strategies" class="common-anchor-header">Strategien für mehrere Mandanten<button data-href="#Multi-tenancy-strategies" class="anchor-icon" translate="no">
+<h1 id="Multi-tenancy-strategies" class="common-anchor-header">Strategien mit mehreren Mandanten<button data-href="#Multi-tenancy-strategies" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"

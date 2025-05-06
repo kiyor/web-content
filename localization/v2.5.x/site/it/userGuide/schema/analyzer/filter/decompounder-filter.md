@@ -101,7 +101,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
    </tr>
    <tr>
      <td><p><code translate="no">word_list</code></p></td>
-     <td><p>Un elenco di componenti di parole usate per dividere i termini composti. Questo dizionario determina il modo in cui le parole composte vengono scomposte in termini individuali.</p></td>
+     <td><p>Un elenco di componenti di parole utilizzate per dividere i termini composti. Questo dizionario determina il modo in cui le parole composte vengono scomposte in termini individuali.</p></td>
    </tr>
 </table>
 <p>Il filtro <code translate="no">decompounder</code> opera sui termini generati dal tokenizer, quindi deve essere usato in combinazione con un tokenizer. Per un elenco dei tokenizer disponibili in Milvus, consultare <a href="/docs/it/tokenizers">Tokenizer Reference</a>.</p>

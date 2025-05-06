@@ -2,7 +2,7 @@
 id: standard-analyzer.md
 title: 標準アナライザー
 summary: >-
-  標準アナライザーはMilvusのデフォルトアナライザーで、アナライザーが指定されていない場合は自動的にテキストフィールドに適用されます。文法に基づいたトークン化を使用するため、ほとんどの言語に有効です。
+  標準アナライザーはMilvusのデフォルトアナライザーであり、アナライザーが指定されていない場合は自動的にテキストフィールドに適用されます。文法に基づいたトークン化を使用するため、ほとんどの言語に有効です。
 ---
 <h1 id="Standard-Analyzer" class="common-anchor-header">標準アナライザー<button data-href="#Standard-Analyzer" class="anchor-icon" translate="no">
       <svg translate="no"

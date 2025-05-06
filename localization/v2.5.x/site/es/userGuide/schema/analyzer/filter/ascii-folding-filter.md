@@ -5,8 +5,8 @@ summary: >-
   El filtro asciifolding convierte los caracteres que quedan fuera del bloque
   Unicode latino básico (los 127 primeros caracteres ASCII) en sus equivalentes
   ASCII. Por ejemplo, transforma caracteres como í en i, lo que simplifica el
-  tratamiento de textos y lo hace más coherente, especialmente en el caso de
-  contenidos multilingües.
+  tratamiento de textos y lo hace más coherente, especialmente para contenidos
+  multilingües.
 ---
 <h1 id="ASCII-folding" class="common-anchor-header">Plegado ASCII<button data-href="#ASCII-folding" class="anchor-icon" translate="no">
       <svg translate="no"

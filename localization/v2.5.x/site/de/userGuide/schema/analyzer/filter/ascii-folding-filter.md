@@ -4,9 +4,8 @@ title: ASCII-Faltung
 summary: >-
   Der asciifolding-Filter wandelt Zeichen außerhalb des Basic Latin
   Unicode-Blocks (die ersten 127 ASCII-Zeichen) in ihre ASCII-Entsprechung um.
-  So werden beispielsweise Zeichen wie í in i umgewandelt, was die
-  Textverarbeitung einfacher und konsistenter macht, insbesondere bei
-  mehrsprachigen Inhalten.
+  Er wandelt zum Beispiel Zeichen wie í in i um, was die Textverarbeitung
+  einfacher und konsistenter macht, insbesondere bei mehrsprachigen Inhalten.
 ---
 <h1 id="ASCII-folding" class="common-anchor-header">ASCII-Faltung<button data-href="#ASCII-folding" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -68,7 +67,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
 
 <button class="copy-code-btn"></button></code></pre>
 <p>Der <code translate="no">asciifolding</code> -Filter arbeitet mit den vom Tokenizer erzeugten Begriffen, so dass er in Kombination mit einem Tokenizer verwendet werden muss. Eine Liste der in Milvus verfügbaren Tokenizer finden Sie in der <a href="/docs/de/tokenizers">Tokenizer-Referenz</a>.</p>
-<p>Nachdem Sie <code translate="no">analyzer_params</code> definiert haben, können Sie sie bei der Definition eines Sammelschemas auf ein <code translate="no">VARCHAR</code> Feld anwenden. Dies ermöglicht es Milvus, den Text in diesem Feld mit dem angegebenen Analysator für eine effiziente Tokenisierung und Filterung zu verarbeiten. Einzelheiten finden Sie unter <a href="/docs/de/analyzer-overview.md#Example-use">Beispielanwendung</a>.</p>
+<p>Nachdem Sie <code translate="no">analyzer_params</code> definiert haben, können Sie sie bei der Definition eines Sammelschemas auf ein <code translate="no">VARCHAR</code> Feld anwenden. Dies ermöglicht es Milvus, den Text in diesem Feld unter Verwendung des angegebenen Analysators für eine effiziente Tokenisierung und Filterung zu verarbeiten. Einzelheiten finden Sie unter <a href="/docs/de/analyzer-overview.md#Example-use">Beispielanwendung</a>.</p>
 <h2 id="Examples" class="common-anchor-header">Beispiele<button data-href="#Examples" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

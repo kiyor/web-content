@@ -50,12 +50,12 @@ summary: >-
     </button></h2><p>Ein Analyzer in Milvus besteht aus genau einem <strong>Tokenizer</strong> und <strong>null oder mehr</strong> Filtern.</p>
 <ul>
 <li><p><strong>Tokenisierer</strong>: Der Tokenisierer zerlegt den Eingabetext in diskrete Einheiten, die Token genannt werden. Diese Token können Wörter oder Phrasen sein, je nach Tokenizer-Typ.</p></li>
-<li><p><strong>Filter</strong>: Filter können auf Token angewandt werden, um sie weiter zu verfeinern, z. B. indem sie kleingeschrieben oder gemeinsame Wörter entfernt werden.</p></li>
+<li><p><strong>Filter</strong>: Filter können auf Token angewandt werden, um sie weiter zu verfeinern, z. B. durch Kleinschreibung oder das Entfernen häufiger Wörter.</p></li>
 </ul>
 <div class="alert note">
-<p>Tokenizer unterstützen nur das UTF-8-Format. Unterstützung für andere Formate wird in zukünftigen Versionen hinzugefügt werden.</p>
+<p>Tokenizer unterstützen nur das UTF-8-Format. Die Unterstützung für andere Formate wird in zukünftigen Versionen hinzugefügt werden.</p>
 </div>
-<p>Der folgende Arbeitsablauf zeigt, wie ein Analyzer Text verarbeitet.</p>
+<p>Der folgende Arbeitsablauf zeigt, wie ein Analysator Text verarbeitet.</p>
 <p>
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/analyzer-process-workflow.png" alt="Analyzer Process Workflow" class="doc-image" id="analyzer-process-workflow" />
@@ -159,7 +159,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
    ]
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Milvus bietet die folgenden eingebauten Analyzer, die jeweils für spezifische Textverarbeitungsbedürfnisse entwickelt wurden:</p>
+<p>Milvus bietet die folgenden eingebauten Analyzer an, die jeweils für spezifische Textverarbeitungsanforderungen entwickelt wurden:</p>
 <ul>
 <li><p><code translate="no">standard</code>: Geeignet für die allgemeine Textverarbeitung, mit Standard-Tokenisierung und Kleinbuchstaben-Filterung.</p></li>
 <li><p><code translate="no">english</code>: Optimiert für englischsprachige Texte, mit Unterstützung für englische Stoppwörter.</p></li>
@@ -462,7 +462,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
 <pre><code translate="no" class="language-bash"><span class="hljs-comment"># curl</span>
 <button class="copy-code-btn"></button></code></pre></li>
 </ol>
-<h3 id="Step-3-Add-fields-to-the-schema" class="common-anchor-header">Schritt 3: Felder zum Schema hinzufügen</h3><p>Nachdem Sie die Konfigurationen Ihres Analysators überprüft haben, fügen Sie diese zu den Feldern Ihres Schemas hinzu:</p>
+<h3 id="Step-3-Add-fields-to-the-schema" class="common-anchor-header">Schritt 3: Felder zum Schema hinzufügen</h3><p>Nachdem Sie Ihre Analysator-Konfigurationen überprüft haben, fügen Sie diese zu den Feldern Ihres Schemas hinzu:</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Add VARCHAR field &#x27;title_en&#x27; using the built-in analyzer configuration</span>

@@ -44,7 +44,7 @@ summary: Milvusの英語アナライザーは、トークン化とフィルタ�
 <li><p><code translate="no">stop_words</code>:一般的な英語のストップワードを削除し、テキスト内の重要な用語に焦点を当てます。</p></li>
 </ul></li>
 </ul>
-<p><code translate="no">english</code> アナライザーの機能は、以下のカスタムアナライザー構成と同等です：</p>
+<p><code translate="no">english</code> アナライザーの機能は、以下のカスタム・アナライザー・コンフィギュレーションと同等です：</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">analyzer_params = {

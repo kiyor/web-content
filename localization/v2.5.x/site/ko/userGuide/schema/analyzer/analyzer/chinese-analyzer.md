@@ -74,7 +74,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
-<p><code translate="no">chinese</code> 분석기는 선택적 매개변수를 허용하지 않습니다.</p>
+<p><code translate="no">chinese</code> 분석기는 선택적 매개 변수를 허용하지 않습니다.</p>
 </div>
 <h2 id="Examples" class="common-anchor-header">예제<button data-href="#Examples" class="anchor-icon" translate="no">
       <svg translate="no"

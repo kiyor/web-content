@@ -21,7 +21,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>Filter <code translate="no">stop</code> menghapus kata henti yang ditentukan dari teks yang diberi tanda, sehingga membantu menghilangkan kata-kata umum yang kurang bermakna. Anda dapat mengonfigurasi daftar kata henti menggunakan parameter <code translate="no">stop_words</code>.</p>
+    </button></h1><p>Filter <code translate="no">stop</code> menghapus kata henti yang ditentukan dari teks yang diberi tanda, sehingga membantu menghilangkan kata-kata yang umum dan kurang bermakna. Anda dapat mengonfigurasi daftar kata henti menggunakan parameter <code translate="no">stop_words</code>.</p>
 <h2 id="Configuration" class="common-anchor-header">Konfigurasi<button data-href="#Configuration" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

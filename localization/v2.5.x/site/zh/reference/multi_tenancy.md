@@ -1,7 +1,7 @@
 ---
 id: multi_tenancy.md
 related_key: multi-tenancy
-summary: Milvus 的多租户。
+summary: Milvus 中的多租户。
 title: 多租户策略
 ---
 <h1 id="Multi-tenancy-strategies" class="common-anchor-header">多租户策略<button data-href="#Multi-tenancy-strategies" class="anchor-icon" translate="no">
@@ -72,7 +72,7 @@ title: 多租户策略
       </svg>
     </button></h2><p>有两种方法可以实现面向分区的多租户：</p>
 <h3 id="One-partition-per-tenant" class="common-anchor-header">每个租户一个分区</h3><p>管理一个 Collection 比管理多个 Collection 容易得多。与其创建多个 Collections，不如考虑为每个租户分配一个分区，以实现灵活的数据隔离和内存管理。面向分区的多租户的搜索性能要比面向 Collection 的多租户好得多。但需要注意的是，Collection 的租户数量不应超过一个 Collection 所能容纳的最大分区数。</p>
-<h3 id="Partition-key-based-multi-tenancy" class="common-anchor-header">基于 Partition Key 的多租户功能</h3><p>Milvus 2.2.9 引入了一项名为分区密钥的新功能。创建 Collections 时，指定一个租户字段并将其作为 Partition Key 字段。Milvus 会根据分区 Key 字段的哈希值将实体存储在分区中。在进行 ANN 搜索时，Milvus 只搜索包含分区键的分区。这将在很大程度上缩小搜索范围，从而获得比不使用分区关键字更好的性能。</p>
+<h3 id="Partition-key-based-multi-tenancy" class="common-anchor-header">基于 Partition Key 的多租户功能</h3><p>Milvus 2.2.9 引入了一项名为分区密钥的新功能。创建 Collections 时，指定一个租户字段并将其作为 Partition Key 字段。Milvus 将根据分区 Key 字段的哈希值把实体存储在分区中。在进行 ANN 搜索时，Milvus 只搜索包含分区键的分区。这将在很大程度上缩小搜索范围，从而获得比不使用分区关键字更好的性能。</p>
 </div>
 <p>这种策略解除了 Milvus Collections 可支持的最大租户数限制，并大大简化了资源管理，因为 Milvus 会自动为你管理分区。</p>
 <p>总而言之，你可以使用上述任一或某些多租户策略来形成自己的解决方案。下表从数据隔离、搜索性能和最大租户数等方面对这些策略进行了比较。</p>

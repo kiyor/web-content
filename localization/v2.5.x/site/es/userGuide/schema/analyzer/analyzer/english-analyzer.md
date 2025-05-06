@@ -41,7 +41,7 @@ summary: >-
 <li><p><strong>Tokenizador</strong>: Utiliza el<a href="/docs/es/standard-tokenizer.md"> tokenizador</a> <code translate="no">standard</code><a href="/docs/es/standard-tokenizer.md"></a> para dividir el texto en unidades discretas de palabras.</p></li>
 <li><p><strong>Filtros</strong>: Incluye varios filtros para el tratamiento exhaustivo del texto:</p>
 <ul>
-<li><p><code translate="no">lowercase</code>: Convierte todos los tokens a minúsculas, lo que permite realizar búsquedas sin distinción entre mayúsculas y minúsculas.</p></li>
+<li><p><code translate="no">lowercase</code>: Convierte todos los tokens a minúsculas, lo que permite realizar búsquedas sin distinguir mayúsculas de minúsculas.</p></li>
 <li><p><code translate="no">stemmer</code>: Reduce las palabras a su raíz para permitir una búsqueda más amplia (por ejemplo, "correr" se convierte en "correr").</p></li>
 <li><p><code translate="no">stop_words</code>: Elimina las palabras de parada comunes en inglés para centrarse en los términos clave del texto.</p></li>
 </ul></li>

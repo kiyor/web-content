@@ -83,7 +83,7 @@ summary: >-
 <div class="alert note">
 <p>Se omitir as configurações do analisador durante a criação da coleção, o Milvus utiliza por defeito o analisador <code translate="no">standard</code> para todo o processamento de texto. Para obter detalhes, consulte <a href="/docs/pt/standard-analyzer.md">Padrão</a>.</p>
 </div>
-<h3 id="Built-in-analyzer" class="common-anchor-header">Analisador incorporado</h3><p>Os analisadores incorporados no Milvus são pré-configurados com tokenizadores e filtros específicos, permitindo a sua utilização imediata sem necessidade de definir estes componentes. Cada analisador integrado serve como um modelo que inclui um tokenizador e filtros predefinidos, com parâmetros opcionais para personalização.</p>
+<h3 id="Built-in-analyzer" class="common-anchor-header">Analisador incorporado</h3><p>Os analisadores incorporados no Milvus são pré-configurados com tokenizadores e filtros específicos, permitindo a sua utilização imediata sem necessidade de definir estes componentes. Cada analisador incorporado serve como um modelo que inclui um tokenizador e filtros predefinidos, com parâmetros opcionais para personalização.</p>
 <p>Por exemplo, para usar o analisador interno <code translate="no">standard</code>, basta especificar seu nome <code translate="no">standard</code> como <code translate="no">type</code> e, opcionalmente, incluir configurações extras específicas para esse tipo de analisador, como <code translate="no">stop_words</code>:</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
@@ -163,7 +163,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
 <ul>
 <li><p><code translate="no">standard</code>: Adequado para processamento de texto de uso geral, aplicando tokenização padrão e filtragem de minúsculas.</p></li>
 <li><p><code translate="no">english</code>: Optimizado para texto em inglês, com suporte para stop words em inglês.</p></li>
-<li><p><code translate="no">chinese</code>: Especializado para o processamento de texto em chinês, incluindo tokenização adaptada às estruturas do idioma chinês.</p></li>
+<li><p><code translate="no">chinese</code>: Especializado para o processamento de texto chinês, incluindo tokenização adaptada às estruturas do idioma chinês.</p></li>
 </ul>
 <p>Para obter uma lista de analisadores incorporados e as respectivas definições personalizáveis, consulte <a href="/docs/pt/built-in-analyzers">Referência do analisador incorporado</a>.</p>
 <h3 id="Custom-analyzer" class="common-anchor-header">Analisador personalizado</h3><p>Para um processamento de texto mais avançado, os analisadores personalizados no Milvus permitem-lhe construir um pipeline de tratamento de texto personalizado, especificando um <strong>tokenizador</strong> e <strong>filtros</strong>. Esta configuração é ideal para casos de uso especializado onde é necessário um controlo preciso.</p>
@@ -283,7 +283,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
     ]
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Para obter uma lista de tipos de filtros disponíveis e os seus parâmetros específicos, consulte <a href="/docs/pt/filters">Referência de filtros</a>.</p></li>
+<p>Para obter uma lista dos tipos de filtros disponíveis e dos seus parâmetros específicos, consulte <a href="/docs/pt/filters">Referência de filtros</a>.</p></li>
 </ul>
 <h2 id="Example-use" class="common-anchor-header">Exemplo de utilização<button data-href="#Example-use" class="anchor-icon" translate="no">
       <svg translate="no"

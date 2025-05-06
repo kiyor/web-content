@@ -95,7 +95,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
    </tr>
    <tr>
      <td><p><code translate="no">stop_words</code></p></td>
-     <td><p>トークン化から削除する単語のリスト。デフォルトでは、一般的な英語のストップワードを含む、事前に定義された<code translate="no">_english_</code> のリストが使われます。<code translate="no">_english_</code> の詳細は<a href="https://github.com/milvus-io/milvus/blob/master/internal/core/thirdparty/tantivy/tantivy-binding/src/stop_words.rs">こちらを</a>ご覧ください。</p></td>
+     <td><p>トークン化から除去する単語のリスト。デフォルトでは、一般的な英語のストップワードを含む、事前に定義された<code translate="no">_english_</code> のリストが使われます。<code translate="no">_english_</code> の詳細は<a href="https://github.com/milvus-io/milvus/blob/master/internal/core/thirdparty/tantivy/tantivy-binding/src/stop_words.rs">こちらを</a>ご覧ください。</p></td>
    </tr>
 </table>
 <p><code translate="no">stop</code> フィルタは、トークナイザによって生成された単語を処理するため、トークナイザと組み合わせて使用する必要があります。Milvusで利用可能なトークナイザーのリストについては、<a href="/docs/ja/tokenizers">トークナイザーリファレンスを</a>参照してください。</p>

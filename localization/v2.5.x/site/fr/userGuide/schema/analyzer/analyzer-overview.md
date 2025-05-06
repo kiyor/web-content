@@ -309,7 +309,7 @@ analyzerParams.put(<span class="hljs-string">&quot;filter&quot;</span>,
 <li><p>L'autre utilise un analyseur personnalisé.</p></li>
 </ul></li>
 </ul>
-<h3 id="Step-1-Initialize-MilvusClient-and-create-schema" class="common-anchor-header">Etape 1 : Initialisation de MilvusClient et création du schéma</h3><p>Commencez par configurer le client Milvus et par créer un nouveau schéma.</p>
+<h3 id="Step-1-Initialize-MilvusClient-and-create-schema" class="common-anchor-header">Étape 1 : initialisation de MilvusClient et création du schéma</h3><p>Commencez par configurer le client Milvus et par créer un nouveau schéma.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient, DataType
