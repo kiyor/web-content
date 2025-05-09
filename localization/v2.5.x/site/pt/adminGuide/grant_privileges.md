@@ -78,7 +78,7 @@ summary: >-
 <td><p>Introduzir <code translate="no"><em></code> como o nome da base de dados e <code translate="no"></em></code> como o nome da coleção.</p></td>
 </tr>
 </table></p></li>
-<li><p><strong>Privilégio</strong>: O privilégio específico ou <a href="/docs/pt/privilege_group.md">o grupo de privilégios</a> que é necessário conceder a uma função. Atualmente, o Milvus oferece 56 tipos de privilégios que podem ser concedidos. A tabela abaixo lista os privilégios no Milvus.</p>
+<li><p><strong>Privilégio</strong>: O privilégio específico ou o <a href="/docs/pt/privilege_group.md">grupo de privilégios</a> que é necessário conceder a uma função. Atualmente, o Milvus oferece 56 tipos de privilégios que podem ser concedidos. A tabela abaixo lista os privilégios no Milvus.</p>
 <p><div class="alert note"></p>
 <p>A coluna do tipo na tabela abaixo é utilizada para facilitar a pesquisa rápida de privilégios e é utilizada apenas para fins de classificação. Ao conceder privilégios, não precisa de compreender os tipos. Basta introduzir os privilégios correspondentes.</p>
 <p></div></p>

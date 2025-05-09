@@ -2,8 +2,8 @@
 id: grant_privileges.md
 title: Conceder privilegios o grupos de privilegios a roles
 summary: >-
-  Una vez creado un rol, puede concederle privilegios. Esta guía explica cómo
-  conceder privilegios o grupos de privilegios a un rol.
+  Una vez creado un rol, puede concederle privilegios. En esta guía se explica
+  cómo conceder privilegios o grupos de privilegios a un rol.
 ---
 <h1 id="Grant-Privilege-or-Privilege-Group-to-Roles" class="common-anchor-header">Conceder privilegios o grupos de privilegios a roles<button data-href="#Grant-Privilege-or-Privilege-Group-to-Roles" class="anchor-icon" translate="no">
       <svg translate="no"

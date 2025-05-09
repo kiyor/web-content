@@ -325,7 +325,7 @@
     "order": 3,
     "children": [
       {
-        "label": "数据库",
+        "label": "Database",
         "id": "manage_databases.md",
         "order": 0,
         "children": []

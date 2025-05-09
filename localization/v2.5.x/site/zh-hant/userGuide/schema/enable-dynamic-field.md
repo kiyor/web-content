@@ -421,7 +421,7 @@ curl --request POST \
     ]
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Query-and-search-with-dynamic-field" class="common-anchor-header">使用動態欄位查詢和搜尋</h3><p>Milvus 支援在查詢和搜尋過程中使用篩選表達式，允許您指定在結果中包含哪些欄位。以下範例示範如何使用動態欄位來執行查詢和搜尋<code translate="no">color</code> 欄位，該欄位在模式中並未定義。</p>
+<h3 id="Query-and-search-with-dynamic-field" class="common-anchor-header">使用動態欄位查詢和搜尋</h3><p>Milvus 支援在查詢和搜尋過程中使用篩選表達式，允許您指定在結果中包含哪些欄位。以下範例示範如何透過動態欄位，使用模式中未定義的<code translate="no">color</code> 欄位執行查詢與搜尋。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">query_vector = [<span class="hljs-number">0.3580376395471989</span>, -<span class="hljs-number">0.6023495712049978</span>, <span class="hljs-number">0.18414012509913835</span>, -<span class="hljs-number">0.26286205330961354</span>, <span class="hljs-number">0.9029438446296592</span>]

@@ -40,11 +40,11 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>Una colección es una tabla bidimensional con columnas fijas y filas variantes. Cada columna representa un campo y cada fila representa una entidad. Para implementar esta gestión estructural de datos se necesita un esquema. Cada entidad a insertar debe cumplir las restricciones definidas en el esquema.</p>
-<p>Las aplicaciones AIGC suelen utilizar bases de datos vectoriales como base de conocimientos para gestionar los datos generados durante la interacción entre los usuarios y los Grandes Modelos Lingüísticos (LLM). Estas bases de conocimiento son prácticamente similares. Para acelerar el uso de los clusters de Milvus en tales escenarios, se dispone de un método instantáneo para crear una colección con sólo dos parámetros, a saber, el nombre de la colección y la dimensionalidad del campo vectorial.</p>
+<p>Las aplicaciones AIGC suelen utilizar bases de datos vectoriales como base de conocimiento para gestionar los datos generados durante la interacción entre los usuarios y los Grandes Modelos Lingüísticos (LLM). Estas bases de conocimiento son prácticamente similares. Para acelerar el uso de los clusters de Milvus en tales escenarios, se dispone de un método instantáneo para crear una colección con sólo dos parámetros, a saber, el nombre de la colección y la dimensionalidad del campo vectorial.</p>
 <p>Cuando se crea una colección instantáneamente con los parámetros por defecto, se aplican los siguientes parámetros:</p>
 <ul>
 <li><p>Los campos primario y vectorial se añaden al esquema<strong>(id</strong> y <strong>vector</strong>).</p></li>
-<li><p>El campo primario acepta enteros y desactiva <strong>AutoId</strong>.</p></li>
+<li><p>El campo primario acepta números enteros y desactiva <strong>AutoId</strong>.</p></li>
 <li><p>El campo vector acepta incrustaciones de vectores flotantes.</p></li>
 <li><p><strong>AUTOINDEX</strong> se utiliza para crear un índice en el campo vectorial.</p></li>
 <li><p><strong>COSINE</strong> se utiliza para medir similitudes entre incrustaciones vectoriales.</p></li>

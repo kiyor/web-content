@@ -8,8 +8,7 @@ summary: >-
   interrogazione contenuto in una richiesta di ricerca ricevuta, confronta il
   vettore di interrogazione con quelli del sottogruppo e restituisce i risultati
   più simili. Con la ricerca ANN, Milvus offre un'esperienza di ricerca
-  efficiente. Questa pagina aiuta ad apprendere come condurre ricerche ANN di
-  base.
+  efficiente. Questa pagina vi aiuta a imparare a condurre ricerche ANN di base.
 ---
 <h1 id="Basic-Vector-Search" class="common-anchor-header">Ricerca vettoriale di base<button data-href="#Basic-Vector-Search" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -43,7 +42,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>La ricerca ANN e la ricerca k-Nearest Neighbors (kNN) sono i metodi abituali nelle ricerche di similarità vettoriale. In una ricerca kNN, è necessario confrontare tutti i vettori di uno spazio vettoriale con il vettore di query contenuto nella richiesta di ricerca prima di individuare quelli più simili, il che richiede molto tempo e risorse.</p>
-<p>A differenza delle ricerche kNN, un algoritmo di ricerca ANN richiede un file <strong>di indice</strong> che registra l'ordine ordinato delle incorporazioni vettoriali. Quando arriva una richiesta di ricerca, è possibile utilizzare il file di indice come riferimento per individuare rapidamente un sottogruppo contenente probabilmente le incorporazioni vettoriali più simili al vettore interrogato. Quindi, è possibile utilizzare il <strong>tipo di metrica</strong> specificato per misurare la somiglianza tra il vettore di query e quelli del sottogruppo, ordinare i membri del gruppo in base alla somiglianza con il vettore di query e individuare i <strong>primi K</strong> membri del gruppo.</p>
+<p>A differenza delle ricerche kNN, un algoritmo di ricerca ANN richiede un file <strong>di indice</strong> che registra l'ordine ordinato delle incorporazioni vettoriali. Quando arriva una richiesta di ricerca, è possibile utilizzare il file di indice come riferimento per individuare rapidamente un sottogruppo contenente probabilmente le incorporazioni vettoriali più simili al vettore interrogato. Quindi, si può usare il <strong>tipo di metrica</strong> specificato per misurare la somiglianza tra il vettore di query e quelli del sottogruppo, ordinare i membri del gruppo in base alla somiglianza con il vettore di query e determinare i membri del gruppo <strong>top-K</strong>.</p>
 <p>Le ricerche ANN dipendono da indici precostituiti e la velocità di ricerca, l'utilizzo della memoria e la correttezza della ricerca possono variare a seconda del tipo di indice scelto. È necessario bilanciare le prestazioni e la correttezza della ricerca.</p>
 <p>Per ridurre la curva di apprendimento, Milvus offre <strong>AUTOINDEX</strong>. Con <strong>AUTOINDEX</strong>, Milvus è in grado di analizzare la distribuzione dei dati all'interno della collezione durante la creazione dell'indice e di impostare i parametri dell'indice più ottimizzati in base all'analisi per trovare un equilibrio tra prestazioni di ricerca e correttezza.</p>
 <p>In questa sezione troverete informazioni dettagliate sui seguenti argomenti:</p>
@@ -252,7 +251,7 @@ curl --request POST \
 <span class="hljs-comment">#     ]</span>
 <span class="hljs-comment"># }</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Milvus classifica i risultati della ricerca in base al punteggio di somiglianza con il vettore della query in ordine decrescente. Il punteggio di somiglianza è anche definito distanza dal vettore di query e i suoi valori variano a seconda dei tipi di metrica utilizzati.</p>
+<p>Milvus classifica i risultati della ricerca in base al punteggio di somiglianza con il vettore della query in ordine decrescente. Il punteggio di somiglianza è anche chiamato distanza dal vettore di query e i suoi valori variano a seconda dei tipi di metrica utilizzati.</p>
 <p>La tabella seguente elenca i tipi di metrica applicabili e i corrispondenti intervalli di distanza.</p>
 <table>
    <tr>
@@ -972,10 +971,10 @@ curl --request POST \
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>AUTOINDEX appiattisce notevolmente la curva di apprendimento delle ricerche di RNA. Tuttavia, i risultati della ricerca potrebbero non essere sempre corretti con l'aumentare del top-K. Riducendo la portata della ricerca, migliorando la pertinenza dei risultati e diversificando i risultati, Milvus elabora i seguenti miglioramenti della ricerca.</p>
+    </button></h2><p>AUTOINDEX appiattisce notevolmente la curva di apprendimento delle ricerche ANN. Tuttavia, i risultati della ricerca potrebbero non essere sempre corretti con l'aumentare del top-K. Riducendo la portata della ricerca, migliorando la pertinenza dei risultati e diversificando i risultati, Milvus elabora i seguenti miglioramenti della ricerca.</p>
 <ul>
 <li><p>Ricerca filtrata</p>
-<p>È possibile includere condizioni di filtraggio in una richiesta di ricerca, in modo che Milvus effettui un filtraggio dei metadati prima di effettuare ricerche sull'RNA, riducendo l'ambito di ricerca dall'intera raccolta alle sole entità che corrispondono alle condizioni di filtraggio specificate.</p>
+<p>È possibile includere condizioni di filtraggio in una richiesta di ricerca, in modo che Milvus esegua un filtraggio dei metadati prima di eseguire ricerche sull'RNA, riducendo l'ambito di ricerca dall'intera raccolta alle sole entità che corrispondono alle condizioni di filtraggio specificate.</p>
 <p>Per ulteriori informazioni sul filtraggio dei metadati e sulle condizioni di filtraggio, consultare <a href="/docs/it/filtered-search.md">Ricerca filtrata</a> e <a href="/docs/it/filtering">Filtraggio</a>.</p></li>
 <li><p>Ricerca per intervallo</p>
 <p>È possibile migliorare la pertinenza dei risultati della ricerca limitando la distanza o il punteggio delle entità restituite all'interno di un intervallo specifico. In Milvus, una ricerca per intervallo comporta il disegno di due cerchi concentrici con al centro l'incorporamento vettoriale più simile al vettore della query. La richiesta di ricerca specifica il raggio di entrambi i cerchi e Milvus restituisce tutte le incorporazioni vettoriali che rientrano nel cerchio esterno ma non in quello interno.</p>

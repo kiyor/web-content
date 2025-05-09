@@ -407,7 +407,7 @@ curl --request POST \
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <p>Anda juga dapat membuat koleksi tanpa parameter indeks dan menambahkannya setelahnya. Dalam kasus ini, Milvus tidak memuat koleksi pada saat pembuatannya. .</p>
-<p>Cuplikan kode berikut ini menunjukkan cara membuat koleksi tanpa koleksi, dan status pemuatan koleksi tetap tidak dimuat pada saat pembuatan.</p>
+<p>Cuplikan kode berikut ini mendemonstrasikan cara membuat koleksi tanpa koleksi, dan status pemuatan koleksi tetap tidak dimuat pada saat pembuatan.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># 3.6. Create a collection and index it separately</span>
@@ -748,5 +748,5 @@ curl --request POST \
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <p>Untuk mengetahui lebih lanjut tentang tingkat konsistensi, lihat <a href="/docs/id/tune_consistency.md">Tingkat Konsistensi</a>.</p>
-<h3 id="Enable-Dynamic-Field" class="common-anchor-header">Mengaktifkan Bidang Dinamis</h3><p>Bidang dinamis dalam koleksi adalah bidang JavaScript Object Notation (JSON) yang dicadangkan bernama <strong>$meta</strong>. Setelah Anda mengaktifkan bidang ini, Milvus menyimpan semua bidang yang tidak ditentukan skema yang dibawa dalam setiap entitas dan nilainya sebagai pasangan nilai-kunci dalam bidang yang dicadangkan.</p>
+<h3 id="Enable-Dynamic-Field" class="common-anchor-header">Mengaktifkan Bidang Dinamis</h3><p>Bidang dinamis dalam koleksi adalah bidang JavaScript Object Notation (JSON) yang dicadangkan bernama <strong>$meta</strong>. Setelah Anda mengaktifkan bidang ini, Milvus menyimpan semua bidang yang tidak ditentukan skema yang dibawa dalam setiap entitas dan nilainya sebagai pasangan kunci-nilai dalam bidang yang dicadangkan.</p>
 <p>Untuk detail mengenai cara menggunakan bidang dinamis, lihat <a href="/docs/id/enable-dynamic-field.md">Bidang Dinamis</a>.</p>

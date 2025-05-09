@@ -148,7 +148,7 @@ milvus_client.create_collection(
 <p><strong>2. Inserire i dati in Milvus</strong></p>
 <p>In questa fase, si utilizza un codificatore di immagini predefinito per generare le incorporazioni di tutte le immagini JPEG presenti nella directory dei dati di esempio. Questi embeddings vengono poi inseriti nella raccolta di Milvus, insieme ai percorsi dei file corrispondenti. Ogni voce della raccolta è composta da:</p>
 <ul>
-<li><strong>Vettore di incorporazione</strong>: La rappresentazione numerica dell'immagine. Memorizzato nel campo <code translate="no">vector</code>.</li>
+<li><strong>Vettore di incorporamento</strong>: La rappresentazione numerica dell'immagine. Memorizzato nel campo <code translate="no">vector</code>.</li>
 <li><strong>Percorso del file</strong>: La posizione del file dell'immagine come riferimento. Memorizzato nel campo <code translate="no">filepath</code> come campo dinamico.</li>
 </ul>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> os

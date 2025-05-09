@@ -5,7 +5,7 @@ summary: >-
   الصور المستند إلى النصوص باستخدام نموذج CLIP (التدريب المسبق على لغة
   التباين-الصور المتباينة) من OpenAI و Milvus. سنقوم بإنشاء تضمينات للصور
   باستخدام CLIP، وتخزينها في Milvus، وإجراء عمليات بحث فعالة عن التشابه.
-title: البحث من نص إلى صورة باستخدام ميلفوس
+title: البحث من نص إلى صورة مع ميلفوس
 ---
 <p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
@@ -13,7 +13,7 @@ title: البحث من نص إلى صورة باستخدام ميلفوس
 <a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
-<h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">البحث من نص إلى صورة باستخدام ميلفوس<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
+<h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">البحث من نص إلى صورة مع ميلفوس<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"
@@ -28,8 +28,8 @@ title: البحث من نص إلى صورة باستخدام ميلفوس
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>البحث من نص إلى صورة هو تقنية متقدمة تسمح للمستخدمين بالبحث عن الصور باستخدام أوصاف نصية بلغة طبيعية. وهي تستفيد من نموذج متعدد الوسائط تم تدريبه مسبقًا لتحويل كل من النص والصور إلى تضمينات في فضاء دلالي مشترك، مما يتيح إجراء مقارنات قائمة على التشابه.</p>
-<p>في هذا البرنامج التعليمي، سنستكشف في هذا البرنامج التعليمي كيفية تنفيذ استرجاع الصور المستند إلى النص باستخدام نموذج CLIP (التدريب المسبق على اللغة المتباينة والصور) من OpenAI و Milvus. سنقوم بإنشاء تضمينات للصور باستخدام CLIP، وتخزينها في Milvus، وإجراء عمليات بحث فعالة عن التشابه.</p>
+    </button></h1><p>البحث من نص إلى صورة هي تقنية متقدمة تسمح للمستخدمين بالبحث عن الصور باستخدام أوصاف نصية بلغة طبيعية. وهي تستفيد من نموذج متعدد الوسائط تم تدريبه مسبقًا لتحويل كل من النص والصور إلى تضمينات في فضاء دلالي مشترك، مما يتيح إجراء مقارنات قائمة على التشابه.</p>
+<p>في هذا البرنامج التعليمي، سنستكشف في هذا البرنامج التعليمي كيفية تنفيذ استرجاع الصور المستند إلى النص باستخدام نموذج CLIP (التدريب المسبق على اللغة المتباينة والصور) من OpenAI و Milvus. سنقوم بتوليد تضمينات الصور باستخدام CLIP، وتخزينها في Milvus، وإجراء عمليات بحث فعالة عن التشابه.</p>
 <h2 id="Prerequisites" class="common-anchor-header">المتطلبات الأساسية<button data-href="#Prerequisites" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -87,12 +87,12 @@ milvus_client = MilvusClient(uri=<span class="hljs-string">&quot;milvus.db&quot;
         ></path>
       </svg>
     </button></h2><p>الآن بعد أن أصبحت لديك التبعيات والبيانات اللازمة، حان الوقت لإعداد مستخرجات الميزات وبدء العمل مع ميلفوس. سيرشدك هذا القسم إلى الخطوات الرئيسية لبناء نظام بحث من نص إلى صورة. أخيرًا، سنشرح كيفية استرداد الصور وتصورها بناءً على استعلامات نصية.</p>
-<h3 id="Define-feature-extractors" class="common-anchor-header">تحديد مستخرجات الميزات</h3><p>سنستخدم نموذج CLIP المدرّب مسبقًا لإنشاء تضمينات الصور والنصوص. في هذا القسم، سنقوم بتحميل متغير <strong>ViT-B/32</strong> المدرب مسبقًا من CLIP وتحديد الدوال المساعدة لترميز الصور والنصوص:</p>
+<h3 id="Define-feature-extractors" class="common-anchor-header">تحديد مستخرجات الميزات</h3><p>سنستخدم نموذج CLIP المدرّب مسبقًا لإنشاء تضمينات الصور والنصوص. في هذا القسم، سنقوم بتحميل متغير <strong>ViT-B/32</strong> المدرب مسبقًا من CLIP وتعريف الدوال المساعدة لترميز الصور والنصوص:</p>
 <ul>
 <li><code translate="no">encode_image(image_path)</code>: معالجة الصور وترميزها إلى متجهات ميزات</li>
 <li><code translate="no">encode_text(text)</code>: ترميز الاستعلامات النصية إلى متجهات ميزات</li>
 </ul>
-<p>تعمل كلتا الدالتين على تطبيع ميزات الإخراج لضمان اتساق المقارنات من خلال تحويل المتجهات إلى وحدة الطول، وهو أمر ضروري لحسابات دقيقة لتشابه جيب التمام.</p>
+<p>تقوم كلتا الدالتين بتطبيع ميزات الإخراج لضمان اتساق المقارنات من خلال تحويل المتجهات إلى وحدة الطول، وهو أمر ضروري لحسابات دقيقة لتشابه جيب التمام.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> clip
 <span class="hljs-keyword">from</span> PIL <span class="hljs-keyword">import</span> Image
 

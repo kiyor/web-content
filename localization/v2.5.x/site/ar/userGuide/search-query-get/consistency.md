@@ -47,7 +47,7 @@ title: الاتساق
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/service-time-and-guarantee-time.png" alt="ServiceTime and GuaranteeTs" class="doc-image" id="servicetime-and-guaranteets" />
    </span> <span class="img-wrapper"> <span>وقت الخدمة و GuaranteeTs</span> </span></p>
 <p>كما هو موضح في الشكل أعلاه، إذا كان GuaranteeTs أقل من ServiceTime، فهذا يعني أن جميع البيانات قبل النقطة الزمنية المحددة قد تمت كتابتها بالكامل على القرص، مما يسمح ل QueryNodes بتنفيذ عملية البحث على الفور. عندما يكون GuaranteeTs أكبر من ServiceTime، يجب أن تنتظر عقد الاستعلام حتى يتجاوز وقت الخدمة GuaranteeTs قبل أن تتمكن من تنفيذ عملية البحث.</p>
-<p>يحتاج المستخدمون إلى إجراء مفاضلة بين دقة الاستعلام وزمن الاستعلام. إذا كان المستخدمون لديهم متطلبات اتساق عالية وليس لديهم حساسية تجاه زمن انتقال الاستعلام، فيمكنهم تعيين GuaranteeTs إلى قيمة كبيرة قدر الإمكان؛ إذا كان المستخدمون يرغبون في تلقي نتائج البحث بسرعة ويتحملون دقة الاستعلام، فيمكن تعيين GuaranteeTs إلى قيمة أصغر.</p>
+<p>يحتاج المستخدمون إلى إجراء مفاضلة بين دقة الاستعلام وزمن الاستعلام. إذا كان المستخدمون لديهم متطلبات اتساق عالية وليس لديهم حساسية تجاه زمن تأخر الاستعلام، فيمكنهم تعيين GuaranteeTs على قيمة كبيرة قدر الإمكان؛ إذا كان المستخدمون يرغبون في تلقي نتائج البحث بسرعة ويتحملون دقة الاستعلام، فيمكن تعيين GuaranteeTs على قيمة أصغر.</p>
 <p>
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/consistency-level-illustrated.png" alt="Consistency Levels Illustrated" class="doc-image" id="consistency-levels-illustrated" />
@@ -147,7 +147,7 @@ curl --request POST \​
 <pre><code translate="no" class="language-python">res = client.search(​
     collection_name=<span class="hljs-string">&quot;my_collection&quot;</span>,​
     data=[query_vector],​
-    <span class="hljs-built_in">limit</span>=3,​
+    limit=<span class="hljs-number">3</span>,​
     search_params={<span class="hljs-string">&quot;metric_type&quot;</span>: <span class="hljs-string">&quot;IP&quot;</span>}，​
     <span class="hljs-comment"># highlight-start​</span>
     consistency_level=<span class="hljs-string">&quot;Bounded&quot;</span>,​

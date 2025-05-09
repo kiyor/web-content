@@ -52,7 +52,7 @@ summary: 创建角色后，就可以向角色授予权限。本指南将介绍�
 <td><p>输入目标集合的名称和目标集合所属数据库的名称。</p></td>
 </tr>
 <tr>
-<td><p>特定数据库下的所有 Collections</p></td>
+<td><p>特定数据库下的所有 Collection</p></td>
 <td><p>client.grant_privilege_v2(role_name="roleA", privilege="CollectionAdmin", collection_name="<em>", db_name="db1")</p></td>
 <td><p>输入目标数据库名称和通配符 <code translate="no"></em></code>作为 Collections 名称。</p></td>
 </tr>
@@ -75,7 +75,7 @@ summary: 创建角色后，就可以向角色授予权限。本指南将介绍�
 <td><p>输入 <code translate="no"><em></code>作为数据库名称， <code translate="no"></em></code>作为 Collections 名称。</p></td>
 </tr>
 </table></p></li>
-<li><p><strong>权限</strong>：需要授予角色的特定权限或<a href="/docs/zh/privilege_group.md">权限组</a>。目前，Milvus 提供 56 种可授予的特权。下表列出了 Milvus 中的特权。</p>
+<li><p><strong>权限</strong>：需要授予角色的特定权限或<a href="/docs/zh/privilege_group.md">权限组</a>。目前，Milvus 提供了 56 种可授予的特权。下表列出了 Milvus 中的特权。</p>
 <p><div class="alert note"></p>
 <p>下表中的类型列是用户为方便快速查找特权而设置的，仅用于分类目的。授予权限时，不需要了解类型。只需输入相应的权限即可。</p>
 <p></div></p>

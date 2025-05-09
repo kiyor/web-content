@@ -979,7 +979,7 @@ curl --request POST \
 <p>Pour en savoir plus sur le filtrage des métadonnées et les conditions de filtrage, voir <a href="/docs/fr/filtered-search.md">Recherche filtrée</a> et <a href="/docs/fr/filtering">Filtrage</a>.</p></li>
 <li><p>Recherche par plage</p>
 <p>Vous pouvez améliorer la pertinence des résultats de la recherche en limitant la distance ou le score des entités renvoyées à une plage spécifique. Dans Milvus, une recherche par plage consiste à dessiner deux cercles concentriques dont le centre est l'intégration vectorielle la plus similaire au vecteur de la requête. La requête de recherche spécifie le rayon des deux cercles et Milvus renvoie tous les enregistrements vectoriels qui se trouvent dans le cercle extérieur mais pas dans le cercle intérieur.</p>
-<p>Pour plus d'informations sur la recherche par plage, reportez-vous à la section <a href="/docs/fr/range-search.md">Recherche par plage</a>.</p></li>
+<p>Pour en savoir plus sur la recherche par plage, reportez-vous à la section <a href="/docs/fr/range-search.md">Recherche par plage</a>.</p></li>
 <li><p>Recherche de regroupement</p>
 <p>Si les entités renvoyées ont la même valeur dans un champ spécifique, les résultats de la recherche peuvent ne pas représenter la distribution de tous les ancrages vectoriels dans l'espace vectoriel. Pour diversifier les résultats de la recherche, envisagez d'utiliser la recherche par regroupement.</p>
 <p>Pour en savoir plus sur la recherche par regroupement, reportez-vous à la section <a href="/docs/fr/grouping-search.md">Recherche par regroupement</a>,</p></li>

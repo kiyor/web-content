@@ -115,7 +115,7 @@ summary: 역할이 만들어지면 해당 역할에 권한을 부여할 수 있�
 <tr>
 <td rowspan="18"><p>수집 권한</p></td>
 <td><p>GetFlushState</p></td>
-<td><p>컬렉션 플러시 작업 상태 확인</p></td>
+<td><p>컬렉션 플러시 작업의 상태를 확인합니다.</p></td>
 <td><p><a href="https://milvus.io/api-reference/pymilvus/v2.5.x/ORM/Collection/flush.md">GetFlushState</a></p></td>
 </tr>
 <tr>

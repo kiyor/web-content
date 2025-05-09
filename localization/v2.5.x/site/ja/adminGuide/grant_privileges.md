@@ -34,7 +34,7 @@ summary: ロールが作成されると、そのロールに権限を付与す�
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Milvus2.5では、付与操作を効率化する新しいバージョンのAPIが導入されました。ロールに権限を付与する際に、オブジェクトタイプを調べる必要がなくなりました。以下にパラメータとその説明を示します。</p>
+    </button></h2><p>Milvus 2.5では、付与操作を効率化する新しいバージョンのAPIが導入されました。ロールに権限を付与する際に、オブジェクトタイプを調べる必要がなくなりました。以下にパラメータとその説明を示します。</p>
 <ul>
 <li><p><strong>role_name:</strong>特権または特権グループを付与する対象となるロールの名前です。</p></li>
 <li><p><strong>リソース</strong>：特定のインスタンス、データベース、コレクションを指定することができます。以下の表では、<code translate="no">client.grantV2()</code> メソッドでリソースを指定する方法を説明します。</p>
@@ -543,7 +543,7 @@ curl --request POST \
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>次の例では、<code translate="no">describe_role</code> メソッドを使用して、ロール<code translate="no">role_a</code> に付与された権限を表示する方法を示します。</p>
+    </button></h2><p>次の例は、<code translate="no">describe_role</code> メソッドを使用して、ロール<code translate="no">role_a</code> に付与された権限を表示する方法を示しています。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient

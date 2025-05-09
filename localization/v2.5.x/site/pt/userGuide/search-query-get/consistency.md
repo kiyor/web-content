@@ -52,10 +52,10 @@ title: Consistência
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/consistency-level-illustrated.png" alt="Consistency Levels Illustrated" class="doc-image" id="consistency-levels-illustrated" />
    </span> <span class="img-wrapper"> <span>Níveis de consistência ilustrados</span> </span></p>
-<p>O Milvus oferece quatro tipos de níveis de consistência com diferentes GuaranteeTs.</p>
+<p>O Milvus fornece quatro tipos de níveis de consistência com diferentes GuaranteeTs.</p>
 <ul>
 <li><p><strong>Forte</strong></p>
-<p>O carimbo de data/hora mais recente é utilizado como GuaranteeTs e os QueryNodes têm de aguardar que o ServiceTime cumpra os GuaranteeTs antes de executarem os pedidos de pesquisa.</p></li>
+<p>O carimbo de data/hora mais recente é utilizado como GuaranteeTs e os QueryNodes têm de esperar até que o ServiceTime cumpra os GuaranteeTs antes de executarem os pedidos de pesquisa.</p></li>
 <li><p><strong>Eventual</strong></p>
 <p>O GuaranteeTs é definido para um valor extremamente pequeno, como 1, para evitar verificações de consistência, de modo a que os QueryNodes possam executar imediatamente pedidos de Pesquisa em todos os dados do lote.</p></li>
 <li><p><strong>Limitado</strong>(predefinição)</p>
@@ -147,7 +147,7 @@ curl --request POST \​
 <pre><code translate="no" class="language-python">res = client.search(​
     collection_name=<span class="hljs-string">&quot;my_collection&quot;</span>,​
     data=[query_vector],​
-    <span class="hljs-built_in">limit</span>=3,​
+    limit=<span class="hljs-number">3</span>,​
     search_params={<span class="hljs-string">&quot;metric_type&quot;</span>: <span class="hljs-string">&quot;IP&quot;</span>}，​
     <span class="hljs-comment"># highlight-start​</span>
     consistency_level=<span class="hljs-string">&quot;Bounded&quot;</span>,​

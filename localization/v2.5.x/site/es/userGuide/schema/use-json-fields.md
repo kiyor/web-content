@@ -397,7 +397,7 @@ curl --request POST \
 <li><p><strong>Lógica de filtrado</strong>:</p>
 <ul>
 <li><p>Si <strong>crea un índice de tipo doble</strong> (<code translate="no">json_cast_type=&quot;double&quot;</code>), sólo las condiciones de filtro de tipo numérico pueden utilizar el índice. Si el filtro compara un índice doble con una condición no numérica, Milvus vuelve a la búsqueda por fuerza bruta.</p></li>
-<li><p>Si <strong>crea un índice de tipo varchar</strong> (<code translate="no">json_cast_type=&quot;varchar&quot;</code>), sólo las condiciones de filtro de tipo cadena pueden utilizar el índice. En caso contrario, Milvus vuelve a la fuerza bruta.</p></li>
+<li><p>Si <strong>crea un índice de tipo varchar</strong> (<code translate="no">json_cast_type=&quot;varchar&quot;</code>), sólo las condiciones de filtro de tipo cadena pueden utilizar el índice. De lo contrario, Milvus vuelve a la fuerza bruta.</p></li>
 <li><p>La indexación<strong>booleana</strong> se comporta de forma similar a la de tipo varchar.</p></li>
 </ul></li>
 <li><p><strong>Expresiones de términos</strong>:</p>
@@ -410,7 +410,7 @@ curl --request POST \
 </ul></li>
 <li><p><strong>Integridad de los datos</strong>:</p>
 <ul>
-<li>Milvus no analiza ni transforma las claves JSON más allá del reparto especificado. Si los datos de origen son incoherentes (por ejemplo, algunas filas almacenan una cadena para la clave <code translate="no">&quot;k&quot;</code> mientras que otras almacenan un número), algunas filas no se indexarán.</li>
+<li>Milvus no analiza ni transforma claves JSON más allá de su reparto especificado. Si los datos de origen son incoherentes (por ejemplo, algunas filas almacenan una cadena para la clave <code translate="no">&quot;k&quot;</code> mientras que otras almacenan un número), algunas filas no se indexarán.</li>
 </ul></li>
 </ul>
 <h3 id="Index-a-vector-field" class="common-anchor-header">Indexar un campo vectorial</h3><p>El siguiente ejemplo crea un índice en el campo vectorial <code translate="no">embedding</code>, utilizando el tipo de índice <code translate="no">AUTOINDEX</code>. Con este tipo, Milvus selecciona automáticamente el índice más adecuado en función del tipo de datos. También puede personalizar el tipo de índice y los parámetros para cada campo. Para más detalles, consulte <a href="/docs/es/index-explained.md">Índice Explicado</a>.</p>

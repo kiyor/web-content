@@ -140,7 +140,7 @@ title: 發佈筆記
 <tr><td>2.5.8</td><td>2.5.6</td><td>2.5.7</td><td>2.5.6</td></tr>
 </tbody>
 </table>
-<p>我們很高興地宣布 Milvus 2.5.8 正式發行，其特色在於強化 JSON 表達式、UTF-8 驗證、記憶體使用以及平衡邏輯。這個版本也包含多項重要的錯誤修正，以改善並發性和資料處理。我們鼓勵您升級或試用，您的回饋也能幫助我們持續改進 Milvus！</p>
+<p>我們很高興宣佈 Milvus 2.5.8 正式發行，其特色在於強化 JSON 表達式、UTF-8 驗證、記憶體使用以及平衡邏輯。這個版本也包含多項重要的錯誤修正，以改善並發性和資料處理。我們鼓勵您升級或試用，您的回饋也會一如既往地幫助我們不斷改進 Milvus！</p>
 <h3 id="Features" class="common-anchor-header">功能</h3><ul>
 <li>支援 JSON<code translate="no">null</code>/<code translate="no">exists</code> 表達式<a href="https://github.com/milvus-io/milvus/pull/41002">(#41002</a>)</li>
 <li>在大量插入時，支援從 Parquet 結構檔解析稀疏向量<a href="https://github.com/milvus-io/milvus/pull/40874">(#40874</a>)</li>
@@ -159,7 +159,7 @@ title: 發佈筆記
 <li>在<code translate="no">MsgDispatcher</code> 中引入批量訂閱<a href="https://github.com/milvus-io/milvus/pull/40596">(#40596</a>)</li>
 </ul>
 <h3 id="Bug-fixes" class="common-anchor-header">錯誤修正</h3><ul>
-<li>修正了涉及可空輸入和成長中的 mmap 資料類型的當機問題<a href="https://github.com/milvus-io/milvus/pull/40980">(#40980</a>)</li>
+<li>修正了涉及可空輸入和成長的 mmap 資料類型的當機問題<a href="https://github.com/milvus-io/milvus/pull/40980">(#40980</a>)</li>
 <li>修正了在刪除操作中，由於重複 binlog IDs 而造成的潛在資料遺失<a href="https://github.com/milvus-io/milvus/pull/40985">(#40985</a>)、<a href="https://github.com/milvus-io/milvus/pull/40976">(#40976</a>)</li>
 <li>為<code translate="no">GetSegmentsIndexStates</code> 新增欄位索引鎖，以避免在建立集合時插入可能造成的恐慌<a href="https://github.com/milvus-io/milvus/pull/40969">(#40969</a>)</li>
 <li>修正 Rocksmq 消費者註冊的並發問題<a href="https://github.com/milvus-io/milvus/pull/40885">(#40885</a>)</li>
@@ -197,7 +197,7 @@ title: 發佈筆記
 <tr><td>2.5.7</td><td>2.5.6</td><td>2.5.6</td><td>2.5.6</td></tr>
 </tbody>
 </table>
-<p>我們很高興地宣佈 Milvus 2.5.7 正式發行，新推出的 JSON Path Index 功能是其中的亮點。這可讓您在動態或 JSON 列上建立反向索引，大幅提升查詢效能。除了這些新功能之外，我們還做了許多增強功能和錯誤修正，以獲得更好的可靠性、更精緻的錯誤處理，以及更高的可用性。我們鼓勵您升級或試用，並一如既往地衷心感謝您的反饋意見，我們將繼續改進 Milvus！</p>
+<p>我們很高興地宣佈 Milvus 2.5.7 正式發行，新推出的 JSON Path Index 功能是其中的亮點。這可讓您在動態或 JSON 列上建立反向索引，大幅提升查詢效能。除了這些新功能之外，我們還做了許多增強功能和錯誤修正，以獲得更好的可靠性、更精緻的錯誤處理，以及更佳的可用性。我們鼓勵您升級或試用，並一如既往地衷心感謝您的反饋意見，我們將繼續改進 Milvus！</p>
 <h3 id="Features" class="common-anchor-header">功能特色</h3><ul>
 <li><strong>JSON 路徑索引</strong>：為了滿足用戶對動態模式的需求，Milvus 2.5.7 引入了在動態列和 JSON 列上建立索引的功能。使用此功能，您可以為特定動態列或 JSON 路徑建立反向索引，有效繞過較慢的 JSON 載入過程，大大提高查詢性能。如需詳細資訊，請參閱<a href="/docs/zh-hant/use-json-fields.md">JSON 欄位</a>。</li>
 </ul>
@@ -322,7 +322,7 @@ title: 發佈筆記
 </ul>
 <h3 id="Critical-Bugs" class="common-anchor-header">重大錯誤</h3><ul>
 <li>[2.5] 在 textmatchindex 空偏移文件中使用<code translate="no">text_log</code> 前綴<a href="https://github.com/milvus-io/milvus/pull/39936">(#39936</a>)</li>
-<li>[2.5] 為多階段任務新增子任務池，以避免死鎖<a href="https://github.com/milvus-io/milvus/pull/40081">(#40081</a>)</li>
+<li>[2.5] 為多階段任務新增子任務池以避免死鎖<a href="https://github.com/milvus-io/milvus/pull/40081">(#40081</a>)</li>
 </ul>
 <h3 id="Bug-Fixes" class="common-anchor-header">修正錯誤</h3><ul>
 <li>[2.5] 修正任務排程死鎖<a href="https://github.com/milvus-io/milvus/pull/40121">(#40121</a>)</li>

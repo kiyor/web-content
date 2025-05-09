@@ -279,7 +279,7 @@
             "children": []
           },
           {
-            "label": "GPUインデックス",
+            "label": "GPU Index",
             "id": "gpu_index.md",
             "order": 2,
             "children": []
@@ -439,7 +439,7 @@
             "children": []
           },
           {
-            "label": "番号フィールド",
+            "label": "数字フィールド",
             "id": "number.md",
             "order": 6,
             "children": []

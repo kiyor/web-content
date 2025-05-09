@@ -47,7 +47,7 @@ summary: 本頁討論您在開始大量插入資料到您的資料集中之前�
 <li><p><strong>是否啟用 AutoID</strong></p>
 <p><strong>id 欄位</strong>是集合的主要欄位。要使主欄位自動遞增，您可以在模式中啟用<strong>AutoID</strong>。在這種情況下，您應該從來源資料的每一行中排除<strong>id 欄位</strong>。</p></li>
 <li><p><strong>是否啟用動態欄位</strong></p>
-<p>如果模式啟用動態欄位，目標集合也可以儲存未包含在其預先定義的模式中的欄位。<strong>$meta</strong>欄位是保留的 JSON 欄位，用來保存動態欄位及其鍵值對中的值。在上圖中，欄位<strong>dynamic_field_1</strong>和<strong>dynamic_field_2</strong>及其值將以鍵值對的方式儲存於<strong>$meta</strong>欄位中。</p></li>
+<p>如果模式啟用動態欄位，目標集合也可以儲存未包含在其預先定義的模式中的欄位。<strong>$meta</strong>欄位是保留的 JSON 欄位，用來保存動態欄位及其鍵值對中的值。在上圖中，欄位<strong>dynamic_field_1</strong>和<strong>dynamic_field_2</strong>及其值將以鍵值對的形式儲存於<strong>$meta</strong>欄位中。</p></li>
 </ul>
 <p>以下程式碼顯示如何為上圖所示的集合設定模式。</p>
 <div class="language-python">

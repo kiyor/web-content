@@ -246,7 +246,7 @@ curl --request POST \
 <span class="hljs-comment">#     ]</span>
 <span class="hljs-comment"># }</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Milvus 根据搜索结果与查询向量的相似度得分从高到低排列搜索结果。相似度得分也称为与查询向量的距离，其值范围随使用的度量类型而变化。</p>
+<p>Milvus 根据搜索结果与查询向量的相似度得分从高到低排列搜索结果。相似度得分也称为与查询向量的距离，其数值范围随使用的度量类型而变化。</p>
 <p>下表列出了适用的度量类型和相应的距离范围。</p>
 <table>
    <tr>
@@ -510,7 +510,7 @@ curl --request POST \
         ></path>
       </svg>
     </button></h2><p>假设您在一个 Collections 中创建了多个分区，您可以将搜索范围缩小到特定数量的分区。在这种情况下，您可以在搜索请求中包含目标分区名称，将搜索范围限制在指定的分区内。减少搜索所涉及的分区数量可以提高搜索性能。</p>
-<p>下面的代码片段假定在你的 Collections 中有一个名为<strong>PartitionA</strong>的分区。</p>
+<p>下面的代码片段假定 Collections 中有一个名为<strong>PartitionA</strong>的分区。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># 4. Single vector search</span>
@@ -665,7 +665,7 @@ curl --request POST \
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>在搜索结果中，Milvus 默认会包含包含 TOP-K 向量嵌入的实体的主字段值和相似度距离/分数。您可以在搜索请求中包含目标字段（包括向量和标量字段）的名称作为输出字段，使搜索结果携带这些实体中其他字段的值。</p>
+    </button></h2><p>在搜索结果中，Milvus 默认会包含包含 TOP-K 向量嵌入的实体的主字段值和相似度距离/分数。您可以在搜索请求中包含目标字段（包括向量和标量字段）的名称作为输出字段，以使搜索结果携带这些实体中其他字段的值。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># 4. Single vector search</span>

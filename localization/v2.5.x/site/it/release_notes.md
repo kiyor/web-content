@@ -167,7 +167,7 @@ title: Note di rilascio
 <li>Corretti i risultati errati causati dall'uso dell'indice JSON quando è specificato <code translate="no">iterative_filter</code> <a href="https://github.com/milvus-io/milvus/pull/40946">(#40946</a>)</li>
 <li>Assicurata una priorità più alta per l'operazione <code translate="no">exists</code> <a href="https://github.com/milvus-io/milvus/pull/40865">(#40865</a>)</li>
 <li>Corretto <code translate="no">WithGroupSize</code> durante la riduzione<a href="https://github.com/milvus-io/milvus/pull/40920">(#40920</a>)</li>
-<li>Aumentato il numero di slot in proporzione all'aumentare della dimensione del segmento (<a href="https://github.com/milvus-io/milvus/pull/40862">#40862</a>)</li>
+<li>Aumentato il numero di slot in proporzione all'aumentare delle dimensioni del segmento (<a href="https://github.com/milvus-io/milvus/pull/40862">#40862</a>)</li>
 <li>Impostazione del tempo di coda dei task prima dell'enqueue<a href="https://github.com/milvus-io/milvus/pull/40853">(#40853</a>)</li>
 <li>Corretto lo sbilanciamento dei canali sui DataNode<a href="https://github.com/milvus-io/milvus/pull/40854">(#40854</a>)</li>
 <li>Impostate le configurazioni predefinite corrette per gli slot dei task (<a href="https://github.com/milvus-io/milvus/pull/40821">#40821</a>)</li>
@@ -425,7 +425,7 @@ title: Note di rilascio
 <tr><td>2.5.4</td><td>2.5.4</td><td>2.5.4</td><td>2.5.4</td></tr>
 </tbody>
 </table>
-<p>Siamo lieti di annunciare il rilascio di Milvus 2.5.4, che introduce ottimizzazioni chiave delle prestazioni e nuove funzionalità come l'isolamento della PartitionKey, l'indice Sparse con DAAT MaxScore e meccanismi di blocco migliorati. Un punto di forza di questa versione è il supporto per 10.000 collezioni e 1 milione di partizioni, che rappresenta un'importante pietra miliare per i casi di utilizzo multi-tenant. Questa versione risolve anche diversi bug che migliorano la stabilità e l'affidabilità generali; due di questi bug critici possono causare la perdita di dati. Vi invitiamo ad aggiornare o a provare quest'ultima versione e siamo ansiosi di ricevere il vostro feedback per aiutarci a perfezionare continuamente Milvus!</p>
+<p>Siamo lieti di annunciare il rilascio di Milvus 2.5.4, che introduce ottimizzazioni chiave delle prestazioni e nuove funzionalità come l'isolamento della PartitionKey, l'indice Sparse con DAAT MaxScore e meccanismi di blocco migliorati. Un punto di forza di questa versione è il supporto per 10.000 collezioni e 1 milione di partizioni, che rappresenta un'importante pietra miliare per i casi di utilizzo multi-tenant. Questa versione risolve anche diversi bug che migliorano la stabilità e l'affidabilità generali; due dei bug critici possono causare la perdita di dati. Vi invitiamo ad aggiornare o a provare quest'ultima versione e siamo ansiosi di ricevere il vostro feedback per aiutarci a perfezionare continuamente Milvus!</p>
 <h3 id="Features" class="common-anchor-header">Caratteristiche</h3><ul>
 <li>Supporta l'isolamento delle chiavi di partizione per migliorare le prestazioni con chiavi di partizione multiple<a href="https://github.com/milvus-io/milvus/pull/39245">(#39245</a>). Per ulteriori informazioni, fare riferimento a <a href="/docs/it/use-partition-key.md">Utilizzare la chiave di partizione</a>.</li>
 <li>Sparse Index ora supporta DAAT MaxScore <a href="https://github.com/milvus-io/knowhere/pull/1015">knowhere/#1015</a>. Per ulteriori informazioni, fare riferimento a <a href="/docs/it/sparse_vector.md">Vettore sparso</a>.</li>
@@ -451,7 +451,7 @@ title: Note di rilascio
 </ul>
 <h3 id="Critial-Bug-fixs" class="common-anchor-header">Correzioni di bug critici</h3><ul>
 <li>Corretti gli errori di ricerca per le chiavi primarie con indici<a href="https://github.com/milvus-io/milvus/pull/39390">(#39390</a>)</li>
-<li>Corretto un potenziale problema di perdita di dati causato dal riavvio di MixCoord e dal flushing concomitante<a href="https://github.com/milvus-io/milvus/pull/39422">(#39422</a>)</li>
+<li>Corretto un potenziale problema di perdita di dati causato dal riavvio di MixCoord e dal flushing simultaneo<a href="https://github.com/milvus-io/milvus/pull/39422">(#39422</a>)</li>
 <li>Corretto un errore di cancellazione innescato da una concomitanza impropria tra i task di stats e la compattazione L0 dopo il riavvio di MixCoord<a href="https://github.com/milvus-io/milvus/pull/39460">(#39460</a>)</li>
 <li>Corretta l'incompatibilità degli indici scalari invertiti durante l'aggiornamento da 2.4 a 2.5<a href="https://github.com/milvus-io/milvus/pull/39272">(#39272</a>)</li>
 </ul>
@@ -488,7 +488,7 @@ title: Note di rilascio
     </button></h2><p>Data di rilascio: 13 gennaio 2025</p>
 <table>
 <thead>
-<tr><th>Versione di Milvus</th><th>Versione dell'SDK Python</th><th>Versione dell'SDK Node.js</th><th>Versione SDK Java</th></tr>
+<tr><th>Versione Milvus</th><th>Versione SDK Python</th><th>Versione dell'SDK Node.js</th><th>Versione SDK Java</th></tr>
 </thead>
 <tbody>
 <tr><td>2.5.3</td><td>2.5.3</td><td>2.5.3</td><td>2.5.4</td></tr>
@@ -547,7 +547,7 @@ title: Note di rilascio
 <h3 id="Bug-fixes" class="common-anchor-header">Correzioni di bug</h3><ul>
 <li>Corretti potenziali deadlock in scenari di concorrenza.<a href="https://github.com/milvus-io/milvus/pull/38863">(#38863</a>)</li>
 <li>Generato il file index_null_offset solo per i campi che supportano valori nulli.<a href="https://github.com/milvus-io/milvus/pull/38834">(#38834</a>)</li>
-<li>Corretto l'uso del piano di recupero dopo il free nella fase di riduzione.<a href="https://github.com/milvus-io/milvus/pull/38841">(#38841</a>)</li>
+<li>Corretto l'utilizzo del piano di recupero dopo il free nella fase di riduzione.<a href="https://github.com/milvus-io/milvus/pull/38841">(#38841</a>)</li>
 <li>Riconosciute le espressioni con AND e OR maiuscoli.<a href="https://github.com/milvus-io/milvus/pull/38928">(#38928</a>)</li>
 <li>Consentito l'abbandono della partizione anche se il caricamento non è riuscito.<a href="https://github.com/milvus-io/milvus/pull/38874">(#38874</a>)</li>
 <li>Corretti i problemi di registrazione del file BM25 durante l'importazione.<a href="https://github.com/milvus-io/milvus/pull/38881">(#38881</a>)</li>
@@ -582,8 +582,8 @@ title: Note di rilascio
 </ul>
 <h3 id="Bug-fixes" class="common-anchor-header">Correzioni di bug</h3><ul>
 <li>Risolti i problemi di OOM aggiungendo un fattore di memoria alle stime di caricamento.<a href="https://github.com/milvus-io/milvus/pull/38722">(#38722</a>)</li>
-<li>Corretta l'espansione dei gruppi di privilegi quando si elencano le politiche in RootCoord.<a href="https://github.com/milvus-io/milvus/pull/38760">(#38760</a>)</li>
-<li>Corretti i problemi con l'elenco dei gruppi di privilegi e delle raccolte.<a href="https://github.com/milvus-io/milvus/pull/38738">(#38738</a>)</li>
+<li>Corretta l'espansione dei gruppi di privilegi quando si elencano i criteri in RootCoord.<a href="https://github.com/milvus-io/milvus/pull/38760">(#38760</a>)</li>
+<li>Corretti i problemi relativi all'elenco dei gruppi di privilegi e delle raccolte.<a href="https://github.com/milvus-io/milvus/pull/38738">(#38738</a>)</li>
 <li>Corretto il bilanciatore per evitare di sovraccaricare ripetutamente lo stesso nodo di query.<a href="https://github.com/milvus-io/milvus/pull/38724">(#38724</a>)</li>
 <li>Corretti i compiti di bilanciamento inattesi attivati dopo il riavvio di QueryCoord.<a href="https://github.com/milvus-io/milvus/pull/38725">(#38725</a>)</li>
 <li>Corretto l'aggiornamento della configurazione del carico che non si applica al caricamento delle raccolte.<a href="https://github.com/milvus-io/milvus/pull/38737">(#38737</a>)</li>
@@ -627,7 +627,7 @@ title: Note di rilascio
 <p>Per ulteriori informazioni, consultare <a href="/docs/it/analyzer-overview.md">Panoramica dell'analizzatore</a> e <a href="/docs/it/keyword-match.md">Corrispondenza testo</a>.</p>
 <h4 id="Bitmap-Index" class="common-anchor-header">Indice Bitmap</h4><p>Alla famiglia Milvus è stato aggiunto un nuovo indice di dati scalari. L'indice BitMap utilizza un array di bit, di lunghezza pari al numero di righe, per rappresentare l'esistenza di valori e accelerare le ricerche.</p>
 <p>Gli indici Bitmap sono stati tradizionalmente efficaci per i campi a bassa cardinalità, che hanno un numero modesto di valori distinti, ad esempio una colonna contenente informazioni sul sesso con solo due valori possibili: maschio e femmina.</p>
-<p>Per maggiori dettagli, vedere <a href="/docs/it/bitmap.md">Indice bitmap</a>.</p>
+<p>Per ulteriori informazioni, consultare <a href="/docs/it/bitmap.md">Indice bitmap</a>.</p>
 <h4 id="Nullable--Default-Value" class="common-anchor-header">Nullable e valore predefinito</h4><p>Milvus supporta ora l'impostazione di proprietà nullable e di valori predefiniti per campi scalari diversi da quello della chiave primaria. Per i campi scalari contrassegnati come <code translate="no">nullable=True</code>, gli utenti possono omettere il campo durante l'inserimento dei dati; il sistema lo tratterà come valore nullo o valore predefinito (se impostato) senza lanciare un errore.</p>
 <p>I valori predefiniti e le proprietà annullabili offrono a Milvus una maggiore flessibilità. Gli utenti possono utilizzare questa funzione per i campi con valori incerti durante la creazione di collezioni. Inoltre, semplificano la migrazione dei dati da altri sistemi di database a Milvus, consentendo di gestire insiemi di dati contenenti valori nulli conservando le impostazioni originali dei valori predefiniti.</p>
 <p>Per maggiori dettagli, consultare <a href="/docs/it/nullable-and-default.md">Nullable &amp; Default Value</a>.</p>
@@ -636,7 +636,7 @@ title: Note di rilascio
 <p>PRQ è una fusione di PQ e AQ (Additive Quantizer). Rispetto a PQ, richiede tempi di costruzione più lunghi per offrire un richiamo migliore, soprattutto a tassi di compressione elevati, come la compressione binaria.</p>
 <h4 id="Clustering-Compaction-Beta" class="common-anchor-header">Compattazione dei cluster (Beta)</h4><p>Milvus 2.5 introduce la Clustering Compaction per accelerare le ricerche e ridurre i costi di grandi collezioni. Specificando un campo scalare come chiave di clustering, i dati vengono ridistribuiti per intervallo per ottimizzare la memorizzazione e il recupero. Agendo come un indice globale, questa funzione consente a Milvus di sfrondare in modo efficiente i dati durante le query basate sui metadati di clustering, migliorando le prestazioni di ricerca quando vengono applicati filtri scalari.</p>
 <p>Per ulteriori informazioni, consultare la sezione <a href="/docs/it/clustering-compaction.md">Compattazione del clustering</a>.</p>
-<h3 id="Other-Features" class="common-anchor-header">Altre caratteristiche</h3><h4 id="Streaming-Node-Beta" class="common-anchor-header">Nodo di streaming (Beta)</h4><p>Milvus 2.5 introduce un nuovo componente chiamato nodo di streaming, che fornisce servizi di Write-Ahead Logging (WAL). Ciò consente a Milvus di ottenere il consenso prima e dopo la lettura e la scrittura dei canali, sbloccando nuove caratteristiche, funzionalità e ottimizzazioni. Questa funzione è disabilitata per impostazione predefinita in Milvus 2.5 e sarà disponibile ufficialmente nella versione 3.0.</p>
+<h3 id="Other-Features" class="common-anchor-header">Altre caratteristiche</h3><h4 id="Streaming-Node-Beta" class="common-anchor-header">Nodo di streaming (Beta)</h4><p>Milvus 2.5 introduce un nuovo componente chiamato nodo di streaming, che fornisce servizi di Write-Ahead Logging (WAL). Ciò consente a Milvus di ottenere il consenso prima e dopo la lettura e la scrittura dei canali, sbloccando nuove caratteristiche, funzionalità e ottimizzazioni. Questa funzione è disabilitata per impostazione predefinita in Milvus 2.5 e sarà ufficialmente disponibile nella versione 3.0.</p>
 <h4 id="IPv6-Support" class="common-anchor-header">Supporto IPv6</h4><p>Milvus supporta ora IPv6, consentendo una maggiore connettività e compatibilità di rete.</p>
 <h4 id="CSV-Bulk-Import" class="common-anchor-header">Importazione massiva CSV</h4><p>Oltre ai formati JSON e Parquet, Milvus supporta ora l'importazione diretta di dati in massa in formato CSV.</p>
 <h4 id="Expression-Templates-for-Query-Acceleration" class="common-anchor-header">Modelli di espressione per l'accelerazione delle query</h4><p>Milvus supporta ora i modelli di espressione, migliorando l'efficienza dell'analisi delle espressioni, in particolare in scenari con espressioni complesse.</p>
@@ -657,5 +657,5 @@ title: Note di rilascio
 <h4 id="Improved-DDL-Concurrency-Performance" class="common-anchor-header">Miglioramento delle prestazioni di concomitanza del DDL</h4><p>Ottimizzate le prestazioni di concorrenza delle operazioni del Data Definition Language (DDL).</p>
 <h4 id="RESTful-API-Feature-Alignment" class="common-anchor-header">Allineamento delle funzionalità dell'API RESTful</h4><p>Allineate le funzionalità dell'API RESTful con gli altri SDK per coerenza.</p>
 <h4 id="Security--Configuration-Updates" class="common-anchor-header">Aggiornamenti di sicurezza e configurazione</h4><p>Supportato TLS per proteggere la comunicazione tra i nodi in ambienti più complessi o aziendali. Per i dettagli, consultare la sezione <a href="/docs/it/tls.md">Configurazione della sicurezza</a>.</p>
-<h4 id="Compaction-Performance-Enhancements" class="common-anchor-header">Miglioramenti delle prestazioni di compattazione</h4><p>Eliminati i limiti massimi dei segmenti nella compattazione mista e ora viene data priorità ai segmenti più piccoli, migliorando l'efficienza e accelerando le query su insiemi di dati grandi o frammentati.</p>
+<h4 id="Compaction-Performance-Enhancements" class="common-anchor-header">Miglioramenti delle prestazioni di compattazione</h4><p>Eliminati i limiti massimi di segmento nella compattazione mista e ora viene data priorità ai segmenti più piccoli, migliorando l'efficienza e accelerando le query su insiemi di dati grandi o frammentati.</p>
 <h4 id="Score-Based-Channel-Balancing" class="common-anchor-header">Bilanciamento dei canali basato sui punteggi</h4><p>Introdotto un criterio che bilancia dinamicamente i carichi tra i canali, migliorando l'utilizzo delle risorse e la stabilità complessiva nelle distribuzioni su larga scala.</p>

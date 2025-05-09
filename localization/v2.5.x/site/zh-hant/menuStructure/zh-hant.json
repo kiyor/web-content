@@ -223,7 +223,7 @@
             "children": []
           },
           {
-            "label": "資料處理",
+            "label": "Data Processing",
             "id": "data_processing.md",
             "order": 3,
             "children": []
@@ -746,7 +746,7 @@
             "children": []
           },
           {
-            "label": "查詢",
+            "label": "Query",
             "id": "get-and-scalar-query.md",
             "order": 5,
             "children": []

@@ -260,7 +260,7 @@ writer = LocalBulkWriter(
 <li>Merujuk skema yang dibuat di <code translate="no">schema</code>.</li>
 <li>Tetapkan <code translate="no">local_path</code> ke direktori keluaran.</li>
 <li>Atur <code translate="no">file_type</code> ke jenis file keluaran.</li>
-<li>Jika dataset Anda berisi sejumlah besar catatan, Anda disarankan untuk menyegmentasikan data dengan mengatur <code translate="no">segment_size</code> ke nilai yang tepat.</li>
+<li>Jika dataset Anda berisi sejumlah besar rekaman, Anda disarankan untuk menyegmentasikan data dengan mengatur <code translate="no">segment_size</code> ke nilai yang tepat.</li>
 </ul>
 <p>Untuk detail mengenai pengaturan parameter, lihat <a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/LocalBulkWriter/LocalBulkWriter.md">LocalBulkWriter</a> dalam referensi SDK.</p>
 </div>

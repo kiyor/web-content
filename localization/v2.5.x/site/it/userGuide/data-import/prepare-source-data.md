@@ -3,8 +3,8 @@ id: prepare-source-data.md
 order: 0
 title: Preparare i dati di origine
 summary: >-
-  In questa pagina si parla di un aspetto da tenere in considerazione prima di
-  iniziare a inserire dati in blocco nella propria raccolta.
+  In questa pagina viene illustrato un aspetto da tenere in considerazione prima
+  di iniziare a inserire i dati in blocco nella propria raccolta.
 ---
 <h1 id="Prepare-Source-Data" class="common-anchor-header">Preparare i dati di origine<button data-href="#Prepare-Source-Data" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -265,7 +265,7 @@ writer = LocalBulkWriter(
 <p>Per informazioni dettagliate sulle impostazioni dei parametri, consultare <a href="https://milvus.io/api-reference/pymilvus/v2.4.x/DataImport/LocalBulkWriter/LocalBulkWriter.md">LocalBulkWriter</a> nel riferimento dell'SDK.</p>
 </div>
 <div class="language-java">
-<p>Quando si crea un <strong>LocalBulkWriter</strong>, si deve:</p>
+<p>Quando si crea un <strong>LocalBulkWriter</strong>, occorre:</p>
 <ul>
 <li>Fare riferimento allo schema creato in <code translate="no">CollectionSchema()</code>.</li>
 <li>Impostare la directory di output in <code translate="no">withLocalPath()</code>.</li>
@@ -373,12 +373,12 @@ writer = RemoteBulkWriter(
         ></path>
       </svg>
     </button></h2><div class="language-python">
-<p>Un <strong>BulkWriter</strong> ha due metodi: <code translate="no">append_row()</code> aggiunge una riga da un set di dati di origine e <code translate="no">commit()</code> commette le righe aggiunte in un file locale o in un bucket remoto.</p>
+<p>Un <strong>BulkWriter</strong> ha due metodi: <code translate="no">append_row()</code> aggiunge una riga da un set di dati di origine e <code translate="no">commit()</code> esegue il commit delle righe aggiunte in un file locale o in un bucket remoto.</p>
 </div>
 <div class="language-java">
 <p>Un <strong>BulkWriter</strong> ha due metodi: <code translate="no">appendRow()</code> aggiunge una riga da un set di dati di origine e <code translate="no">commit()</code> esegue il commit delle righe aggiunte in un file locale o in un bucket remoto.</p>
 </div>
-<p>A scopo dimostrativo, il codice seguente aggiunge dati generati in modo casuale.</p>
+<p>A scopo dimostrativo, il codice seguente aggiunge dati generati casualmente.</p>
 <div class="multipleCode">
  <a href="#python">Python </a> <a href="#java">Java</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> random, string, json

@@ -46,8 +46,8 @@ title: Konsistenz
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/service-time-and-guarantee-time.png" alt="ServiceTime and GuaranteeTs" class="doc-image" id="servicetime-and-guaranteets" />
    </span> <span class="img-wrapper"> <span>ServiceTime und GuaranteeTs</span> </span></p>
-<p>Wie in der obigen Abbildung dargestellt, bedeutet GuaranteeTs, wenn es kleiner als ServiceTime ist, dass alle Daten vor dem angegebenen Zeitpunkt vollständig auf die Festplatte geschrieben wurden, so dass QueryNodes den Suchvorgang sofort durchführen können. Wenn GuaranteeTs größer als ServiceTime ist, müssen QueryNodes warten, bis ServiceTime GuaranteeTs überschreitet, bevor sie den Suchvorgang ausführen können.</p>
-<p>Die Benutzer müssen einen Kompromiss zwischen Abfragegenauigkeit und Abfragelatenz eingehen. Wenn Benutzer hohe Anforderungen an die Konsistenz stellen und nicht auf die Abfragelatenz achten, können sie GuaranteeTs auf einen möglichst großen Wert setzen; wenn Benutzer Suchergebnisse schnell erhalten möchten und toleranter gegenüber der Abfragegenauigkeit sind, kann GuaranteeTs auf einen kleineren Wert gesetzt werden.</p>
+<p>Wie in der obigen Abbildung dargestellt, bedeutet GuaranteeTs, wenn es kleiner als ServiceTime ist, dass alle Daten vor dem angegebenen Zeitpunkt vollständig auf die Festplatte geschrieben wurden, so dass die QueryNodes den Suchvorgang sofort durchführen können. Wenn GuaranteeTs größer als ServiceTime ist, müssen QueryNodes warten, bis ServiceTime GuaranteeTs überschreitet, bevor sie den Suchvorgang ausführen können.</p>
+<p>Die Benutzer müssen einen Kompromiss zwischen Abfragegenauigkeit und Abfragelatenz eingehen. Wenn Benutzer hohe Anforderungen an die Konsistenz haben und nicht auf die Abfragelatenz achten, können sie GuaranteeTs auf einen möglichst großen Wert setzen; wenn Benutzer Suchergebnisse schnell erhalten möchten und toleranter gegenüber der Abfragegenauigkeit sind, kann GuaranteeTs auf einen kleineren Wert gesetzt werden.</p>
 <p>
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/consistency-level-illustrated.png" alt="Consistency Levels Illustrated" class="doc-image" id="consistency-levels-illustrated" />
@@ -147,7 +147,7 @@ curl --request POST \​
 <pre><code translate="no" class="language-python">res = client.search(​
     collection_name=<span class="hljs-string">&quot;my_collection&quot;</span>,​
     data=[query_vector],​
-    <span class="hljs-built_in">limit</span>=3,​
+    limit=<span class="hljs-number">3</span>,​
     search_params={<span class="hljs-string">&quot;metric_type&quot;</span>: <span class="hljs-string">&quot;IP&quot;</span>}，​
     <span class="hljs-comment"># highlight-start​</span>
     consistency_level=<span class="hljs-string">&quot;Bounded&quot;</span>,​

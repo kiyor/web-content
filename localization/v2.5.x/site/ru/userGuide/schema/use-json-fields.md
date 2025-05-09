@@ -397,8 +397,8 @@ curl --request POST \
 <li><p><strong>Логика фильтрации</strong>:</p>
 <ul>
 <li><p>Если вы <strong>создаете индекс двойного типа</strong> (<code translate="no">json_cast_type=&quot;double&quot;</code>), только условия фильтра числового типа могут использовать этот индекс. Если фильтр сравнивает двойной индекс с нечисловым условием, Milvus возвращается к поиску методом грубой силы.</p></li>
-<li><p>Если вы <strong>создадите индекс типа varchar</strong> (<code translate="no">json_cast_type=&quot;varchar&quot;</code>), только условия фильтра строкового типа могут использовать этот индекс. В противном случае Milvus возвращается к грубой силе.</p></li>
-<li><p><strong>Булево</strong> индексирование ведет себя аналогично varchar-типу.</p></li>
+<li><p>Если вы <strong>создаете индекс типа varchar</strong> (<code translate="no">json_cast_type=&quot;varchar&quot;</code>), только условия фильтра строкового типа могут использовать этот индекс. В противном случае Milvus возвращается к грубой силе.</p></li>
+<li><p><strong>Булевое</strong> индексирование ведет себя аналогично varchar-типу.</p></li>
 </ul></li>
 <li><p><strong>Выражения терминов</strong>:</p>
 <ul>

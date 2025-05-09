@@ -271,7 +271,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">COSINE</code></p></td>
-     <td><p>Ein größerer Wert weist auf eine höhere Ähnlichkeit hin.</p></td>
+     <td><p>Ein größerer Wert deutet auf eine höhere Ähnlichkeit hin.</p></td>
      <td><p>[-1, 1]</p></td>
    </tr>
    <tr>
@@ -995,7 +995,7 @@ curl --request POST \
 <p>Der Schlüsselwortabgleich in Milvus ermöglicht die präzise Suche nach Dokumenten auf der Grundlage bestimmter Begriffe. Diese Funktion wird in erster Linie für die gefilterte Suche nach bestimmten Bedingungen verwendet und kann skalare Filter zur Verfeinerung der Abfrageergebnisse einbeziehen, so dass Ähnlichkeitssuchen innerhalb von Vektoren, die skalare Kriterien erfüllen, möglich sind.</p>
 <p>Weitere Informationen zur Schlüsselwortsuche finden Sie unter <a href="/docs/de/keyword-match.md">Schlüsselwortsuche</a>.</p></li>
 <li><p>Partitionsschlüssel verwenden</p>
-<p>Die Einbeziehung mehrerer skalarer Felder in die Metadatenfilterung und die Verwendung einer recht komplizierten Filterbedingung können die Sucheffizienz beeinträchtigen. Wenn Sie ein skalares Feld als Partitionsschlüssel festlegen und eine Filterbedingung verwenden, die den Partitionsschlüssel in der Suchanfrage einbezieht, kann dies dazu beitragen, den Suchbereich auf die Partitionen zu beschränken, die den angegebenen Partitionsschlüsselwerten entsprechen.</p>
+<p>Die Einbeziehung mehrerer skalarer Felder in die Metadatenfilterung und die Verwendung einer ziemlich komplizierten Filterbedingung können die Sucheffizienz beeinträchtigen. Wenn Sie ein skalares Feld als Partitionsschlüssel festlegen und eine Filterbedingung verwenden, die den Partitionsschlüssel in der Suchanfrage einbezieht, kann dies dazu beitragen, den Suchbereich auf die Partitionen zu beschränken, die den angegebenen Partitionsschlüsselwerten entsprechen.</p>
 <p>Einzelheiten zum Partitionsschlüssel finden Sie unter <a href="/docs/de/use-partition-key.md">Partitionsschlüssel verwenden</a>.</p></li>
 <li><p>mmap verwenden</p>
 <p>Details zu den mmap-Einstellungen finden Sie unter <a href="/docs/de/mmap.md">mmap verwenden</a>.</p></li>

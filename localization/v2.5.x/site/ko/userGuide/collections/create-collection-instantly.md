@@ -45,11 +45,11 @@ summary: >-
 <li><p>벡터 필드는 부동 벡터 임베딩을 허용합니다.</p></li>
 <li><p><strong>자동 인덱스는</strong> 벡터 필드에 인덱스를 만드는 데 사용됩니다.</p></li>
 <li><p><strong>COSINE은</strong> 벡터 임베딩 간의 유사성을 측정하는 데 사용됩니다.</p></li>
-<li><p><strong>메타라는</strong> 예약 동적 필드는 스키마에 정의되지 않은 필드와 그 값을 키-값 쌍으로 저장하기 위해 활성화됩니다.</p></li>
+<li><p><strong>메타라는</strong> 예약 동적 필드는 스키마에 정의되지 않은 필드와 해당 값을 키-값 쌍으로 저장하기 위해 활성화됩니다.</p></li>
 <li><p>컬렉션은 생성 시 자동으로 로드됩니다.</p></li>
 </ul>
 <p>위의 용어에 대한 자세한 내용은 <a href="/docs/ko/manage-collections.md">컬렉션 설명을</a> 참조하세요.</p>
-<p>기본 설정으로 컬렉션을 즉시 만드는 것이 모든 시나리오에 적합하지는 않습니다. Milvus의 기능을 더 잘 이해할 수 있도록 <a href="/docs/ko/create-collection.md">일반적인 컬렉션 생성 절차를</a> 숙지하는 것이 좋습니다.</p>
+<p>기본 설정으로 컬렉션을 즉시 생성하는 것이 모든 시나리오에 적합하지는 않습니다. Milvus의 기능을 더 잘 이해할 수 있도록 <a href="/docs/ko/create-collection.md">일반적인 컬렉션 생성 절차를</a> 숙지하는 것이 좋습니다.</p>
 <h2 id="Quick-Setup" class="common-anchor-header">빠른 설정<button data-href="#Quick-Setup" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

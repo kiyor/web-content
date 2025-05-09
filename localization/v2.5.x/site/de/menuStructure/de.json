@@ -993,7 +993,7 @@
     ]
   },
   {
-    "label": "Leitfaden für die Verwaltung",
+    "label": "Administration Guide",
     "id": "admin_guide",
     "isMenu": true,
     "order": 9,

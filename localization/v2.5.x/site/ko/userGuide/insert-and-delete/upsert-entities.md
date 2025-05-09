@@ -2,8 +2,8 @@
 id: upsert-entities.md
 title: 엔티티 삽입
 summary: >-
-  업서트 작업은 데이터 업데이트와 삽입 작업을 결합합니다. Milvus는 기본 키가 존재하는지 확인하여 업데이트 작업을 수행할지 삽입 작업을
-  수행할지 결정합니다. 이 섹션에서는 엔티티를 업서트하는 방법과 다양한 시나리오에서 업서트 작업의 구체적인 동작을 소개합니다.
+  업서트 작업은 데이터 업데이트와 삽입 작업을 결합합니다. Milvus는 기본 키가 존재하는지 확인하여 업데이트 또는 삽입 작업을 수행할지
+  여부를 결정합니다. 이 섹션에서는 엔티티를 업서트하는 방법과 다양한 시나리오에서 업서트 작업의 구체적인 동작을 소개합니다.
 ---
 <h1 id="Upsert-Entities" class="common-anchor-header">엔티티 삽입<button data-href="#Upsert-Entities" class="anchor-icon" translate="no">
       <svg translate="no"

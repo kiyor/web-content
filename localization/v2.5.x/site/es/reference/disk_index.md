@@ -41,7 +41,7 @@ Actualmente, un campo vectorial sólo admite un tipo de índice. Milvus elimina 
     </button></h2><p>Para utilizar DiskANN, tenga en cuenta que</p>
 <ul>
 <li>La instancia de Milvus se ejecuta en Ubuntu 18.04.6 o una versión posterior.</li>
-<li>La ruta de datos de Milvus debe montarse en una SSD NVMe para un rendimiento completo:<ul>
+<li>La ruta de datos de Milvus debe montarse en un SSD NVMe para un rendimiento completo:<ul>
 <li>Para una instancia Milvus Standalone, la ruta de datos debe ser <strong>/var/lib/milvus/data</strong> en el contenedor donde se ejecuta la instancia.</li>
 <li>Para una instancia Milvus Cluster, la ruta de datos debe ser <strong>/var/lib/milvus/data</strong> en los contenedores donde se ejecutan los QueryNodes y los IndexNodes.</li>
 </ul></li>

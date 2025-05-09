@@ -1,7 +1,7 @@
 ---
 id: use-json-fields.md
 title: JSON 欄位
-summary: JSON 欄位是一種標量欄位，它以鍵值對的方式，與向量嵌入一起儲存附加資訊。以下是以 JSON 格式儲存資料的範例：
+summary: JSON 欄位是一個標量欄位，它以鍵值對的方式，將額外的資訊與向量嵌入一起儲存。以下是以 JSON 格式儲存資料的範例：
 ---
 <h1 id="JSON-Field" class="common-anchor-header">JSON 欄位<button data-href="#JSON-Field" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -376,7 +376,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">index_name</code></p></td>
-     <td><p>(可選）自訂索引名稱。如果您在同一 JSON 欄位上建立多個索引，請指定不同的名稱。</p></td>
+     <td><p>(可選）自訂索引名稱。如果在同一 JSON 欄位上建立多個索引，請指定不同的名稱。</p></td>
      <td><p><code translate="no">"json_index_1"</code></p></td>
    </tr>
    <tr>
@@ -981,4 +981,4 @@ curl --request POST \
 
 <span class="hljs-comment">##{&quot;code&quot;:0,&quot;cost&quot;:0,&quot;data&quot;:[{&quot;metadata&quot;:&quot;{\&quot;product_info\&quot;: {\&quot;category\&quot;: \&quot;electronics\&quot;, \&quot;brand\&quot;: \&quot;BrandA\&quot;}, \&quot;price\&quot;: 99.99, \&quot;in_stock\&quot;: true, \&quot;tags\&quot;: [\&quot;summer_sale\&quot;]}&quot;,&quot;pk&quot;:1}]}</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>此外，Milvus 支援進階的 JSON 過濾運算元，例如<code translate="no">JSON_CONTAINS</code>,<code translate="no">JSON_CONTAINS_ALL</code>, 和<code translate="no">JSON_CONTAINS_ANY</code> ，可以進一步增強查詢功能。如需詳細資訊，請參閱<a href="/docs/zh-hant/json-operators.md">JSON 運算符</a>。</p>
+<p>此外，Milvus 支援進階的 JSON 過濾運算元，例如<code translate="no">JSON_CONTAINS</code>,<code translate="no">JSON_CONTAINS_ALL</code>, 和<code translate="no">JSON_CONTAINS_ANY</code> ，可進一步增強查詢功能。如需詳細資訊，請參閱<a href="/docs/zh-hant/json-operators.md">JSON 運算符</a>。</p>

@@ -21,7 +21,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>Um campo <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> é um campo escalar que armazena informações adicionais juntamente com incorporações vectoriais, em pares de valores chave. Aqui está um exemplo de como os dados são armazenados no formato JSON:</p>
+    </button></h1><p>Um campo <a href="https://en.wikipedia.org/wiki/JSON">JSON</a> é um campo escalar que armazena informações adicionais juntamente com incorporações vectoriais, em pares chave-valor. Aqui está um exemplo de como os dados são armazenados no formato JSON:</p>
 <pre><code translate="no" class="language-python">{
   <span class="hljs-string">&quot;metadata&quot;</span>: {
     <span class="hljs-string">&quot;product_info&quot;</span>: {
@@ -51,7 +51,7 @@ summary: >-
       </svg>
     </button></h2><ul>
 <li><p><strong>Tamanho do campo</strong>: Os campos JSON são limitados a 65.536 bytes de tamanho.</p></li>
-<li><p><strong>Dicionários aninhados</strong>: Quaisquer dicionários aninhados nos valores de campo JSON são tratados como cadeias de caracteres simples para armazenamento.</p></li>
+<li><p><strong>Dicionários aninhados</strong>: Todos os dicionários aninhados nos valores de campo JSON são tratados como cadeias de caracteres simples para armazenamento.</p></li>
 <li><p><strong>Valores padrão</strong>: Os campos JSON não suportam valores predefinidos. No entanto, pode definir o atributo <code translate="no">nullable</code> como <code translate="no">True</code> para permitir valores nulos. Para obter detalhes, consulte <a href="/docs/pt/nullable-and-default.md">Nullable &amp; Default</a>.</p></li>
 <li><p><strong>Correspondência de tipos</strong>: Se o valor-chave de um campo JSON for um número inteiro ou um float, só pode ser comparado (através de filtros de expressão) com outra chave numérica do mesmo tipo.</p></li>
 <li><p><strong>Nomeação</strong>: Ao nomear chaves JSON, recomenda-se a utilização apenas de letras, números e sublinhados. O uso de outros caracteres pode causar problemas ao filtrar ou pesquisar.</p></li>
@@ -384,7 +384,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">params.json_path</code></p></td>
-     <td><p>Especifica o caminho JSON a indexar. Pode direcionar chaves aninhadas, posições de matriz ou ambas (por exemplo, <code translate="no">metadata["product_info"]["category"]</code> ou <code translate="no">metadata["tags"][0]</code>). Se o caminho estiver ausente ou o elemento do array não existir para uma linha específica, essa linha será simplesmente ignorada durante a indexação e nenhum erro será lançado.</p></td>
+     <td><p>Especifica o caminho JSON a indexar. Pode direcionar chaves aninhadas, posições de matriz ou ambas (por exemplo, <code translate="no">metadata["product_info"]["category"]</code> ou <code translate="no">metadata["tags"][0]</code>). Se o caminho estiver ausente ou o elemento do array não existir para uma determinada linha, essa linha será simplesmente ignorada durante a indexação e nenhum erro será lançado.</p></td>
      <td><p><code translate="no">"metadata[\"product_info\"][\"category\"]"</code></p></td>
    </tr>
    <tr>
@@ -709,7 +709,7 @@ rows.add(gson.fromJson(<span class="hljs-string">&quot;{\&quot;metadata\&quot;:{
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Depois de inserir entidades, use o método <code translate="no">query</code> para recuperar entidades que correspondam às expressões de filtro especificadas.</p>
+    </button></h2><p>Depois de inserir entidades, use o método <code translate="no">query</code> para recuperar entidades que correspondem às expressões de filtro especificadas.</p>
 <div class="alert note">
 <p>Para campos JSON que permitem valores nulos, o campo será tratado como nulo se todo o objeto JSON estiver em falta ou definido como <code translate="no">None</code>. Para obter mais informações, consulte <a href="/docs/pt/basic-operators.md#JSON-Fields-with-Null-Values">Campos JSON com valores nulos</a>.</p>
 </div>

@@ -334,7 +334,7 @@ curl --request POST \
 <li><p><strong>Spécifiez le chemin JSON</strong> vers cette clé sous la forme <code translate="no">json_path</code>. Étant donné que le champ dynamique est stocké sous forme de JSON, vous pouvez spécifier quelque chose comme <code translate="no">&quot;color&quot;</code>, ou si vous avez des structures imbriquées, vous pouvez spécifier des chemins plus profonds (par exemple <code translate="no">my_json[&quot;field&quot;][&quot;subfield&quot;]</code>).</p></li>
 <li><p><strong>Créez un index INVERTED</strong>. Actuellement, seul le type <code translate="no">INVERTED</code> est pris en charge pour l'indexation des chemins JSON.</p></li>
 </ol>
-<p>Pour plus de détails sur les paramètres et les considérations, voir <a href="/docs/fr/use-json-fields.md#Index-a-JSON-field">Indexer un champ JSON</a>.</p>
+<p>Pour plus de détails sur les paramètres et les considérations, reportez-vous à <a href="/docs/fr/use-json-fields.md#Index-a-JSON-field">Indexer un champ JSON</a>.</p>
 <p>Vous trouverez ci-dessous un exemple de création d'un index sur le champ <code translate="no">&quot;color&quot;</code>:</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>

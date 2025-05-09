@@ -54,7 +54,7 @@ summary: >-
 <li><p><strong>Kamus Bersarang</strong>: Setiap kamus bersarang dalam nilai bidang JSON diperlakukan sebagai string biasa untuk penyimpanan.</p></li>
 <li><p><strong>Nilai Default</strong>: Bidang JSON tidak mendukung nilai default. Namun, Anda dapat menyetel atribut <code translate="no">nullable</code> ke <code translate="no">True</code> untuk mengizinkan nilai null. Untuk detailnya, lihat <a href="/docs/id/nullable-and-default.md">Nullable &amp; Default</a>.</p></li>
 <li><p><strong>Pencocokan Jenis</strong>: Jika nilai kunci bidang JSON adalah bilangan bulat atau float, nilai tersebut hanya dapat dibandingkan (melalui filter ekspresi) dengan kunci numerik lain dengan jenis yang sama.</p></li>
-<li><p><strong>Penamaan</strong>: Ketika menamai kunci JSON, disarankan untuk hanya menggunakan huruf, angka, dan garis bawah. Menggunakan karakter lain dapat menyebabkan masalah ketika melakukan penyaringan atau pencarian.</p></li>
+<li><p><strong>Penamaan</strong>: Ketika menamai kunci JSON, disarankan untuk hanya menggunakan huruf, angka, dan garis bawah. Menggunakan karakter lain dapat menyebabkan masalah saat melakukan penyaringan atau pencarian.</p></li>
 <li><p><strong>Penanganan String</strong>: Milvus menyimpan nilai string dalam bidang JSON seperti yang dimasukkan, tanpa konversi semantik. Sebagai contoh</p>
 <ul>
 <li><p><code translate="no">'a&quot;b'</code>, <code translate="no">&quot;a'b&quot;</code>, <code translate="no">'a\\'b'</code>, dan <code translate="no">&quot;a\\&quot;b&quot;</code> disimpan persis seperti apa adanya.</p></li>

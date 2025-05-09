@@ -394,7 +394,7 @@ curl --request POST \
 <h4 id="Considerations-on-JSON-indexing" class="common-anchor-header">JSON インデックスの考慮点</h4><ul>
 <li><p><strong>フィルタリングロジック</strong>：</p>
 <ul>
-<li><p><strong>double 型のインデックス (</strong><code translate="no">json_cast_type=&quot;double&quot;</code><strong>) を作成した</strong>場合、数値型のフィルタ条件のみがそのインデックスを使用できます。フィルタでダブルインデックスと数値以外の条件が比較された場合、Milvusは総当たり検索にフォールバックします。</p></li>
+<li><p><strong>double 型のインデックス (</strong><code translate="no">json_cast_type=&quot;double&quot;</code><strong>) を作成した</strong>場合、numeric 型のフィルタ条件のみがそのインデックスを使用できます。フィルタでダブルインデックスと数値以外の条件が比較された場合、Milvusは総当たり検索にフォールバックします。</p></li>
 <li><p><strong>varchar型インデックス(</strong><code translate="no">json_cast_type=&quot;varchar&quot;</code><strong>)を作成した</strong>場合、文字列型フィルタ条件のみがインデックスを使用できます。そうでない場合、Milvusは総当り検索に戻ります。</p></li>
 <li><p><strong>ブール型</strong>インデックスもvarchar型インデックスと同様の動作をします。</p></li>
 </ul></li>
@@ -709,7 +709,7 @@ rows.add(gson.fromJson(<span class="hljs-string">&quot;{\&quot;metadata\&quot;:{
       </svg>
     </button></h2><p>エンティティの挿入後、<code translate="no">query</code> メソッドを使用して、指定したフィルタ式に一致するエンティティを取得します。</p>
 <div class="alert note">
-<p>NULL 値を許容する JSON フィールドの場合、JSON オブジェクト全体がないか、<code translate="no">None</code> に設定されていると、フィールドは NULL として扱われます。詳細については、「<a href="/docs/ja/basic-operators.md#JSON-Fields-with-Null-Values">NULL 値を持つ JSON フィールド</a>」を参照してください。</p>
+<p>NULL 値を許可する JSON フィールドの場合、JSON オブジェクト全体がないか、<code translate="no">None</code> に設定されていると、フィールドは NULL として扱われます。詳細については、「<a href="/docs/ja/basic-operators.md#JSON-Fields-with-Null-Values">NULL 値を持つ JSON フィールド</a>」を参照してください。</p>
 </div>
 <p><code translate="no">metadata</code> が NULL ではないエンティティを取得するには：</p>
 <div class="multipleCode">
@@ -982,4 +982,4 @@ curl --request POST \
 
 <span class="hljs-comment">##{&quot;code&quot;:0,&quot;cost&quot;:0,&quot;data&quot;:[{&quot;metadata&quot;:&quot;{\&quot;product_info\&quot;: {\&quot;category\&quot;: \&quot;electronics\&quot;, \&quot;brand\&quot;: \&quot;BrandA\&quot;}, \&quot;price\&quot;: 99.99, \&quot;in_stock\&quot;: true, \&quot;tags\&quot;: [\&quot;summer_sale\&quot;]}&quot;,&quot;pk&quot;:1}]}</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>さらに、Milvusは、<code translate="no">JSON_CONTAINS</code> 、<code translate="no">JSON_CONTAINS_ALL</code> 、<code translate="no">JSON_CONTAINS_ANY</code> などの高度なJSONフィルタリング演算子をサポートしており、クエリ機能をさらに強化することができます。詳細については、<a href="/docs/ja/json-operators.md">JSON演算</a>子を参照してください。</p>
+<p>さらに、Milvusは<code translate="no">JSON_CONTAINS</code> 、<code translate="no">JSON_CONTAINS_ALL</code> 、<code translate="no">JSON_CONTAINS_ANY</code> などの高度なJSONフィルタリング演算子をサポートしており、クエリ機能をさらに強化することができます。詳細については、<a href="/docs/ja/json-operators.md">JSON演算</a>子を参照してください。</p>

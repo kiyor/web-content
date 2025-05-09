@@ -35,7 +35,7 @@ summary: 集合中的實體是共用相同欄位集的資料記錄。每個資�
         ></path>
       </svg>
     </button></h2><p>在 Milvus 中，<strong>實體</strong>指的是一個資料<strong>集中</strong>共享相同<strong>結構描述</strong>的資料記錄，每一行中每個欄位的資料構成一個實體。因此，同一 Collection 中的 Entity 具有相同的屬性（例如欄位名稱、資料類型和其他約束）。</p>
-<p>當插入 Entity 到一個 Collection 時，要插入的 Entity 只有包含 Schema 中定義的所有欄位，才能成功地加入。插入的 Entity 將按照插入的順序進入一個名為<strong>_default</strong>的 Partition。只要某個 Partition 存在，您也可以在插入請求中指定 Partition 名稱，將 Entity 插入該 Partition 中。</p>
+<p>當插入 Entity 到一個 Collection 時，要插入的 Entity 只有包含 Schema 中定義的所有欄位，才能成功地加入。插入的 Entity 將按照插入的順序進入一個名為<strong>_default</strong>的 Partition。只要某個 Partition 存在，您也可以在插入請求中指定 Partition 名稱，將 Entity 插入到該 Partition 中。</p>
 <p>Milvus 也支援動態欄位，以維持 Collection 的可擴展性。當啟用動態欄位時，您可以插入 Schema 中未定義的欄位到 Collection 中。這些欄位和值會以 key-value 對的形式儲存在一個名為<strong>$meta</strong> 的保留欄位中。關於動態欄位的更多資訊，請參閱動態欄位。</p>
 <h2 id="Insert-Entities-into-a-Collection" class="common-anchor-header">插入實體到集合<button data-href="#Insert-Entities-into-a-Collection" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -53,7 +53,7 @@ summary: 集合中的實體是共用相同欄位集的資料記錄。每個資�
         ></path>
       </svg>
     </button></h2><p>在插入資料之前，您需要依照 Schema 將資料組織成一列詞典，每個詞典代表一個 Entity，並包含 Schema 定義的所有欄位。如果 Collection 啟用了動態欄位，每個辭典也可以包含 Schema 中未定義的欄位。</p>
-<p>在本節中，您將插入 Entities 到<a href="/docs/zh-hant/create-collection-instantly.md#Quick-Setup">以快速設定方式</a>建立的 Collection 中。以這種方式建立的集合只有兩個欄位，分別命名為<strong>id</strong>和<strong>vector</strong>。此外，這個 Collection 啟用了動態欄位，因此範例程式碼中的 Entities 包含一個 Schema 中沒有定義的欄位<strong>color</strong>。</p>
+<p>在本節中，您將插入 Entities 到<a href="/docs/zh-hant/create-collection-instantly.md#Quick-Setup">以快速設定方式</a>建立的 Collection 中。以這種方式建立的集合只有兩個欄位，分別命名為<strong>id</strong>和<strong>vector</strong>。此外，這個 Collection 啟用了動態欄位，因此範例程式碼中的 Entities 包含了一個 Schema 中沒有定義的欄位<strong>color</strong>。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient

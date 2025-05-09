@@ -38,7 +38,7 @@ summary: >-
       </svg>
     </button></h2><p>Milvus 2.5 introduce una nuova versione dell'API che semplifica l'operazione di assegnazione. Non è più necessario cercare il tipo di oggetto quando si concede un privilegio a un ruolo. Di seguito sono riportati i parametri e le relative spiegazioni.</p>
 <ul>
-<li><p><strong>nome_ruolo:</strong> il nome del ruolo di destinazione al quale devono essere concessi i privilegi o i gruppi di privilegi.</p></li>
+<li><p><strong>nome_ruolo:</strong> il nome del ruolo di destinazione a cui devono essere concessi i privilegi o i gruppi di privilegi.</p></li>
 <li><p><strong>Risorsa</strong>: La risorsa di destinazione di un privilegio, che può essere un'istanza specifica, un database o una raccolta. La tabella seguente spiega come specificare la risorsa nel metodo <code translate="no">client.grantV2()</code>.</p>
 <p><table>
 <tr>
@@ -56,7 +56,7 @@ summary: >-
 <tr>
 <td><p>Tutte le raccolte sotto uno specifico database</p></td>
 <td><p>client.grant_privilege_v2(role_name="roleA", privilege="CollectionAdmin", collection_name="<em>", db_name="db1")</p></td>
-<td><p>Inserire il nome del database di destinazione e un carattere jolly <code translate="no"></em></code> come nome della raccolta.</p></td>
+<td><p>Inserite il nome del database di destinazione e un carattere jolly <code translate="no"></em></code> come nome della raccolta.</p></td>
 </tr>
 <tr>
 <td><p><strong>Database</strong></p></td>
@@ -105,7 +105,7 @@ summary: >-
 <td><p><a href="/docs/it/manage_databases.md">CreaDatabase</a></p></td>
 </tr>
 <tr>
-<td><p>AbbandonaDatabase</p></td>
+<td><p>Abbandona il database</p></td>
 <td><p>Eliminare un database</p></td>
 <td><p><a href="/docs/it/manage_databases.md">Rilasciare il database</a></p></td>
 </tr>

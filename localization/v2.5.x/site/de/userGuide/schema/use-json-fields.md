@@ -51,7 +51,7 @@ summary: >-
       </svg>
     </button></h2><ul>
 <li><p><strong>Feldgröße</strong>: JSON-Felder sind auf eine Größe von 65.536 Byte begrenzt.</p></li>
-<li><p><strong>Verschachtelte Wörterbücher</strong>: Alle verschachtelten Dictionaries innerhalb von JSON-Feldwerten werden bei der Speicherung als einfache Strings behandelt.</p></li>
+<li><p><strong>Verschachtelte Wörterbücher</strong>: Alle verschachtelten Dictionaries innerhalb von JSON-Feldwerten werden bei der Speicherung als einfache Zeichenketten behandelt.</p></li>
 <li><p><strong>Standardwerte</strong>: JSON-Felder unterstützen keine Standardwerte. Sie können jedoch das Attribut <code translate="no">nullable</code> auf <code translate="no">True</code> setzen, um Nullwerte zuzulassen. Einzelheiten finden Sie unter <a href="/docs/de/nullable-and-default.md">Nullable &amp; Default</a>.</p></li>
 <li><p><strong>Typübereinstimmung</strong>: Wenn der Schlüsselwert eines JSON-Feldes ein Integer- oder Float-Wert ist, kann er nur (über Ausdrucksfilter) mit einem anderen numerischen Schlüssel desselben Typs verglichen werden.</p></li>
 <li><p><strong>Benennung</strong>: Es wird empfohlen, bei der Benennung von JSON-Schlüsseln nur Buchstaben, Zahlen und Unterstriche zu verwenden. Die Verwendung anderer Zeichen kann zu Problemen bei der Filterung oder Suche führen.</p></li>

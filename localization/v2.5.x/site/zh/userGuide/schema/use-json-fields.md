@@ -381,7 +381,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">params.json_path</code></p></td>
-     <td><p>指定要索引的 JSON 路径。可以针对嵌套键、数组位置或两者（如<code translate="no">metadata["product_info"]["category"]</code> 或<code translate="no">metadata["tags"][0]</code> ）。如果路径缺失或数组元素不存在于某一行，则在索引过程中会跳过该行，不会抛出错误。</p></td>
+     <td><p>指定要索引的 JSON 路径。可以针对嵌套键、数组位置或两者（如<code translate="no">metadata["product_info"]["category"]</code> 或<code translate="no">metadata["tags"][0]</code> ）。如果路径缺失或数组元素不存在于某一行，则在索引过程中会跳过该行，不会出错。</p></td>
      <td><p><code translate="no">"metadata[\"product_info\"][\"category\"]"</code></p></td>
    </tr>
    <tr>

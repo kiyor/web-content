@@ -710,7 +710,7 @@
         ]
       },
       {
-        "label": "Búsqueda y renombre",
+        "label": "Búsqueda y Rerank",
         "id": "search-rerank",
         "order": 5,
         "isMenu": true,

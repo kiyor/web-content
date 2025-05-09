@@ -2,9 +2,9 @@
 id: disk_index.md
 related_key: disk_index
 summary: Mecanismo de indexação de discos em Milvus.
-title: Índice em disco
+title: Índice no disco
 ---
-<h1 id="On-disk-Index" class="common-anchor-header">Índice em disco<button data-href="#On-disk-Index" class="anchor-icon" translate="no">
+<h1 id="On-disk-Index" class="common-anchor-header">Índice no disco<button data-href="#On-disk-Index" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"
@@ -149,7 +149,7 @@ Atualmente, um campo vetorial apenas suporta um tipo de índice. O Milvus exclui
       </svg>
     </button></h2><ul>
 <li><p>Como lidar com o erro <code translate="no">io_setup() failed; returned -11, errno=11:Resource temporarily unavailable</code>?</p>
-<p>O kernel Linux fornece o recurso AIO (Asynchronous non-blocking I/O) que permite que um processo inicie várias operações de E/S simultaneamente sem ter que esperar que qualquer uma delas seja concluída. Isto ajuda a melhorar o desempenho das aplicações que podem sobrepor o processamento e as E/S.</p>
+<p>O kernel Linux fornece o recurso AIO (Asynchronous non-blocking I/O) que permite que um processo inicie várias operações de E/S simultaneamente sem ter que esperar que qualquer uma delas seja concluída. Isso ajuda a aumentar o desempenho de aplicativos que podem sobrepor processamento e E/S.</p>
 <p>O desempenho pode ser ajustado usando o arquivo virtual <code translate="no">/proc/sys/fs/aio-max-nr</code> no sistema de arquivos proc. O parâmetro <code translate="no">aio-max-nr</code> determina o número máximo de pedidos simultâneos permitidos.</p>
 <p>O parâmetro <code translate="no">aio-max-nr</code> é predefinido para <code translate="no">65535</code>, pode ser configurado para <code translate="no">10485760</code>.</p></li>
 </ul>

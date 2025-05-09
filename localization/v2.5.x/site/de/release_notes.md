@@ -105,7 +105,7 @@ title: Hinweise zur Veröffentlichung
 <li>Zurücksetzen von Metriken entfernt, um genaue Berichte zu gewährleisten<a href="https://github.com/milvus-io/milvus/pull/41081">(#41081</a>)</li>
 <li>Ein Fehler wurde behoben, der verhinderte, dass <code translate="no">null</code> Daten durch <code translate="no">null</code> Ausdrücke gefiltert werden konnten<a href="https://github.com/milvus-io/milvus/pull/41135">(#41135</a>)</li>
 <li>Ignoriert wachsende Segmente ohne Startposition für Siegelrichtlinien<a href="https://github.com/milvus-io/milvus/pull/41131">(#41131</a>)</li>
-<li>Vermeidet das Aktualisieren von ursprünglichen Such-/Abfrageanfragen während Wiederholungsversuchen<a href="https://github.com/milvus-io/milvus/pull/41127">(#41127</a>)</li>
+<li>Das Aktualisieren von ursprünglichen Such-/Abfrageanfragen bei Wiederholungsversuchen wurde vermieden<a href="https://github.com/milvus-io/milvus/pull/41127">(#41127</a>)</li>
 <li>Ein Segmentierungsfehler wurde behoben, wenn <code translate="no">LoadArrowReaderFromRemote</code> in einem Ausnahmepfad läuft<a href="https://github.com/milvus-io/milvus/pull/41071">(#41071</a>)</li>
 <li>Probleme mit manuellem Ausgleich und Ausgleichsprüfung behoben<a href="https://github.com/milvus-io/milvus/pull/41038">(#41038</a>)</li>
 <li>Validiertes Schema ist nicht <code translate="no">nil</code> für JSON-Statistiken mit Lazy <code translate="no">DescribeCollection</code> <a href="https://github.com/milvus-io/milvus/pull/41068">(#41068</a>)</li>
@@ -140,7 +140,7 @@ title: Hinweise zur Veröffentlichung
 <tr><td>2.5.8</td><td>2.5.6</td><td>2.5.7</td><td>2.5.6</td></tr>
 </tbody>
 </table>
-<p>Wir freuen uns, die Veröffentlichung von Milvus 2.5.8 ankündigen zu können, die Verbesserungen bei JSON-Ausdrücken, UTF-8-Validierung, Speichernutzung und Ausgleichslogik enthält. Diese Version enthält auch mehrere wichtige Fehlerkorrekturen zur Verbesserung der Gleichzeitigkeit und der Datenverarbeitung. Wir möchten Sie ermutigen, ein Upgrade durchzuführen oder es auszuprobieren, und wie immer hilft uns Ihr Feedback, Milvus kontinuierlich zu verbessern!</p>
+<p>Wir freuen uns, die Veröffentlichung von Milvus 2.5.8 ankündigen zu können, die Verbesserungen bei JSON-Ausdrücken, UTF-8-Validierung, Speichernutzung und Ausgleichslogik enthält. Diese Version enthält außerdem mehrere wichtige Fehlerkorrekturen zur Verbesserung der Gleichzeitigkeit und der Datenverarbeitung. Wir möchten Sie ermutigen, ein Upgrade durchzuführen oder es auszuprobieren, und wie immer hilft uns Ihr Feedback, Milvus kontinuierlich zu verbessern!</p>
 <h3 id="Features" class="common-anchor-header">Merkmale</h3><ul>
 <li>Unterstützung von JSON <code translate="no">null</code>/<code translate="no">exists</code> Ausdrücken<a href="https://github.com/milvus-io/milvus/pull/41002">(#41002</a>)</li>
 <li>Unterstützung für das Parsen von Sparse-Vektoren aus Parquet-Strukturen bei Bulk-Inserts<a href="https://github.com/milvus-io/milvus/pull/40874">(#40874</a>)</li>
@@ -208,7 +208,7 @@ title: Hinweise zur Veröffentlichung
 <li>Aktualisierbarkeit der Segment Prune Konfiguration<a href="https://github.com/milvus-io/milvus/pull/40632">(#40632</a>)</li>
 <li>Hinzufügen einer Channel-Seal-Policy basierend auf der Blockierung von L0<a href="https://github.com/milvus-io/milvus/pull/40535">(#40535</a>)</li>
 <li>Verfeinerung der Task-Metadaten mit Key-Level Locking<a href="https://github.com/milvus-io/milvus/pull/40353">(#40353</a>)</li>
-<li>Entfernen von unnötigen Sammel- und Partitionsbezeichnungen aus Metriken<a href="https://github.com/milvus-io/milvus/pull/40593">(#40593</a>)</li>
+<li>Entfernen von unnötigen Sammlungs- und Partitionsbezeichnungen aus Metriken<a href="https://github.com/milvus-io/milvus/pull/40593">(#40593</a>)</li>
 <li>Verbessern von Import-Fehlermeldungen<a href="https://github.com/milvus-io/milvus/pull/40597">(#40597</a>)</li>
 <li>Vermeiden Sie die Konvertierung von Body-Byte-Slices in Strings in <code translate="no">httpserver</code> <a href="https://github.com/milvus-io/milvus/pull/40414">(#40414</a>)</li>
 <li>Protokollierung der Startposition von Löschmeldungen<a href="https://github.com/milvus-io/milvus/pull/40678">(#40678</a>)</li>
@@ -217,7 +217,7 @@ title: Hinweise zur Veröffentlichung
 <h3 id="Bug-fixes" class="common-anchor-header">Fehlerbehebungen</h3><ul>
 <li>Verwendung von <code translate="no">newInsertDataWithFunctionOutputField</code> beim Importieren von Binlog-Dateien<a href="https://github.com/milvus-io/milvus/pull/40742">(#40742</a>)</li>
 <li>Es wurde ein Problem behoben, bei dem mmap-Eigenschaften beim Erstellen einer Sammlung nicht angewendet wurden<a href="https://github.com/milvus-io/milvus/pull/40515">(#40515</a>)</li>
-<li>Lösche die centroids Datei nicht, wenn das Sampling fehlschlägt; warte stattdessen auf GC<a href="https://github.com/milvus-io/milvus/pull/40702">(#40702</a>)</li>
+<li>Löscht die centroids-Datei nicht, wenn das Sampling fehlschlägt; stattdessen wird auf GC gewartet<a href="https://github.com/milvus-io/milvus/pull/40702">(#40702</a>)</li>
 <li>Probleme mit Nachrichtenverlusten während der Suche behoben<a href="https://github.com/milvus-io/milvus/pull/40736">(#40736</a>)</li>
 <li>Entfernte Verzögerungsziele nach dem Hauptdispatcher<a href="https://github.com/milvus-io/milvus/pull/40717">(#40717</a>)</li>
 <li>Bitmap-Eingabe für jede Batch-Schleife wurde gelöscht<a href="https://github.com/milvus-io/milvus/pull/40722">(#40722</a>)</li>
@@ -258,7 +258,7 @@ title: Hinweise zur Veröffentlichung
 <tr><td>2.5.6</td><td>2.5.5</td><td>2.5.5</td><td>2.5.5</td></tr>
 </tbody>
 </table>
-<p>Wir freuen uns, die Veröffentlichung von Milvus 2.5.6 ankündigen zu können. Diese Version enthält wertvolle Verbesserungen in den Bereichen Toolchains, Logging, Metriken und Array-Handling sowie mehrere Bugfixes zur Verbesserung der Zuverlässigkeit und Leistung. Dieses Update beinhaltet eine verfeinerte Gleichzeitigkeitsbehandlung, robustere Verdichtungsaufgaben und andere wichtige Verbesserungen. Wir möchten Sie ermutigen, ein Upgrade durchzuführen oder es auszuprobieren, und wie immer freuen wir uns über Ihr Feedback, damit wir Milvus kontinuierlich verbessern können!</p>
+<p>Wir freuen uns, die Veröffentlichung von Milvus 2.5.6 ankündigen zu können, die wertvolle Verbesserungen für Toolchains, Logging, Metriken und Array-Handling sowie mehrere Bugfixes für verbesserte Zuverlässigkeit und Leistung enthält. Dieses Update beinhaltet eine verfeinerte Gleichzeitigkeitsbehandlung, robustere Verdichtungsaufgaben und andere wichtige Verbesserungen. Wir möchten Sie ermutigen, ein Upgrade durchzuführen oder es auszuprobieren, und wie immer freuen wir uns über Ihr Feedback, damit wir Milvus kontinuierlich verbessern können!</p>
 <h3 id="Improvements" class="common-anchor-header">Verbesserungen</h3><ul>
 <li>Upgrade der Go-Toolchain auf 1.22.7<a href="https://github.com/milvus-io/milvus/pull/40399">(#40399</a>)</li>
 <li>Aktualisierung der Rust-Version auf 1.83<a href="https://github.com/milvus-io/milvus/pull/40317">(#40317</a>)</li>
@@ -364,7 +364,7 @@ title: Hinweise zur Veröffentlichung
 </ul>
 <h3 id="Improvements" class="common-anchor-header">Verbesserungen</h3><h4 id="Observability" class="common-anchor-header">Beobachtbarkeit</h4><ul>
 <li>Monitor-Metrik zum Abrufen von Rohdaten hinzugefügt<a href="https://github.com/milvus-io/milvus/pull/40155">(#40155</a>)</li>
-<li>[2.5] Metrik für die Latenzzeit von Get-Vektoren hinzugefügt und Fehlermeldung zum Anfragelimit verfeinert<a href="https://github.com/milvus-io/milvus/pull/40085">(#40085</a>)</li>
+<li>[2.5] Metrik für die Latenzzeit von Get-Vektoren hinzugefügt und Fehlermeldung für das Anfragelimit verfeinert<a href="https://github.com/milvus-io/milvus/pull/40085">(#40085</a>)</li>
 <li>[2.5] Metrik für Proxy-Warteschlange hinzugefügt<a href="https://github.com/milvus-io/milvus/pull/40071">(#40071</a>)</li>
 <li>Mehr Metrik-Daten veröffentlicht<a href="https://github.com/milvus-io/milvus/pull/39466">(#39466</a>)</li>
 <li>[2.5] Metriken für Parse-Ausdruck hinzugefügt<a href="https://github.com/milvus-io/milvus/pull/39716">(#39716</a>)</li>
@@ -509,7 +509,7 @@ title: Hinweise zur Veröffentlichung
 <h3 id="Improvements" class="common-anchor-header">Verbesserungen</h3><ul>
 <li>Hinzufügen einer Ressourcengruppen-API für die RESTful-Schnittstelle.<a href="https://github.com/milvus-io/milvus/pull/39092">(#39092</a>)</li>
 <li>Optimierte Abrufleistung durch Nutzung von Bitset SIMD Methoden.<a href="https://github.com/milvus-io/milvus/pull/39041">(#39041</a>)</li>
-<li>Der MVCC-Zeitstempel wird nun als Garantiezeitstempel verwendet, wenn er angegeben ist.<a href="https://github.com/milvus-io/milvus/pull/39019">(#39019</a>)</li>
+<li>Der MVCC-Zeitstempel wurde als Garantiezeitstempel verwendet, wenn er angegeben wurde.<a href="https://github.com/milvus-io/milvus/pull/39019">(#39019</a>)</li>
 <li>Fehlende Lösch-Metriken wurden hinzugefügt.<a href="https://github.com/milvus-io/milvus/pull/38747">(#38747</a>)</li>
 <li>Etcd auf Version v3.5.16 aktualisiert.<a href="https://github.com/milvus-io/milvus/pull/38969">(#38969</a>)</li>
 <li>Neues Go-Paket zur Verwaltung von Protos erstellt.<a href="https://github.com/milvus-io/milvus/pull/39128">(#39128</a>)</li>

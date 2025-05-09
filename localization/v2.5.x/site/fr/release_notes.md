@@ -140,7 +140,7 @@ title: Notes de mise à jour
 <tr><td>2.5.8</td><td>2.5.6</td><td>2.5.7</td><td>2.5.6</td></tr>
 </tbody>
 </table>
-<p>Nous sommes heureux d'annoncer la sortie de Milvus 2.5.8, qui présente des améliorations au niveau des expressions JSON, de la validation UTF-8, de l'utilisation de la mémoire et de la logique d'équilibrage. Cette version inclut également plusieurs corrections de bogues importantes pour améliorer la concurrence et le traitement des données. Nous vous encourageons à mettre à niveau ou à essayer Milvus, et comme toujours, vos commentaires nous aident à améliorer Milvus en permanence !</p>
+<p>Nous sommes heureux d'annoncer la sortie de Milvus 2.5.8, qui présente des améliorations au niveau des expressions JSON, de la validation UTF-8, de l'utilisation de la mémoire et de la logique d'équilibrage. Cette version inclut également de nombreuses corrections de bogues importantes pour améliorer la concurrence et le traitement des données. Nous vous encourageons à mettre à niveau ou à essayer Milvus, et comme toujours, vos commentaires nous aident à améliorer Milvus en permanence !</p>
 <h3 id="Features" class="common-anchor-header">Fonctionnalités</h3><ul>
 <li>Prise en charge des expressions JSON <code translate="no">null</code>/<code translate="no">exists</code> <a href="https://github.com/milvus-io/milvus/pull/41002">(#41002</a>)</li>
 <li>Prise en charge de l'analyse de vecteurs épars à partir de structures Parquet dans les insertions en bloc<a href="https://github.com/milvus-io/milvus/pull/40874">(#40874</a>)</li>

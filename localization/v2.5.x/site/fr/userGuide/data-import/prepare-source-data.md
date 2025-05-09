@@ -376,7 +376,7 @@ writer = RemoteBulkWriter(
 <p>Un <strong>BulkWriter</strong> possède deux méthodes : <code translate="no">append_row()</code> ajoute une ligne à partir d'un jeu de données source et <code translate="no">commit()</code> valide les lignes ajoutées dans un fichier local ou un bucket distant.</p>
 </div>
 <div class="language-java">
-<p>Un <strong>BulkWriter</strong> possède deux méthodes : <code translate="no">appendRow()</code> ajoute une ligne à partir d'un jeu de données source et <code translate="no">commit()</code> enregistre les lignes ajoutées dans un fichier local ou un panier distant.</p>
+<p>Un <strong>BulkWriter</strong> possède deux méthodes : <code translate="no">appendRow()</code> ajoute une ligne à partir d'un jeu de données source et <code translate="no">commit()</code> enregistre les lignes ajoutées dans un fichier local ou dans une base de données distante.</p>
 </div>
 <p>À des fins de démonstration, le code suivant ajoute des données générées de manière aléatoire.</p>
 <div class="multipleCode">
@@ -596,7 +596,7 @@ writer = RemoteBulkWriter(
 <p>Pour vérifier les résultats, vous pouvez obtenir le chemin de sortie réel en imprimant la propriété <code translate="no">batch_files</code> de l'auteur.</p>
 </div>
 <div class="language-java">
-<p>Pour vérifier les résultats, vous pouvez obtenir le chemin de sortie réel en imprimant la méthode <code translate="no">getBatchFiles()</code> du rédacteur.</p>
+<p>Pour vérifier les résultats, vous pouvez obtenir le chemin de sortie réel en imprimant la méthode <code translate="no">getBatchFiles()</code> de l'auteur.</p>
 </div>
 <div class="multipleCode">
  <a href="#python">Python </a> <a href="#java">Java</a></div>

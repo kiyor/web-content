@@ -689,7 +689,7 @@ curl --request POST \
     \&quot;params\&quot;: <span class="hljs-variable">$params</span>
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Set-Consistency-Level" class="common-anchor-header">تعيين مستوى الاتساق</h3><p>عند إنشاء مجموعة، يمكنك تعيين مستوى الاتساق لعمليات البحث والاستعلامات في المجموعة. يمكنك أيضًا تغيير مستوى تناسق المجموعة أثناء بحث أو استعلام معين.</p>
+<h3 id="Set-Consistency-Level" class="common-anchor-header">تعيين مستوى الاتساق</h3><p>عند إنشاء مجموعة، يمكنك تعيين مستوى الاتساق لعمليات البحث والاستعلامات في المجموعة. يمكنك أيضًا تغيير مستوى اتساق المجموعة أثناء بحث أو استعلام معين.</p>
 <div class="multipleCode">
    <a href="#python">بايثون</a> <a href="#java">جافا جافا</a> <a href="#javascript">NodeJS</a> <a href="#go">الذهاب</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># With consistency level</span>

@@ -3,8 +3,8 @@ id: prepare-source-data.md
 order: 0
 title: Quelldaten vorbereiten
 summary: >-
-  Auf dieser Seite geht es um etwas, das Sie bedenken sollten, bevor Sie mit der
-  Masseneintragung von Daten in Ihre Sammlung beginnen.
+  Auf dieser Seite geht es um etwas, das Sie bedenken sollten, bevor Sie Daten
+  in großen Mengen in Ihre Sammlung einfügen.
 ---
 <h1 id="Prepare-Source-Data" class="common-anchor-header">Quelldaten vorbereiten<button data-href="#Prepare-Source-Data" class="anchor-icon" translate="no">
       <svg translate="no"

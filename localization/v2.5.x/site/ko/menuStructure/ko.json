@@ -1265,7 +1265,7 @@
             "children": []
           },
           {
-            "label": "스케일 종속성",
+            "label": "Scale Dependencies",
             "id": "scale-dependencies.md",
             "order": 2,
             "children": []
@@ -1693,7 +1693,7 @@
         "children": []
       },
       {
-        "label": "오케스트레이션",
+        "label": "Orchestration",
         "id": "orchestrate-with-milvus",
         "order": 3,
         "children": [
@@ -1746,7 +1746,7 @@
                 "children": []
               },
               {
-                "label": "전체 텍스트 검색",
+                "label": "Full-text Search",
                 "id": "llamaindex_milvus_full_text_search.md",
                 "order": 2,
                 "children": []

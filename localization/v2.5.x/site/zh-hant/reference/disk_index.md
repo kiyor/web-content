@@ -149,7 +149,7 @@ title: 磁碟上索引
       </svg>
     </button></h2><ul>
 <li><p>如何處理<code translate="no">io_setup() failed; returned -11, errno=11:Resource temporarily unavailable</code> 錯誤？</p>
-<p>Linux 核心提供異步非阻塞 I/O (Asynchronous non-blocking I/O, AIO) 功能，允許一個進程同時啟動多個 I/O 作業，而不必等待任何一個完成。這有助於提升可重複處理和 I/O 的應用程式的效能。</p>
+<p>Linux 核心提供異步非阻塞 I/O (Asynchronous non-blocking I/O, AIO) 功能，允許一個進程同時啟動多個 I/O 作業，而不必等待任何一個完成。這有助於提升可能重疊處理和 I/O 的應用程式的效能。</p>
 <p>可以使用 proc 檔案系統中的<code translate="no">/proc/sys/fs/aio-max-nr</code> 虛擬檔案調整效能。<code translate="no">aio-max-nr</code> 參數決定允許的最大並發要求數目。</p>
 <p><code translate="no">aio-max-nr</code> 預設為<code translate="no">65535</code> ，您可以將其設定為<code translate="no">10485760</code> 。</p></li>
 </ul>
