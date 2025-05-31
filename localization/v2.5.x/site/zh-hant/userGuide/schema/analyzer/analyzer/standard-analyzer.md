@@ -36,7 +36,7 @@ summary: 標準分析器是 Milvus 的預設分析器，如果沒有指定分析
       </svg>
     </button></h2><p><code translate="no">standard</code> 分析器包括</p>
 <ul>
-<li><p><strong>標記器</strong>：使用<code translate="no">standard</code> tokenizer，根據文法規則將文字分割成離散的單字單位。如需詳細資訊，請參閱<a href="/docs/zh-hant/standard-tokenizer.md">Standard</a>。</p></li>
+<li><p><strong>標記器</strong>：使用<code translate="no">standard</code> tokenizer，根據文法規則將文字分割成離散的單字單位。如需詳細資訊，請參閱<a href="/docs/zh-hant/standard-tokenizer.md">標準</a>。</p></li>
 <li><p><strong>過濾器</strong>：使用<code translate="no">lowercase</code><a href="/docs/zh-hant/lowercase-filter.md"> 過濾器</a>，將所有字元轉換為小寫，使搜尋不區分大小寫。如需詳細資訊，請參閱</p></li>
 </ul>
 <p><code translate="no">standard</code> 分析器的功能等同於下列自訂分析器組態：</p>
@@ -134,7 +134,7 @@ analyzerParams.put(<span class="hljs-string">&quot;stop_words&quot;</span>, Coll
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-bash"><span class="hljs-comment"># restful</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>定義<code translate="no">analyzer_params</code> 之後，您可以在定義集合模式時，將它們套用到<code translate="no">VARCHAR</code> 欄位。這可讓 Milvus 使用指定的分析器處理該欄位中的文字，以進行有效的標記化和過濾。如需詳細資訊，請參閱<a href="/docs/zh-hant/analyzer-overview.md#Example-use">範例使用</a>。</p>
+<p>定義<code translate="no">analyzer_params</code> 之後，您可以在定義集合模式時，將它們套用到<code translate="no">VARCHAR</code> 欄位。這可讓 Milvus 使用指定的分析器處理該欄位中的文字，以進行有效的標記化和過濾。如需更多資訊，請參考<a href="/docs/zh-hant/analyzer-overview.md#Example-use">範例使用</a>。</p>
 <h2 id="Examples" class="common-anchor-header">範例<button data-href="#Examples" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -174,7 +174,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
   ]
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Verification-using-runanalyzer" class="common-anchor-header">驗證使用<code translate="no">run_analyzer</code></h3><div class="multipleCode">
+<h3 id="Verification-using-runanalyzer--Milvus-2511+" class="common-anchor-header">驗證使用<code translate="no">run_analyzer</code><span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.11+</span></h3><div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> (
     MilvusClient,

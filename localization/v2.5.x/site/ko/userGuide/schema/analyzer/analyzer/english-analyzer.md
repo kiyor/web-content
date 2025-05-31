@@ -41,7 +41,7 @@ summary: Milvus의 영어 분석기는 토큰화 및 필터링에 언어별 규�
 <ul>
 <li><p><code translate="no">lowercase</code>: 모든 토큰을 소문자로 변환하여 대소문자를 구분하지 않고 검색할 수 있도록 합니다.</p></li>
 <li><p><code translate="no">stemmer</code>: 더 광범위한 검색을 지원하기 위해 단어를 어근 형태로 축소합니다(예: "running"이 "run"이 됨).</p></li>
-<li><p><code translate="no">stop_words</code>: 텍스트의 주요 용어에 집중하기 위해 일반적인 영어 중단어를 제거합니다.</p></li>
+<li><p><code translate="no">stop_words</code>: 텍스트의 주요 용어에 집중할 수 있도록 일반적인 영어 중단어를 제거합니다.</p></li>
 </ul></li>
 </ul>
 <p><code translate="no">english</code> 분석기의 기능은 다음과 같은 사용자 정의 분석기 구성과 동일합니다:</p>
@@ -227,7 +227,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
 }&#x27;</span>
 
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Verification-using-runanalyzer" class="common-anchor-header">다음을 사용하여 확인 <code translate="no">run_analyzer</code></h3><div class="multipleCode">
+<h3 id="Verification-using-runanalyzer--Milvus-2511+" class="common-anchor-header">다음을 사용하여 확인 <code translate="no">run_analyzer</code><span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.11+</span></h3><div class="multipleCode">
    <a href="#python">파이썬</a> <a href="#java">자바</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> (
     MilvusClient,

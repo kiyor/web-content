@@ -40,7 +40,7 @@ summary: >-
       </svg>
     </button></h2><p>L'analyseur <code translate="no">standard</code> se compose de</p>
 <ul>
-<li><p>Un<strong>tokenizer</strong>: Utilise le tokenizer <code translate="no">standard</code> pour diviser le texte en unités de mots discrètes basées sur des règles de grammaire. Pour plus d'informations, voir <a href="/docs/fr/standard-tokenizer.md">Standard</a>.</p></li>
+<li><p>Un<strong>tokenizer</strong>: Il utilise le tokenizer <code translate="no">standard</code> pour diviser le texte en unités de mots discrètes basées sur des règles de grammaire. Pour plus d'informations, voir <a href="/docs/fr/standard-tokenizer.md">Standard</a>.</p></li>
 <li><p><strong>Filtre</strong>: Utilise le<a href="/docs/fr/lowercase-filter.md"> filtre</a> <code translate="no">lowercase</code><a href="/docs/fr/lowercase-filter.md"></a> pour convertir tous les tokens en minuscules, ce qui permet d'effectuer des recherches insensibles à la casse. Pour plus d'informations, voir</p></li>
 </ul>
 <p>Les fonctionnalités de l'analyseur <code translate="no">standard</code> sont équivalentes à la configuration personnalisée suivante de l'analyseur :</p>
@@ -178,7 +178,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
   ]
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Verification-using-runanalyzer" class="common-anchor-header">Vérification à l'aide de <code translate="no">run_analyzer</code></h3><div class="multipleCode">
+<h3 id="Verification-using-runanalyzer--Milvus-2511+" class="common-anchor-header">Vérification à l'aide de <code translate="no">run_analyzer</code><span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.11+</span></h3><div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> (
     MilvusClient,

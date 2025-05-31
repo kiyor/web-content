@@ -43,7 +43,7 @@ summary: >-
 <li><p><strong>Filter</strong>: Enthält mehrere Filter für eine umfassende Textverarbeitung:</p>
 <ul>
 <li><p><code translate="no">lowercase</code>: Konvertiert alle Token in Kleinbuchstaben und ermöglicht so eine Suche ohne Berücksichtigung der Groß-/Kleinschreibung.</p></li>
-<li><p><code translate="no">stemmer</code>: Reduziert Wörter auf ihren Wortstamm, um einen breiteren Abgleich zu ermöglichen (z. B. wird "running" zu "run").</p></li>
+<li><p><code translate="no">stemmer</code>: Reduziert Wörter auf ihren Wortstamm, um einen breiteren Abgleich zu ermöglichen (z. B. wird "laufen" zu "run").</p></li>
 <li><p><code translate="no">stop_words</code>: Entfernt gängige englische Stoppwörter, um sich auf die Schlüsselbegriffe im Text zu konzentrieren.</p></li>
 </ul></li>
 </ul>
@@ -230,7 +230,7 @@ analyzerParams=<span class="hljs-string">&#x27;{
 }&#x27;</span>
 
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Verification-using-runanalyzer" class="common-anchor-header">Überprüfung mit <code translate="no">run_analyzer</code></h3><div class="multipleCode">
+<h3 id="Verification-using-runanalyzer--Milvus-2511+" class="common-anchor-header">Überprüfung mit <code translate="no">run_analyzer</code><span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.11+</span></h3><div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> (
     MilvusClient,

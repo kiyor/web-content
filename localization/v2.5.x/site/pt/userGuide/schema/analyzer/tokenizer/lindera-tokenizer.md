@@ -39,7 +39,7 @@ beta: Milvus 2.5.11+
         ></path>
       </svg>
     </button></h2><p>Para usar o tokenizador <code translate="no">lindera</code>, é necessário usar uma versão especialmente compilada do Milvus. Todos os dicionários devem ser explicitamente habilitados durante a compilação para serem usados.</p>
-<p>Para ativar dicionários específicos, inclua-os no comando de compilação:</p>
+<p>Para habilitar dicionários específicos, inclua-os no comando de compilação:</p>
 <pre><code translate="no"><span class="hljs-built_in">make</span> milvus TANTIVY_FEATURES=lindera-ipadic,lindera-ko-dic
 <button class="copy-code-btn"></button></code></pre>
 <p>A lista completa de dicionários disponíveis é: <code translate="no">lindera-ipadic</code>, <code translate="no">lindera-ipadic-neologd</code>, <code translate="no">lindera-unidic</code>, <code translate="no">lindera-ko-dic</code>, <code translate="no">lindera-cc-cedict</code>.</p>
@@ -78,7 +78,7 @@ analyzerParams.put(<span class="hljs-string">&quot;tokenizer&quot;</span>,
                     put(<span class="hljs-string">&quot;dict_kind&quot;</span>, <span class="hljs-string">&quot;ipadic&quot;</span>);
                 }});
 <button class="copy-code-btn"></button></code></pre>
-<pre><code translate="no" class="language-go"><span class="hljs-comment">// go</span>
+<pre><code translate="no" class="language-go">analyzerParams = <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]any{<span class="hljs-string">&quot;tokenizer&quot;</span>: <span class="hljs-keyword">map</span>[<span class="hljs-type">string</span>]any{<span class="hljs-string">&quot;type&quot;</span>: <span class="hljs-string">&quot;lindera&quot;</span>, <span class="hljs-string">&quot;dict_kind&quot;</span>: <span class="hljs-string">&quot;ipadic&quot;</span>}}
 <button class="copy-code-btn"></button></code></pre>
 <table>
    <tr>
@@ -96,7 +96,7 @@ analyzerParams.put(<span class="hljs-string">&quot;tokenizer&quot;</span>,
 <li><p><code translate="no">ko-dic</code>: Coreano - Dicionário morfológico coreano<a href="https://bitbucket.org/eunjeon/mecab-ko-dic">(MeCab Ko-dic</a>)</p></li>
 <li><p><code translate="no">ipadic</code>: Japonês - Dicionário morfológico padrão<a href="https://taku910.github.io/mecab/">(MeCab IPADIC</a>)</p></li>
 <li><p><code translate="no">ipadic-neologd</code>: Japonês com dicionário de neologismos (alargado) - Inclui palavras novas e nomes próprios<a href="https://github.com/neologd/mecab-ipadic-neologd">(IPADIC NEologd</a>)</p></li>
-<li><p><code translate="no">unidic</code>: UniDic japonês (extenso) - Dicionário académico padrão com informação linguística detalhada<a href="https://clrd.ninjal.ac.jp/unidic/">(UniDic</a>)</p></li>
+<li><p><code translate="no">unidic</code>: UniDic japonês (extenso) - Dicionário padrão académico com informação linguística detalhada<a href="https://clrd.ninjal.ac.jp/unidic/">(UniDic</a>)</p></li>
 <li><p><code translate="no">cc-cedict</code>: Chinês Mandarim (tradicional/simplificado) - Dicionário Chinês-Inglês mantido pela comunidade<a href="https://cc-cedict.org/wiki/">(CC-CEDICT</a>)</p>
 <p><strong>Nota:</strong> Todos os dicionários devem ser activados durante a compilação do Milvus para estarem disponíveis para utilização.</p></li>
 </ul></td>

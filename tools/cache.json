@@ -1199,9 +1199,9 @@
     "v2.5.x/site/en/userGuide/manage-indexes/index-vector-fields.md": "2025-03-26T02:45:15.508Z",
     "v2.5.x/site/en/userGuide/manage-indexes/index-with-gpu.md": "2025-01-14T08:53:12.214Z",
     "v2.5.x/site/en/userGuide/manage_databases.md": "2025-04-07T08:42:20.910Z",
-    "v2.5.x/site/en/userGuide/schema/analyzer/analyzer/chinese-analyzer.md": "2025-05-31T02:41:01.971Z",
-    "v2.5.x/site/en/userGuide/schema/analyzer/analyzer/english-analyzer.md": "2025-05-31T02:41:10.922Z",
-    "v2.5.x/site/en/userGuide/schema/analyzer/analyzer/standard-analyzer.md": "2025-05-31T02:41:21.362Z",
+    "v2.5.x/site/en/userGuide/schema/analyzer/analyzer/chinese-analyzer.md": "2025-05-31T03:33:38.230Z",
+    "v2.5.x/site/en/userGuide/schema/analyzer/analyzer/english-analyzer.md": "2025-05-31T03:33:46.518Z",
+    "v2.5.x/site/en/userGuide/schema/analyzer/analyzer/standard-analyzer.md": "2025-05-31T03:33:55.051Z",
     "v2.5.x/site/en/userGuide/schema/analyzer/analyzer-overview.md": "2025-05-31T02:41:38.724Z",
     "v2.5.x/site/en/userGuide/schema/analyzer/filter/alphanumonly-filter.md": "2025-05-31T02:41:45.926Z",
     "v2.5.x/site/en/userGuide/schema/analyzer/filter/ascii-folding-filter.md": "2025-05-31T02:41:53.946Z",
@@ -1305,10 +1305,10 @@
     "v2.5.x/site/en/integrations/build_RAG_with_milvus_and_embedAnything.md": "2025-05-31T02:27:25.826Z",
     "v2.5.x/site/en/integrations/milvus_and_n8n.md": "2025-05-31T02:34:37.946Z",
     "v2.5.x/site/en/integrations/use_milvus_in_anythingllm.md": "2025-05-31T02:36:03.621Z",
-    "v2.5.x/site/en/userGuide/schema/analyzer/filter/regex-filter.md": "2025-05-31T02:42:38.611Z",
-    "v2.5.x/site/en/userGuide/schema/analyzer/filter/removepunct-filter.md": "2025-05-31T02:42:46.349Z",
+    "v2.5.x/site/en/userGuide/schema/analyzer/filter/regex-filter.md": "2025-05-31T03:34:02.152Z",
+    "v2.5.x/site/en/userGuide/schema/analyzer/filter/removepunct-filter.md": "2025-05-31T03:34:09.360Z",
     "v2.5.x/site/en/userGuide/schema/analyzer/multi-language-analyzers.md": "2025-05-31T02:43:25.688Z",
-    "v2.5.x/site/en/userGuide/schema/analyzer/tokenizer/icu-tokenizer.md": "2025-05-31T02:43:33.217Z",
-    "v2.5.x/site/en/userGuide/schema/analyzer/tokenizer/lindera-tokenizer.md": "2025-05-31T02:43:51.127Z"
+    "v2.5.x/site/en/userGuide/schema/analyzer/tokenizer/icu-tokenizer.md": "2025-05-31T03:34:15.992Z",
+    "v2.5.x/site/en/userGuide/schema/analyzer/tokenizer/lindera-tokenizer.md": "2025-05-31T03:34:24.583Z"
   }
 }
