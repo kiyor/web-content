@@ -20,15 +20,15 @@ title: Использование полнотекстового поиска с
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/langchain/full_text_search_with_langchain.ipynb" target="_parent">
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/langchain/full_text_search_with_langchain.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/langchain/full_text_search_with_langchain.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/langchain/full_text_search_with_langchain.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <p><a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">Полнотекстовый поиск</a> - это традиционный метод поиска документов по определенным ключевым словам или фразам в тексте. Он ранжирует результаты на основе оценки релевантности, рассчитанной с учетом таких факторов, как частота встречаемости терминов. В то время как семантический поиск лучше понимает смысл и контекст, полнотекстовый поиск превосходит его в точности подбора ключевых слов, что делает его полезным дополнением к семантическому поиску. Алгоритм BM25 широко используется для ранжирования в полнотекстовом поиске и играет ключевую роль в Retrieval-Augmented Generation (RAG).</p>
 <p>В<a href="https://milvus.io/blog/introduce-milvus-2-5-full-text-search-powerful-metadata-filtering-and-more.md">Milvus 2.5</a> реализованы встроенные возможности полнотекстового поиска с использованием BM25. Этот подход преобразует текст в разреженные векторы, которые представляют собой оценки BM25. Вы можете просто ввести необработанный текст, и Milvus автоматически сгенерирует и сохранит разреженные векторы, без необходимости ручной генерации разреженных вкраплений.</p>
-<p>Интеграция LangChain с Milvus также добавила эту функцию, упростив процесс включения полнотекстового поиска в приложения RAG. Комбинируя полнотекстовый поиск с семантическим поиском с помощью плотных векторов, вы можете получить гибридный подход, который использует как семантический контекст из плотных вкраплений, так и точную релевантность ключевых слов из сопоставления слов. Такая интеграция повышает точность, релевантность и удобство работы с поисковыми системами.</p>
+<p>Интеграция LangChain с Milvus также добавила эту функцию, упростив процесс внедрения полнотекстового поиска в приложения RAG. Комбинируя полнотекстовый поиск с семантическим поиском с помощью плотных векторов, вы можете получить гибридный подход, который использует как семантический контекст из плотных вкраплений, так и точную релевантность ключевых слов из сопоставления слов. Такая интеграция повышает точность, релевантность и удобство работы с поисковыми системами.</p>
 <p>В этом руководстве мы покажем, как использовать LangChain и Milvus для реализации полнотекстового поиска в вашем приложении.</p>
 <div class="alert note">
 <ul>
@@ -105,7 +105,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>В приведенном выше коде мы определяем экземпляр <code translate="no">BM25BuiltInFunction</code> и передаем его объекту <code translate="no">Milvus</code>. <code translate="no">BM25BuiltInFunction</code> - это легкий класс-обертка для <a href="https://milvus.io/docs/manage-collections.md#Function"><code translate="no">Function</code></a> в Milvus.</p>
@@ -136,7 +136,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -164,7 +164,7 @@ vectorstore.vector_fields
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -188,7 +188,7 @@ vectorstore.vector_fields
       </svg>
     </button></h2><p>Анализаторы играют важную роль в полнотекстовом поиске, разбивая предложение на лексемы и выполняя лексический анализ, например, стемминг и удаление стоп-слов. Анализаторы обычно зависят от конкретного языка. Вы можете обратиться к <a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">этому руководству</a>, чтобы узнать больше об анализаторах в Milvus.</p>
 <p>Milvus поддерживает два типа анализаторов: <strong>Встроенные анализаторы</strong> и <strong>Пользовательские анализаторы</strong>. По умолчанию на сайте <code translate="no">BM25BuiltInFunction</code> будет использоваться <a href="https://milvus.io/docs/standard-analyzer.md">стандартный встроенный анализатор</a>, который является самым базовым анализатором и выполняет токенизацию текста с пунктуацией.</p>
-<p>Если вы хотите использовать другой анализатор или настроить его, вы можете передать параметр <code translate="no">analyzer_params</code> в инициализации <code translate="no">BM25BuiltInFunction</code>.</p>
+<p>Если вы хотите использовать другой анализатор или настроить его под себя, вы можете передать параметр <code translate="no">analyzer_params</code> в инициализации <code translate="no">BM25BuiltInFunction</code>.</p>
 <pre><code translate="no" class="language-python">analyzer_params_custom = {
     <span class="hljs-string">&quot;tokenizer&quot;</span>: <span class="hljs-string">&quot;standard&quot;</span>,
     <span class="hljs-string">&quot;filter&quot;</span>: [
@@ -211,7 +211,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>Мы можем взглянуть на схему коллекции Milvus и убедиться, что настроенный анализатор настроен правильно.</p>
@@ -284,7 +284,7 @@ docs[<span class="hljs-number">1</span>]
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Build-RAG-chain" class="common-anchor-header">Построение цепочки RAG</h3><p>Мы подготавливаем экземпляр LLM и подсказку, а затем объединяем их в RAG-конвейер с помощью языка выражений LangChain.</p>

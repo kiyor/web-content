@@ -6,10 +6,10 @@ summary: >-
   本笔记本演示了如何在 [LlamaIndex](https://www.llamaindex.ai/) RAG 管道中使用 Milvus
   进行混合搜索。我们将从推荐的默认混合搜索（语义 + BM25）开始，然后探索其他可供选择的稀疏嵌入方法和自定义混合 Reranker。
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="common-anchor-header">使用 Milvus 和 LlamaIndex 混合搜索的 RAG<button data-href="#RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="anchor-icon" translate="no">
@@ -27,7 +27,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>混合搜索利用语义检索和关键字匹配的优势，提供更准确、与上下文更相关的结果。通过结合语义检索和关键词匹配的优势，混合搜索在复杂的信息检索任务中尤为有效。</p>
+    </button></h1><p>混合搜索利用了语义检索和关键词匹配的优势，可提供更准确、与上下文更相关的结果。通过结合语义检索和关键词匹配的优势，混合搜索在复杂的信息检索任务中尤为有效。</p>
 <p>本笔记本演示了如何在<a href="https://www.llamaindex.ai/">LlamaIndex</a>RAG 管道中使用 Milvus 进行混合搜索。我们将从推荐的默认混合搜索（语义 + BM25）开始，然后探索其他可供选择的稀疏嵌入方法和自定义混合 Reranker。</p>
 <h2 id="Prerequisites" class="common-anchor-header">先决条件<button data-href="#Prerequisites" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -45,7 +45,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p><strong>安装依赖项</strong></p>
-<p>在开始之前，请确保您已安装以下依赖项：</p>
+<p>在开始之前，请确保您已经安装了以下依赖项：</p>
 <pre><code translate="no" class="language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install llama-index-vector-stores-milvus</span>
 <span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install llama-index-embeddings-openai</span>
 <span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install llama-index-llms-openai</span>
@@ -61,7 +61,7 @@ openai.api_key = <span class="hljs-string">&quot;sk-&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <p>要使用 Milvus 向量存储，请指定您的 Milvus 服务器<code translate="no">URI</code> （可选择使用<code translate="no">TOKEN</code> ）。要启动 Milvus 服务器，可以按照<a href="https://milvus.io/docs/install-overview.md">Milvus 安装指南</a>设置 Milvus 服务器，或者直接免费试用<a href="https://docs.zilliz.com/docs/register-with-zilliz-cloud">Zilliz Cloud</a>。</p>
 <blockquote>
-<p>Milvus Standalone、Milvus Distributed 和 Zilliz Cloud 目前支持全文搜索，但 Milvus Lite 尚不支持全文搜索（计划今后实施）。请联系 support@zilliz.com 了解更多信息。</p>
+<p>Milvus Standalone、Milvus Distributed 和 Zilliz Cloud 目前支持全文搜索，但 Milvus Lite 尚不支持全文搜索（计划将来实施）。请联系 support@zilliz.com 了解更多信息。</p>
 </blockquote>
 <pre><code translate="no" class="language-python">URI = <span class="hljs-string">&quot;http://localhost:19530&quot;</span>
 <span class="hljs-comment"># TOKEN = &quot;&quot;</span>
@@ -142,7 +142,7 @@ Default sparse embedding function: BM25BuiltInFunction(input_field_names='text',
 <ul>
 <li><code translate="no">enable_sparse (bool)</code>:布尔标志，用于启用或禁用稀疏嵌入。默认为假。</li>
 <li><code translate="no">sparse_embedding_field (str)</code>:稀疏嵌入字段的名称，默认为 DEFAULT_SPARSE_EMBEDDING_KEY。</li>
-<li><code translate="no">sparse_embedding_function (Union[BaseSparseEmbeddingFunction, BaseMilvusBuiltInFunction], optional)</code>:如果 enable_sparse 为 True，则应提供此对象将文本转换为稀疏嵌入。如果为 None，则将使用默认的稀疏嵌入函数（BM25BuiltInFunction），或者使用 BGEM3SparseEmbedding 给定的现有 Collections（无内置函数）。</li>
+<li><code translate="no">sparse_embedding_function (Union[BaseSparseEmbeddingFunction, BaseMilvusBuiltInFunction], optional)</code>:如果 enable_sparse 为 True，则应提供此对象将文本转换为稀疏嵌入。如果为 None，则将使用默认的稀疏嵌入函数（BM25BuiltInFunction），或使用 BGEM3SparseEmbedding 给定的现有 Collections（无内置函数）。</li>
 <li><code translate="no">sparse_index_config (dict, optional)</code>:用于构建稀疏嵌入索引的配置。默认为 "无"。</li>
 </ul>
 <p>要在查询阶段启用混合搜索，请将<code translate="no">vector_store_query_mode</code> 设置为 "hybrid"。这将对语义搜索和全文搜索的搜索结果进行合并和 Rerankers。让我们用一个查询示例进行测试："作者在 Viaweb 学到了什么？</p>

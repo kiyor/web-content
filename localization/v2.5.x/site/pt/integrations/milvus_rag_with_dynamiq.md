@@ -9,10 +9,10 @@ summary: >-
   contextuais.
 title: Introdução ao Dynamiq e ao Milvus
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_rag_with_dynamiq.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/milvus_rag_with_dynamiq.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_rag_with_dynamiq.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/milvus_rag_with_dynamiq.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Getting-Started-with-Dynamiq-and-Milvus" class="common-anchor-header">Introdução ao Dynamiq e ao Milvus<button data-href="#Getting-Started-with-Dynamiq-and-Milvus" class="anchor-icon" translate="no">
@@ -32,7 +32,7 @@ title: Introdução ao Dynamiq e ao Milvus
       </svg>
     </button></h1><p><a href="https://www.getdynamiq.ai/">O Dynamiq</a> é uma poderosa estrutura de IA de geração que simplifica o desenvolvimento de aplicativos alimentados por IA. Com suporte robusto para agentes de geração aumentada por recuperação (RAG) e modelo de linguagem grande (LLM), o Dynamiq permite que os desenvolvedores criem sistemas inteligentes e dinâmicos com facilidade e eficiência.</p>
 <p>Neste tutorial, exploraremos como usar o Dynamiq com o <a href="https://milvus.io/">Milvus</a>, o banco de dados vetorial de alto desempenho criado especificamente para fluxos de trabalho RAG. O Milvus é excelente em armazenamento, indexação e recuperação eficientes de embeddings vetoriais, tornando-o um componente indispensável para sistemas de IA que exigem acesso rápido e preciso a dados contextuais.</p>
-<p>Este guia passo a passo abordará dois fluxos de trabalho principais do RAG:</p>
+<p>Este guia passo a passo abrangerá dois fluxos de trabalho principais do RAG:</p>
 <ul>
 <li><p><strong>Fluxo de indexação de documentos</strong>: Saiba como processar ficheiros de entrada (por exemplo, PDFs), transformar o seu conteúdo em embeddings vectoriais e armazená-los no Milvus. A utilização das capacidades de indexação de alto desempenho do Milvus garante que os seus dados estão prontos para uma rápida recuperação.</p></li>
 <li><p><strong>Fluxo de recuperação de documentos</strong>: descubra como consultar o Milvus para obter embeddings de documentos relevantes e usá-los para gerar respostas perspicazes e conscientes do contexto com os agentes LLM da Dynamiq, criando uma experiência de utilizador com IA perfeita.</p></li>
@@ -53,15 +53,15 @@ title: Introdução ao Dynamiq e ao Milvus
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><h3 id="Download-required-libraries" class="common-anchor-header">Descarregar as bibliotecas necessárias</h3><pre><code translate="no" class="language-shell">$ pip install dynamiq pymilvus
+    </button></h2><h3 id="Download-required-libraries" class="common-anchor-header">Descarregar as bibliotecas necessárias</h3><pre><code translate="no" class="language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install dynamiq pymilvus</span>
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
 <p>Se estiver a utilizar o Google Colab, para ativar as dependências que acabou de instalar, poderá ter de <strong>reiniciar o tempo de execução</strong> (clique no menu "Tempo de execução" na parte superior do ecrã e selecione "Reiniciar sessão" no menu pendente).</p>
 </div>
-<h3 id="Configure-the-LLM-agent" class="common-anchor-header">Configurar o agente LLM</h3><p>Neste exemplo, vamos utilizar o OpenAI como LLM. Deve preparar a <a href="https://platform.openai.com/docs/quickstart">chave api</a> <code translate="no">OPENAI_API_KEY</code> como uma variável de ambiente.</p>
+<h3 id="Configure-the-LLM-agent" class="common-anchor-header">Configurar o agente LLM</h3><p>Neste exemplo, utilizaremos o OpenAI como LLM. Deve preparar a <a href="https://platform.openai.com/docs/quickstart">chave api</a> <code translate="no">OPENAI_API_KEY</code> como uma variável de ambiente.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> os
 
-os.<span class="hljs-property">environ</span>[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
+os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <h2 id="RAG---Document-Indexing-Flow" class="common-anchor-header">RAG - Fluxo de indexação de documentos<button data-href="#RAG---Document-Indexing-Flow" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -158,7 +158,7 @@ milvus_writer_added = rag_wf.flow.add_nodes(vector_store)  <span class="hljs-com
 </ol>
 <ul>
 <li>Ideal para <strong>prototipagem local</strong> ou armazenamento <strong>de dados em pequena escala</strong>.</li>
-<li>Defina o <code translate="no">uri</code> para um caminho de ficheiro local (por exemplo, <code translate="no">./milvus.db</code>) para tirar partido do <a href="https://milvus.io/docs/milvus_lite.md">Milvus Lite</a>, que armazena automaticamente todos os dados no ficheiro especificado.</li>
+<li>Defina o <code translate="no">uri</code> para um caminho de ficheiro local (por exemplo, <code translate="no">./milvus.db</code>) para aproveitar <a href="https://milvus.io/docs/milvus_lite.md">o Milvus Lite</a>, que armazena automaticamente todos os dados no ficheiro especificado.</li>
 <li>Esta é uma opção conveniente para <strong>configuração</strong> e <strong>experimentação</strong> <strong>rápidas</strong>.</li>
 </ul>
 <ol start="2">
@@ -173,7 +173,7 @@ milvus_writer_added = rag_wf.flow.add_nodes(vector_store)  <span class="hljs-com
 <li>Se a autenticação estiver activada:</li>
 <li>Forneça <code translate="no">&lt;your_username&gt;:&lt;your_password&gt;</code> como o <code translate="no">token</code>.</li>
 <li>Se a autenticação estiver desativada:</li>
-<li>Deixar o endereço <code translate="no">token</code> não definido.</li>
+<li>Deixar o <code translate="no">token</code> não definido.</li>
 </ul>
 <p><strong>Zilliz Cloud (serviço gerido)</strong></p>
 <ul>

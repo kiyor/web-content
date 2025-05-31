@@ -21,10 +21,10 @@ title: 使用 Milvus 和 Feast 构建 RAG
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/build_RAG_with_milvus_and_feast.ipynb" target="_parent">
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/build_RAG_with_milvus_and_feast.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/build_RAG_with_milvus_and_feast.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/build_RAG_with_milvus_and_feast.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <p>在本教程中，我们将使用<a href="https://github.com/feast-dev/feast">Feast</a>和<a href="https://milvus.io/">Milvus</a> 构建一个检索增强生成（RAG）管道。Feast 是一个开源特征存储库，可简化机器学习的特征管理，为训练和实时推理提供高效的结构化数据存储和检索。Milvus 是一个高性能向量数据库，专为快速相似性搜索而设计，因此非常适合在 RAG 工作流中检索相关文档。</p>
@@ -59,7 +59,7 @@ title: 使用 Milvus 和 Feast 构建 RAG
 <ol>
 <li>使用<strong>Parquet 文件离线存储</strong>和<strong>Milvus 在线存储</strong>部署本地功能存储。</li>
 <li>将离线存储（Parquet 文件）中的数据（即特征值）写入/实体化到在线存储（Milvus）中。</li>
-<li>使用带有 Milvus 向量搜索功能的 Feast SDK 服务于特征值</li>
+<li>使用具有 Milvus 向量搜索功能的 Feast SDK 服务特征值</li>
 <li>将文档注入到 LLM 的上下文中以回答问题</li>
 </ol>
 <div class="alert note">
@@ -352,7 +352,7 @@ pd.DataFrame(milvus_query_result[<span class="hljs-number">0</span>]).head()
       <td>0</td>
       <td>1736447819280589</td>
       <td>0</td>
-      <td>纽约，通常称为纽约市或简称...</td>
+      <td>纽约，通常被称为纽约市或简称...</td>
       <td>纽约州纽约市</td>
       <td>0.146573</td>
       <td>纽约，常被称为纽约市或简称...</td>

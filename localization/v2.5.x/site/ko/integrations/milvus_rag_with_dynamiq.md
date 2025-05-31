@@ -6,10 +6,10 @@ summary: >-
   AI 시스템에 없어서는 안 될 구성 요소입니다.
 title: Dynamiq 및 Milvus 시작하기
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_rag_with_dynamiq.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/milvus_rag_with_dynamiq.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_rag_with_dynamiq.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/milvus_rag_with_dynamiq.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Getting-Started-with-Dynamiq-and-Milvus" class="common-anchor-header">Dynamiq 및 Milvus 시작하기<button data-href="#Getting-Started-with-Dynamiq-and-Milvus" class="anchor-icon" translate="no">
@@ -50,7 +50,7 @@ title: Dynamiq 및 Milvus 시작하기
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><h3 id="Download-required-libraries" class="common-anchor-header">필요한 라이브러리 다운로드</h3><pre><code translate="no" class="language-shell">$ pip install dynamiq pymilvus
+    </button></h2><h3 id="Download-required-libraries" class="common-anchor-header">필요한 라이브러리 다운로드</h3><pre><code translate="no" class="language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install dynamiq pymilvus</span>
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
 <p>Google Colab을 사용하는 경우 방금 설치한 종속 요소를 사용하려면 <strong>런타임을 다시 시작해야</strong> 할 수 있습니다(화면 상단의 '런타임' 메뉴를 클릭하고 드롭다운 메뉴에서 '세션 다시 시작'을 선택).</p>
@@ -58,7 +58,7 @@ title: Dynamiq 및 Milvus 시작하기
 <h3 id="Configure-the-LLM-agent" class="common-anchor-header">LLM 에이전트 구성</h3><p>이 예제에서는 OpenAI를 LLM으로 사용하겠습니다. 환경 변수로 <code translate="no">OPENAI_API_KEY</code> <a href="https://platform.openai.com/docs/quickstart">API 키를</a> 준비해야 합니다.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> os
 
-os.<span class="hljs-property">environ</span>[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
+os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <h2 id="RAG---Document-Indexing-Flow" class="common-anchor-header">RAG - 문서 색인 흐름<button data-href="#RAG---Document-Indexing-Flow" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -212,7 +212,7 @@ ResourceWarning: Enable tracemalloc to get the object allocation traceback
 2024-11-19 22:14:10 - INFO - Flow b30b48ec-d5d2-4e4c-8e25-d6976c8a9c17: execution succeeded in 1.3s.
 2024-11-19 22:14:10 - INFO - Workflow 87878444-6a3d-43f3-ae32-0127564a959f: execution succeeded in 1.3s.
 </code></pre>
-<p>이 워크플로우를 통해 밀버스를 벡터 데이터베이스로, OpenAI의 시맨틱 표현을 위한 임베딩 모델을 사용하여 문서 인덱싱 파이프라인을 성공적으로 구현했습니다. 이 설정은 빠르고 정확한 벡터 기반 검색을 가능하게 하여 시맨틱 검색, 문서 검색, 문맥 AI 기반 상호 작용과 같은 RAG 워크플로우의 토대를 형성합니다.</p>
+<p>이 워크플로우를 통해 Milvus를 벡터 데이터베이스로, OpenAI의 의미 표현을 위한 임베딩 모델을 사용하여 문서 인덱싱 파이프라인을 성공적으로 구현했습니다. 이 설정은 빠르고 정확한 벡터 기반 검색을 가능하게 하여 시맨틱 검색, 문서 검색, 문맥 AI 기반 상호 작용과 같은 RAG 워크플로우의 토대를 형성합니다.</p>
 <p>Milvus의 확장 가능한 스토리지 기능과 Dynamiq의 오케스트레이션을 통해 이 솔루션은 프로토타이핑과 대규모 프로덕션 배포에 모두 사용할 수 있습니다. 이제 이 파이프라인을 확장하여 검색 기반 질문 답변 또는 AI 기반 콘텐츠 생성과 같은 추가 작업을 포함할 수 있습니다.</p>
 <h2 id="RAG-Document-Retrieval-Flow" class="common-anchor-header">RAG 문서 검색 흐름<button data-href="#RAG-Document-Retrieval-Flow" class="anchor-icon" translate="no">
       <svg translate="no"

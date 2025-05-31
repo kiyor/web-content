@@ -57,15 +57,36 @@ summary: >-
    </tr>
    <tr>
      <td><p>必須パラメータ</p></td>
-     <td><ul><li>コレクション名</li><li>主キー</li></ul></td>
-     <td><ul><li>コレクション名</li><li>フィルタリング式</li></ul></td>
-     <td><ul><li><p>コレクション名</p></li><li><p>フィルタリング式</p></li><li><p>クエリごとに返すエンティティの数</p></li></ul></td>
+     <td><ul>
+<li>コレクション名</li>
+<li>主キー</li>
+</ul></td>
+     <td><ul>
+<li>コレクション名</li>
+<li>フィルタリング式</li>
+</ul></td>
+     <td><ul>
+<li><p>コレクション名</p></li>
+<li><p>フィルタリング式</p></li>
+<li><p>クエリごとに返すエンティティの数</p></li>
+</ul></td>
    </tr>
    <tr>
      <td><p>オプションのパラメータ</p></td>
-     <td><ul><li>パーティション名</li><li>出力フィールド</li></ul></td>
-     <td><ul><li><p>パーティション名</p></li><li><p>返すエンティティの数</p></li><li><p>出力フィールド</p></li></ul></td>
-     <td><ul><li><p>パーティション名</p></li><li><p>合計で返すエンティティの数</p></li><li><p>出力フィールド</p></li></ul></td>
+     <td><ul>
+<li>パーティション名</li>
+<li>出力フィールド</li>
+</ul></td>
+     <td><ul>
+<li><p>パーティション名</p></li>
+<li><p>返すエンティティの数</p></li>
+<li><p>出力フィールド</p></li>
+</ul></td>
+     <td><ul>
+<li><p>パーティション名</p></li>
+<li><p>合計で返すエンティティの数</p></li>
+<li><p>出力フィールド</p></li>
+</ul></td>
    </tr>
    <tr>
      <td><p>返り値</p></td>
@@ -74,7 +95,7 @@ summary: >-
      <td><p>ページ分割クエリによって、指定されたコレクションまたはパーティションでカスタム・フィルタリング条件を満たすすべてのエンティティを返します。</p></td>
    </tr>
 </table>
-<p>メタデータのフィルタリングの詳細は、<a href="/docs/ja/filtering">フィルタリングを</a>参照してください。</p>
+<p>メタデータのフィルタリングの詳細については、.NET メソッドを参照してください。</p>
 <h2 id="Use-Get" class="common-anchor-header">Get の使用法<button data-href="#Use-Get" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -323,7 +344,7 @@ curl --request POST \
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>ページ分割されたクエリを使用して、カスタム・フィルタリング条件でエンティティを検索する必要がある場合は、<strong>QueryIterator</strong>を作成し、その<strong>next()</strong>メソッドを使用して、フィルタリング条件を満たすエンティティを検索するためにすべてのエンティティを繰り返し処理します。以下のコード例では、<code translate="no">id</code> 、<code translate="no">vector</code> 、<code translate="no">color</code> という 3 つのフィールドがあると仮定し、<code translate="no">red</code> から始まる<code translate="no">color</code> 値を保持するすべてのエンティティを返します。</p>
+    </button></h2><p>ページ分割されたクエリを使用して、カスタム・フィルタリング条件によってエンティティを検索する必要がある場合は、<strong>QueryIterator</strong>を作成し、その<strong>next()</strong>メソッドを使用して、フィルタリング条件を満たすエンティティを検索するためにすべてのエンティティを繰り返し処理します。以下のコード例では、<code translate="no">id</code> 、<code translate="no">vector</code> 、<code translate="no">color</code> という 3 つのフィールドがあると仮定し、<code translate="no">red</code> から始まる<code translate="no">color</code> 値を保持するすべてのエンティティを返します。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> connections, Collection

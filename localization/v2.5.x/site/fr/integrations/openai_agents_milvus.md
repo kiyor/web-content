@@ -7,10 +7,10 @@ summary: >-
   vectorielle de Milvus pour créer une expérience de recherche agréable.
 title: 'Intégration de Milvus avec les agents OpenAI : Un guide étape par étape'
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/openai_agents_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/openai_agents_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/openai_agents_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/openai_agents_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Milvus-Integration-with-OpenAI-Agents-A-Step-by-Step-Guide" class="common-anchor-header">Intégration de Milvus avec les agents OpenAI : Un guide étape par étape<button data-href="#Milvus-Integration-with-OpenAI-Agents-A-Step-by-Step-Guide" class="anchor-icon" translate="no">
@@ -375,7 +375,7 @@ client.insert(
     </button></h2><p>Ensuite, nous créerons un outil de fonction personnalisé que notre agent pourra utiliser pour rechercher dans la base de données Milvus. Cet outil</p>
 <ol>
 <li>acceptera un nom de collection, un texte d'interrogation et un paramètre de limite</li>
-<li>Exécuter une recherche BM25 dans la collection Milvus</li>
+<li>exécuter une recherche BM25 dans la collection Milvus</li>
 <li>Renvoyer les résultats dans un format structuré</li>
 </ol>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> json

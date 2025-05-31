@@ -18,8 +18,8 @@ title: 使用 Milvus 和 LlamaIndex 的檢索增強世代 (RAG)
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_llamaindex.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_llamaindex.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_llamaindex.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_llamaindex.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
 <p>本指南展示了如何使用 LlamaIndex 和 Milvus 建立一個檢索-增強生成 (RAG) 系統。</p>
 <p>RAG 系統結合了檢索系統與生成模型，可根據給定的提示生成新的文字。該系統首先使用 Milvus 從語料庫中檢索相關文件，然後根據檢索到的文件使用生成模型生成新文本。</p>
 <p><a href="https://www.llamaindex.ai/">LlamaIndex</a>是一個簡單、靈活的資料框架，可將自訂資料來源連接至大型語言模型 (LLM)。<a href="https://milvus.io/">Milvus</a>是世界上最先進的開放原始碼向量資料庫，是為了強化嵌入式相似性搜尋與 AI 應用程式而建立的。</p>
@@ -39,7 +39,7 @@ title: 使用 Milvus 和 LlamaIndex 的檢索增強世代 (RAG)
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><h3 id="Install-dependencies" class="common-anchor-header">安裝相依性</h3><p>本頁面的程式碼片段需要 pymilvus 與 llamaindex 的相依性。您可以使用下列指令安裝它們：</p>
+    </button></h2><h3 id="Install-dependencies" class="common-anchor-header">安裝相依性</h3><p>本頁面的程式碼片段需要 pymilvus 和 llamaindex 的相依性。您可以使用下列指令安裝它們：</p>
 <pre><code translate="no" class="language-python">$ pip install pymilvus&gt;=<span class="hljs-number">2.4</span><span class="hljs-number">.2</span>
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-python">$ pip install llama-index-vector-stores-milvus
@@ -118,7 +118,7 @@ documents = SimpleDirectoryReader(
 <li><p><code translate="no">hybrid_ranker_params (dict, optional)</code>:混合排名器的設定參數。此字典的結構取決於所使用的特定排名器：</p>
 <ul>
 <li>對於 "RRFRanker"，它應該包括<ul>
-<li>"k" (int)：Reciprocal Rank Fusion (RRF) 中使用的參數。此值用於計算排名分數，作為 RRF 演算法的一部分，RRF 演算法會將多種排名策略合併為單一分數，以提高搜尋相關性。</li>
+<li>"k" (int)：Reciprocal Rank Fusion (RRF) 中使用的參數。此值用於計算排名分數，作為 RRF 演算法的一部分，RRF 演算法會將多種排名策略合併為單一分數，以改善搜尋相關性。</li>
 </ul></li>
 <li>對於 "WeightedRanker"，它期望：<ul>
 <li>「權重」（浮點數清單）：一個正好包含兩個權重的清單：<ol>

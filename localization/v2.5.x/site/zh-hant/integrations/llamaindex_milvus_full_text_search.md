@@ -6,10 +6,10 @@ summary: >-
   在本教程中，您將學習如何使用 LlamaIndex 和 Milvus 來建立一個使用全文檢索和混合檢索的 RAG
   系統。我們會先單獨實作全文檢索，然後透過整合語意檢索來強化它，以獲得更全面的結果。
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="common-anchor-header">使用 LlamaIndex 和 Milvus 進行全文搜尋<button data-href="#Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="anchor-icon" translate="no">
@@ -28,7 +28,7 @@ summary: >-
         ></path>
       </svg>
     </button></h1><p><strong>全文檢索</strong>使用精確的關鍵字匹配，通常利用 BM25 等演算法來依據相關性排列文件。在<strong>檢索增強世代 (RAG)</strong>系統中，此方法會檢索相關的文字，以增強 AI 所產生的回應。</p>
-<p>同時，<strong>語意搜尋會</strong>詮釋上下文的意義，以提供更廣泛的結果。結合這兩種方法創造出<strong>混合搜尋</strong>，可改善資訊檢索，尤其是在單一方法無法達到要求的情況下。</p>
+<p>同時，<strong>語意搜尋會</strong>詮釋上下文的意義，以提供更廣泛的結果。結合這兩種方法可創造出<strong>混合搜尋</strong>，改善資訊檢索，尤其是在單一方法無法達到要求的情況下。</p>
 <p>使用<a href="https://milvus.io/blog/introduce-milvus-2-5-full-text-search-powerful-metadata-filtering-and-more.md">Milvus 2.5</a> 的 Sparse-BM25 方法，原始文字會自動轉換為稀疏向量。這樣就不需要手動生成稀疏嵌入，並實現混合搜尋策略，在語義理解和關鍵字相關性之間取得平衡。</p>
 <p>在本教程中，您將學習如何使用 LlamaIndex 和 Milvus 來建立一個使用全文檢索和混合檢索的 RAG 系統。我們會先單獨實作全文檢索，然後透過整合語意檢索來強化它，以獲得更全面的結果。</p>
 <blockquote>
@@ -57,7 +57,7 @@ summary: >-
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
 <blockquote>
-<p>如果您使用的是 Google Colab，您可能需要<strong>重新啟動運行時</strong>（導航至介面上方的「運行<strong>時</strong>」功能表，並從下拉式功能表中選擇「重新啟動會話」）。</p>
+<p>如果您使用的是 Google Colab，您可能需要<strong>重新啟動運行時</strong>（導航至介面頂端的「運行<strong>時</strong>」功能表，並從下拉式功能表中選擇「重新啟動會話」）。</p>
 </blockquote>
 </div>
 <p><strong>設定帳號</strong></p>
@@ -169,7 +169,7 @@ and software usability, and the significance of being the &quot;entry level&quot
 Additionally, they discovered the accidental success of making Viaweb inexpensive, the challenges of
 hiring too many people, and the relief felt when the company was acquired by Yahoo.
 </code></pre>
-<h4 id="Customize-text-analyzer" class="common-anchor-header">自訂文字分析器</h4><p>分析器在全文檢索中扮演重要的角色，可將句子分割成字元，並執行詞彙處理，例如刪除字莖和停頓字。它們通常是特定於語言的。如需詳細資訊，請參閱<a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">Milvus 分析器指南</a>。</p>
+<h4 id="Customize-text-analyzer" class="common-anchor-header">自訂文字分析器</h4><p>分析器在全文檢索中扮演重要的角色，可將句子分割成字元，並執行詞彙處理，例如刪除字莖和停止字詞。它們通常是特定於語言的。如需詳細資訊，請參閱<a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">Milvus 分析器指南</a>。</p>
 <p>Milvus 支援兩種類型的分析器：<strong>內建分析器</strong>和<strong>自訂分析器</strong>。預設情況下，<code translate="no">BM25BuiltInFunction</code> 使用標準的內建分析器，它會根據標點符號來標記文字。</p>
 <p>若要使用不同的分析器或自訂現有的分析器，您可以傳值給<code translate="no">analyzer_params</code> 參數：</p>
 <pre><code translate="no" class="language-python">bm25_function = BM25BuiltInFunction(
@@ -228,4 +228,4 @@ company. Additionally, the author learned about the significance of user feedbac
 building stores for users, and the realization that growth rate is crucial for the long-term success
 of a startup.
 </code></pre>
-<p>這種混合方法可透過同時利用語意和關鍵字為基礎的檢索，確保在 RAG 系統中提供更精確、更能感知上下文的回應。</p>
+<p>這種混合方法透過利用語義和基於關鍵字的檢索，可確保 RAG 系統中的回應更準確、更能感知上下文。</p>

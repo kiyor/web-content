@@ -5,10 +5,10 @@ summary: >-
   生成图像嵌入，将其存储在 Milvus 中，并执行高效的相似性搜索。
 title: 使用 Milvus 进行文本到图像搜索
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">使用 Milvus 进行文本到图像搜索<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
@@ -85,7 +85,7 @@ milvus_client = MilvusClient(uri=<span class="hljs-string">&quot;milvus.db&quot;
         ></path>
       </svg>
     </button></h2><p>现在您已经有了必要的依赖项和数据，是时候设置功能提取器并开始使用 Milvus 了。本节将引导你完成构建文本到图片搜索系统的关键步骤。最后，我们将演示如何根据文本查询检索图像并将其可视化。</p>
-<h3 id="Define-feature-extractors" class="common-anchor-header">定义特征提取器</h3><p>我们将使用预训练的 CLIP 模型来生成图像和文本嵌入。在本节中，我们将加载经过预训练的 CLIP<strong>ViT-B/32</strong>变体，并定义用于图像和文本编码的辅助函数：</p>
+<h3 id="Define-feature-extractors" class="common-anchor-header">定义特征提取器</h3><p>我们将使用预训练的 CLIP 模型生成图像和文本嵌入。在本节中，我们将加载经过预训练的 CLIP<strong>ViT-B/32</strong>变体，并定义用于图像和文本编码的辅助函数：</p>
 <ul>
 <li><code translate="no">encode_image(image_path)</code>:将图像处理和编码为特征向量</li>
 <li><code translate="no">encode_text(text)</code>:将文本查询编码为特征向量</li>
@@ -122,10 +122,10 @@ model.<span class="hljs-built_in">eval</span>()
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Data-Ingestion" class="common-anchor-header">数据输入</h3><p>要实现语义图像搜索，我们首先需要为所有图像生成 Embeddings，并将其存储到向量数据库中，以便进行高效索引和检索。本节将逐步介绍如何将图像数据导入 Milvus。</p>
 <p><strong>1.创建 Milvus Collections</strong></p>
-<p>在存储图像 Embeddings 之前，需要创建一个 Milvus Collections。下面的代码演示了如何使用<a href="https://milvus.io/docs/create-collection-instantly.md">快速启动模式</a>和默认的 COSINE 度量类型创建一个 Collection。Collections 包括以下字段：</p>
+<p>在存储图像 Embeddings 之前，需要创建一个 Milvus Collections。下面的代码演示了如何以默认的 COSINE 度量类型在快速设置模式下创建一个 Collection。Collections 包括以下字段：</p>
 <ul>
 <li><p><code translate="no">id</code>:启用自动 ID 的主字段。</p></li>
-<li><p><code translate="no">vector</code>:一个用于存储浮点向量 Embeddings 的字段。</p></li>
+<li><p><code translate="no">vector</code>:用于存储浮点向量 Embeddings 的字段。</p></li>
 </ul>
 <p>如果需要自定义 Schema，详细说明请参阅<a href="https://milvus.io/docs/create-collection.md">Milvus 文档</a>。</p>
 <pre><code translate="no" class="language-python">collection_name = <span class="hljs-string">&quot;image_collection&quot;</span>

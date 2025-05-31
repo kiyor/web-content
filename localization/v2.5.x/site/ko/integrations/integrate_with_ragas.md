@@ -3,10 +3,10 @@ id: integrate_with_ragas.md
 summary: 이 가이드에서는 Ragas를 사용하여 Milvus를 기반으로 구축된 검색 증강 생성(RAG) 파이프라인을 평가하는 방법을 설명합니다.
 title: Ragas를 사용한 평가
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_ragas.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/evaluation_with_ragas.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_ragas.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/evaluation_with_ragas.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Evaluation-with-Ragas" class="common-anchor-header">Ragas를 사용한 평가<button data-href="#Evaluation-with-Ragas" class="anchor-icon" translate="no">
@@ -53,7 +53,7 @@ title: Ragas를 사용한 평가
 
 os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h2 id="Define-the-RAG-pipeline" class="common-anchor-header">RAG 파이프라인 정의하기<button data-href="#Define-the-RAG-pipeline" class="anchor-icon" translate="no">
+<h2 id="Define-the-RAG-pipeline" class="common-anchor-header">RAG 파이프라인 정의<button data-href="#Define-the-RAG-pipeline" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"

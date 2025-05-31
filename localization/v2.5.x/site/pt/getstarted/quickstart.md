@@ -18,8 +18,8 @@ title: Início rápido
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/quickstart.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/quickstart.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/quickstart.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/quickstart.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
 <p>Os vectores, o formato de dados de saída dos modelos de Redes Neuronais, podem codificar eficazmente a informação e desempenhar um papel fundamental em aplicações de IA, tais como bases de dados de conhecimento, pesquisa semântica, Retrieval Augmented Generation (RAG) e muito mais.</p>
 <p>O Milvus é uma base de dados vetorial de código aberto que se adequa a aplicações de IA de todas as dimensões, desde a execução de um chatbot de demonstração no notebook Jupyter até à criação de uma pesquisa à escala da Web que serve milhares de milhões de utilizadores. Neste guia, vamos mostrar-lhe como configurar o Milvus localmente em minutos e utilizar a biblioteca cliente Python para gerar, armazenar e pesquisar vectores.</p>
 <h2 id="Install-Milvus" class="common-anchor-header">Instalar o Milvus<button data-href="#Install-Milvus" class="anchor-icon" translate="no">
@@ -38,7 +38,7 @@ title: Início rápido
         ></path>
       </svg>
     </button></h2><p>Neste guia, utilizamos o Milvus Lite, uma biblioteca Python incluída em <code translate="no">pymilvus</code> que pode ser incorporada na aplicação cliente. O Milvus também suporta a implantação no <a href="https://milvus.io/docs/install_standalone-docker.md">Docker</a> e no <a href="https://milvus.io/docs/install_cluster-milvusoperator.md">Kubernetes</a> para casos de uso de produção.</p>
-<p>Antes de começar, certifique-se de ter o Python 3.8+ disponível no ambiente local. Instale <code translate="no">pymilvus</code> que contém a biblioteca do cliente python e o Milvus Lite:</p>
+<p>Antes de começar, certifique-se de ter o Python 3.8+ disponível no ambiente local. Instale <code translate="no">pymilvus</code>, que contém a biblioteca do cliente python e o Milvus Lite:</p>
 <pre><code translate="no" class="language-python">$ pip install -U pymilvus
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
@@ -179,7 +179,7 @@ Vector dim: <span class="hljs-number">768</span>
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Se não conseguiu descarregar o modelo devido a problemas de rede, como alternativa, pode utilizar vectores aleatórios para representar o texto e ainda assim terminar o exemplo. Tenha apenas em atenção que o resultado da pesquisa não reflectirá a semelhança semântica, uma vez que os vectores são falsos.</p>
+    </button></h2><p>Se não foi possível descarregar o modelo devido a problemas de rede, como alternativa, pode utilizar vectores aleatórios para representar o texto e ainda assim terminar o exemplo. Tenha apenas em atenção que o resultado da pesquisa não reflectirá a semelhança semântica, uma vez que os vectores são falsos.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> random
 
 <span class="hljs-comment"># Text strings to search from.</span>

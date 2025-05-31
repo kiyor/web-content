@@ -24,7 +24,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>A pesquisa híbrida refere-se a um método de pesquisa que efectua várias pesquisas ANN em simultâneo, reordena vários conjuntos de resultados dessas pesquisas ANN e, por fim, devolve um único conjunto de resultados. A utilização da Pesquisa Híbrida pode aumentar a precisão da pesquisa. O Milvus suporta a realização da Pesquisa Híbrida numa coleção com vários campos vectoriais.</p>
+    </button></h1><p>A pesquisa híbrida refere-se a um método de pesquisa que efectua várias pesquisas ANN em simultâneo, reordena vários conjuntos de resultados dessas pesquisas ANN e, por fim, devolve um único conjunto de resultados. A utilização da Pesquisa Híbrida pode aumentar a precisão da pesquisa. O Milvus suporta a realização de Pesquisa Híbrida numa coleção com vários campos vectoriais.</p>
 <p>A Pesquisa Híbrida é mais comumente usada em cenários que incluem pesquisas vetoriais esparso-densas e pesquisas multimodais. Este guia demonstrará como realizar uma Pesquisa Híbrida no Milvus com um exemplo específico.</p>
 <h2 id="Scenarios" class="common-anchor-header">Cenários<button data-href="#Scenarios" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -93,13 +93,13 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Esta secção utilizará um exemplo específico para ilustrar como realizar uma Pesquisa Híbrida em vectores esparso-densos para melhorar a precisão das pesquisas de texto.</p>
+    </button></h2><p>Esta secção utilizará um exemplo específico para ilustrar como conduzir uma Pesquisa Híbrida em vectores esparso-densos para melhorar a precisão das pesquisas de texto.</p>
 <h3 id="Create-a-collection-with-multiple-vector-fields" class="common-anchor-header">Criar uma coleção com vários campos vectoriais</h3><p>O processo de criação de uma coleção inclui três partes: definir o esquema da coleção, configurar os parâmetros do índice e criar a coleção.</p>
 <h4 id="Define-schema" class="common-anchor-header">Definir o esquema</h4><p>Neste exemplo, é necessário definir vários campos vectoriais no esquema da coleção. Atualmente, cada coleção pode incluir até 4 campos vectoriais por predefinição. Mas também é possível modificar o valor de <code translate="no">proxy.maxVectorFieldNum</code> para incluir até 10 campos vectoriais numa coleção, conforme necessário.</p>
 <p>O exemplo seguinte define um esquema de coleção, em que <code translate="no">dense</code> e <code translate="no">sparse</code> são os dois campos vectoriais:</p>
 <ul>
 <li><p><code translate="no">id</code>: Este campo serve como chave primária para armazenar IDs de texto. O tipo de dados deste campo é INT64.</p></li>
-<li><p><code translate="no">text</code>: Este campo é utilizado para armazenar conteúdo textual. O tipo de dados deste campo é VARCHAR, com um comprimento máximo de 1000 caracteres.</p></li>
+<li><p><code translate="no">text</code>: Este campo é utilizado para armazenar conteúdos textuais. O tipo de dados deste campo é VARCHAR, com um comprimento máximo de 1000 caracteres.</p></li>
 <li><p><code translate="no">dense</code>: Este campo é utilizado para armazenar os vectores densos dos textos. O tipo de dados deste campo é FLOAT_VECTOR, com uma dimensão vetorial de 768.</p></li>
 <li><p><code translate="no">sparse</code>: Este campo é utilizado para armazenar os vectores esparsos dos textos. O tipo de dados deste campo é SPARSE_FLOAT_VECTOR.</p></li>
 </ul>
@@ -490,7 +490,7 @@ _, err = client.Insert(ctx, milvusclient.NewColumnBasedInsertOption(<span class=
     &quot;collectionName&quot;: &quot;my_collection&quot;
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Create-multiple-AnnSearchRequest-instances" class="common-anchor-header">Criar várias instâncias de AnnSearchRequest</h3><p>A Pesquisa híbrida é implementada através da criação de vários <code translate="no">AnnSearchRequest</code> na função <code translate="no">hybrid_search()</code>, em que cada <code translate="no">AnnSearchRequest</code> representa um pedido de pesquisa ANN básico para um campo vetorial específico. Por conseguinte, antes de efetuar uma pesquisa híbrida, é necessário criar um <code translate="no">AnnSearchRequest</code> para cada campo vetorial.</p>
+<h3 id="Create-multiple-AnnSearchRequest-instances" class="common-anchor-header">Criar várias instâncias de AnnSearchRequest</h3><p>A Pesquisa híbrida é implementada através da criação de vários <code translate="no">AnnSearchRequest</code> na função <code translate="no">hybrid_search()</code>, em que cada <code translate="no">AnnSearchRequest</code> representa um pedido de pesquisa ANN básico para um campo vetorial específico. Por conseguinte, antes de efetuar uma Pesquisa Híbrida, é necessário criar um <code translate="no">AnnSearchRequest</code> para cada campo vetorial.</p>
 <p>Ao configurar o parâmetro <code translate="no">expr</code> num <code translate="no">AnnSearchRequest</code>, pode definir as condições de filtragem para a sua pesquisa híbrida. Consulte <a href="/docs/pt/filtered-search.md">Filtered Search</a> e <a href="/docs/pt/filtering">Filtragem</a>.</p>
 <div class="alert note">
 <p>Na Pesquisa híbrida, cada <code translate="no">AnnSearchRequest</code> suporta apenas um vetor de consulta.</p>
@@ -513,7 +513,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>}, {<span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
+query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>, <span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
 search_param_2 = {
     <span class="hljs-string">&quot;data&quot;</span>: [query_sparse_vector],
     <span class="hljs-string">&quot;anns_field&quot;</span>: <span class="hljs-string">&quot;sparse&quot;</span>,

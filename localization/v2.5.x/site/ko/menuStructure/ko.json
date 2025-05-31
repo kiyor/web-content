@@ -348,12 +348,6 @@
             "children": []
           },
           {
-            "label": "즉시 컬렉션 생성",
-            "id": "create-collection-instantly.md",
-            "order": 2,
-            "children": []
-          },
-          {
             "label": "컬렉션 보기",
             "id": "view-collections.md",
             "order": 3,
@@ -524,7 +518,19 @@
                   {
                     "label": "Jieba",
                     "id": "jieba-tokenizer.md",
-                    "order": 1,
+                    "order": 2,
+                    "children": []
+                  },
+                  {
+                    "label": "Lindera",
+                    "id": "lindera-tokenizer.md",
+                    "order": 3,
+                    "children": []
+                  },
+                  {
+                    "label": "ICU",
+                    "id": "icu-tokenizer.md",
+                    "order": 4,
                     "children": []
                   }
                 ]
@@ -587,8 +593,26 @@
                     "id": "stemmer-filter.md",
                     "order": 8,
                     "children": []
+                  },
+                  {
+                    "label": "펑크 제거",
+                    "id": "removepunct-filter.md",
+                    "order": 9,
+                    "children": []
+                  },
+                  {
+                    "label": "정규식",
+                    "id": "regex-filter.md",
+                    "order": 10,
+                    "children": []
                   }
                 ]
+              },
+              {
+                "label": "다국어 분석기",
+                "id": "multi-language-analyzers.md",
+                "order": 4,
+                "children": []
               }
             ]
           },
@@ -1225,7 +1249,7 @@
             ]
           },
           {
-            "label": "밀버스와 함께 펄사 사용",
+            "label": "밀버스와 함께 펄서 사용",
             "id": "pulsar_dependencies",
             "order": 2,
             "isMenu": true,
@@ -1265,7 +1289,7 @@
             "children": []
           },
           {
-            "label": "Scale Dependencies",
+            "label": "스케일 종속성",
             "id": "scale-dependencies.md",
             "order": 2,
             "children": []
@@ -1693,7 +1717,7 @@
         "children": []
       },
       {
-        "label": "Orchestration",
+        "label": "오케스트레이션",
         "id": "orchestrate-with-milvus",
         "order": 3,
         "children": [
@@ -1746,7 +1770,7 @@
                 "children": []
               },
               {
-                "label": "Full-text Search",
+                "label": "전체 텍스트 검색",
                 "id": "llamaindex_milvus_full_text_search.md",
                 "order": 2,
                 "children": []
@@ -1836,6 +1860,18 @@
             "label": "라마 스택",
             "id": "llama_stack_with_milvus.md",
             "order": 12,
+            "children": []
+          },
+          {
+            "label": "n8n",
+            "id": "milvus_and_n8n.md",
+            "order": 13,
+            "children": []
+          },
+          {
+            "label": "AnythingLLM",
+            "id": "use_milvus_in_anythingllm.md",
+            "order": 14,
             "children": []
           }
         ]
@@ -1983,6 +2019,12 @@
             "label": "BentoML",
             "id": "integrate_with_bentoml.md",
             "order": 5,
+            "children": []
+          },
+          {
+            "label": "임베드 애니씽",
+            "id": "build_RAG_with_milvus_and_embedAnything.md",
+            "order": 15,
             "children": []
           }
         ]
@@ -2160,6 +2202,12 @@
             "label": "도클링",
             "id": "build_RAG_with_milvus_and_docling.md",
             "order": 11,
+            "children": []
+          },
+          {
+            "label": "NLWeb",
+            "id": "NLWeb_with_milvus.md",
+            "order": 12,
             "children": []
           }
         ]

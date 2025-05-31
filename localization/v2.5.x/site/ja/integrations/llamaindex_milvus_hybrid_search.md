@@ -7,10 +7,10 @@ summary: >-
   RAGパイプラインでのハイブリッド検索にMilvusを使用する方法を示します。推奨されるデフォルトのハイブリッド検索（semantic +
   BM25）から始め、他の代替スパース埋め込み方法とハイブリッドリランカーのカスタマイズを探ります。
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="common-anchor-header">MilvusとLlamaIndexによるハイブリッド検索を使用したRAG<button data-href="#RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="anchor-icon" translate="no">
@@ -243,7 +243,7 @@ prestigious, and the challenges and rewards of running a startup.
 <li><code translate="no">encode_queries</code>:このメソッドは、テキストをクエリ用のスパース埋め込みリストに変換します。</li>
 <li><code translate="no">encode_documents</code>:このメソッドは、テキストを文書用のスパース埋め込みリストに変換します。</li>
 </ul>
-<p>各メソッドの出力は、辞書のリストであるスパース埋込みの形式に従う必要があります。各辞書は，次元を表すキー（整数）と，その次元における埋込みの大きさを表す対応する値（浮動小数点数）を持つ必要があります（例：{1: 0.5, 2: 0.3}）．</p>
+<p>各メソッドの出力は、辞書のリストであるスパース埋込みの形式に従う必要があります。各辞書は，次元を表すキー（整数）と，その次元における埋込みの大きさを表す対応する値（浮動小数点数）を持つ必要があります（例えば，{1: 0.5, 2: 0.3}）．</p>
 <p>例えば、BGE-M3を使ったカスタムスパース埋め込み関数の実装です：</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> FlagEmbedding <span class="hljs-keyword">import</span> BGEM3FlagModel
 <span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>

@@ -18,8 +18,8 @@ title: Milvus 및 LlamaIndex를 사용한 검색 증강 생성(RAG)
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_llamaindex.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_llamaindex.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_llamaindex.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_llamaindex.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
 <p>이 가이드에서는 LlamaIndex와 Milvus를 사용하여 검색 증강 생성(RAG) 시스템을 구축하는 방법을 설명합니다.</p>
 <p>RAG 시스템은 검색 시스템과 생성 모델을 결합하여 주어진 프롬프트에 따라 새 텍스트를 생성하는 시스템입니다. 이 시스템은 먼저 Milvus를 사용하여 말뭉치에서 관련 문서를 검색한 다음 생성 모델을 사용하여 검색된 문서를 기반으로 새 텍스트를 생성합니다.</p>
 <p><a href="https://www.llamaindex.ai/">LlamaIndex는</a> 사용자 정의 데이터 소스를 대규모 언어 모델(LLM)에 연결하기 위한 간단하고 유연한 데이터 프레임워크입니다. <a href="https://milvus.io/">Milvus는</a> 세계에서 가장 진보된 오픈 소스 벡터 데이터베이스로, 임베딩 유사도 검색 및 AI 애플리케이션을 강화하기 위해 구축되었습니다.</p>
@@ -110,7 +110,7 @@ documents = SimpleDirectoryReader(
 <h4 id="sparse-field" class="common-anchor-header">스파스 필드</h4><ul>
 <li><code translate="no">enable_sparse (bool)</code>: 스파스 임베딩을 활성화 또는 비활성화하는 부울 플래그입니다. 기본값은 False입니다.</li>
 <li><code translate="no">sparse_embedding_field (str)</code>: 스파스 임베딩 필드의 이름, 기본값은 DEFAULT_SPARSE_EMBEDDING_KEY입니다.</li>
-<li><code translate="no">sparse_embedding_function (Union[BaseSparseEmbeddingFunction, BaseMilvusBuiltInFunction], optional)</code>: enable_sparse가 True인 경우 텍스트를 스파스 임베딩으로 변환하려면 이 객체를 제공해야 합니다. None이면 기본 스파스 임베딩 함수(BGEM3SparseEmbeddingFunction)가 사용됩니다.</li>
+<li><code translate="no">sparse_embedding_function (Union[BaseSparseEmbeddingFunction, BaseMilvusBuiltInFunction], optional)</code>: enable_sparse가 True인 경우, 텍스트를 스파스 임베딩으로 변환하려면 이 객체를 제공해야 합니다. None이면 기본 스파스 임베딩 함수(BGEM3SparseEmbeddingFunction)가 사용됩니다.</li>
 <li><code translate="no">sparse_index_config (dict, optional)</code>: 스파스 임베딩 인덱스를 구축하는 데 사용되는 구성입니다. 기본값은 None입니다.</li>
 </ul>
 <h4 id="hybrid-ranker" class="common-anchor-header">하이브리드 랭커</h4><ul>
@@ -134,7 +134,7 @@ documents = SimpleDirectoryReader(
 <li>"mmap.enabled"(bool): 컬렉션 수준에서 메모리 맵 저장소를 활성화할지 여부입니다.</li>
 </ul></li>
 <li><code translate="no">index_management (IndexManagement)</code>: 사용할 인덱스 관리 전략을 지정합니다. 기본값은 "create_if_not_exists"입니다.</li>
-<li><code translate="no">batch_size (int)</code>: 밀버스에 데이터를 삽입할 때 한 번에 처리할 문서 수를 설정합니다. 기본값은 DEFAULT_BATCH_SIZE입니다.</li>
+<li><code translate="no">batch_size (int)</code>: 밀버스에 데이터를 삽입할 때 한 번에 처리하는 문서 수를 설정합니다. 기본값은 DEFAULT_BATCH_SIZE입니다.</li>
 <li><code translate="no">consistency_level (str, optional)</code>: 새로 생성된 컬렉션에 사용할 일관성 수준입니다. 기본값은 "세션"입니다.</li>
 </ul>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Create an index over the documents</span>

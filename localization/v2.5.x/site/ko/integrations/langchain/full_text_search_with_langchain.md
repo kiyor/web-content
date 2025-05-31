@@ -18,10 +18,10 @@ title: LangChain 및 Milvus에서 전체 텍스트 검색 사용하기
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/langchain/full_text_search_with_langchain.ipynb" target="_parent">
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/langchain/full_text_search_with_langchain.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/langchain/full_text_search_with_langchain.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/langchain/full_text_search_with_langchain.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <p><a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">전체 텍스트 검색은</a> 텍스트의 특정 키워드나 구문을 일치시켜 문서를 검색하는 전통적인 방법입니다. 이는 용어 빈도 등의 요소로 계산된 관련성 점수를 기반으로 결과의 순위를 매깁니다. 시맨틱 검색은 의미와 문맥을 이해하는 데 더 효과적이지만, 전체 텍스트 검색은 정확한 키워드 매칭에 탁월하므로 시맨틱 검색을 보완하는 데 유용합니다. BM25 알고리즘은 전체 텍스트 검색에서 순위를 매기는 데 널리 사용되며 검색 증강 세대(RAG)에서 핵심적인 역할을 합니다.</p>
@@ -103,7 +103,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>위의 코드에서는 <code translate="no">BM25BuiltInFunction</code> 의 인스턴스를 정의하고 <code translate="no">Milvus</code> 객체에 전달합니다. <code translate="no">BM25BuiltInFunction</code> 는 Milvus의 경량 래퍼 클래스입니다. <a href="https://milvus.io/docs/manage-collections.md#Function"><code translate="no">Function</code></a> 의 경량 래퍼 클래스입니다.</p>
@@ -114,7 +114,7 @@ vectorstore = Milvus.from_documents(
 </ul>
 <p>위에서 언급한 Milvus 초기화 매개변수에서는 <code translate="no">vector_field=[&quot;dense&quot;, &quot;sparse&quot;]</code> 도 지정합니다. <code translate="no">sparse</code> 필드는 <code translate="no">BM25BuiltInFunction</code> 에 정의된 출력 필드로 간주되므로 다른 <code translate="no">dense</code> 필드는 OpenAIEmbedding의 출력 필드에 자동으로 할당됩니다.</p>
 <p>실제로, 특히 여러 임베딩이나 함수를 결합할 때는 모호성을 피하기 위해 각 함수에 대한 입력 및 출력 필드를 명시적으로 지정하는 것이 좋습니다.</p>
-<p>다음 예시에서는 <code translate="no">BM25BuiltInFunction</code> 의 입력 및 출력 필드를 명시적으로 지정하여 내장 함수가 어떤 필드를 위한 것인지 명확히 했습니다.</p>
+<p>다음 예시에서는 <code translate="no">BM25BuiltInFunction</code> 의 입력 및 출력 필드를 명시적으로 지정하여 내장 함수가 어떤 필드를 위한 것인지 명확히 합니다.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># from langchain_voyageai import VoyageAIEmbeddings</span>
 
 embedding1 = OpenAIEmbeddings(model=<span class="hljs-string">&quot;text-embedding-ada-002&quot;</span>)
@@ -134,7 +134,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -162,7 +162,7 @@ vectorstore.vector_fields
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -209,7 +209,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>Milvus 컬렉션의 스키마를 살펴보고 사용자 정의된 분석기가 올바르게 설정되었는지 확인할 수 있습니다.</p>
@@ -282,7 +282,7 @@ docs[<span class="hljs-number">1</span>]
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Build-RAG-chain" class="common-anchor-header">RAG 체인 구축</h3><p>LLM 인스턴스와 프롬프트를 준비한 다음 LangChain 표현 언어를 사용하여 RAG 파이프라인으로 결합합니다.</p>

@@ -8,10 +8,10 @@ summary: >-
   l'implementazione della sola ricerca full-text e poi la miglioreremo
   integrando la ricerca semantica per ottenere risultati più completi.
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="common-anchor-header">Usare la ricerca full-text con LlamaIndex e Milvus<button data-href="#Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="anchor-icon" translate="no">
@@ -125,7 +125,7 @@ awful. They had hardly any plot, just characters with strong feelings,
 which I ...
 </code></pre>
 <h3 id="Full-Text-Search-with-BM25" class="common-anchor-header">Ricerca a tutto testo con BM25</h3><p><code translate="no">MilvusVectorStore</code> di LlamaIndex supporta la ricerca full-text, consentendo un efficiente recupero basato su parole chiave. Utilizzando una funzione integrata come <code translate="no">sparse_embedding_function</code>, applica il punteggio BM25 per classificare i risultati della ricerca.</p>
-<p>In questa sezione verrà mostrato come implementare un sistema RAG utilizzando BM25 per la ricerca full-text.</p>
+<p>In questa sezione, dimostreremo come implementare un sistema RAG utilizzando BM25 per la ricerca full-text.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> llama_index.core <span class="hljs-keyword">import</span> VectorStoreIndex, StorageContext
 <span class="hljs-keyword">from</span> llama_index.vector_stores.milvus <span class="hljs-keyword">import</span> MilvusVectorStore
 <span class="hljs-keyword">from</span> llama_index.vector_stores.milvus.utils <span class="hljs-keyword">import</span> BM25BuiltInFunction
@@ -151,9 +151,9 @@ index = VectorStoreIndex.from_documents(documents, storage_context=storage_conte
 <pre><code translate="no">Embeddings have been explicitly disabled. Using MockEmbedding.
 </code></pre>
 <p>Il codice sopra riportato inserisce documenti di esempio in Milvus e costruisce un indice per abilitare il ranking BM25 per la ricerca full-text. Disabilita il dense embedding e utilizza <code translate="no">BM25BuiltInFunction</code> con parametri predefiniti.</p>
-<p>È possibile specificare i campi di input e output nei parametri di <code translate="no">BM25BuiltInFunction</code>:</p>
+<p>È possibile specificare i campi di input e di output nei parametri di <code translate="no">BM25BuiltInFunction</code>:</p>
 <ul>
-<li><code translate="no">input_field_names (str)</code>: Il campo di testo di input (predefinito: "text"). Indica il campo di testo a cui si applica l'algoritmo BM25. Modificare questa impostazione se si utilizza una raccolta propria con un nome di campo di testo diverso.</li>
+<li><code translate="no">input_field_names (str)</code>: Il campo di testo di input (predefinito: "text"). Indica il campo di testo a cui si applica l'algoritmo BM25. Modificare questo parametro se si utilizza una raccolta propria con un nome di campo di testo diverso.</li>
 <li><code translate="no">output_field_names (str)</code>: Il campo in cui vengono memorizzati gli output di questa funzione BM25 (default: "sparse_embedding").</li>
 </ul>
 <p>Una volta impostato l'archivio vettoriale, è possibile eseguire query di ricerca full-text utilizzando Milvus con la modalità di interrogazione "sparse" o "text_search":</p>

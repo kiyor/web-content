@@ -20,8 +20,8 @@ title: Arize Pheonixによる評価
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_phoenix.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_phoenix.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/evaluation_with_phoenix.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/evaluation_with_phoenix.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
 <p>このガイドでは、<a href="https://phoenix.arize.com/">Arize Pheonixを</a>使用して、<a href="https://milvus.io/">Milvusを</a>ベースに構築されたRAG（Retrieval-Augmented Generation）パイプラインを評価する方法を示します。</p>
 <p>RAGシステムは、検索システムと生成モデルを組み合わせて、与えられたプロンプトに基づいて新しいテキストを生成します。このシステムは、まずMilvusを使ってコーパスから関連文書を検索し、次に生成モデルを使って検索された文書に基づいて新しいテキストを生成する。</p>
 <p>Arize Pheonixは、RAGパイプラインの評価を支援するフレームワークである。パイプラインの構築を支援する既存のツールやフレームワークはありますが、パイプラインを評価し、パイプラインのパフォーマンスを定量化することは困難です。そこでArize Pheonixの登場です。</p>
@@ -49,7 +49,7 @@ title: Arize Pheonixによる評価
 <p>この例では、LLMとしてOpenAIを使います。<a href="https://platform.openai.com/docs/quickstart">api key</a> <code translate="no">OPENAI_API_KEY</code> を環境変数として用意してください。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> os
 
-# os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-*****************&quot;</span>
+<span class="hljs-comment"># os.environ[&quot;OPENAI_API_KEY&quot;] = &quot;sk-*****************&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <h2 id="Define-the-RAG-pipeline" class="common-anchor-header">RAGパイプラインの定義<button data-href="#Define-the-RAG-pipeline" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -66,7 +66,7 @@ title: Arize Pheonixによる評価
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Milvusをベクトルストアとして、OpenAIをLLMとして使用するRAGクラスを定義します。このクラスには、テキストデータをMilvusにロードする<code translate="no">load</code> メソッド、与えられた質問に最も類似したテキストデータを検索する<code translate="no">retrieve</code> メソッド、検索された知識を使って与えられた質問に回答する<code translate="no">answer</code> メソッドが含まれます。</p>
+    </button></h2><p>Milvusをベクトルストアとして、OpenAIをLLMとして使用するRAGクラスを定義します。このクラスには、テキストデータをMilvusにロードする<code translate="no">load</code> メソッド、与えられた質問に最も類似したテキストデータを検索する<code translate="no">retrieve</code> メソッド、検索された知識を用いて与えられた質問に回答する<code translate="no">answer</code> メソッドが含まれます。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> typing <span class="hljs-keyword">import</span> <span class="hljs-type">List</span>
 <span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
 <span class="hljs-keyword">from</span> openai <span class="hljs-keyword">import</span> OpenAI
@@ -175,10 +175,10 @@ title: Arize Pheonixによる評価
             <span class="hljs-keyword">return</span> response.choices[<span class="hljs-number">0</span>].message.content, retrieved_texts
 <button class="copy-code-btn"></button></code></pre>
 <p>RAGクラスをOpenAIとMilvusクライアントで初期化してみよう。</p>
-<pre><code translate="no" class="language-python">openai_client = <span class="hljs-title class_">OpenAI</span>()
-milvus_client = <span class="hljs-title class_">MilvusClient</span>(uri=<span class="hljs-string">&quot;./milvus_demo.db&quot;</span>)
+<pre><code translate="no" class="language-python">openai_client = OpenAI()
+milvus_client = MilvusClient(uri=<span class="hljs-string">&quot;./milvus_demo.db&quot;</span>)
 
-my_rag = <span class="hljs-title function_">RAG</span>(openai_client=openai_client, milvus_client=milvus_client)
+my_rag = RAG(openai_client=openai_client, milvus_client=milvus_client)
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
 <p><code translate="no">MilvusClient</code> の引数については以下の通り：</p>
@@ -291,13 +291,13 @@ Answering questions: 100%|██████████| 3/3 [00:03&lt;00:00,  
     <tr>
       <th>0</th>
       <td>ハードウェア要件とは何ですか？</td>
-      <td>[Hardware Requirementsn次の仕様がある。</td>
+      <td>[Hardware Requirementsn以下の仕様がある。</td>
       <td>Milvusをビルドするためのハードウェア要件は何ですか？</td>
       <td>Milvusをビルドし、ソースから実行する場合、...</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>Milvusをビルドしてソースから実行したいのですが、プログラミング言語は何ですか？</td>
+      <td>Milvusをビルドしてソースコードから実行したいのですが、プログラミング言語は何ですか？</td>
       <td>[Milvusのアルゴリズムライブラリは、CMakeとConan...</td>
       <td>Knowherを記述するために使用されるプログラミング言語...</td>
       <td>Knowherを記述するために使用されるプログラミング言語...</td>
@@ -335,12 +335,12 @@ Answering questions: 100%|██████████| 3/3 [00:03&lt;00:00,  
 </ul></li>
 <li><p><strong>QA評価</strong>：入力クエリに対するモデルの回答の正確性を評価する。</p>
 <ul>
-<li><strong>QA説明</strong>：回答が正しいか正しくないかの理由を詳細に説明します。</li>
+<li><strong>QA説明</strong>：回答が正しい、または正しくない理由を詳細に説明します。</li>
 </ul></li>
 </ul>
-<h3 id="Phoenix-Tracing-Overview" class="common-anchor-header">Phoenixトレースの概要</h3><p>Phoenixは<strong>OTEL互換のトレースを</strong>LLMアプリケーションに提供し、<strong>Langchainや</strong> <strong>LlamaIndexの</strong>ようなフレームワーク、<strong>OpenAIや</strong> <strong>Mistralの</strong>ようなSDKを統合します。トレースはリクエストフロー全体をキャプチャし、次のような洞察を提供します：</p>
+<h3 id="Phoenix-Tracing-Overview" class="common-anchor-header">Phoenixトレースの概要</h3><p>Phoenixは、<strong>Langchainや</strong> <strong>LlamaIndexの</strong>ようなフレームワーク、<strong>OpenAIや</strong> <strong>Mistralの</strong>ようなSDKとの統合により、LLMアプリケーションに<strong>OTEL互換のトレースを</strong>提供します。トレースはリクエストフロー全体をキャプチャし、以下のような洞察を提供します：</p>
 <ul>
-<li><strong>アプリケーション遅延</strong>：遅いLLM呼び出しとコンポーネントのパフォーマンスを特定し、最適化します。</li>
+<li><strong>アプリケーション遅延</strong>：遅いLLMの呼び出しとコンポーネントのパフォーマンスを特定し、最適化します。</li>
 <li><strong>トークンの使用状況</strong>：コスト最適化のためにトークン消費を分解します。</li>
 <li><strong>ランタイム例外</strong>：レート制限などの重大な問題を捕捉します。</li>
 <li><strong>取得ドキュメント</strong>ドキュメントの検索、スコア、順序を分析します。</li>
@@ -395,7 +395,7 @@ hallucination_eval_df, qa_eval_df = run_evals(
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no">run_evals |██████████| 6/6 (100.0%) | ⏳ 00:03&lt;00:00 |  1.64it/s
 </code></pre>
-<pre><code translate="no" class="language-python">results_df = df.<span class="hljs-built_in">copy</span>()
+<pre><code translate="no" class="language-python">results_df = df.copy()
 results_df[<span class="hljs-string">&quot;hallucination_eval&quot;</span>] = hallucination_eval_df[<span class="hljs-string">&quot;label&quot;</span>]
 results_df[<span class="hljs-string">&quot;hallucination_explanation&quot;</span>] = hallucination_eval_df[<span class="hljs-string">&quot;explanation&quot;</span>]
 results_df[<span class="hljs-string">&quot;qa_eval&quot;</span>] = qa_eval_df[<span class="hljs-string">&quot;label&quot;</span>]

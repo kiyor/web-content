@@ -137,7 +137,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
@@ -196,7 +196,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>雖然這是使用 BM25 的一種方式，但它需要使用者管理詞彙頻率統計的語料庫。我們建議使用 BM25 的內建函式（選項 1），因為它會在 Milvus 伺服器端處理一切。這樣使用者就不需要擔心管理語料或訓練詞彙的問題。如需更多資訊，請參閱<a href="https://milvus.io/docs/full_text_search_with_langchain.md">使用 LangChain 和 Milvus 的全文檢索</a>。</p>
@@ -233,7 +233,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -265,7 +265,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -286,7 +286,7 @@ vectorstore.vector_fields
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 query = <span class="hljs-string">&quot;What are the novels Lila has written and what are their contents?&quot;</span>
@@ -359,7 +359,7 @@ docs[<span class="hljs-number">1</span>]
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Build-RAG-chain" class="common-anchor-header">建立 RAG 鏈</h3><p>我們準備好 LLM 實例和提示，然後用 LangChain Expression Language 將它們結合成 RAG 管道。</p>

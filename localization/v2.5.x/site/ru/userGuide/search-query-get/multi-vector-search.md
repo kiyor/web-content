@@ -494,7 +494,7 @@ _, err = client.Insert(ctx, milvusclient.NewColumnBasedInsertOption(<span class=
 <div class="alert note">
 <p>В гибридном поиске каждый <code translate="no">AnnSearchRequest</code> поддерживает только один вектор запроса.</p>
 </div>
-<p>Предположим, что текст запроса "Кто начал исследования ИИ?" уже преобразован в разреженный и плотный векторы. Исходя из этого, создаются два поисковых запроса <code translate="no">AnnSearchRequest</code> для векторных полей <code translate="no">sparse</code> и <code translate="no">dense</code> соответственно, как показано в следующем примере.</p>
+<p>Предположим, текст запроса "Кто начал исследования ИИ?" уже преобразован в разреженный и плотный векторы. Исходя из этого, создаются два поисковых запроса <code translate="no">AnnSearchRequest</code> для векторных полей <code translate="no">sparse</code> и <code translate="no">dense</code> соответственно, как показано в следующем примере.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> AnnSearchRequest
@@ -512,7 +512,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>}, {<span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
+query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>, <span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
 search_param_2 = {
     <span class="hljs-string">&quot;data&quot;</span>: [query_sparse_vector],
     <span class="hljs-string">&quot;anns_field&quot;</span>: <span class="hljs-string">&quot;sparse&quot;</span>,

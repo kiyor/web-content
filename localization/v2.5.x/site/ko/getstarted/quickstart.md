@@ -18,8 +18,8 @@ title: 빠른 시작
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/quickstart.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/quickstart.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/quickstart.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/quickstart.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
 <p>신경망 모델의 출력 데이터 형식인 벡터는 정보를 효과적으로 인코딩하고 지식 베이스, 시맨틱 검색, 검색 증강 생성(RAG) 등과 같은 AI 애플리케이션에서 중추적인 역할을 할 수 있습니다.</p>
 <p>Milvus는 오픈 소스 벡터 데이터베이스로, Jupyter 노트북에서 데모 챗봇을 실행하는 것부터 수십억 명의 사용자에게 서비스를 제공하는 웹 규모 검색 구축에 이르기까지 모든 규모의 AI 애플리케이션에 적합합니다. 이 가이드에서는 몇 분 안에 Milvus를 로컬에서 설정하고 Python 클라이언트 라이브러리를 사용하여 벡터를 생성, 저장 및 검색하는 방법을 안내해 드립니다.</p>
 <h2 id="Install-Milvus" class="common-anchor-header">Milvus 설치하기<button data-href="#Install-Milvus" class="anchor-icon" translate="no">
@@ -81,7 +81,7 @@ client = MilvusClient(<span class="hljs-string">&quot;milvus_demo.db&quot;</span
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Milvus에서는 벡터와 관련 메타데이터를 저장할 컬렉션이 필요합니다. 기존 SQL 데이터베이스의 테이블이라고 생각하시면 됩니다. 컬렉션을 만들 때 스키마 및 인덱스 매개변수를 정의하여 차원, 인덱스 유형 및 원거리 메트릭과 같은 벡터 사양을 구성할 수 있습니다. 벡터 검색 성능을 위해 인덱스를 최적화하는 복잡한 개념도 있습니다. 지금은 기본에 집중하고 가능한 모든 것을 기본값으로 사용하겠습니다. 최소한 컬렉션 이름과 컬렉션의 벡터 필드 차원만 설정하면 됩니다.</p>
+    </button></h2><p>Milvus에서는 벡터와 관련 메타데이터를 저장할 컬렉션이 필요합니다. 기존 SQL 데이터베이스의 테이블이라고 생각하시면 됩니다. 컬렉션을 만들 때 스키마 및 인덱스 매개변수를 정의하여 차원, 인덱스 유형 및 먼 거리 메트릭과 같은 벡터 사양을 구성할 수 있습니다. 벡터 검색 성능을 위해 인덱스를 최적화하는 복잡한 개념도 있습니다. 지금은 기본에 집중하고 가능한 모든 것을 기본값으로 사용하겠습니다. 최소한 컬렉션 이름과 컬렉션의 벡터 필드 차원만 설정하면 됩니다.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">if</span> client.has_collection(collection_name=<span class="hljs-string">&quot;demo_collection&quot;</span>):
     client.drop_collection(collection_name=<span class="hljs-string">&quot;demo_collection&quot;</span>)
 client.create_collection(

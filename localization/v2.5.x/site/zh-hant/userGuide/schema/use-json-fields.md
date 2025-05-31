@@ -1,7 +1,7 @@
 ---
 id: use-json-fields.md
 title: JSON 欄位
-summary: JSON 欄位是一個標量欄位，它以鍵值對的方式，將額外的資訊與向量嵌入一起儲存。以下是以 JSON 格式儲存資料的範例：
+summary: JSON 欄位是一種標量欄位，它以鍵值對的方式，與向量嵌入一起儲存附加資訊。以下是以 JSON 格式儲存資料的範例：
 ---
 <h1 id="JSON-Field" class="common-anchor-header">JSON 欄位<button data-href="#JSON-Field" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -376,7 +376,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">index_name</code></p></td>
-     <td><p>(可選）自訂索引名稱。如果在同一 JSON 欄位上建立多個索引，請指定不同的名稱。</p></td>
+     <td><p>(可選）自訂索引名稱。如果您在同一 JSON 欄位上建立多個索引，請指定不同的名稱。</p></td>
      <td><p><code translate="no">"json_index_1"</code></p></td>
    </tr>
    <tr>
@@ -386,7 +386,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">params.json_cast_type</code></p></td>
-     <td><p>在建立索引時，Milvus 會將抽取的 JSON 值轉換成的資料類型。有效值：</p><ul><li><p><code translate="no">"bool"</code> 或<code translate="no">"BOOL"</code></p></li><li><p><code translate="no">"double"</code> 或<code translate="no">"DOUBLE"</code></p></li><li><p><code translate="no">"varchar"</code> 或<code translate="no">"VARCHAR"</code></p><p><strong>注意</strong>：對於整數值，Milvus 內部使用 double 來建立索引。超過 2^53 的大整數會失去精確度。如果類型轉換失敗（由於類型不匹配），不會產生錯誤，該行的值也不會被索引。</p></li></ul></td>
+     <td><p>在建立索引時，Milvus 會將抽取的 JSON 值轉換成的資料類型。有效值：</p><ul><li><code translate="no">"bool"</code> 或<code translate="no">"BOOL"</code></li><li><code translate="no">"double"</code> 或<code translate="no">"DOUBLE"</code></li><li><code translate="no">"varchar"</code> 或<code translate="no">"VARCHAR"</code><strong>注意</strong>：對於整數值，Milvus 內部使用 double 來建立索引。超過 2^53 的大整數會失去精確度。如果類型轉換失敗（由於類型不匹配），不會產生錯誤，並且該行的值不會被索引。</li></ul></td>
      <td><p><code translate="no">"varchar"</code></p></td>
    </tr>
 </table>
@@ -403,14 +403,14 @@ curl --request POST \
 </ul></li>
 <li><p><strong>數值精確度</strong>：</p>
 <ul>
-<li>在內部，Milvus 將所有數值欄位索引為雙倍。如果數值超過 2^{53}，就會喪失精確度，對這些超出範圍的數值進行查詢時，可能無法完全匹配。</li>
+<li>在內部，Milvus 將所有數值欄位索引為雙倍。如果數值超過 $2^{53}$，就會失去精確度，對這些超出範圍的數值進行查詢時，可能無法完全匹配。</li>
 </ul></li>
 <li><p><strong>資料完整性</strong>：</p>
 <ul>
-<li>Milvus 不會解析或轉換超出您指定的鑄造範圍的 JSON 鍵。如果來源資料不一致 (例如，某些資料列的 key<code translate="no">&quot;k&quot;</code> 儲存字串，而其他資料列則儲存數字)，某些資料列將不會被索引。</li>
+<li>Milvus 不會解析或轉換超出您指定投遞範圍的 JSON 鍵。如果來源資料不一致 (例如，某些資料列的 key<code translate="no">&quot;k&quot;</code> 儲存字串，而其他資料列則儲存數字)，某些資料列將不會被索引。</li>
 </ul></li>
 </ul>
-<h3 id="Index-a-vector-field" class="common-anchor-header">索引向量欄位</h3><p>下面的示例使用<code translate="no">AUTOINDEX</code> 索引類型在向量欄位<code translate="no">embedding</code> 上建立索引。使用這種類型，Milvus 會根據資料類型自動選擇最合適的索引。您也可以自訂每個欄位的索引類型和參數。詳情請參閱<a href="/docs/zh-hant/index-explained.md">Index Explained</a>。</p>
+<h3 id="Index-a-vector-field--Milvus-2510+" class="common-anchor-header">索引向量欄位<span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.10+</span></h3><p>下面的示例使用<code translate="no">AUTOINDEX</code> 索引類型在向量欄位<code translate="no">embedding</code> 上建立索引。使用這種類型，Milvus 會根據資料類型自動選擇最合適的索引。您也可以自訂每個欄位的索引類型和參數。詳情請參閱<a href="/docs/zh-hant/index-explained.md">Index Explained</a>。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set index params</span>
@@ -471,7 +471,7 @@ indexOpt := milvusclient.NewCreateIndexOption(<span class="hljs-string">&quot;my
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>定義模式和索引後，建立包含字串欄位的集合。</p>
+    </button></h2><p>定義模式和索引後，建立包含 JSON 欄位的集合。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">client.create_collection(

@@ -18,8 +18,8 @@ title: MilvusによるグラフRAG
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/graph_rag_with_milvus.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/graph_rag_with_milvus.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/graph_rag_with_milvus.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/graph_rag_with_milvus.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
 <p>大規模な言語モデルの広範な応用は、その応答の精度と関連性を向上させることの重要性を強調している。検索補強型生成（RAG）は、外部知識ベースでモデルを強化し、より多くの文脈情報を提供し、幻覚や知識不足のような問題を軽減します。しかし、単純なRAGパラダイムだけに頼ることには限界があり、特に複雑なエンティティ関係やマルチホップの質問を扱う場合には、モデルが正確な回答を提供するのに苦労することが多い。</p>
 <p>知識グラフ（KG）をRAGシステムに導入することは、新しい解決策を提供する。KGは、より正確な検索情報を提供し、RAGが複雑な質問応答タスクをよりよく処理するのを助ける、構造化された方法でエンティティとその関係を提示する。KG-RAGはまだ初期段階にあり、KGから実体と関係を効果的に検索する方法や、ベクトル類似性検索とグラフ構造を統合する方法についてのコンセンサスは得られていない。</p>
 <p>本ノートブックでは、このシナリオの性能を大幅に向上させるシンプルかつ強力なアプローチを紹介する。これは、多方向検索とその後の再ランク付けという単純なRAGパラダイムであるが、グラフRAGを論理的に実装し、マルチホップ問題の処理において最先端の性能を達成している。どのように実装されるか見てみましょう。</p>
@@ -53,34 +53,34 @@ title: MilvusによるグラフRAG
 <p>OpenAIのモデルを使います。<a href="https://platform.openai.com/docs/quickstart">api key</a> <code translate="no">OPENAI_API_KEY</code> を環境変数として用意しておく。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> os
 
-os.<span class="hljs-property">environ</span>[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
+os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <p>必要なライブラリと依存関係をインポートする。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 
 <span class="hljs-keyword">from</span> collections <span class="hljs-keyword">import</span> defaultdict
-<span class="hljs-keyword">from</span> scipy.<span class="hljs-property">sparse</span> <span class="hljs-keyword">import</span> csr_matrix
-<span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> <span class="hljs-title class_">MilvusClient</span>
-<span class="hljs-keyword">from</span> langchain_core.<span class="hljs-property">messages</span> <span class="hljs-keyword">import</span> <span class="hljs-title class_">AIMessage</span>, <span class="hljs-title class_">HumanMessage</span>
-<span class="hljs-keyword">from</span> langchain_core.<span class="hljs-property">prompts</span> <span class="hljs-keyword">import</span> <span class="hljs-title class_">ChatPromptTemplate</span>, <span class="hljs-title class_">HumanMessagePromptTemplate</span>
-<span class="hljs-keyword">from</span> langchain_core.<span class="hljs-property">output_parsers</span> <span class="hljs-keyword">import</span> <span class="hljs-title class_">StrOutputParser</span>, <span class="hljs-title class_">JsonOutputParser</span>
-<span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> <span class="hljs-title class_">ChatOpenAI</span>, <span class="hljs-title class_">OpenAIEmbeddings</span>
+<span class="hljs-keyword">from</span> scipy.sparse <span class="hljs-keyword">import</span> csr_matrix
+<span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient
+<span class="hljs-keyword">from</span> langchain_core.messages <span class="hljs-keyword">import</span> AIMessage, HumanMessage
+<span class="hljs-keyword">from</span> langchain_core.prompts <span class="hljs-keyword">import</span> ChatPromptTemplate, HumanMessagePromptTemplate
+<span class="hljs-keyword">from</span> langchain_core.output_parsers <span class="hljs-keyword">import</span> StrOutputParser, JsonOutputParser
+<span class="hljs-keyword">from</span> langchain_openai <span class="hljs-keyword">import</span> ChatOpenAI, OpenAIEmbeddings
 <span class="hljs-keyword">from</span> tqdm <span class="hljs-keyword">import</span> tqdm
 <button class="copy-code-btn"></button></code></pre>
 <p>Milvusクライアント、LLM、埋め込みモデルのインスタンスを初期化します。</p>
-<pre><code translate="no" class="language-python">milvus_client = <span class="hljs-title class_">MilvusClient</span>(uri=<span class="hljs-string">&quot;./milvus.db&quot;</span>)
+<pre><code translate="no" class="language-python">milvus_client = MilvusClient(uri=<span class="hljs-string">&quot;./milvus.db&quot;</span>)
 
-llm = <span class="hljs-title class_">ChatOpenAI</span>(
+llm = ChatOpenAI(
     model=<span class="hljs-string">&quot;gpt-4o&quot;</span>,
     temperature=<span class="hljs-number">0</span>,
 )
-embedding_model = <span class="hljs-title class_">OpenAIEmbeddings</span>(model=<span class="hljs-string">&quot;text-embedding-3-small&quot;</span>)
+embedding_model = OpenAIEmbeddings(model=<span class="hljs-string">&quot;text-embedding-3-small&quot;</span>)
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
 <p>MilvusClientのargsについて：</p>
 <ul>
 <li>例えば、<code translate="no">./milvus.db</code> のように、<code translate="no">uri</code> をローカルファイルとして設定する方法は、<a href="https://milvus.io/docs/milvus_lite.md">Milvus Liteを</a>自動的に利用してすべてのデータをこのファイルに格納するため、最も便利な方法です。</li>
-<li>データ規模が大きい場合は、<a href="https://milvus.io/docs/quickstart.md">dockerやkubernetes</a>上に、よりパフォーマンスの高いMilvusサーバを構築することができます。このセットアップでは、サーバの uri、例えば<code translate="no">http://localhost:19530</code> を<code translate="no">uri</code> として使用してください。</li>
+<li>データ規模が大きい場合は、<a href="https://milvus.io/docs/quickstart.md">dockerやkubernetes</a>上でよりパフォーマンスの高いMilvusサーバを構築することができます。このセットアップでは、サーバの uri、例えば<code translate="no">http://localhost:19530</code> を<code translate="no">uri</code> として使用してください。</li>
 <li>Milvusのフルマネージドクラウドサービスである<a href="https://zilliz.com/cloud">Zilliz Cloudを</a>利用する場合は、Zilliz Cloudの<a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">Public EndpointとApi keyに</a>対応する<code translate="no">uri</code> と<code translate="no">token</code> を調整してください。</li>
 </ul>
 </div>
@@ -99,7 +99,7 @@ embedding_model = <span class="hljs-title class_">OpenAIEmbeddings</span>(model=
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><h3 id="Data-Preparation" class="common-anchor-header">データの準備</h3><p>例として、ベルヌーイファミリーとオイラーの関係を紹介するナノデータセットを使用する。このナノデータセットには4つの文章とそれに対応するトリプレットのセットが含まれており、各トリプレットには主語、述語、目的語が含まれている。 実際には、独自のコーパスからトリプレットを抽出するためにどのようなアプローチを使用することもできる。</p>
+    </button></h2><h3 id="Data-Preparation" class="common-anchor-header">データの準備</h3><p>例として、ベルヌーイファミリーとオイラーの関係を紹介するナノデータセットを使用する。このナノデータセットには4つの文章とそれに対応するトリプレットのセットが含まれており、各トリプレットには主語、述語、目的語が含まれている。 実際には、独自のコーパスからトリプレットを抽出するためにどのようなアプローチを使用してもよい。</p>
 <pre><code translate="no" class="language-python">nano_dataset = [
     {
         <span class="hljs-string">&quot;passage&quot;</span>: <span class="hljs-string">&quot;Jakob Bernoulli (1654–1705): Jakob was one of the earliest members of the Bernoulli family to gain prominence in mathematics. He made significant contributions to calculus, particularly in the development of the theory of probability. He is known for the Bernoulli numbers and the Bernoulli theorem, a precursor to the law of large numbers. He was the older brother of Johann Bernoulli, another influential mathematician, and the two had a complex relationship that involved both collaboration and rivalry.&quot;</span>,
@@ -167,30 +167,30 @@ embedding_model = <span class="hljs-title class_">OpenAIEmbeddings</span>(model=
 <li>ここでは、主語、述語、目的語をスペースを挟んで直接連結することで、関係の概念を構築します。</li>
 </ul>
 <p>また、後で使用するために、エンティティIDと関係IDを対応付けるdictと、関係IDと通過IDを対応付けるdictを用意します。</p>
-<pre><code translate="no" class="language-python">entityid_2_relationids = defaultdict(list)
-relationid_2_passageids = defaultdict(list)
+<pre><code translate="no" class="language-python">entityid_2_relationids = defaultdict(<span class="hljs-built_in">list</span>)
+relationid_2_passageids = defaultdict(<span class="hljs-built_in">list</span>)
 
 entities = []
 relations = []
 passages = []
-<span class="hljs-keyword">for</span> passage_id, dataset_info in enumerate(nano_dataset):
+<span class="hljs-keyword">for</span> passage_id, dataset_info <span class="hljs-keyword">in</span> <span class="hljs-built_in">enumerate</span>(nano_dataset):
     passage, triplets = dataset_info[<span class="hljs-string">&quot;passage&quot;</span>], dataset_info[<span class="hljs-string">&quot;triplets&quot;</span>]
-    passages.<span class="hljs-built_in">append</span>(passage)
-    <span class="hljs-keyword">for</span> triplet in triplets:
-        <span class="hljs-keyword">if</span> triplet[<span class="hljs-number">0</span>] not in entities:
-            entities.<span class="hljs-built_in">append</span>(triplet[<span class="hljs-number">0</span>])
-        <span class="hljs-keyword">if</span> triplet[<span class="hljs-number">2</span>] not in entities:
-            entities.<span class="hljs-built_in">append</span>(triplet[<span class="hljs-number">2</span>])
+    passages.append(passage)
+    <span class="hljs-keyword">for</span> triplet <span class="hljs-keyword">in</span> triplets:
+        <span class="hljs-keyword">if</span> triplet[<span class="hljs-number">0</span>] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> entities:
+            entities.append(triplet[<span class="hljs-number">0</span>])
+        <span class="hljs-keyword">if</span> triplet[<span class="hljs-number">2</span>] <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> entities:
+            entities.append(triplet[<span class="hljs-number">2</span>])
         relation = <span class="hljs-string">&quot; &quot;</span>.join(triplet)
-        <span class="hljs-keyword">if</span> relation not in relations:
-            relations.<span class="hljs-built_in">append</span>(relation)
-            entityid_2_relationids[entities.index(triplet[<span class="hljs-number">0</span>])].<span class="hljs-built_in">append</span>(
+        <span class="hljs-keyword">if</span> relation <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> relations:
+            relations.append(relation)
+            entityid_2_relationids[entities.index(triplet[<span class="hljs-number">0</span>])].append(
                 <span class="hljs-built_in">len</span>(relations) - <span class="hljs-number">1</span>
             )
-            entityid_2_relationids[entities.index(triplet[<span class="hljs-number">2</span>])].<span class="hljs-built_in">append</span>(
+            entityid_2_relationids[entities.index(triplet[<span class="hljs-number">2</span>])].append(
                 <span class="hljs-built_in">len</span>(relations) - <span class="hljs-number">1</span>
             )
-        relationid_2_passageids[relations.index(relation)].<span class="hljs-built_in">append</span>(passage_id)
+        relationid_2_passageids[relations.index(relation)].append(passage_id)
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Data-Insertion" class="common-anchor-header">データの挿入</h3><p>エンティティ、リレーション、パスのMilvusコレクションを作成する。エンティティ・コレクションとリレーション・コレクションは本手法におけるグラフ構築の主要なコレクションとして使用され、パッセージ・コレクションは素朴なRAG検索比較や補助的な目的として使用される。</p>
 <pre><code translate="no" class="language-python">embedding_dim = <span class="hljs-built_in">len</span>(embedding_model.embed_query(<span class="hljs-string">&quot;foo&quot;</span>))
@@ -213,7 +213,7 @@ create_milvus_collection(entity_col_name)
 create_milvus_collection(relation_col_name)
 create_milvus_collection(passage_col_name)
 <button class="copy-code-btn"></button></code></pre>
-<p>データをメタデータ情報とともにMilvusコレクションに挿入する。メタデータ情報には、通路IDと隣接エンティティまたは関係IDが含まれる。</p>
+<p>データをメタデータ情報とともにMilvusコレクションに挿入する。メタデータ情報には、通過ID、隣接エンティティまたは関係IDが含まれる。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">milvus_insert</span>(<span class="hljs-params">
     collection_name: <span class="hljs-built_in">str</span>,
     text_list: <span class="hljs-built_in">list</span>[<span class="hljs-built_in">str</span>],
@@ -273,7 +273,7 @@ Inserting: 100%|█████████████████████�
         ></path>
       </svg>
     </button></h2><h3 id="Similarity-Retrieval" class="common-anchor-header">類似検索</h3><p>Milvusからの入力クエリに基づいて、上位K個の類似エンティティと関係を検索する。</p>
-<p>エンティティ検索を行う際には、まずNER (Named-entity recognition)のような特定の方法を用いて、クエリテキストからクエリエンティティを抽出する必要がある。ここでは簡単のため、NERの結果を用意する。実際には、クエリからエンティティを抽出するために、他のモデルやアプローチを使用することができます。</p>
+<p>エンティティ検索を行う際には、まず、NER (Named-entity recognition)のような特定の方法を用いて、クエリテキストからクエリエンティティを抽出する必要がある。ここでは簡単のため、NERの結果を用意する。実際には、クエリからエンティティを抽出するために、他のモデルやアプローチを使用することができます。</p>
 <pre><code translate="no" class="language-python">query = <span class="hljs-string">&quot;What contribution did the son of Euler&#x27;s teacher make?&quot;</span>
 
 query_ner_list = [<span class="hljs-string">&quot;Euler&quot;</span>]
@@ -283,12 +283,12 @@ query_ner_embeddings = [
     embedding_model.embed_query(query_ner) <span class="hljs-keyword">for</span> query_ner <span class="hljs-keyword">in</span> query_ner_list
 ]
 
-top_k = 3
+top_k = <span class="hljs-number">3</span>
 
 entity_search_res = milvus_client.search(
     collection_name=entity_col_name,
     data=query_ner_embeddings,
-    <span class="hljs-built_in">limit</span>=top_k,
+    limit=top_k,
     output_fields=[<span class="hljs-string">&quot;id&quot;</span>],
 )
 
@@ -297,9 +297,9 @@ query_embedding = embedding_model.embed_query(query)
 relation_search_res = milvus_client.search(
     collection_name=relation_col_name,
     data=[query_embedding],
-    <span class="hljs-built_in">limit</span>=top_k,
+    limit=top_k,
     output_fields=[<span class="hljs-string">&quot;id&quot;</span>],
-)[0]
+)[<span class="hljs-number">0</span>]
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Expand-Subgraph" class="common-anchor-header">サブグラフの展開</h3><p>検索されたエンティティと関係を使って部分グラフを展開し、関係候補を取得します。以下は、部分グラフの展開処理のフローチャートである：  <span class="img-wrapper">
     <img translate="no" src="/docs/v2.5.x/assets/graph_rag_with_milvus_2.png" alt="" class="doc-image" id="" />
@@ -448,11 +448,11 @@ rerank_relation_ids = rerank_relations(
 
 final_passages = []
 final_passage_ids = []
-<span class="hljs-keyword">for</span> relation_id in rerank_relation_ids:
-    <span class="hljs-keyword">for</span> passage_id in relationid_2_passageids[relation_id]:
-        <span class="hljs-keyword">if</span> passage_id not in final_passage_ids:
-            final_passage_ids.<span class="hljs-built_in">append</span>(passage_id)
-            final_passages.<span class="hljs-built_in">append</span>(passages[passage_id])
+<span class="hljs-keyword">for</span> relation_id <span class="hljs-keyword">in</span> rerank_relation_ids:
+    <span class="hljs-keyword">for</span> passage_id <span class="hljs-keyword">in</span> relationid_2_passageids[relation_id]:
+        <span class="hljs-keyword">if</span> passage_id <span class="hljs-keyword">not</span> <span class="hljs-keyword">in</span> final_passage_ids:
+            final_passage_ids.append(passage_id)
+            final_passages.append(passages[passage_id])
 passages_from_our_method = final_passages[:final_top_k]
 <button class="copy-code-btn"></button></code></pre>
 <p>この結果を、素朴なRAGメソッドと比較することができます。素朴なRAGメソッドは、クエリの埋め込みに基づく上位K個のパッセージを、パッセージのコレクションから直接取得します。</p>

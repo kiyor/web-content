@@ -9,10 +9,10 @@ summary: >-
   melhorá-la-emos integrando a pesquisa semântica para obter resultados mais
   abrangentes.
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="common-anchor-header">Utilizar a pesquisa de texto integral com LlamaIndex e Milvus<button data-href="#Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="anchor-icon" translate="no">
@@ -52,7 +52,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p><strong>Instalar as dependências</strong></p>
+    </button></h2><p><strong>Instalar dependências</strong></p>
 <p>Antes de começar, certifique-se de que tem as seguintes dependências instaladas:</p>
 <pre><code translate="no" class="language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-variable">$pip</span> install llama-index-vector-stores-milvus</span>
 <span class="hljs-meta prompt_">$ </span><span class="language-bash"><span class="hljs-variable">$pip</span> install llama-index-embeddings-openai</span>
@@ -71,7 +71,7 @@ openai.api_key = <span class="hljs-string">&quot;sk-&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <p>Para utilizar o armazenamento de vectores Milvus, especifique o seu servidor Milvus <code translate="no">URI</code> (e, opcionalmente, com o <code translate="no">TOKEN</code>). Para iniciar um servidor Milvus, pode configurar um servidor Milvus seguindo o <a href="https://milvus.io/docs/install-overview.md">guia de instalação do Milvus</a> ou simplesmente experimentar <a href="https://docs.zilliz.com/docs/register-with-zilliz-cloud">o Zilliz Cloud</a> gratuitamente.</p>
 <blockquote>
-<p>A pesquisa de texto integral é atualmente suportada no Milvus Standalone, Milvus Distributed e Zilliz Cloud, mas ainda não no Milvus Lite (planeado para implementação futura). Contacte support@zilliz.com para obter mais informações.</p>
+<p>A pesquisa de texto completo é atualmente suportada no Milvus Standalone, Milvus Distributed e Zilliz Cloud, mas ainda não no Milvus Lite (planeado para implementação futura). Contacte support@zilliz.com para obter mais informações.</p>
 </blockquote>
 <pre><code translate="no" class="language-python">URI = <span class="hljs-string">&quot;http://localhost:19530&quot;</span>
 <span class="hljs-comment"># TOKEN = &quot;&quot;</span>
@@ -107,7 +107,7 @@ data/paul_graham/pa 100%[===================&gt;]  73.28K  --.-KB/s    in 0.07s
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>A integração da pesquisa de texto integral num sistema RAG equilibra a pesquisa semântica com a recuperação precisa e previsível baseada em palavras-chave. Também pode optar por utilizar apenas a pesquisa em texto integral, embora seja recomendável combinar a pesquisa em texto integral com a pesquisa semântica para obter melhores resultados de pesquisa. Aqui, para efeitos de demonstração, mostraremos apenas a pesquisa de texto integral e a pesquisa híbrida.</p>
+    </button></h2><p>A integração da pesquisa de texto integral num sistema RAG equilibra a pesquisa semântica com a recuperação precisa e previsível baseada em palavras-chave. Também pode optar por utilizar apenas a pesquisa de texto integral, embora seja recomendável combinar a pesquisa de texto integral com a pesquisa semântica para obter melhores resultados de pesquisa. Aqui, para efeitos de demonstração, mostraremos apenas a pesquisa de texto integral e a pesquisa híbrida.</p>
 <p>Para começar, utilize <code translate="no">SimpleDirectoryReaderLoad</code> para carregar o ensaio "What I Worked On" de Paul Graham:</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> llama_index.core <span class="hljs-keyword">import</span> SimpleDirectoryReader
 
@@ -151,7 +151,7 @@ index = VectorStoreIndex.from_documents(documents, storage_context=storage_conte
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no">Embeddings have been explicitly disabled. Using MockEmbedding.
 </code></pre>
-<p>O código acima insere documentos de exemplo no Milvus e cria um índice para permitir a classificação BM25 para pesquisa de texto integral. Desactiva a incorporação densa e utiliza <code translate="no">BM25BuiltInFunction</code> com parâmetros predefinidos.</p>
+<p>O código acima insere documentos de exemplo no Milvus e cria um índice para permitir a classificação BM25 para pesquisa em texto integral. Desactiva a incorporação densa e utiliza <code translate="no">BM25BuiltInFunction</code> com parâmetros predefinidos.</p>
 <p>Pode especificar os campos de entrada e saída nos parâmetros <code translate="no">BM25BuiltInFunction</code>:</p>
 <ul>
 <li><code translate="no">input_field_names (str)</code>: O campo de texto de entrada (padrão: "text"). Indica o campo de texto ao qual o algoritmo BM25 é aplicado. Altere isto se utilizar a sua própria coleção com um nome de campo de texto diferente.</li>
@@ -187,7 +187,7 @@ hiring too many people, and the relief felt when the company was acquired by Yah
     enable_match=<span class="hljs-literal">True</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Hybrid-Search-with-Reranker" class="common-anchor-header">Pesquisa híbrida com ranqueador</h3><p>Um sistema de pesquisa híbrido combina a pesquisa semântica e a pesquisa de texto integral, optimizando o desempenho da recuperação num sistema RAG.</p>
+<h3 id="Hybrid-Search-with-Reranker" class="common-anchor-header">Pesquisa híbrida com ranqueador</h3><p>Um sistema de pesquisa híbrido combina a pesquisa semântica e a pesquisa de texto completo, optimizando o desempenho da recuperação num sistema RAG.</p>
 <p>O exemplo a seguir usa a incorporação OpenAI para pesquisa semântica e BM25 para pesquisa de texto completo:</p>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Create index over the documnts</span>
 vector_store = MilvusVectorStore(
@@ -231,4 +231,4 @@ company. Additionally, the author learned about the significance of user feedbac
 building stores for users, and the realization that growth rate is crucial for the long-term success
 of a startup.
 </code></pre>
-<p>Esta abordagem híbrida garante respostas mais precisas e conscientes do contexto num sistema RAG, aproveitando a recuperação semântica e baseada em palavras-chave.</p>
+<p>Esta abordagem híbrida garante respostas mais precisas e sensíveis ao contexto num sistema RAG, aproveitando a recuperação semântica e baseada em palavras-chave.</p>

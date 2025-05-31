@@ -66,7 +66,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>ANN検索において、単一ベクトル検索とは1つのクエリベクトルのみを含む検索を指す。Milvusは事前に構築されたインデックスと検索要求に含まれるメトリックタイプに基づいて、クエリベクトルに最も類似した上位K個のベクトルを検索します。</p>
-<p>このセクションでは、単一ベクトル検索の方法を学びます。このコードスニペットは、<a href="/docs/ja/create-collection-instantly.md#Quick-Setup">クイックセットアップで</a>コレクションを作成したと仮定します。検索リクエストは1つのクエリベクトルを運び、MilvusにInner Product (IP)を使ってクエリベクトルとコレクション内のベクトル間の類似度を計算し、最も類似した3つのベクトルを返すように依頼します。</p>
+<p>このセクションでは、単一ベクトル検索の方法を学びます。検索リクエストは1つのクエリベクトルを運び、MilvusにInner Product (IP)を使ってクエリベクトルとコレクション内のベクトル間の類似度を計算し、最も類似した3つのベクトルを返すよう依頼します。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient
@@ -294,7 +294,7 @@ curl --request POST \
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>同様に、検索リクエストに複数のクエリベクトルを含めることができます。milvusはクエリベクトルに対してANN検索を並行して行い、2組の結果を返します。</p>
+    </button></h2><p>同様に、検索リクエストに複数のクエリーベクトルを含めることができます。milvusはクエリベクトルに対してANN検索を並行して行い、2組の結果を返します。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># 7. Search with multiple vectors</span>
@@ -969,7 +969,7 @@ curl --request POST \
 <ul>
 <li><p>フィルタリング検索</p>
 <p>MilvusがANN検索を行う前にメタデータのフィルタリングを行い、検索範囲をコレクション全体から指定されたフィルタリング条件に一致するエンティティのみに縮小するように、検索リクエストにフィルタリング条件を含めることができます。</p>
-<p>メタデータのフィルタリングとフィルタリング条件の詳細については、<a href="/docs/ja/filtered-search.md">フィルタリング検索と</a>フィルタ<a href="/docs/ja/filtering">リングを</a>参照してください。</p></li>
+<p>メタデータのフィルタリングとフィルタリング条件の詳細については、<a href="/docs/ja/filtered-search.md">フィルタリング検索</a>、<a href="/docs/ja/boolean.md">フィルタリングの説明</a>、および関連するトピックを参照してください。</p></li>
 <li><p>範囲検索</p>
 <p>特定の範囲内で返されるエンティティの距離またはスコアを制限することにより、検索結果の関連性を向上させることができます。Milvusでは、範囲検索では、クエリベクトルに最も近いベクトル埋め込みを中心として2つの同心円を描きます。検索リクエストは両円の半径を指定し、Milvusは外側の円に含まれ、内側の円に含まれないすべてのベクトル埋め込みを返します。</p>
 <p>範囲検索の詳細については、<a href="/docs/ja/range-search.md">範囲検索を</a>参照してください。</p></li>

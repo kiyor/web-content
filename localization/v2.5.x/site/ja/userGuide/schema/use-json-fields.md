@@ -48,7 +48,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><ul>
-<li><p><strong>フィールドサイズ</strong>：JSONフィールドのサイズは65,536バイトに制限されています。</p></li>
+<li><p><strong>フィールドのサイズ</strong>：JSONフィールドのサイズは65,536バイトに制限されています。</p></li>
 <li><p><strong>ネストされた辞書</strong>：JSONフィールド値内のネストされた辞書は、プレーン文字列として扱われます。</p></li>
 <li><p><strong>デフォルト値</strong>：JSONフィールドはデフォルト値をサポートしていません。しかし、<code translate="no">nullable</code> 属性を<code translate="no">True</code> に設定することで、ヌル値を許可することができます。詳細は<a href="/docs/ja/nullable-and-default.md">Nullable &amp; Defaultを</a>参照してください。</p></li>
 <li><p><strong>タイプ・マッチング</strong>：JSONフィールドのキー値が整数または浮動小数である場合、（式フィルターを介して）同じタイプの別の数値キーとしか比較できません。</p></li>
@@ -236,7 +236,7 @@ schema.WithField(entity.NewField().
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Milvusはインデックスを作成することで、大量のデータを素早くフィルタリングしたり検索したりすることができます。Milvusではインデックスを設定します：</p>
+    </button></h2><p>Milvusはインデックスを作成することで、大量のデータを素早くフィルタリングしたり検索したりすることができます。Milvusでは、インデックスを設定します：</p>
 <ul>
 <li><p>ベクトルフィールドでは<strong>必須</strong>(類似検索を効率的に実行するため)。</p></li>
 <li><p>JSONフィールドでは<strong>オプション</strong>です（特定のJSONパスに対するスカラーフィルタを高速化するため）。</p></li>
@@ -387,7 +387,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">params.json_cast_type</code></p></td>
-     <td><p>Milvusがインデックスを作成する際に、抽出されたJSON値をキャストするデータ型。有効な値</p><ul><li><p><code translate="no">"bool"</code> または<code translate="no">"BOOL"</code></p></li><li><p><code translate="no">"double"</code> または<code translate="no">"DOUBLE"</code></p></li><li><p><code translate="no">"varchar"</code> または<code translate="no">"VARCHAR"</code></p><p><strong>注意</strong>: 整数値の場合、Milvusは内部的にインデックスにdoubleを使用します。2^53以上の大きな整数は精度を失います。(型の不一致により)型キャストに失敗した場合、エラーは発生せず、その行の値はインデックス化されません。</p></li></ul></td>
+     <td><p>Milvusがインデックスを作成する際に、抽出されたJSON値をキャストするデータ型。有効な値</p><ul><li><code translate="no">"bool"</code> または<code translate="no">"BOOL"</code></li><li><code translate="no">"double"</code> または<code translate="no">"DOUBLE"</code></li><li><code translate="no">"varchar"</code> or<code translate="no">"VARCHAR"</code><strong>注意</strong>: 整数値の場合、Milvusは内部的にdoubleをインデックスに使用します。2^53以上の大きな整数は精度を失います。(型の不一致により)型キャストに失敗した場合、エラーは発生せず、その行の値はインデックスされません。</li></ul></td>
      <td><p><code translate="no">"varchar"</code></p></td>
    </tr>
 </table>
@@ -404,14 +404,14 @@ curl --request POST \
 </ul></li>
 <li><p><strong>数値精度</strong>：</p>
 <ul>
-<li>内部的には、Milvusは全ての数値フィールドをdoubleとしてインデックスを作成します。数値が2^{53}を超えると精度が落ち、範囲外の値に対するクエリは正確にマッチしない可能性があります。</li>
+<li>内部的には、Milvusは全ての数値フィールドをdoubleとしてインデックスを作成します。数値が$2^{53}$を超えると精度が落ち、範囲外の値に対するクエリは正確にマッチしない可能性があります。</li>
 </ul></li>
 <li><p><strong>データの完全性</strong>：</p>
 <ul>
-<li>MilvusはJSONキーを指定されたキャスティングを超えて解析したり変換したりしません。ソースデータに一貫性がない場合 (例えば、キー<code translate="no">&quot;k&quot;</code> に文字列を格納する行と数値を格納する行がある)、インデックスが作成されない行があります。</li>
+<li>MilvusはJSONキーを指定されたキャストを超えて解析したり変換したりしません。ソースデータに一貫性がない場合（例えば、キー<code translate="no">&quot;k&quot;</code> に文字列を格納する行と数値を格納する行がある）、インデックスが作成されない行があります。</li>
 </ul></li>
 </ul>
-<h3 id="Index-a-vector-field" class="common-anchor-header">ベクトル・フィールドのインデックス</h3><p>以下の例では、<code translate="no">AUTOINDEX</code> インデックス型を使用して、ベクトルフィールド<code translate="no">embedding</code> にインデックスを作成しています。このタイプでは、Milvusはデータ型に基づいて最適なインデックスを自動的に選択します。各フィールドのインデックスタイプとパラメータをカスタマイズすることもできます。詳細については、「<a href="/docs/ja/index-explained.md">インデックスの説明</a>」を参照してください。</p>
+<h3 id="Index-a-vector-field--Milvus-2510+" class="common-anchor-header">ベクトル・フィールドのインデックス<span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.10+</span></h3><p>以下の例では、<code translate="no">AUTOINDEX</code> インデックス型を使用して、ベクトルフィールド<code translate="no">embedding</code> にインデックスを作成しています。このタイプでは、Milvusはデータ型に基づいて最適なインデックスを自動的に選択します。各フィールドのインデックスタイプとパラメータをカスタマイズすることもできます。詳細については、「<a href="/docs/ja/index-explained.md">インデックスの説明</a>」を参照してください。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set index params</span>
@@ -472,7 +472,7 @@ indexOpt := milvusclient.NewCreateIndexOption(<span class="hljs-string">&quot;my
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>スキーマとインデックスを定義したら、文字列フィールドを含むコレクションを作成します。</p>
+    </button></h2><p>スキーマとインデックスが定義されたら、JSON フィールドを含むコレクションを作成します。</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">client.create_collection(
@@ -692,7 +692,7 @@ rows.add(gson.fromJson(<span class="hljs-string">&quot;{\&quot;metadata\&quot;:{
     &quot;collectionName&quot;: &quot;my_collection&quot;
 }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h2 id="Query-with-filter-expressions" class="common-anchor-header">フィルタ式によるクエリ<button data-href="#Query-with-filter-expressions" class="anchor-icon" translate="no">
+<h2 id="Query-with-filter-expressions" class="common-anchor-header">フィルター式を使用したクエリ<button data-href="#Query-with-filter-expressions" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"
@@ -982,4 +982,4 @@ curl --request POST \
 
 <span class="hljs-comment">##{&quot;code&quot;:0,&quot;cost&quot;:0,&quot;data&quot;:[{&quot;metadata&quot;:&quot;{\&quot;product_info\&quot;: {\&quot;category\&quot;: \&quot;electronics\&quot;, \&quot;brand\&quot;: \&quot;BrandA\&quot;}, \&quot;price\&quot;: 99.99, \&quot;in_stock\&quot;: true, \&quot;tags\&quot;: [\&quot;summer_sale\&quot;]}&quot;,&quot;pk&quot;:1}]}</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>さらに、Milvusは<code translate="no">JSON_CONTAINS</code> 、<code translate="no">JSON_CONTAINS_ALL</code> 、<code translate="no">JSON_CONTAINS_ANY</code> などの高度なJSONフィルタリング演算子をサポートしており、クエリ機能をさらに強化することができます。詳細については、<a href="/docs/ja/json-operators.md">JSON演算</a>子を参照してください。</p>
+<p>さらに、Milvusは、<code translate="no">JSON_CONTAINS</code> 、<code translate="no">JSON_CONTAINS_ALL</code> 、<code translate="no">JSON_CONTAINS_ANY</code> などの高度なJSONフィルタリング演算子をサポートしており、クエリ機能をさらに強化することができます。詳細については、<a href="/docs/ja/json-operators.md">JSON演算</a>子を参照してください。</p>

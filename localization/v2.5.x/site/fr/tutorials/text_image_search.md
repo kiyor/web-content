@@ -8,10 +8,10 @@ summary: >-
   recherches de similarité efficaces.
 title: Recherche texte-image avec Milvus
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">Recherche texte-image avec Milvus<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
@@ -125,7 +125,7 @@ model.<span class="hljs-built_in">eval</span>()
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Data-Ingestion" class="common-anchor-header">Ingestion des données</h3><p>Pour permettre la recherche sémantique d'images, nous devons d'abord générer des embeddings pour toutes les images et les stocker dans une base de données vectorielle pour une indexation et une recherche efficaces. Cette section fournit un guide étape par étape pour l'ingestion de données d'images dans Milvus.</p>
 <p><strong>1. Créer une collection Milvus</strong></p>
-<p>Avant de stocker les incorporations d'images, vous devez créer une collection Milvus. Le code suivant montre comment créer une collection à l'aide du <a href="https://milvus.io/docs/create-collection-instantly.md">mode de démarrage rapide</a> avec le type de métrique COSINE par défaut. La collection comprend les champs suivants :</p>
+<p>Avant de stocker les incorporations d'images, vous devez créer une collection Milvus. Le code suivant montre comment créer une collection en mode installation rapide avec le type de métrique COSINE par défaut. La collection comprend les champs suivants :</p>
 <ul>
 <li><p><code translate="no">id</code>: Un champ primaire avec ID automatique activé.</p></li>
 <li><p><code translate="no">vector</code>: Un champ pour stocker les intégrations de vecteurs en virgule flottante.</p></li>

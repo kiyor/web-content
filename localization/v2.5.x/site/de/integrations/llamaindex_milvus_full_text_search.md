@@ -8,10 +8,10 @@ summary: >-
   Implementierung einer reinen Volltextsuche und erweitern diese dann durch die
   Integration einer semantischen Suche für umfassendere Ergebnisse.
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="common-anchor-header">Verwendung der Volltextsuche mit LlamaIndex und Milvus<button data-href="#Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="anchor-icon" translate="no">
@@ -30,7 +30,7 @@ summary: >-
         ></path>
       </svg>
     </button></h1><p>Die<strong>Volltextsuche</strong> verwendet exakte Schlüsselwortabgleiche und nutzt oft Algorithmen wie BM25, um Dokumente nach Relevanz zu ordnen. In <strong>Retrieval-Augmented Generation (RAG)</strong> -Systemen wird mit dieser Methode relevanter Text abgerufen, um die von der KI generierten Antworten zu verbessern.</p>
-<p>In der Zwischenzeit interpretiert die <strong>semantische Suche</strong> die kontextuelle Bedeutung, um umfassendere Ergebnisse zu liefern. Durch die Kombination beider Ansätze entsteht eine <strong>hybride Suche</strong>, die das Abrufen von Informationen verbessert - insbesondere in Fällen, in denen eine einzelne Methode nicht ausreicht.</p>
+<p>In der Zwischenzeit interpretiert die <strong>semantische Suche</strong> die kontextuelle Bedeutung, um umfassendere Ergebnisse zu liefern. Durch die Kombination beider Ansätze entsteht eine <strong>hybride Suche</strong>, die das Abrufen von Informationen verbessert - insbesondere in Fällen, in denen eine einzelne Methode unzureichend ist.</p>
 <p>Mit dem Sparse-BM25-Ansatz von <a href="https://milvus.io/blog/introduce-milvus-2-5-full-text-search-powerful-metadata-filtering-and-more.md">Milvus 2.5</a> wird der Rohtext automatisch in Sparse-Vektoren umgewandelt. Dies macht die manuelle Erzeugung von Sparse Embedding überflüssig und ermöglicht eine hybride Suchstrategie, die ein Gleichgewicht zwischen semantischem Verständnis und Schlüsselwortrelevanz herstellt.</p>
 <p>In diesem Tutorial lernen Sie, wie Sie mit LlamaIndex und Milvus ein RAG-System mit Volltextsuche und hybrider Suche aufbauen können. Wir beginnen mit der Implementierung einer reinen Volltextsuche und erweitern diese dann durch die Integration einer semantischen Suche für umfassendere Ergebnisse.</p>
 <blockquote>

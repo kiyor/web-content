@@ -71,8 +71,8 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Nas pesquisas ANN, uma pesquisa de vetor único refere-se a uma pesquisa que envolve apenas um vetor de consulta. Com base no índice pré-construído e no tipo de métrica transportado no pedido de pesquisa, o Milvus irá encontrar os top-K vectores mais semelhantes ao vetor de consulta.</p>
-<p>Nesta secção, aprenderá a realizar uma pesquisa de vetor único. O trecho de código pressupõe a criação de uma coleção de forma <a href="/docs/pt/create-collection-instantly.md#Quick-Setup">rápida</a>. A solicitação de pesquisa carrega um único vetor de consulta e pede ao Milvus para usar o Produto Interno (IP) para calcular a similaridade entre os vetores de consulta e os vetores na coleção e retorna os três mais semelhantes.</p>
+    </button></h2><p>Nas pesquisas ANN, uma pesquisa de vetor único refere-se a uma pesquisa que envolve apenas um vetor de consulta. Com base no índice pré-construído e no tipo de métrica transportada no pedido de pesquisa, o Milvus irá encontrar os top-K vectores mais semelhantes ao vetor de consulta.</p>
+<p>Nesta secção, aprenderá a realizar uma pesquisa de um único vetor. O pedido de pesquisa carrega um único vetor de consulta e pede ao Milvus para usar o Inner Product (IP) para calcular a similaridade entre os vetores de consulta e os vetores na coleção e retorna os três mais semelhantes.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient
@@ -252,7 +252,7 @@ curl --request POST \
 <span class="hljs-comment"># }</span>
 <button class="copy-code-btn"></button></code></pre>
 <p>O Milvus classifica os resultados da pesquisa pelas suas pontuações de semelhança com o vetor de consulta, por ordem descendente. A pontuação de semelhança é também designada por distância ao vetor de consulta e os seus intervalos de valores variam consoante os tipos de métricas utilizados.</p>
-<p>A tabela a seguir lista os tipos de métrica aplicáveis e os intervalos de distância correspondentes.</p>
+<p>A tabela a seguir lista os tipos de métricas aplicáveis e os intervalos de distância correspondentes.</p>
 <table>
    <tr>
      <th><p>Tipo de métrica</p></th>
@@ -514,7 +514,7 @@ curl --request POST \
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Suponha que criou várias partições numa coleção e que pode restringir o âmbito da pesquisa a um número específico de partições. Nesse caso, pode incluir os nomes das partições de destino no pedido de pesquisa para restringir o âmbito da pesquisa dentro das partições especificadas. A redução do número de partições envolvidas na pesquisa melhora o desempenho da pesquisa.</p>
+    </button></h2><p>Suponha que criou várias partições numa coleção e que pode restringir o âmbito da pesquisa a um número específico de partições. Nesse caso, pode incluir os nomes das partições de destino no pedido de pesquisa para restringir o âmbito da pesquisa às partições especificadas. A redução do número de partições envolvidas na pesquisa melhora o desempenho da pesquisa.</p>
 <p>O seguinte trecho de código assume uma partição chamada <strong>PartitionA</strong> na sua coleção.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
@@ -840,7 +840,7 @@ curl --request POST \
 <table>
    <tr>
      <th><p>Consultas</p></th>
-     <th><p>Entidades a devolver por consulta</p></th>
+     <th><p>Entidades a retornar por consulta</p></th>
      <th><p>Entidades já devolvidas no total</p></th>
    </tr>
    <tr>
@@ -971,11 +971,11 @@ curl --request POST \
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>O AUTOINDEX alisa consideravelmente a curva de aprendizagem das pesquisas ANN. No entanto, os resultados da pesquisa podem nem sempre ser corretos à medida que o top-K aumenta. Reduzindo o âmbito da pesquisa, melhorando a relevância dos resultados da pesquisa e diversificando os resultados da pesquisa, o Milvus desenvolve as seguintes melhorias de pesquisa.</p>
+    </button></h2><p>O AUTOINDEX alisa consideravelmente a curva de aprendizagem das pesquisas ANN. No entanto, os resultados da pesquisa podem nem sempre estar corretos à medida que o top-K aumenta. Reduzindo o âmbito da pesquisa, melhorando a relevância dos resultados da pesquisa e diversificando os resultados da pesquisa, o Milvus desenvolve as seguintes melhorias de pesquisa.</p>
 <ul>
 <li><p>Pesquisa filtrada</p>
 <p>Pode incluir condições de filtragem num pedido de pesquisa para que o Milvus efectue a filtragem de metadados antes de efetuar pesquisas ANN, reduzindo o âmbito da pesquisa de toda a coleção para apenas as entidades que correspondem às condições de filtragem especificadas.</p>
-<p>Para obter mais informações sobre filtragem de metadados e condições de filtragem, consulte <a href="/docs/pt/filtered-search.md">Pesquisa filtrada</a> e <a href="/docs/pt/filtering">Filtragem</a>.</p></li>
+<p>Para mais informações sobre filtragem de metadados e condições de filtragem, consulte <a href="/docs/pt/filtered-search.md">Filtered Search</a>, <a href="/docs/pt/boolean.md">Filtering Explained</a>, e tópicos relacionados.</p></li>
 <li><p>Pesquisa de intervalo</p>
 <p>É possível melhorar a relevância dos resultados da pesquisa restringindo a distância ou a pontuação das entidades retornadas dentro de um intervalo específico. No Milvus, uma pesquisa de intervalo envolve o desenho de dois círculos concêntricos com a incorporação de vetor mais semelhante ao vetor de consulta como o centro. O pedido de pesquisa especifica o raio de ambos os círculos, e o Milvus devolve todas as incorporações vectoriais que se enquadram no círculo exterior mas não no círculo interior.</p>
 <p>Para obter mais informações sobre a pesquisa de intervalo, consulte <a href="/docs/pt/range-search.md">Pesquisa de intervalo</a>.</p></li>
@@ -986,7 +986,7 @@ curl --request POST \
 <p>Uma coleção pode incluir até quatro campos vectoriais para guardar as incorporações vectoriais geradas utilizando diferentes modelos de incorporação. Ao fazer isso, é possível usar uma pesquisa híbrida para ranquear novamente os resultados da pesquisa desses campos vetoriais, melhorando a taxa de recuperação.</p>
 <p>Para saber mais sobre a pesquisa híbrida, consulte <a href="/docs/pt/multi-vector-search.md">Pesquisa híbrida</a>.</p></li>
 <li><p>Iterador de pesquisa</p>
-<p>Uma única pesquisa ANN retorna um máximo de 16.384 entidades. Considere usar iteradores de pesquisa se precisar de mais entidades para retornar em uma única pesquisa.</p>
+<p>Uma única pesquisa ANN retorna um máximo de 16.384 entidades. Considere o uso de iteradores de pesquisa se precisar de mais entidades para retornar em uma única pesquisa.</p>
 <p>Para obter detalhes sobre iteradores de pesquisa, consulte <a href="/docs/pt/with-iterators.md">Iterador de pesquisa</a>.</p></li>
 <li><p>Pesquisa de texto completo</p>
 <p>A pesquisa de texto completo é um recurso que recupera documentos que contêm termos ou frases específicos em conjuntos de dados de texto e, em seguida, classifica os resultados com base na relevância. Esta funcionalidade ultrapassa as limitações da pesquisa semântica, que pode ignorar termos precisos, garantindo que recebe os resultados mais exactos e contextualmente relevantes. Além disso, simplifica as pesquisas vectoriais ao aceitar a entrada de texto em bruto, convertendo automaticamente os seus dados de texto em embeddings esparsos sem a necessidade de gerar manualmente embeddings vectoriais.</p>

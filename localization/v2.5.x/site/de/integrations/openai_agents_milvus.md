@@ -7,10 +7,10 @@ summary: >-
   Milvus, um ein schönes Sucherlebnis zu schaffen.
 title: 'Milvus-Integration mit OpenAI-Agenten: Eine Schritt-für-Schritt-Anleitung'
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/openai_agents_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/openai_agents_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/openai_agents_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/openai_agents_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Milvus-Integration-with-OpenAI-Agents-A-Step-by-Step-Guide" class="common-anchor-header">Milvus-Integration mit OpenAI-Agenten: Eine Schritt-für-Schritt-Anleitung<button data-href="#Milvus-Integration-with-OpenAI-Agents-A-Step-by-Step-Guide" class="anchor-icon" translate="no">
@@ -131,7 +131,7 @@ os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span 
 <h3 id="Full-Text-Search-in-Milvus-25" class="common-anchor-header">Volltextsuche in Milvus 2.5</h3><ul>
 <li>Einheitliches System für die Vektor- und Schlagwortsuche (einheitliche APIs)</li>
 <li>Eingebauter sparse-BM25-Algorithmus (ähnlich wie Elasticsearch, aber vektorbasiert)</li>
-<li>Keine Notwendigkeit der manuellen Erzeugung von Einbettungen für die Stichwortsuche</li>
+<li>Keine Notwendigkeit der manuellen Erzeugung von Einbettungen für die Schlagwortsuche</li>
 </ul>
 <p><img translate="no" src="https://milvus.io/docs/v2.5.x/assets/full-text-search.png" width="70%" alt="img"></p>
 <h2 id="Install-Milvus-with-Docker" class="common-anchor-header">Milvus mit Docker installieren<button data-href="#Install-Milvus-with-Docker" class="anchor-icon" translate="no">

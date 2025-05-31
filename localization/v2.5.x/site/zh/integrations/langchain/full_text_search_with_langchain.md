@@ -18,10 +18,10 @@ title: 使用 LangChain 和 Milvus 进行全文检索
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/langchain/full_text_search_with_langchain.ipynb" target="_parent">
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/langchain/full_text_search_with_langchain.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/langchain/full_text_search_with_langchain.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/langchain/full_text_search_with_langchain.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <p><a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">全文搜索</a>是一种通过匹配文本中特定关键词或短语来检索文档的传统方法。它根据词频等因素计算出的相关性分数对结果进行排序。语义搜索更善于理解含义和上下文，而全文搜索则擅长精确的关键词匹配，因此是语义搜索的有益补充。BM25 算法被广泛用于全文搜索的排序，并在检索增强生成（RAG）中发挥着关键作用。</p>
@@ -103,7 +103,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>在上面的代码中，我们定义了<code translate="no">BM25BuiltInFunction</code> 的一个实例，并将其传递给<code translate="no">Milvus</code> 对象。<code translate="no">BM25BuiltInFunction</code> 是一个轻量级的封装类。 <a href="https://milvus.io/docs/manage-collections.md#Function"><code translate="no">Function</code></a>的轻量级封装类。</p>
@@ -134,7 +134,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -162,7 +162,7 @@ vectorstore.vector_fields
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -209,7 +209,7 @@ vectorstore = Milvus.from_documents(
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>我们可以看看 Milvus Collections 的 Schema，确保定制的分析器设置正确。</p>
@@ -240,7 +240,7 @@ vectorstore = Milvus.from_documents(
     <span></span>
   </span>
 </p>
-<p>该图显示了混合检索和重排过程，将用于关键词匹配的 BM25 和用于语义检索的向量搜索结合在一起。来自这两种方法的结果经过合并、Rerankers 和传递给 LLM 来生成最终答案。</p>
+<p>该图显示了混合检索和重排过程，将用于关键词匹配的 BM25 和用于语义检索的向量搜索结合在一起。来自两种方法的结果经过合并、Rerankers 和传递给 LLM 生成最终答案。</p>
 <p>混合搜索兼顾了精确性和语义理解，提高了不同查询的准确性和稳健性。它通过 BM25 全文检索和向量搜索检索候选内容，同时确保语义、上下文感知和精确检索。</p>
 <p>让我们从一个例子开始。</p>
 <h3 id="Prepare-the-data" class="common-anchor-header">准备数据</h3><p>我们使用 Langchain WebBaseLoader 从网络源加载文档，并使用 RecursiveCharacterTextSplitter 将文档分割成块。</p>
@@ -282,7 +282,7 @@ docs[<span class="hljs-number">1</span>]
     connection_args={
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Build-RAG-chain" class="common-anchor-header">构建 RAG 链</h3><p>我们准备好 LLM 实例和提示，然后使用 LangChain 表达式语言将它们结合到 RAG 管道中。</p>

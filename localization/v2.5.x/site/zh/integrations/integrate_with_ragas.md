@@ -3,10 +3,10 @@ id: integrate_with_ragas.md
 summary: 本指南演示了如何使用 Ragas 评估基于 Milvus 的检索增强生成（RAG）管道。
 title: 使用 Ragas 进行评估
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_ragas.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/evaluation_with_ragas.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_ragas.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/evaluation_with_ragas.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Evaluation-with-Ragas" class="common-anchor-header">使用 Ragas 进行评估<button data-href="#Evaluation-with-Ragas" class="anchor-icon" translate="no">
@@ -188,7 +188,7 @@ my_rag = RAG(openai_client=openai_client, milvus_client=milvus_client)
 <ul>
 <li>将<code translate="no">uri</code> 设置为本地文件，如<code translate="no">./milvus.db</code> ，是最方便的方法，因为它会自动利用<a href="https://milvus.io/docs/milvus_lite.md">Milvus Lite</a>将所有数据存储在此文件中。</li>
 <li>如果数据规模较大，可以在<a href="https://milvus.io/docs/quickstart.md">docker 或 kubernetes</a> 上设置性能更强的 Milvus 服务器。在此设置中，请使用服务器 uri，例如<code translate="no">http://localhost:19530</code> ，作为您的<code translate="no">uri</code> 。</li>
-<li>如果你想使用<a href="https://zilliz.com/cloud">Zilliz Cloud</a>（Milvus 的全托管云服务），请调整<code translate="no">uri</code> 和<code translate="no">token</code> ，它们与 Zilliz Cloud 中的<a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">公共端点和 Api 密钥</a>相对应。</li>
+<li>如果你想使用<a href="https://zilliz.com/cloud">Zilliz Cloud</a>（Milvus 的完全托管云服务），请调整<code translate="no">uri</code> 和<code translate="no">token</code> ，它们与 Zilliz Cloud 中的<a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">公共端点和 Api 密钥</a>相对应。</li>
 </ul>
 </div>
 <h2 id="Run-the-RAG-pipeline-and-get-results" class="common-anchor-header">运行 RAG 管道并获取结果<button data-href="#Run-the-RAG-pipeline-and-get-results" class="anchor-icon" translate="no">
@@ -296,7 +296,7 @@ df
       <th>0</th>
       <td>硬件要求是什么？</td>
       <td>[硬件要求（Hardware Requirements/n...</td>
-      <td>硬件要求规范（...</td>
+      <td>硬件要求规格（...</td>
       <td>如果您想构建Milvus并从源代码运行...</td>
     </tr>
     <tr>

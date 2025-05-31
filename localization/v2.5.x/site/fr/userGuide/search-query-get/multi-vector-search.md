@@ -4,7 +4,7 @@ title: Recherche hybride
 summary: >-
   La recherche hybride est une méthode de recherche qui effectue simultanément
   plusieurs recherches ANN, réorganise plusieurs ensembles de résultats issus de
-  ces recherches ANN et renvoie finalement un seul ensemble de résultats.
+  ces recherches ANN et renvoie en fin de compte un seul ensemble de résultats.
   L'utilisation de la recherche hybride peut améliorer la précision de la
   recherche. Milvus prend en charge la recherche hybride sur une collection
   comportant plusieurs champs vectoriels.
@@ -390,7 +390,7 @@ curl --request POST \
     \&quot;indexParams\&quot;: <span class="hljs-variable">$indexParams</span>
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Insert-data" class="common-anchor-header">Insérer les données</h3><p>Insérez les vecteurs peu denses dans la collection <code translate="no">demo</code>.</p>
+<h3 id="Insert-data" class="common-anchor-header">Insérer les données</h3><p>Insérer les vecteurs peu denses dans la collection <code translate="no">demo</code>.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient
@@ -513,7 +513,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>}, {<span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
+query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>, <span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
 search_param_2 = {
     <span class="hljs-string">&quot;data&quot;</span>: [query_sparse_vector],
     <span class="hljs-string">&quot;anns_field&quot;</span>: <span class="hljs-string">&quot;sparse&quot;</span>,

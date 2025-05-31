@@ -51,7 +51,7 @@ summary: >-
       </svg>
     </button></h2><ul>
 <li><p><strong>Feldgröße</strong>: JSON-Felder sind auf eine Größe von 65.536 Byte begrenzt.</p></li>
-<li><p><strong>Verschachtelte Wörterbücher</strong>: Alle verschachtelten Dictionaries innerhalb von JSON-Feldwerten werden bei der Speicherung als einfache Zeichenketten behandelt.</p></li>
+<li><p><strong>Verschachtelte Wörterbücher</strong>: Alle verschachtelten Dictionaries innerhalb von JSON-Feldwerten werden bei der Speicherung als einfache Strings behandelt.</p></li>
 <li><p><strong>Standardwerte</strong>: JSON-Felder unterstützen keine Standardwerte. Sie können jedoch das Attribut <code translate="no">nullable</code> auf <code translate="no">True</code> setzen, um Nullwerte zuzulassen. Einzelheiten finden Sie unter <a href="/docs/de/nullable-and-default.md">Nullable &amp; Default</a>.</p></li>
 <li><p><strong>Typübereinstimmung</strong>: Wenn der Schlüsselwert eines JSON-Feldes ein Integer- oder Float-Wert ist, kann er nur (über Ausdrucksfilter) mit einem anderen numerischen Schlüssel desselben Typs verglichen werden.</p></li>
 <li><p><strong>Benennung</strong>: Es wird empfohlen, bei der Benennung von JSON-Schlüsseln nur Buchstaben, Zahlen und Unterstriche zu verwenden. Die Verwendung anderer Zeichen kann zu Problemen bei der Filterung oder Suche führen.</p></li>
@@ -389,7 +389,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">params.json_cast_type</code></p></td>
-     <td><p>Datentyp, in den Milvus die extrahierten JSON-Werte umwandelt, wenn der Index erstellt wird. Gültige Werte:</p><ul><li><p><code translate="no">"bool"</code> oder <code translate="no">"BOOL"</code></p></li><li><p><code translate="no">"double"</code> oder <code translate="no">"DOUBLE"</code></p></li><li><p><code translate="no">"varchar"</code> oder <code translate="no">"VARCHAR"</code></p><p><strong>Hinweis</strong>: Bei ganzzahligen Werten verwendet Milvus intern double für den Index. Große Ganzzahlen über 2^53 verlieren an Präzision. Wenn das Typ-Casting fehlschlägt (aufgrund einer Typ-Fehlanpassung), wird kein Fehler ausgelöst und der Wert dieser Zeile wird nicht indiziert.</p></li></ul></td>
+     <td><p>Datentyp, in den Milvus die extrahierten JSON-Werte umwandelt, wenn der Index erstellt wird. Gültige Werte:</p><ul><li><code translate="no">"bool"</code> oder <code translate="no">"BOOL"</code></li><li><code translate="no">"double"</code> oder <code translate="no">"DOUBLE"</code></li><li><code translate="no">"varchar"</code> oder <code translate="no">"VARCHAR"</code><strong>Hinweis</strong>: Für ganzzahlige Werte verwendet Milvus intern double für den Index. Große Ganzzahlen über 2^53 verlieren an Präzision. Wenn das Typ-Casting fehlschlägt (aufgrund einer Typ-Fehlanpassung), wird kein Fehler ausgelöst und der Wert dieser Zeile wird nicht indiziert.</li></ul></td>
      <td><p><code translate="no">"varchar"</code></p></td>
    </tr>
 </table>
@@ -406,14 +406,14 @@ curl --request POST \
 </ul></li>
 <li><p><strong>Numerische Genauigkeit</strong>:</p>
 <ul>
-<li>Intern indiziert Milvus alle numerischen Felder als Doubles. Wenn ein numerischer Wert 2^{53} übersteigt, verliert er an Präzision, und Abfragen auf diese Werte außerhalb des Bereichs stimmen möglicherweise nicht genau überein.</li>
+<li>Intern indiziert Milvus alle numerischen Felder als Doubles. Wenn ein numerischer Wert $2^{53}$ überschreitet, verliert er an Präzision, und Abfragen auf diese Werte außerhalb des Bereichs stimmen möglicherweise nicht genau überein.</li>
 </ul></li>
 <li><p><strong>Datenintegrität</strong>:</p>
 <ul>
 <li>Milvus parst oder transformiert JSON-Schlüssel nicht über das von Ihnen angegebene Casting hinaus. Wenn die Quelldaten inkonsistent sind (z. B. speichern einige Zeilen einen String für den Schlüssel <code translate="no">&quot;k&quot;</code>, während andere eine Zahl speichern), werden einige Zeilen nicht indiziert.</li>
 </ul></li>
 </ul>
-<h3 id="Index-a-vector-field" class="common-anchor-header">Indizieren eines Vektorfeldes</h3><p>Im folgenden Beispiel wird ein Index für das Vektorfeld <code translate="no">embedding</code> erstellt, wobei der Indextyp <code translate="no">AUTOINDEX</code> verwendet wird. Bei diesem Typ wählt Milvus automatisch den am besten geeigneten Index auf der Grundlage des Datentyps aus. Sie können auch den Indextyp und die Parameter für jedes Feld anpassen. Details finden Sie unter <a href="/docs/de/index-explained.md">Index erklärt</a>.</p>
+<h3 id="Index-a-vector-field--Milvus-2510+" class="common-anchor-header">Indizieren eines Vektorfeldes<span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.10+</span></h3><p>Im folgenden Beispiel wird ein Index für das Vektorfeld <code translate="no">embedding</code> erstellt, wobei der Indextyp <code translate="no">AUTOINDEX</code> verwendet wird. Bei diesem Typ wählt Milvus automatisch den am besten geeigneten Index auf der Grundlage des Datentyps aus. Sie können auch den Indextyp und die Parameter für jedes Feld anpassen. Details finden Sie unter <a href="/docs/de/index-explained.md">Index erklärt</a>.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set index params</span>
@@ -474,7 +474,7 @@ indexOpt := milvusclient.NewCreateIndexOption(<span class="hljs-string">&quot;my
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Sobald das Schema und der Index definiert sind, erstellen Sie eine Sammlung, die Stringfelder enthält.</p>
+    </button></h2><p>Sobald das Schema und der Index definiert sind, erstellen Sie eine Sammlung, die das JSON-Feld enthält.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">client.create_collection(

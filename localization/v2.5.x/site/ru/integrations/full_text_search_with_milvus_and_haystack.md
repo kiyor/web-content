@@ -5,10 +5,10 @@ summary: >-
   в вашем приложении с помощью Haystack и Milvus.
 title: Полнотекстовый поиск с помощью Milvus и Haystack
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Full-text-search-with-Milvus-and-Haystack" class="common-anchor-header">Полнотекстовый поиск с помощью Milvus и Haystack<button data-href="#Full-text-search-with-Milvus-and-Haystack" class="anchor-icon" translate="no">
@@ -28,7 +28,7 @@ title: Полнотекстовый поиск с помощью Milvus и Hayst
       </svg>
     </button></h1><p><a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">Полнотекстовый поиск</a> - это традиционный метод поиска документов по определенным ключевым словам или фразам в тексте. Он ранжирует результаты на основе оценки релевантности, рассчитанной на основе таких факторов, как частота встречаемости терминов. В то время как семантический поиск лучше понимает смысл и контекст, полнотекстовый поиск превосходит его в точности подбора ключевых слов, что делает его полезным дополнением к семантическому поиску. Алгоритм BM25 широко используется для ранжирования в полнотекстовом поиске и играет ключевую роль в Retrieval-Augmented Generation (RAG).</p>
 <p>В<a href="https://milvus.io/blog/introduce-milvus-2-5-full-text-search-powerful-metadata-filtering-and-more.md">Milvus 2.5</a> реализованы встроенные возможности полнотекстового поиска с использованием BM25. Этот подход преобразует текст в разреженные векторы, которые представляют собой оценки BM25. Вы можете просто ввести необработанный текст, и Milvus автоматически сгенерирует и сохранит разреженные векторы, без необходимости ручной генерации разреженных вкраплений.</p>
-<p><a href="https://haystack.deepset.ai/">Haystack</a> теперь поддерживает эту функцию Milvus, что упрощает добавление полнотекстового поиска в приложения RAG. Вы можете комбинировать полнотекстовый поиск с семантическим поиском по плотным векторам для создания гибридного подхода, который позволяет получить преимущества как семантического понимания, так и точности подбора ключевых слов. Такое сочетание повышает точность поиска и предоставляет пользователям лучшие результаты.</p>
+<p><a href="https://haystack.deepset.ai/">Haystack</a> теперь поддерживает эту функцию Milvus, что упрощает добавление полнотекстового поиска в приложения RAG. Вы можете сочетать полнотекстовый поиск с семантическим поиском по плотным векторам для создания гибридного подхода, который позволяет получить преимущества как семантического понимания, так и точности сопоставления ключевых слов. Такое сочетание повышает точность поиска и предоставляет пользователям лучшие результаты.</p>
 <p>В этом руководстве показано, как реализовать полнотекстовый и гибридный поиск в вашем приложении с помощью Haystack и Milvus.</p>
 <p>Чтобы использовать векторное хранилище Milvus, укажите свой сервер Milvus <code translate="no">URI</code> (и, по желанию, <code translate="no">TOKEN</code>). Чтобы запустить сервер Milvus, вы можете настроить его, следуя <a href="https://milvus.io/docs/install-overview.md">руководству по установке Milvus</a>, или просто бесплатно <a href="https://docs.zilliz.com/docs/register-with-zilliz-cloud">попробовать Zilliz Cloud</a>(полностью управляемый Milvus).</p>
 <div class="alert note">
@@ -248,7 +248,7 @@ retrieval_results[<span class="hljs-string">&quot;retriever&quot;</span>][<span 
       </svg>
     </button></h2><p>Анализаторы играют важную роль в полнотекстовом поиске, разбивая предложение на лексемы и выполняя лексический анализ, например, стемминг и удаление стоп-слов. Анализаторы обычно зависят от конкретного языка. Вы можете обратиться к <a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">этому руководству</a>, чтобы узнать больше об анализаторах в Milvus.</p>
 <p>Milvus поддерживает два типа анализаторов: <strong>Встроенные анализаторы</strong> и <strong>Пользовательские анализаторы</strong>. По умолчанию на сайте <code translate="no">BM25BuiltInFunction</code> будет использоваться <a href="https://milvus.io/docs/standard-analyzer.md">стандартный встроенный анализатор</a>, который является самым базовым анализатором и выполняет токенизацию текста с пунктуацией.</p>
-<p>Если вы хотите использовать другой анализатор или настроить его под себя, вы можете передать параметр <code translate="no">analyzer_params</code> в инициализации <code translate="no">BM25BuiltInFunction</code>.</p>
+<p>Если вы хотите использовать другой анализатор или настроить его, вы можете передать параметр <code translate="no">analyzer_params</code> в инициализации <code translate="no">BM25BuiltInFunction</code>.</p>
 <pre><code translate="no" class="language-python">analyzer_params_custom = {
     <span class="hljs-string">&quot;tokenizer&quot;</span>: <span class="hljs-string">&quot;standard&quot;</span>,
     <span class="hljs-string">&quot;filter&quot;</span>: [
@@ -317,12 +317,12 @@ indexing_pipeline.run({<span class="hljs-string">&quot;dense_doc_embedder&quot;<
     </button></h2><p>Мы узнали, как использовать базовую встроенную функцию BM25 в Haystack и Milvus, и подготовили загруженный <code translate="no">document_store</code>. Давайте представим оптимизированную реализацию RAG с гибридным поиском.</p>
 <p>
   <span class="img-wrapper">
-    <img translate="no" src="/docs/v2.5.x/images/advanced_rag/hybrid_and_rerank.png" alt="" class="doc-image" id="" />
+    <img translate="no" src="https://github.com/milvus-io/bootcamp/blob/master/pics/advanced_rag/hybrid_and_rerank.png?raw=1" alt="" class="doc-image" id="" />
     <span></span>
   </span>
 </p>
 <p>На этой диаграмме показан процесс Hybrid Retrieve &amp; Reranking, сочетающий BM25 для подбора ключевых слов и плотный векторный поиск для семантического поиска. Результаты обоих методов объединяются, ранжируются и передаются в LLM для генерации окончательного ответа.</p>
-<p>Гибридный поиск балансирует между точностью и семантическим пониманием, повышая точность и устойчивость к различным запросам. Он извлекает кандидатов с помощью полнотекстового поиска BM25 и векторного поиска, обеспечивая семантический, контекстно-зависимый и точный поиск.</p>
+<p>Гибридный поиск балансирует между точностью и семантическим пониманием, повышая точность и устойчивость к различным запросам. Он извлекает кандидатов с помощью полнотекстового и векторного поиска BM25, обеспечивая семантический, контекстно-зависимый и точный поиск.</p>
 <p>Давайте попробуем оптимизированную реализацию RAG с гибридным поиском.</p>
 <pre><code translate="no" class="language-python">prompt_template = <span class="hljs-string">&quot;&quot;&quot;Answer the following query based on the provided context. If the context does
                      not include an answer, reply with &#x27;I don&#x27;t know&#x27;.\n

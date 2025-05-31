@@ -9,10 +9,10 @@ summary: >-
   Vektorsuchen mit den in LlamaIndex eingebauten Metadatenfiltern durchführt und
   die nativen Filterausdrücke von Milvus auf den Vektorspeicher anwendet.
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Metadata-Filtering-with-LlamaIndex-and-Milvus" class="common-anchor-header">Metadaten-Filterung mit LlamaIndex und Milvus<button data-href="#Metadata-Filtering-with-LlamaIndex-and-Milvus" class="anchor-icon" translate="no">
@@ -31,7 +31,7 @@ summary: >-
         ></path>
       </svg>
     </button></h1><p>Dieses Notizbuch veranschaulicht die Verwendung des Milvus-Vektorspeichers in LlamaIndex und konzentriert sich dabei auf die Möglichkeiten der Metadatenfilterung. Sie werden lernen, wie man Dokumente mit Metadaten indiziert, Vektorsuchen mit den in LlamaIndex eingebauten Metadatenfiltern durchführt und die nativen Filterausdrücke von Milvus auf den Vektorspeicher anwendet.</p>
-<p>Am Ende dieses Notebooks werden Sie wissen, wie Sie die Filterfunktionen von Milvus nutzen können, um die Suchergebnisse auf der Grundlage von Dokument-Metadaten einzugrenzen.</p>
+<p>Am Ende dieses Notebooks werden Sie verstehen, wie Sie die Filterfunktionen von Milvus nutzen können, um die Suchergebnisse auf der Grundlage von Dokument-Metadaten einzugrenzen.</p>
 <h2 id="Prerequisites" class="common-anchor-header">Voraussetzungen<button data-href="#Prerequisites" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

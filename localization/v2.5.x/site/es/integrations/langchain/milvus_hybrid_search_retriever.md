@@ -139,7 +139,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
@@ -147,7 +147,7 @@ vectorstore = Milvus.from_documents(
 <li>Cuando utilice <code translate="no">BM25BuiltInFunction</code>, tenga en cuenta que la búsqueda de texto completo está disponible en Milvus Standalone y Milvus Distributed, pero no en Milvus Lite, aunque está en la hoja de ruta para su futura inclusión. También estará disponible en Zilliz Cloud (Milvus totalmente gestionado) en breve. Póngase en contacto con <a href="mailto:support@zilliz.com">support@zilliz.com</a> para obtener más información.</li>
 </ul>
 </div>
-<p>En el código anterior, definimos una instancia de <code translate="no">BM25BuiltInFunction</code> y la pasamos al objeto <code translate="no">Milvus</code>. <code translate="no">BM25BuiltInFunction</code> es una clase envolvente ligera para <a href="https://milvus.io/docs/manage-collections.md#Function"><code translate="no">Function</code></a> en Milvus. Podemos usarla con <code translate="no">OpenAIEmbeddings</code> para inicializar una instancia de almacén vectorial Milvus de búsqueda híbrida densa + dispersa.</p>
+<p>En el código anterior, definimos una instancia de <code translate="no">BM25BuiltInFunction</code> y la pasamos al objeto <code translate="no">Milvus</code>. <code translate="no">BM25BuiltInFunction</code> es una clase envolvente ligera para <a href="https://milvus.io/docs/manage-collections.md#Function"><code translate="no">Function</code></a> en Milvus. Podemos utilizarla con <code translate="no">OpenAIEmbeddings</code> para inicializar una instancia de almacén vectorial Milvus de búsqueda híbrida densa + dispersa.</p>
 <p><code translate="no">BM25BuiltInFunction</code> no requiere que el cliente pase corpus o entrenamiento, todo se procesa automáticamente en el extremo del servidor Milvus, por lo que los usuarios no necesitan preocuparse de ningún vocabulario y corpus. Además, los usuarios también pueden personalizar el <a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">analizador</a> para implementar el procesamiento de texto personalizado en el BM25.</p>
 <p>Para obtener más información sobre <code translate="no">BM25BuiltInFunction</code>, consulte <a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">Búsqueda</a> <a href="https://milvus.io/docs/full_text_search_with_langchain.md">de texto</a> <a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">completo</a> y <a href="https://milvus.io/docs/full_text_search_with_langchain.md">Uso de la búsqueda de texto completo con LangChain y Milvus</a>.</p>
 <h3 id="Option-2-Use-dense-and-customized-LangChain-sparse-embedding" class="common-anchor-header">Opción 2: Utilizar la incrustación dispersa LangChain densa y personalizada</h3><p>Puede heredar la clase <code translate="no">BaseSparseEmbedding</code> de <code translate="no">langchain_milvus.utils.sparse</code>, e implementar los métodos <code translate="no">embed_query</code> y <code translate="no">embed_documents</code> para personalizar el proceso de incrustación dispersa. Esto le permite personalizar cualquier método de incrustación dispersa basado en estadísticas de frecuencia de términos (por ejemplo, <a href="https://milvus.io/docs/embed-with-bm25.md#BM25">BM25</a>) o en redes neuronales (por ejemplo, <a href="https://milvus.io/docs/embed-with-splade.md#SPLADE">SPADE</a>).</p>
@@ -198,7 +198,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <p>Aunque esta es una forma de utilizar BM25, requiere que los usuarios gestionen el corpus para las estadísticas de frecuencia de términos. En su lugar, recomendamos utilizar la función integrada en BM25 (opción 1), ya que se encarga de todo en el lado del servidor Milvus. Esto elimina la necesidad de que los usuarios se preocupen de la gestión del corpus o de la formación de un vocabulario. Para obtener más información, consulte la sección <a href="https://milvus.io/docs/full_text_search_with_langchain.md">Uso de la búsqueda de texto completo con LangChain y Milvus</a>.</p>
@@ -235,7 +235,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -267,7 +267,7 @@ vectorstore = Milvus.from_documents(
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 vectorstore.vector_fields
@@ -288,7 +288,7 @@ vectorstore.vector_fields
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 
 query = <span class="hljs-string">&quot;What are the novels Lila has written and what are their contents?&quot;</span>
@@ -361,7 +361,7 @@ docs[<span class="hljs-number">1</span>]
         <span class="hljs-string">&quot;uri&quot;</span>: URI,
     },
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,  <span class="hljs-comment"># Supported values are (`&quot;Strong&quot;`, `&quot;Session&quot;`, `&quot;Bounded&quot;`, `&quot;Eventually&quot;`). See https://milvus.io/docs/consistency.md#Consistency-Level for more details.</span>
-    drop_old=<span class="hljs-literal">True</span>,
+    drop_old=<span class="hljs-literal">False</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Build-RAG-chain" class="common-anchor-header">Creación de la cadena RAG</h3><p>Preparamos la instancia LLM y el prompt, y luego los combinamos en una cadena RAG utilizando el Lenguaje de Expresión LangChain.</p>

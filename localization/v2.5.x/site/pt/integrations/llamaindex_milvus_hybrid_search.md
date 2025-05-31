@@ -9,10 +9,10 @@ summary: >-
   outros métodos alternativos de incorporação esparsa e personalização do
   reranker híbrido.
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="common-anchor-header">RAG utilizando a pesquisa híbrida com Milvus e LlamaIndex<button data-href="#RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="anchor-icon" translate="no">
@@ -48,7 +48,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p><strong>Instalar dependências</strong></p>
-<p>Antes de começar, certifique-se de que tem as seguintes dependências instaladas:</p>
+<p>Antes de começar, certifique-se de ter as seguintes dependências instaladas:</p>
 <pre><code translate="no" class="language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install llama-index-vector-stores-milvus</span>
 <span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install llama-index-embeddings-openai</span>
 <span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install llama-index-llms-openai</span>
@@ -62,9 +62,9 @@ summary: >-
 
 openai.api_key = <span class="hljs-string">&quot;sk-&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<p>Para utilizar o armazenamento de vectores Milvus, especifique o seu servidor Milvus <code translate="no">URI</code> (e, opcionalmente, com o <code translate="no">TOKEN</code>). Para iniciar um servidor Milvus, pode configurar um servidor Milvus seguindo o <a href="https://milvus.io/docs/install-overview.md">guia de instalação do Milvus</a> ou simplesmente experimentando <a href="https://docs.zilliz.com/docs/register-with-zilliz-cloud">o Zilliz Cloud</a> gratuitamente.</p>
+<p>Para utilizar o armazenamento de vectores Milvus, especifique o seu servidor Milvus <code translate="no">URI</code> (e, opcionalmente, com o <code translate="no">TOKEN</code>). Para iniciar um servidor Milvus, pode configurar um servidor Milvus seguindo o <a href="https://milvus.io/docs/install-overview.md">guia de instalação do Milvus</a> ou simplesmente experimentar <a href="https://docs.zilliz.com/docs/register-with-zilliz-cloud">o Zilliz Cloud</a> gratuitamente.</p>
 <blockquote>
-<p>A pesquisa de texto integral é atualmente suportada no Milvus Standalone, Milvus Distributed e Zilliz Cloud, mas ainda não no Milvus Lite (planeado para implementação futura). Contacte support@zilliz.com para obter mais informações.</p>
+<p>A pesquisa de texto completo é atualmente suportada no Milvus Standalone, Milvus Distributed e Zilliz Cloud, mas ainda não no Milvus Lite (planeado para implementação futura). Contacte support@zilliz.com para obter mais informações.</p>
 </blockquote>
 <pre><code translate="no" class="language-python">URI = <span class="hljs-string">&quot;http://localhost:19530&quot;</span>
 <span class="hljs-comment"># TOKEN = &quot;&quot;</span>
@@ -137,7 +137,7 @@ Default sparse embedding function: BM25BuiltInFunction(input_field_names='text',
 <li><code translate="no">enable_dense (bool)</code>: Um sinalizador booleano para ativar ou desativar a incorporação densa. A predefinição é Verdadeiro.</li>
 <li><code translate="no">dim (int, optional)</code>: A dimensão dos vectores de incorporação para a coleção.</li>
 <li><code translate="no">embedding_field (str, optional)</code>: O nome do campo de incorporação densa para a coleção; a predefinição é DEFAULT_EMBEDDING_KEY.</li>
-<li><code translate="no">index_config (dict, optional)</code>: A configuração usada para construir o índice de incorporação densa. A predefinição é Nenhum.</li>
+<li><code translate="no">index_config (dict, optional)</code>: A configuração usada para criar o índice de incorporação densa. A predefinição é Nenhum.</li>
 <li><code translate="no">search_config (dict, optional)</code>: A configuração utilizada para pesquisar o índice denso Milvus. Note que isto tem de ser compatível com o tipo de índice especificado por <code translate="no">index_config</code>. A predefinição é Nenhum.</li>
 <li><code translate="no">similarity_metric (str, optional)</code>: A métrica de similaridade a utilizar para a incorporação densa, atualmente suporta IP, COSINE e L2.</li>
 </ul>
@@ -162,7 +162,7 @@ rate as the ultimate test of a startup at Viaweb.
 </code></pre>
 <h3 id="Customize-text-analyzer" class="common-anchor-header">Personalizar o analisador de texto</h3><p>Os analisadores desempenham um papel vital na pesquisa de texto integral, dividindo as frases em tokens e efectuando o processamento lexical, tal como a remoção de palavras-chave e de palavras de paragem. Normalmente, são específicos do idioma. Para mais pormenores, consulte o <a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">Milvus Analyzer Guide</a>.</p>
 <p>O Milvus suporta dois tipos de analisadores: <strong>Analisadores incorporados</strong> e <strong>Analisadores personalizados</strong>. Por padrão, se <code translate="no">enable_sparse</code> estiver definido como True, <code translate="no">MilvusVectorStore</code> utiliza o <code translate="no">BM25BuiltInFunction</code> com configurações padrão, empregando o analisador incorporado padrão que tokeniza o texto com base na pontuação.</p>
-<p>Para usar um analisador diferente ou personalizar o existente, você pode fornecer valores para o argumento <code translate="no">analyzer_params</code> ao construir o <code translate="no">BM25BuiltInFunction</code>. Em seguida, defina essa função como <code translate="no">sparse_embedding_function</code> em <code translate="no">MilvusVectorStore</code>.</p>
+<p>Para usar um analisador diferente ou personalizar o existente, você pode fornecer valores para o argumento <code translate="no">analyzer_params</code> ao criar o <code translate="no">BM25BuiltInFunction</code>. Em seguida, defina essa função como <code translate="no">sparse_embedding_function</code> em <code translate="no">MilvusVectorStore</code>.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> llama_index.vector_stores.milvus.utils <span class="hljs-keyword">import</span> BM25BuiltInFunction
 
 bm25_function = BM25BuiltInFunction(

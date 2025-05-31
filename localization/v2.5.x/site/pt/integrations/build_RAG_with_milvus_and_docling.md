@@ -1,16 +1,16 @@
 ---
 id: build_RAG_with_milvus_and_docling.md
 summary: >-
-  Neste tutorial, mostraremos como construir um pipeline RAG
-  (Retrieval-Augmented Generation) usando Milvus e Docling. O pipeline integra o
-  Docling para análise de documentos, o Milvus para armazenamento de vectores e
-  o OpenAI para gerar respostas perspicazes e sensíveis ao contexto.
+  Neste tutorial, mostraremos como criar um pipeline RAG (Retrieval-Augmented
+  Generation) usando Milvus e Docling. O pipeline integra o Docling para análise
+  de documentos, o Milvus para armazenamento de vectores e o OpenAI para gerar
+  respostas perspicazes e sensíveis ao contexto.
 title: Construir RAG com Milvus e Docling
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/build_RAG_with_milvus_and_docling.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/build_RAG_with_milvus_and_docling.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/build_RAG_with_milvus_and_docling.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/build_RAG_with_milvus_and_docling.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Build-RAG-with-Milvus-and-Docling" class="common-anchor-header">Construir RAG com Milvus e Docling<button data-href="#Build-RAG-with-Milvus-and-Docling" class="anchor-icon" translate="no">
@@ -152,7 +152,7 @@ collection_name = <span class="hljs-string">&quot;my_rag_collection&quot;</span>
 <ul>
 <li>Definir o <code translate="no">uri</code> como um ficheiro local, por exemplo,<code translate="no">./milvus.db</code>, é o método mais conveniente, uma vez que utiliza automaticamente <a href="https://milvus.io/docs/milvus_lite.md">o Milvus Lite</a> para armazenar todos os dados neste ficheiro.</li>
 <li>Se tiver uma grande escala de dados, pode configurar um servidor Milvus mais eficiente em <a href="https://milvus.io/docs/quickstart.md">docker ou kubernetes</a>. Nesta configuração, utilize o uri do servidor, por exemplo,<code translate="no">http://localhost:19530</code>, como o seu <code translate="no">uri</code>.</li>
-<li>Se pretender utilizar <a href="https://zilliz.com/cloud">o Zilliz Cloud</a>, o serviço de nuvem totalmente gerido para o Milvus, ajuste os endereços <code translate="no">uri</code> e <code translate="no">token</code>, que correspondem ao <a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">Public Endpoint e</a> à <a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">chave Api</a> no Zilliz Cloud.</li>
+<li>Se pretender utilizar <a href="https://zilliz.com/cloud">o Zilliz Cloud</a>, o serviço de nuvem totalmente gerido para o Milvus, ajuste <code translate="no">uri</code> e <code translate="no">token</code>, que correspondem ao <a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">Public Endpoint e</a> à <a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">chave Api</a> no Zilliz Cloud.</li>
 </ul>
 </div>
 <p>Verificar se a coleção já existe e eliminá-la se existir.</p>
@@ -215,7 +215,7 @@ milvus_client.insert(collection_name=collection_name, data=data)
     output_fields=[<span class="hljs-string">&quot;text&quot;</span>],
 )
 <button class="copy-code-btn"></button></code></pre>
-<p>Vejamos os resultados da pesquisa da consulta</p>
+<p>Vamos dar uma vista de olhos aos resultados da pesquisa da consulta</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> json
 
 retrieved_lines_with_distances = [

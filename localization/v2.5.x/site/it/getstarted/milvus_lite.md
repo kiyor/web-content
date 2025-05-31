@@ -18,7 +18,7 @@ title: Eseguire Milvus Lite a livello locale
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>Questa pagina illustra come eseguire Milvus localmente con Milvus Lite. Milvus Lite è la versione leggera di <a href="https://github.com/milvus-io/milvus">Milvus</a>, un database vettoriale open source che alimenta le applicazioni di intelligenza artificiale con embeddings vettoriali e ricerca di similarità.</p>
+    </button></h1><p>Questa pagina illustra come eseguire Milvus localmente con Milvus Lite. Milvus Lite è la versione leggera di <a href="https://github.com/milvus-io/milvus">Milvus</a>, un database vettoriale open-source che alimenta le applicazioni di intelligenza artificiale con embeddings vettoriali e ricerca di similarità.</p>
 <h2 id="Overview" class="common-anchor-header">Panoramica<button data-href="#Overview" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -62,7 +62,7 @@ title: Eseguire Milvus Lite a livello locale
 <li>Ubuntu &gt;= 20.04 (x86_64 e arm64)</li>
 <li>MacOS &gt;= 11.0 (Apple Silicon M1/M2 e x86_64)</li>
 </ul>
-<p>Si noti che Milvus Lite è adatto solo per casi di ricerca vettoriale su piccola scala. Per i casi di utilizzo su larga scala, si consiglia di utilizzare <a href="https://milvus.io/docs/install-overview.md#Milvus-Standalone">Milvus Standalone</a> o <a href="https://milvus.io/docs/install-overview.md#Milvus-Distributed">Milvus Distributed</a>. Si può anche considerare Milvus completamente gestito su <a href="https://zilliz.com/cloud">Zilliz Cloud</a>.</p>
+<p>Si noti che Milvus Lite è adatto solo per casi di ricerca vettoriale su piccola scala. Per i casi di utilizzo su larga scala, si consiglia di utilizzare <a href="https://milvus.io/docs/install-overview.md#Milvus-Standalone">Milvus Standalone</a> o <a href="https://milvus.io/docs/install-overview.md#Milvus-Distributed">Milvus Distributed</a>. Si può anche prendere in considerazione Milvus completamente gestito su <a href="https://zilliz.com/cloud">Zilliz Cloud</a>.</p>
 <h2 id="Set-up-Milvus-Lite" class="common-anchor-header">Configurazione di Milvus Lite<button data-href="#Set-up-Milvus-Lite" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -120,7 +120,7 @@ client = MilvusClient(<span class="hljs-string">&quot;./milvus_demo.db&quot;</sp
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Di seguito è riportata una semplice demo che mostra come utilizzare Milvus Lite per la ricerca di testo. Esistono <a href="https://github.com/milvus-io/bootcamp/tree/master/bootcamp/tutorials">esempi</a> più completi per l'utilizzo di Milvus Lite per la creazione di applicazioni come <a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/build_RAG_with_milvus.ipynb">RAG</a>, la <a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/image_search_with_milvus.ipynb">ricerca di immagini</a> e l'utilizzo di Milvus Lite in framework RAG popolari come <a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_langchain.ipynb">LangChain</a> e <a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_llamaindex.ipynb">LlamaIndex</a>!</p>
+    </button></h2><p>Di seguito è riportata una semplice demo che mostra come utilizzare Milvus Lite per la ricerca di testo. Esistono <a href="https://github.com/milvus-io/bootcamp/tree/master/bootcamp/tutorials">esempi</a> più completi per l'utilizzo di Milvus Lite per la creazione di applicazioni come <a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/build_RAG_with_milvus.ipynb">RAG</a>, la <a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/image_search_with_milvus.ipynb">ricerca di immagini</a> e l'utilizzo di Milvus Lite in framework RAG popolari come <a href="https://github.com/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_langchain.ipynb">LangChain</a> e <a href="https://github.com/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_llamaindex.ipynb">LlamaIndex</a>!</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient
 <span class="hljs-keyword">import</span> numpy <span class="hljs-keyword">as</span> np
 

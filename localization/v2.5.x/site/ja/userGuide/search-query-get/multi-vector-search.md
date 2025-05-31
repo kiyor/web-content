@@ -39,7 +39,7 @@ summary: >-
     </button></h2><p>ハイブリッド検索は以下の2つのシナリオに適しています：</p>
 <h3 id="Sparse-Dense-Vector-Search" class="common-anchor-header">疎密ベクトル検索</h3><p>異なるタイプのベクトルは異なる情報を表現することができ、様々な埋め込みモデルを使用することで、データの異なる特徴や側面をより包括的に表現することができます。例えば、同じ文に対して異なる埋め込みモデルを使用することで、意味的な意味を表す密なベクトルと、文中の単語頻度を表す疎なベクトルを生成することができる。</p>
 <ul>
-<li><p><strong>スパース・ベクトル：</strong>スパースベクトルは、ベクトル次元が高く、非ゼロ値が少ないという特徴がある。この構造により、従来の情報検索アプリケーションに特に適している。ほとんどの場合、スパース・ベクトルで使用される次元数は、1つまたは複数の言語にわたる異なるトークンに対応します。各次元には、文書内のそのトークンの相対的な重要度を示す値が割り当てられます。このレイアウトは、キーワードのマッチングを伴うタスクに有利です。</p></li>
+<li><p><strong>スパース・ベクトル：</strong>スパースベクトルは、ベクトル次元が高く、非ゼロ値が少ないという特徴がある。この構造により、従来の情報検索アプリケーションに特に適している。ほとんどの場合、スパースベクトルで使用される次元数は、1つ以上の言語にわたる異なるトークンに対応します。各次元には、文書内のそのトークンの相対的な重要度を示す値が割り当てられます。このレイアウトは、キーワードのマッチングを伴うタスクに有利です。</p></li>
 <li><p><strong>密なベクトル：</strong>密なベクトルは、ニューラルネットワークから派生した埋め込みである。順序付けられた配列に配置されたとき、これらのベクトルは入力テキストの意味的本質を捉える。密なベクトルはテキスト処理に限定されるものではなく、視覚データの意味を表現するためにコンピュータビジョンでも広く使用されている。これらの密なベクトルは、通常テキスト埋め込みモデルによって生成され、ほとんどの要素またはすべての要素が非ゼロであることを特徴とする。したがって、密なベクトルは意味検索アプリケーションに特に有効であり、キーワードの完全一致がない場合でも、ベクトル距離に基づいて最も類似した結果を返すことができる。この機能により、キーワードベースのアプローチでは見逃されがちな概念間の関係性を捉えることができ、よりニュアンスや文脈を考慮した検索結果を得ることができる。</p></li>
 </ul>
 <p>詳しくは、<a href="/docs/ja/sparse_vector.md">Sparse Vectorと</a> <a href="/docs/ja/dense-vector.md">Dense Vectorを</a>参照してください。</p>
@@ -508,7 +508,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>}, {<span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
+query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>, <span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
 search_param_2 = {
     <span class="hljs-string">&quot;data&quot;</span>: [query_sparse_vector],
     <span class="hljs-string">&quot;anns_field&quot;</span>: <span class="hljs-string">&quot;sparse&quot;</span>,

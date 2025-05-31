@@ -3,10 +3,10 @@ id: rag_with_milvus_and_unstructured.md
 summary: このチュートリアルでは、Unstructuredを使ってPDF文書をインジェストし、Milvusを使ってRAGパイプラインを構築します。
 title: MilvusとUnstructuredでRAGを構築する
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_unstructured.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_unstructured.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/rag_with_milvus_and_unstructured.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/rag_with_milvus_and_unstructured.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Build-a-RAG-with-Milvus-and-Unstructured" class="common-anchor-header">MilvusとUnstructuredでRAGを構築する<button data-href="#Build-a-RAG-with-Milvus-and-Unstructured" class="anchor-icon" translate="no">
@@ -24,7 +24,7 @@ title: MilvusとUnstructuredでRAGを構築する
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://docs.unstructured.io/welcome">Unstructuredは</a>、RAG（Retrieval Augmented Generation）やモデルの微調整のために非構造化ドキュメントを取り込み、処理するためのプラットフォームとツールを提供します。コードなしのUIプラットフォームとサーバーレスAPIサービスの両方を提供し、ユーザーはUnstructuredがホストする計算リソース上でデータを処理できる。</p>
+    </button></h1><p><a href="https://docs.unstructured.io/welcome">Unstructuredは</a>、RAG（Retrieval Augmented Generation）やモデルの微調整のために非構造化ドキュメントを取り込んで処理するためのプラットフォームとツールを提供します。ノーコードUIプラットフォームとサーバーレスAPIサービスの両方を提供し、ユーザーはUnstructuredがホストする計算リソース上でデータを処理できる。</p>
 <p>このチュートリアルでは、Unstructuredを使用してPDFドキュメントをインジェストし、Milvusを使用してRAGパイプラインを構築します。</p>
 <h2 id="Preparation" class="common-anchor-header">準備<button data-href="#Preparation" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -47,7 +47,7 @@ title: MilvusとUnstructuredでRAGを構築する
 <p><strong>インストールオプション：</strong></p>
 <ul>
 <li>すべてのドキュメントフォーマットを処理する場合：<code translate="no">pip install &quot;unstructured[all-docs]&quot;</code></li>
-<li>特定のフォーマット（PDFなど）の場合：<code translate="no">pip install &quot;unstructured[pdf]&quot;</code></li>
+<li>特定のフォーマット（例：PDF）の場合：<code translate="no">pip install &quot;unstructured[pdf]&quot;</code></li>
 <li>その他のインストールオプションについては、<a href="https://docs.unstructured.io/open-source/installation/full-installation">Unstructuredのドキュメントを</a>ご覧ください。</li>
 </ul>
 <p>Google Colabを使用している場合、インストールしたばかりの依存関係を有効にするには、<strong>ランタイムを再起動する</strong>必要があるかもしれません（画面上部の "Runtime "メニューをクリックし、ドロップダウンメニューから "Restart session "を選択してください）。</p>
@@ -67,7 +67,7 @@ milvus_client = MilvusClient(uri=<span class="hljs-string">&quot;./milvus_demo.d
 <p>引数として<code translate="no">MilvusClient</code> を指定する：</p>
 <ul>
 <li><code translate="no">./milvus.db</code> のように<code translate="no">uri</code> をローカルファイルとして設定するのが最も便利である。</li>
-<li>100万ベクトルを超えるような大規模なデータをお持ちの場合は、<a href="https://milvus.io/docs/quickstart.md">DockerやKubernetes</a>上に、よりパフォーマンスの高いMilvusサーバを構築することができます。このセットアップでは、サーバのアドレスとポートをURIとして使用してください（例：<code translate="no">http://localhost:19530</code> ）。Milvusで認証機能を有効にしている場合は、トークンに "<your_username>:<your_password>" を使用します。そうでない場合は、トークンを設定しないでください。</li>
+<li>100万ベクトルを超えるような大規模なデータがある場合は、<a href="https://milvus.io/docs/quickstart.md">DockerやKubernetes</a>上に、よりパフォーマンスの高いMilvusサーバを構築することができます。このセットアップでは、サーバのアドレスとポートをURIとして使用してください（例：<code translate="no">http://localhost:19530</code> ）。Milvusで認証機能を有効にする場合は、トークンに "<your_username>:<your_password>" を使用します。そうでない場合は、トークンを設定しないでください。</li>
 <li>Milvusのフルマネージドクラウドサービスである<a href="https://zilliz.com/cloud">Zilliz Cloudを</a>利用する場合は、<code translate="no">uri</code> と<code translate="no">token</code> をZilliz Cloudの<a href="https://docs.zilliz.com/docs/on-zilliz-cloud-console#free-cluster-details">Public EndpointとApi keyに</a>対応させてください。</li>
 </ul>
 </div>
@@ -159,7 +159,7 @@ milvus_client.load_collection(collection_name=collection_name)
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Unstructuredは、PDFやHTMLなど、様々なファイルタイプを処理するための柔軟で強力な取り込みパイプラインを提供する。 ローカルのPDFファイルを分割してチャンクする。そしてMilvusにデータをロードします。</p>
+    </button></h2><p>Unstructuredは、PDFやHTMLなど、様々なファイルタイプを処理するための柔軟で強力な取り込みパイプラインを提供する。 ローカルのPDFファイルを分割し、チャンクする。そしてMilvusにデータをロードします。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> warnings
 <span class="hljs-keyword">from</span> unstructured.partition.auto <span class="hljs-keyword">import</span> partition
 

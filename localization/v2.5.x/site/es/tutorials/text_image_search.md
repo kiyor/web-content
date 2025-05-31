@@ -8,10 +8,10 @@ summary: >-
   eficientes.
 title: Búsqueda texto-imagen con Milvus
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">Búsqueda texto-imagen con Milvus<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
@@ -125,7 +125,7 @@ model.<span class="hljs-built_in">eval</span>()
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Data-Ingestion" class="common-anchor-header">Ingestión de datos</h3><p>Para permitir la búsqueda semántica de imágenes, primero necesitamos generar incrustaciones para todas las imágenes y almacenarlas en una base de datos vectorial para una indexación y recuperación eficientes. Esta sección proporciona una guía paso a paso para introducir datos de imágenes en Milvus.</p>
 <p><strong>1. Crear una colección Milvus</strong></p>
-<p>Antes de almacenar las incrustaciones de imágenes, debe crear una colección Milvus. El siguiente código muestra cómo crear una colección utilizando <a href="https://milvus.io/docs/create-collection-instantly.md">el modo de inicio rápido</a> con el tipo de métrica COSINE por defecto. La colección incluye los siguientes campos:</p>
+<p>Antes de almacenar las incrustaciones de imágenes, debe crear una colección Milvus. El siguiente código muestra cómo crear una colección en modo de configuración rápida con el tipo de métrica COSINE por defecto. La colección incluye los siguientes campos:</p>
 <ul>
 <li><p><code translate="no">id</code>: Un campo primario con ID automático activado.</p></li>
 <li><p><code translate="no">vector</code>: Un campo para almacenar incrustaciones de vectores de punto flotante.</p></li>

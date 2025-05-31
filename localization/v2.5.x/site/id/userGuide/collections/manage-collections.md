@@ -156,7 +156,7 @@ summary: >-
     </button></h2><p>Setelah Anda membuat indeks dan memuat koleksi, Anda dapat memulai pencarian kemiripan dengan memasukkan satu atau beberapa vektor kueri. Misalnya, ketika menerima representasi vektor kueri Anda yang dibawa dalam permintaan pencarian, Milvus menggunakan jenis metrik yang ditentukan untuk mengukur kemiripan antara vektor kueri dan vektor yang ada di koleksi target sebelum mengembalikan vektor yang secara semantik mirip dengan kueri.</p>
 <p>Anda juga dapat menyertakan pemfilteran metadata dalam penelusuran dan kueri untuk meningkatkan relevansi hasil. Perhatikan bahwa, kondisi pemfilteran metadata bersifat wajib dalam kueri, tetapi opsional dalam penelusuran.</p>
 <p>Untuk detail tentang jenis metrik yang berlaku, lihat <a href="/docs/id/metric.md">Jenis Metrik</a>.</p>
-<p>Untuk informasi lebih lanjut tentang pencarian dan kueri, lihat artikel di bab <a href="/docs/id/search-rerank">Pencarian &amp; Perangkingan</a>, di antaranya, fitur-fitur dasar:</p>
+<p>Untuk informasi lebih lanjut tentang pencarian dan kueri, lihat artikel di bab Pencarian &amp; Perangkingan, di antaranya, fitur-fitur dasar:</p>
 <ul>
 <li><p><a href="/docs/id/single-vector-search.md">Pencarian ANN Dasar</a></p></li>
 <li><p><a href="/docs/id/filtered-search.md">Pencarian yang Difilter</a></p></li>

@@ -100,7 +100,7 @@ summary: >-
 <ul>
 <li><p><code translate="no">id</code>: Este campo sirve como clave primaria para almacenar los ID de texto. El tipo de datos de este campo es INT64.</p></li>
 <li><p><code translate="no">text</code>: Este campo se utiliza para almacenar contenido textual. El tipo de datos de este campo es VARCHAR, con una longitud máxima de 1000 caracteres.</p></li>
-<li><p><code translate="no">dense</code>: Este campo se utiliza para almacenar los vectores densos de los textos. El tipo de datos de este campo es FLOAT_VECTOR, con una dimensión vectorial de 768.</p></li>
+<li><p><code translate="no">dense</code>: Este campo se utiliza para almacenar los vectores densos de los textos. El tipo de datos de este campo es FLOAT_VECTOR, con una dimensión de vector de 768.</p></li>
 <li><p><code translate="no">sparse</code>: Este campo se utiliza para almacenar los vectores dispersos de los textos. El tipo de datos de este campo es SPARSE_FLOAT_VECTOR.</p></li>
 </ul>
 <div class="multipleCode">
@@ -513,7 +513,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>}, {<span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
+query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>, <span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
 search_param_2 = {
     <span class="hljs-string">&quot;data&quot;</span>: [query_sparse_vector],
     <span class="hljs-string">&quot;anns_field&quot;</span>: <span class="hljs-string">&quot;sparse&quot;</span>,

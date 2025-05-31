@@ -72,7 +72,7 @@ summary: >-
         ></path>
       </svg>
     </button></h2><p>Nelle ricerche ANN, una ricerca a vettore singolo si riferisce a una ricerca che coinvolge un solo vettore di interrogazione. In base all'indice pre-costruito e al tipo di metrica inserita nella richiesta di ricerca, Milvus troverà i primi K vettori più simili al vettore di interrogazione.</p>
-<p>In questa sezione si spiegherà come condurre una ricerca a vettore singolo. Lo snippet di codice presuppone che sia stata creata una collezione in modo <a href="/docs/it/create-collection-instantly.md#Quick-Setup">rapido</a>. La richiesta di ricerca contiene un singolo vettore di interrogazione e chiede a Milvus di usare l'Inner Product (IP) per calcolare la somiglianza tra i vettori di interrogazione e i vettori dell'insieme e restituire i tre più simili.</p>
+<p>In questa sezione si spiega come condurre una ricerca a vettore singolo. La richiesta di ricerca contiene un singolo vettore di interrogazione e chiede a Milvus di utilizzare il prodotto interno (IP) per calcolare la somiglianza tra i vettori di interrogazione e i vettori dell'insieme e restituire i tre più simili.</p>
 <div class="multipleCode">
    <a href="#python">Pitone</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient
@@ -975,9 +975,9 @@ curl --request POST \
 <ul>
 <li><p>Ricerca filtrata</p>
 <p>È possibile includere condizioni di filtraggio in una richiesta di ricerca, in modo che Milvus esegua un filtraggio dei metadati prima di eseguire ricerche sull'RNA, riducendo l'ambito di ricerca dall'intera raccolta alle sole entità che corrispondono alle condizioni di filtraggio specificate.</p>
-<p>Per ulteriori informazioni sul filtraggio dei metadati e sulle condizioni di filtraggio, consultare <a href="/docs/it/filtered-search.md">Ricerca filtrata</a> e <a href="/docs/it/filtering">Filtraggio</a>.</p></li>
+<p>Per ulteriori informazioni sul filtraggio dei metadati e sulle condizioni di filtraggio, consultare <a href="/docs/it/filtered-search.md">Ricerca filtrata</a>, <a href="/docs/it/boolean.md">Filtraggio spiegato</a> e gli argomenti correlati.</p></li>
 <li><p>Ricerca per intervallo</p>
-<p>È possibile migliorare la pertinenza dei risultati della ricerca limitando la distanza o il punteggio delle entità restituite all'interno di un intervallo specifico. In Milvus, una ricerca per intervallo comporta il disegno di due cerchi concentrici con al centro l'incorporamento vettoriale più simile al vettore della query. La richiesta di ricerca specifica il raggio di entrambi i cerchi e Milvus restituisce tutte le incorporazioni vettoriali che rientrano nel cerchio esterno ma non in quello interno.</p>
+<p>È possibile migliorare la pertinenza dei risultati della ricerca limitando la distanza o il punteggio delle entità restituite all'interno di un intervallo specifico. In Milvus, una ricerca per intervallo comporta il disegno di due cerchi concentrici con al centro l'incorporamento vettoriale più simile al vettore di interrogazione. La richiesta di ricerca specifica il raggio di entrambi i cerchi e Milvus restituisce tutte le incorporazioni vettoriali che rientrano nel cerchio esterno ma non in quello interno.</p>
 <p>Per ulteriori informazioni sulla ricerca per intervallo, consultare la sezione <a href="/docs/it/range-search.md">Ricerca per intervallo</a>.</p></li>
 <li><p>Ricerca per raggruppamento</p>
 <p>Se le entità restituite hanno lo stesso valore in un campo specifico, i risultati della ricerca potrebbero non rappresentare la distribuzione di tutte le incorporazioni vettoriali nello spazio vettoriale. Per diversificare i risultati della ricerca, si può utilizzare la ricerca per raggruppamento.</p>

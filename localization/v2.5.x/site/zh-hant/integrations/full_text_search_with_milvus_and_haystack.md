@@ -3,10 +3,10 @@ id: full_text_search_with_milvus_and_haystack.md
 summary: 本教學示範如何使用 Haystack 和 Milvus 在應用程式中實作全文和混合搜尋。
 title: 使用 Milvus 和 Haystack 進行全文檢索
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Full-text-search-with-Milvus-and-Haystack" class="common-anchor-header">使用 Milvus 和 Haystack 進行全文檢索<button data-href="#Full-text-search-with-Milvus-and-Haystack" class="anchor-icon" translate="no">
@@ -315,7 +315,7 @@ indexing_pipeline.run({<span class="hljs-string">&quot;dense_doc_embedder&quot;<
     </button></h2><p>我們已學會如何在 Haystack 和 Milvus 中使用基本的 BM25 內建函式，並準備了載入的<code translate="no">document_store</code> 。讓我們介紹使用混合搜尋的最佳化 RAG 實作。</p>
 <p>
   <span class="img-wrapper">
-    <img translate="no" src="/docs/v2.5.x/images/advanced_rag/hybrid_and_rerank.png" alt="" class="doc-image" id="" />
+    <img translate="no" src="https://github.com/milvus-io/bootcamp/blob/master/pics/advanced_rag/hybrid_and_rerank.png?raw=1" alt="" class="doc-image" id="" />
     <span></span>
   </span>
 </p>

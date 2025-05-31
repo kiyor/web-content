@@ -5,10 +5,10 @@ summary: >-
   Pretraining)モデルとMilvusを使って、テキストベースの画像検索を実装する方法を探ります。CLIPで画像埋め込みを生成し、Milvusに保存し、効率的な類似検索を行います。
 title: Milvusによるテキスト画像検索
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">Milvusによるテキスト画像検索<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
@@ -122,7 +122,7 @@ model.<span class="hljs-built_in">eval</span>()
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Data-Ingestion" class="common-anchor-header">データの取り込み</h3><p>セマンティック画像検索を可能にするために、まずすべての画像の埋め込みを生成し、効率的なインデックス付けと検索のためにベクトルデータベースに格納する必要があります。このセクションでは、画像データをmilvusに取り込むためのステップバイステップのガイドを提供します。</p>
 <p><strong>1.Milvusコレクションの作成</strong></p>
-<p>画像の埋め込みを保存する前に、Milvusコレクションを作成する必要があります。以下のコードは、デフォルトのCOSINEメトリックタイプで<a href="https://milvus.io/docs/create-collection-instantly.md">クイックスタートモードを</a>使用してコレクションを作成する方法を示しています。コレクションには以下のフィールドが含まれます：</p>
+<p>画像の埋め込みを保存する前に、Milvusコレクションを作成する必要があります。以下のコードは、デフォルトのCOSINE メトリックタイプでクイックセットアップモードでコレクションを作成する方法を示しています。コレクションは以下のフィールドを含む：</p>
 <ul>
 <li><p><code translate="no">id</code>:オートIDが有効なプライマリフィールド。</p></li>
 <li><p><code translate="no">vector</code>:浮動小数点ベクトル埋め込みを格納するフィールド。</p></li>

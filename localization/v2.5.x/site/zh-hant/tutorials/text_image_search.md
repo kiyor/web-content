@@ -5,10 +5,10 @@ summary: >-
   Milvus 實現基於文字的圖像檢索。我們將透過 CLIP 產生圖片嵌入，將圖片嵌入儲存於 Milvus，並執行有效率的相似性搜尋。
 title: 使用 Milvus 進行文字轉圖像搜尋
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">使用 Milvus 進行文字轉圖像搜尋<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
@@ -122,7 +122,7 @@ model.<span class="hljs-built_in">eval</span>()
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Data-Ingestion" class="common-anchor-header">資料輸入</h3><p>為了實現語義圖像搜尋，我們首先需要為所有圖像產生嵌入，並將它們儲存到向量資料庫中，以便進行有效的索引和檢索。本節將逐步介紹如何將圖像資料導入 Milvus。</p>
 <p><strong>1.建立 Milvus 套件</strong></p>
-<p>在儲存影像嵌入之前，您需要先建立一個 Milvus 套件。以下程式碼示範如何以預設的 COSINE 公制類型，使用<a href="https://milvus.io/docs/create-collection-instantly.md">快速啟動模式</a>建立一個集合。集合包含以下欄位：</p>
+<p>在儲存影像嵌入之前，您需要先建立一個 Milvus 套件。以下程式碼示範如何以預設的 COSINE 公制類型，在快速設定模式下建立一個集合。集合包含以下欄位：</p>
 <ul>
 <li><p><code translate="no">id</code>:啟用自動 ID 的主要欄位。</p></li>
 <li><p><code translate="no">vector</code>:一個用來儲存浮點向量嵌入的欄位。</p></li>

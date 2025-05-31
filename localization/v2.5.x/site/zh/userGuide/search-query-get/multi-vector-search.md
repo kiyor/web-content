@@ -509,7 +509,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>}, {<span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
+query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>, <span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
 search_param_2 = {
     <span class="hljs-string">&quot;data&quot;</span>: [query_sparse_vector],
     <span class="hljs-string">&quot;anns_field&quot;</span>: <span class="hljs-string">&quot;sparse&quot;</span>,
@@ -611,7 +611,7 @@ request2 := milvusclient.NewAnnRequest(<span class="hljs-string">&quot;sparse&qu
  ]&#x27;</span>
 <button class="copy-code-btn"></button></code></pre>
 <p>由于<code translate="no">limit</code> 参数设置为 2，因此每个<code translate="no">AnnSearchRequest</code> 都会返回 2 个搜索结果。在本例中，创建了 2 个<code translate="no">AnnSearchRequest</code> ，因此总共会返回 4 个搜索结果。</p>
-<h3 id="Configure-a-reranking-strategy" class="common-anchor-header">配置 Rerankers 策略</h3><p>要对两组 ANN 搜索结果进行合并和重新排序，有必要选择适当的重新排序策略。Milvus 支持两种重排策略：<strong>加权排名策略（WeightedRanker</strong>）和<strong>重</strong> <strong>排序</strong>策略（<strong>RRFRanker</strong>）。在选择重排策略时，需要考虑的一个问题是，是否强调向量场上的一个或多个基本 ANN 搜索。</p>
+<h3 id="Configure-a-reranking-strategy" class="common-anchor-header">配置 Rerankers 策略</h3><p>要对两组 ANN 搜索结果进行合并和重新排序，有必要选择适当的重新排序策略。Milvus 支持两种重排策略：<strong>加权排名策略（WeightedRanker</strong>）和<strong>重</strong> <strong>排序</strong>策略（<strong>RRFRanker</strong>）。在选择重排策略时，需要考虑的一个问题是，是否需要强调向量场上的一个或多个基本 ANN 搜索。</p>
 <ul>
 <li><p><strong>加权排名</strong>：如果您要求结果强调特定的向量场，建议使用该策略。通过 WeightedRanker，您可以为某些向量场分配更高的权重，从而更加强调这些向量场。例如，在多模态搜索中，图片的文字描述可能比图片的颜色更重要。</p></li>
 <li><p><strong>RRFRanker（互易排名融合排名器）</strong>：在没有特定重点的情况下，建议采用这种策略。RRF 可以有效平衡每个向量场的重要性。</p></li>

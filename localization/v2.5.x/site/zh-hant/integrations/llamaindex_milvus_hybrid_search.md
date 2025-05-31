@@ -6,10 +6,10 @@ summary: >-
   本筆記展示如何在 [LlamaIndex](https://www.llamaindex.ai/) RAG pipelines 中使用 Milvus
   進行混合搜尋。我們將從推薦的預設混合搜尋 (語意 + BM25) 開始，然後探討其他替代的稀疏嵌入方法和自訂混合 reranker。
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="common-anchor-header">使用 Milvus 和 LlamaIndex 混合搜尋的 RAG<button data-href="#RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="anchor-icon" translate="no">
@@ -27,7 +27,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p>混合搜尋利用語意檢索和關鍵字匹配兩者的優勢，提供更精確且與上下文相關的結果。透過結合語義檢索和關鍵字匹配的優點，混合搜尋在複雜的資訊檢索任務中尤其有效。</p>
+    </button></h1><p>混合搜尋利用語意檢索和關鍵字比對兩者的優勢，提供更精確且與上下文相關的結果。透過結合語義檢索和關鍵字匹配的優點，混合搜尋在複雜的資訊檢索任務中尤其有效。</p>
 <p>本筆記展示如何在<a href="https://www.llamaindex.ai/">LlamaIndex</a>RAG 管道中使用 Milvus 進行混合搜尋。我們將從推薦的預設混合搜尋 (語意 + BM25) 開始，然後探討其他可替代的稀疏嵌入方法和自訂混合 reranker。</p>
 <h2 id="Prerequisites" class="common-anchor-header">先決條件<button data-href="#Prerequisites" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -159,7 +159,7 @@ rate as the ultimate test of a startup at Viaweb.
 </code></pre>
 <h3 id="Customize-text-analyzer" class="common-anchor-header">自訂文字分析器</h3><p>分析器在全文檢索中扮演重要的角色，可將句子分割成標記，並執行詞彙處理，例如刪除字莖和停止詞。它們通常針對特定語言。如需詳細資訊，請參閱<a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">Milvus 分析器指南</a>。</p>
 <p>Milvus 支援兩種類型的分析器：<strong>內建分析器</strong>和<strong>自訂分析器</strong>。預設情況下，如果<code translate="no">enable_sparse</code> 設為 True，<code translate="no">MilvusVectorStore</code> 會利用<code translate="no">BM25BuiltInFunction</code> 的預設設定，採用標準的內建分析器，根據標點符號來標記文字。</p>
-<p>若要使用不同的分析器或自訂現有的分析器，您可以在建立<code translate="no">BM25BuiltInFunction</code> 時提供<code translate="no">analyzer_params</code> 參數值。然後，在<code translate="no">MilvusVectorStore</code> 中將此函式設定為<code translate="no">sparse_embedding_function</code> 。</p>
+<p>若要使用不同的分析器或自訂現有的分析器，您可以在建立<code translate="no">BM25BuiltInFunction</code> 時為<code translate="no">analyzer_params</code> 參數提供值。然後，在<code translate="no">MilvusVectorStore</code> 中將此函式設定為<code translate="no">sparse_embedding_function</code> 。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> llama_index.vector_stores.milvus.utils <span class="hljs-keyword">import</span> BM25BuiltInFunction
 
 bm25_function = BM25BuiltInFunction(

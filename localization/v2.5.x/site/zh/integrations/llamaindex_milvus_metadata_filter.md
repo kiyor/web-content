@@ -6,10 +6,10 @@ summary: >-
   本笔记本说明了在 LlamaIndex 中如何使用 Milvus 向量存储，重点是元数据过滤功能。您将学习如何使用元数据索引文档、使用 LlamaIndex
   的内置元数据过滤器执行向量搜索，以及如何将 Milvus 的本地过滤表达式应用到向量存储。
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_metadata_filter.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Metadata-Filtering-with-LlamaIndex-and-Milvus" class="common-anchor-header">使用 LlamaIndex 和 Milvus 进行元数据过滤<button data-href="#Metadata-Filtering-with-LlamaIndex-and-Milvus" class="anchor-icon" translate="no">
@@ -210,7 +210,7 @@ Life
 {'author': 'Keith Richards', 'genre': 'Memoir', 'year': 2010}
 </code></pre>
 <p><strong>条件<code translate="no">OR</code></strong></p>
-<p>试试另一个例子，过滤乔治-佩雷克（Georges Perec）或凯斯-理查兹（Keith Richards）所写的书籍：</p>
+<p>尝试另一个示例，过滤乔治-佩雷克（Georges Perec）或凯斯-理查兹（Keith Richards）所写的书籍：</p>
 <pre><code translate="no" class="language-python">filters = MetadataFilters(
     filters=[
         MetadataFilter(
@@ -252,7 +252,7 @@ Life: A User's Manual
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>除了内置过滤功能外，您还可以通过<code translate="no">string_expr</code> 关键字参数使用 Milvus 的本地过滤表达式。这样，您就可以在搜索操作过程中直接向 Milvus 传递特定的过滤表达式，从而超越标准元数据过滤，访问 Milvus 的高级过滤功能。</p>
+    </button></h2><p>除了内置的过滤功能，您还可以通过<code translate="no">string_expr</code> 关键字参数使用 Milvus 的本地过滤表达式。这允许你在搜索操作过程中直接向 Milvus 传递特定的过滤表达式，从而超越标准元数据过滤，访问 Milvus 的高级过滤功能。</p>
 <p>Milvus 提供强大而灵活的过滤选项，可实现对向量数据的精确查询：</p>
 <ul>
 <li>基本操作符：比较操作符、范围筛选器、算术操作符和逻辑操作符</li>

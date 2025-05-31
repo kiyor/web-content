@@ -3,10 +3,10 @@ id: full_text_search_with_milvus_and_haystack.md
 summary: 本教程演示如何使用 HayStack 和 Milvus 在应用程序中实现全文和混合搜索。
 title: 使用 Milvus 和 HayStack 进行全文检索
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/haystack/full_text_search_with_milvus_and_haystack.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Full-text-search-with-Milvus-and-Haystack" class="common-anchor-header">使用 Milvus 和 HayStack 进行全文检索<button data-href="#Full-text-search-with-Milvus-and-Haystack" class="anchor-icon" translate="no">
@@ -32,7 +32,7 @@ title: 使用 Milvus 和 HayStack 进行全文检索
 <div class="alert note">
 <ul>
 <li>目前，Milvus Standalone、Milvus Distributed 和 Zilliz Cloud 均提供全文搜索功能，但 Milvus Lite 尚不支持该功能（该功能计划在未来实施）。如需了解更多信息，请访问 support@zilliz.com。</li>
-<li>在继续本教程之前，请确保您已基本了解<a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">全文检索</a>和 HayStack Milvus 集成的<a href="https://github.com/milvus-io/milvus-haystack/blob/main/README.md">基本用法</a>。</li>
+<li>在继续本教程之前，请确保您已基本了解<a href="https://milvus.io/docs/full-text-search.md#Full-Text-Search">全文搜索</a>和 HayStack Milvus 集成的<a href="https://github.com/milvus-io/milvus-haystack/blob/main/README.md">基本用法</a>。</li>
 </ul>
 </div>
 <h2 id="Prerequisites" class="common-anchor-header">先决条件<button data-href="#Prerequisites" class="anchor-icon" translate="no">
@@ -84,7 +84,7 @@ documents = [
 ]
 <button class="copy-code-btn"></button></code></pre>
 <p>将全文检索集成到 RAG 系统中，可以在语义搜索和基于关键字的精确、可预测检索之间取得平衡。您也可以选择只使用全文检索，但建议将全文检索与语义搜索结合起来，以获得更好的搜索结果。在此，我们将展示单独的全文搜索和混合搜索。</p>
-<h2 id="BM25-search-without-embedding" class="common-anchor-header">不使用 Embeddings 的 BM25 搜索<button data-href="#BM25-search-without-embedding" class="anchor-icon" translate="no">
+<h2 id="BM25-search-without-embedding" class="common-anchor-header">不带 Embeddings 的 BM25 搜索<button data-href="#BM25-search-without-embedding" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
         focusable="false"
@@ -131,7 +131,7 @@ indexing_pipeline.run({<span class="hljs-string">&quot;writer&quot;</span>: {<sp
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no">{'writer': {'documents_written': 3}}
 </code></pre>
-<h3 id="Create-the-retrieval-pipeline" class="common-anchor-header">创建检索管道</h3><p>创建一个检索管道，使用<code translate="no">MilvusSparseEmbeddingRetriever</code> 从 Milvus 文档存储中检索文档，它是<code translate="no">document_store</code> 的一个封装。</p>
+<h3 id="Create-the-retrieval-pipeline" class="common-anchor-header">创建检索管道</h3><p>创建一个检索管道，使用<code translate="no">MilvusSparseEmbeddingRetriever</code> 从 Milvus 文档存储中检索文档，该管道是<code translate="no">document_store</code> 的一个包装器。</p>
 <pre><code translate="no" class="language-python">retrieval_pipeline = Pipeline()
 retrieval_pipeline.add_component(
     <span class="hljs-string">&quot;retriever&quot;</span>, MilvusSparseEmbeddingRetriever(document_store=document_store)
@@ -214,7 +214,7 @@ retrieval_pipeline.connect(<span class="hljs-string">&quot;dense_text_embedder.e
 🛤️ Connections
   - dense_text_embedder.embedding -&gt; retriever.query_embedding (List[float])
 </code></pre>
-<p>在使用<code translate="no">MilvusHybridRetriever</code> 执行混合搜索时，我们可以选择性地设置 topK 和 Reranker 参数。它会自动处理向量嵌入和内置函数，最后使用 Reranker 来完善结果。搜索过程的底层实现细节对用户是隐藏的。</p>
+<p>使用<code translate="no">MilvusHybridRetriever</code> 执行混合搜索时，我们可以选择设置 topK 和 Reranker 参数。它会自动处理向量嵌入和内置函数，最后使用 Reranker 来完善结果。搜索过程的底层实现细节对用户是隐藏的。</p>
 <p>有关混合搜索的更多信息，请参阅<a href="https://milvus.io/docs/multi-vector-search.md#Hybrid-Search">混合搜索介绍</a>。</p>
 <pre><code translate="no" class="language-python">question = <span class="hljs-string">&quot;Who likes swimming?&quot;</span>
 
@@ -315,7 +315,7 @@ indexing_pipeline.run({<span class="hljs-string">&quot;dense_doc_embedder&quot;<
     </button></h2><p>我们已经学习了如何在 HayStack 和 Milvus 中使用基本的 BM25 内置函数，并准备了一个加载的<code translate="no">document_store</code> 。下面我们来介绍使用混合搜索的优化 RAG 实现。</p>
 <p>
   <span class="img-wrapper">
-    <img translate="no" src="/docs/v2.5.x/images/advanced_rag/hybrid_and_rerank.png" alt="" class="doc-image" id="" />
+    <img translate="no" src="https://github.com/milvus-io/bootcamp/blob/master/pics/advanced_rag/hybrid_and_rerank.png?raw=1" alt="" class="doc-image" id="" />
     <span></span>
   </span>
 </p>

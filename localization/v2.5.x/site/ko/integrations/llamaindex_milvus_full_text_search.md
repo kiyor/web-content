@@ -6,10 +6,10 @@ summary: >-
   이 튜토리얼에서는 전체 텍스트 검색과 하이브리드 검색을 사용하여 라마인덱스와 밀버스를 사용해 RAG 시스템을 구축하는 방법을 배웁니다. 전체
   텍스트 검색만 구현하는 것으로 시작한 다음 시맨틱 검색을 통합하여 보다 포괄적인 결과를 얻을 수 있도록 개선해 보겠습니다.
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_full_text_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="common-anchor-header">LlamaIndex 및 Milvus로 전체 텍스트 검색 사용하기<button data-href="#Using-Full-Text-Search-with-LlamaIndex-and-Milvus" class="anchor-icon" translate="no">

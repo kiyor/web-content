@@ -5,10 +5,10 @@ summary: >-
   (Retrieval-Augmented Generation) baseado no Milvus.
 title: Avaliação com Ragas
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_ragas.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/evaluation_with_ragas.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/evaluation_with_ragas.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/evaluation_with_ragas.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Evaluation-with-Ragas" class="common-anchor-header">Avaliação com Ragas<button data-href="#Evaluation-with-Ragas" class="anchor-icon" translate="no">
@@ -27,7 +27,7 @@ title: Avaliação com Ragas
         ></path>
       </svg>
     </button></h1><p>Este guia demonstra como utilizar o Ragas para avaliar um pipeline Retrieval-Augmented Generation (RAG) baseado no <a href="https://milvus.io/">Milvus</a>.</p>
-<p>O sistema RAG combina um sistema de recuperação com um modelo generativo para gerar um novo texto com base num determinado pedido. O sistema começa por recuperar documentos relevantes de um corpus utilizando o Milvus e, em seguida, utiliza um modelo generativo para gerar novo texto com base nos documentos recuperados.</p>
+<p>O sistema RAG combina um sistema de recuperação com um modelo generativo para gerar novo texto com base num determinado pedido. O sistema começa por recuperar documentos relevantes de um corpus utilizando o Milvus e, em seguida, utiliza um modelo generativo para gerar novo texto com base nos documentos recuperados.</p>
 <p><a href="https://docs.ragas.io/en/latest/index.html#">O Ragas</a> é um quadro que ajuda a avaliar as condutas RAG. Existem ferramentas e estruturas que ajudam a construir estas condutas, mas avaliá-las e quantificar o seu desempenho pode ser difícil. É aqui que entra o Ragas (Avaliação RAG).</p>
 <h2 id="Prerequisites" class="common-anchor-header">Pré-requisitos<button data-href="#Prerequisites" class="anchor-icon" translate="no">
       <svg translate="no"

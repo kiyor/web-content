@@ -24,7 +24,7 @@ summary: >-
         ></path>
       </svg>
     </button></h1><p>Die hybride Suche bezieht sich auf eine Suchmethode, die mehrere ANN-Suchen gleichzeitig durchführt, mehrere Ergebnissätze aus diesen ANN-Suchen neu ordnet und schließlich einen einzigen Ergebnissatz liefert. Die Verwendung der hybriden Suche kann die Suchgenauigkeit verbessern. Milvus unterstützt die Durchführung von Hybrid Search in einer Sammlung mit mehreren Vektorfeldern.</p>
-<p>Die hybride Suche wird am häufigsten in Szenarien mit spärlichen und dichten Vektorsuchen und multimodalen Suchen verwendet. In diesem Leitfaden wird anhand eines konkreten Beispiels gezeigt, wie eine hybride Suche in Milvus durchgeführt werden kann.</p>
+<p>Die hybride Suche wird am häufigsten in Szenarien mit spärlichen und dichten Vektorsuchen und multimodalen Suchen verwendet. In dieser Anleitung wird anhand eines konkreten Beispiels gezeigt, wie eine Hybrid-Suche in Milvus durchgeführt wird.</p>
 <h2 id="Scenarios" class="common-anchor-header">Szenarien<button data-href="#Scenarios" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -44,7 +44,7 @@ summary: >-
 <h3 id="Sparse-Dense-Vector-Search" class="common-anchor-header">Sparse-Dense-Vektorsuche</h3><p>Verschiedene Arten von Vektoren können unterschiedliche Informationen darstellen, und die Verwendung verschiedener Einbettungsmodelle kann verschiedene Merkmale und Aspekte der Daten umfassender darstellen. Zum Beispiel kann die Verwendung verschiedener Einbettungsmodelle für denselben Satz einen dichten Vektor zur Darstellung der semantischen Bedeutung und einen spärlichen Vektor zur Darstellung der Worthäufigkeit im Satz erzeugen.</p>
 <ul>
 <li><p><strong>Spärliche Vektoren:</strong> Spärliche Vektoren zeichnen sich durch ihre hohe Vektordimensionalität und das Vorhandensein von wenigen Werten ungleich Null aus. Aufgrund dieser Struktur eignen sie sich besonders gut für traditionelle Information Retrieval-Anwendungen. In den meisten Fällen entspricht die Anzahl der Dimensionen, die in spärlichen Vektoren verwendet werden, den verschiedenen Token in einer oder mehreren Sprachen. Jeder Dimension wird ein Wert zugewiesen, der die relative Bedeutung dieses Tokens innerhalb des Dokuments angibt. Diese Anordnung erweist sich als vorteilhaft für Aufgaben, die den Abgleich von Schlüsselwörtern beinhalten.</p></li>
-<li><p><strong>Dichte Vektoren:</strong> Dichte Vektoren sind von neuronalen Netzen abgeleitete Einbettungen. Wenn sie in einem geordneten Array angeordnet sind, erfassen diese Vektoren das semantische Wesen des Eingabetextes. Dichte Vektoren sind nicht auf die Textverarbeitung beschränkt; sie werden auch häufig in der Computer Vision verwendet, um die Semantik von visuellen Daten darzustellen. Diese dichten Vektoren, die in der Regel durch Modelle zur Texteinbettung erzeugt werden, zeichnen sich dadurch aus, dass die meisten oder alle Elemente ungleich Null sind. Daher eignen sich dichte Vektoren besonders gut für semantische Suchanwendungen, da sie auf der Grundlage der Vektordistanz die ähnlichsten Ergebnisse liefern können, selbst wenn es keine exakten Schlüsselwortübereinstimmungen gibt. Diese Fähigkeit ermöglicht nuanciertere und kontextbezogene Suchergebnisse und erfasst oft Beziehungen zwischen Konzepten, die bei schlagwortbasierten Ansätzen übersehen werden könnten.</p></li>
+<li><p><strong>Dichte Vektoren:</strong> Dichte Vektoren sind von neuronalen Netzen abgeleitete Einbettungen. Wenn sie in einem geordneten Array angeordnet sind, erfassen diese Vektoren das semantische Wesen des Eingabetextes. Dichte Vektoren sind nicht auf die Textverarbeitung beschränkt; sie werden auch häufig in der Computer Vision verwendet, um die Semantik von visuellen Daten darzustellen. Diese dichten Vektoren, die in der Regel durch Modelle zur Texteinbettung erzeugt werden, zeichnen sich dadurch aus, dass die meisten oder alle Elemente ungleich Null sind. Daher eignen sich dichte Vektoren besonders gut für semantische Suchanwendungen, da sie auf der Grundlage der Vektordistanz die ähnlichsten Ergebnisse liefern können, selbst wenn es keine exakten Schlüsselwortübereinstimmungen gibt. Diese Fähigkeit ermöglicht nuanciertere und kontextbezogene Suchergebnisse, die oft Beziehungen zwischen Konzepten erfassen, die bei schlagwortbasierten Ansätzen übersehen werden könnten.</p></li>
 </ul>
 <p>Weitere Einzelheiten finden Sie unter <a href="/docs/de/sparse_vector.md">Sparse Vector</a> und <a href="/docs/de/dense-vector.md">Dense Vector</a>.</p>
 <h3 id="Multimodal-Search" class="common-anchor-header">Multimodale Suche</h3><p>Multimodale Suche bezieht sich auf die Ähnlichkeitssuche von unstrukturierten Daten über mehrere Modalitäten hinweg (wie Bilder, Videos, Audio, Text usw.). Eine Person kann beispielsweise durch verschiedene Modalitäten von Daten wie Fingerabdrücke, Stimmabdrücke und Gesichtsmerkmale dargestellt werden. Die hybride Suche unterstützt mehrere Suchvorgänge gleichzeitig. Zum Beispiel die Suche nach einer Person mit ähnlichen Fingerabdrücken und Stimmbildern.</p>
@@ -512,7 +512,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>}, {<span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
+query_sparse_vector = {<span class="hljs-number">3573</span>: <span class="hljs-number">0.34701499565746674</span>, <span class="hljs-number">5263</span>: <span class="hljs-number">0.2639375518635271</span>}
 search_param_2 = {
     <span class="hljs-string">&quot;data&quot;</span>: [query_sparse_vector],
     <span class="hljs-string">&quot;anns_field&quot;</span>: <span class="hljs-string">&quot;sparse&quot;</span>,
@@ -671,7 +671,7 @@ ranker = RRFRanker(<span class="hljs-number">100</span>)
     }&#x27;</span>
 <button class="copy-code-btn"></button></code></pre></li>
 </ol>
-<h3 id="Perform-a-Hybrid-Search" class="common-anchor-header">Durchführen einer hybriden Suche</h3><p>Bevor eine hybride Suche durchgeführt werden kann, muss die Sammlung in den Speicher geladen werden. Wenn alle Vektorfelder in der Sammlung keinen Index haben oder nicht geladen sind, tritt beim Aufruf der Methode Hybrid Search ein Fehler auf.</p>
+<h3 id="Perform-a-Hybrid-Search" class="common-anchor-header">Durchführen einer hybriden Suche</h3><p>Bevor eine Hybridsuche durchgeführt werden kann, muss die Sammlung in den Speicher geladen werden. Wenn alle Vektorfelder in der Sammlung keinen Index haben oder nicht geladen sind, tritt beim Aufruf der Methode Hybrid Search ein Fehler auf.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient

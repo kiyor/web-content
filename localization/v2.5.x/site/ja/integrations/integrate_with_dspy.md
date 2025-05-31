@@ -1,6 +1,6 @@
 ---
 id: integrate_with_dspy.md
-summary: このガイドでは、DSPyのレトリーバーモジュールの1つであるMilvusRMを使用して、RAGプログラムを最適化する方法を説明します。
+summary: このガイドでは、DSPyのレトリーバーモジュールの1つであるMilvusRMを使用してRAGプログラムを最適化する方法を説明します。
 title: MilvusとDSPyの連携
 ---
 <h1 id="Integrate-Milvus-with-DSPy" class="common-anchor-header">MilvusとDSPyの連携<button data-href="#Integrate-Milvus-with-DSPy" class="anchor-icon" translate="no">
@@ -18,8 +18,8 @@ title: MilvusとDSPyの連携
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_and_DSPy.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_and_DSPy.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
+    </button></h1><p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/milvus_and_DSPy.ipynb" target="_parent"><img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/milvus_and_DSPy.ipynb" target="_blank"><img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/></a></p>
 <h2 id="What-is-DSPy" class="common-anchor-header">DSPyとは<button data-href="#What-is-DSPy" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -52,7 +52,7 @@ title: MilvusとDSPyの連携
         ></path>
       </svg>
     </button></h2><ul>
-<li>プログラミングアプローチ：DSPyは、LLMにプロンプトを与えるだけでなく、パイプラインをテキスト変換グラフとして抽象化することで、LMパイプライン開発のための体系的なプログラミングアプローチを提供します。DSPyの宣言型モジュールは、従来のプロンプトテンプレートの試行錯誤的な手法に代わって、構造化された設計と最適化を可能にします。</li>
+<li>プログラミングアプローチ：DSPyは、LLMにプロンプトを与えるだけでなく、パイプラインをテキスト変換グラフとして抽象化することで、LMパイプライン開発のための体系的なプログラミングアプローチを提供します。DSPyの宣言型モジュールは、従来のプロンプトテンプレートによる試行錯誤的な手法に代わって、構造化された設計と最適化を可能にします。</li>
 <li>パフォーマンスの向上：DSPyは、既存の手法と比較して大幅な性能向上を示しています。ケーススタディを通じて、標準的なプロンプトや専門家が作成したデモを凌駕し、より小さなLMモデルにコンパイルした場合でも、その汎用性と有効性を示しています。</li>
 <li>モジュール化された抽象化DSPyは、分解、微調整、モデル選択など、LMパイプライン開発の複雑な側面を効果的に抽象化します。DSPyを使用すると、簡潔なプログラムをGPT-4、Llama2-13b、T5-baseなどのさまざまなモデルの命令にシームレスに変換できるため、開発が効率化され、性能が向上します。</li>
 </ul>
@@ -257,7 +257,7 @@ score = evaluate_on_hotpotqa(compiled_rag, metric=metric)
 <span class="hljs-built_in">print</span>(score)
 <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;compile_rag:&quot;</span>, score)
 <button class="copy-code-btn"></button></code></pre>
-<p>Ragasスコアは以前の値50.0から52.0に上昇し、解答品質の向上を示しています。</p>
+<p>Ragasスコアは以前の値50.0から52.0に上昇し、回答の質が向上したことを示しています。</p>
 <h2 id="Summary" class="common-anchor-header">まとめ<button data-href="#Summary" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -273,4 +273,4 @@ score = evaluate_on_hotpotqa(compiled_rag, metric=metric)
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>DSPyは、プログラマブルなインターフェイスにより、言語モデルのインタラクションを飛躍的に向上させ、モデルのプロンプトとウェイトのアルゴリズムによる自動最適化を容易にします。RAGの実装にDSPyを活用することで、様々な言語モデルやデータセットへの適応が容易になり、面倒な手作業の必要性が大幅に減少します。</p>
+    </button></h2><p>DSPyは、モデル・プロンプトとウェイトのアルゴリズム的かつ自動的な最適化を容易にするプログラマブルなインターフェースを通じて、言語モデル・インタラクションの飛躍的な進歩を示しています。RAGの実装にDSPyを活用することで、様々な言語モデルやデータセットへの適応が容易になり、面倒な手作業の必要性が大幅に減少します。</p>

@@ -7,10 +7,10 @@ summary: >-
   их в Milvus и выполнять эффективный поиск по сходству.
 title: Поиск по тексту в изображениях с помощью Milvus
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/tutorials/quickstart/text_image_search_with_milvus.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Text-to-Image-Search-with-Milvus" class="common-anchor-header">Поиск по тексту в изображениях с помощью Milvus<button data-href="#Text-to-Image-Search-with-Milvus" class="anchor-icon" translate="no">
@@ -124,7 +124,7 @@ model.<span class="hljs-built_in">eval</span>()
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Data-Ingestion" class="common-anchor-header">Сбор данных</h3><p>Чтобы обеспечить семантический поиск по изображениям, нам сначала нужно сгенерировать вкрапления для всех изображений и сохранить их в векторной базе данных для эффективного индексирования и поиска. В этом разделе представлено пошаговое руководство по вводу данных об изображениях в Milvus.</p>
 <p><strong>1. Создание коллекции Milvus</strong></p>
-<p>Перед хранением вкраплений изображений необходимо создать коллекцию Milvus. Следующий код демонстрирует, как создать коллекцию в <a href="https://milvus.io/docs/create-collection-instantly.md">режиме быстрого запуска</a> с типом метрики COSINE по умолчанию. Коллекция включает в себя следующие поля:</p>
+<p>Перед хранением вкраплений изображений необходимо создать коллекцию Milvus. Следующий код демонстрирует, как создать коллекцию в режиме быстрой настройки с типом метрики COSINE по умолчанию. Коллекция включает в себя следующие поля:</p>
 <ul>
 <li><p><code translate="no">id</code>: : Первичное поле с включенным автоматическим идентификатором.</p></li>
 <li><p><code translate="no">vector</code>: : Поле для хранения векторных вложений с плавающей точкой.</p></li>

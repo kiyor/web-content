@@ -2,13 +2,13 @@
 id: milvus_rag_with_dynamiq.md
 summary: >-
   在本教程中，我們將探討如何將 Dynamiq 與 Milvus 無縫搭配使用，Milvus 是專為 RAG 工作流程打造的高性能向量資料庫。Milvus
-  擅長於向量嵌入的高效儲存、索引和擷取，使其成為需要快速精確存取上下文資料的 AI 系統不可或缺的元件。
+  擅長於向量嵌入的高效儲存、索引和檢索，使其成為要求快速精確存取上下文資料的人工智能系統不可或缺的元件。
 title: 開始使用 Dynamiq 和 Milvus
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_rag_with_dynamiq.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/milvus_rag_with_dynamiq.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/milvus_rag_with_dynamiq.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/milvus_rag_with_dynamiq.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="Getting-Started-with-Dynamiq-and-Milvus" class="common-anchor-header">開始使用 Dynamiq 和 Milvus<button data-href="#Getting-Started-with-Dynamiq-and-Milvus" class="anchor-icon" translate="no">
@@ -49,7 +49,7 @@ title: 開始使用 Dynamiq 和 Milvus
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><h3 id="Download-required-libraries" class="common-anchor-header">下載所需的函式庫</h3><pre><code translate="no" class="language-shell">$ pip install dynamiq pymilvus
+    </button></h2><h3 id="Download-required-libraries" class="common-anchor-header">下載所需的函式庫</h3><pre><code translate="no" class="language-shell"><span class="hljs-meta prompt_">$ </span><span class="language-bash">pip install dynamiq pymilvus</span>
 <button class="copy-code-btn"></button></code></pre>
 <div class="alert note">
 <p>如果您使用的是 Google Colab，為了啟用剛安裝的相依性，您可能需要<strong>重新啟動執行時</strong>（按一下螢幕上方的「Runtime」功能表，並從下拉式功能表中選擇「Restart session」）。</p>
@@ -57,7 +57,7 @@ title: 開始使用 Dynamiq 和 Milvus
 <h3 id="Configure-the-LLM-agent" class="common-anchor-header">設定 LLM 代理程式</h3><p>在本範例中，我們將使用 OpenAI 作為 LLM。您應該準備<a href="https://platform.openai.com/docs/quickstart">api key</a> <code translate="no">OPENAI_API_KEY</code> 作為環境變數。</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> os
 
-os.<span class="hljs-property">environ</span>[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
+os.environ[<span class="hljs-string">&quot;OPENAI_API_KEY&quot;</span>] = <span class="hljs-string">&quot;sk-***********&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <h2 id="RAG---Document-Indexing-Flow" class="common-anchor-header">RAG - 文件索引流程<button data-href="#RAG---Document-Indexing-Flow" class="anchor-icon" translate="no">
       <svg translate="no"

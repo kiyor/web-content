@@ -8,10 +8,10 @@ summary: >-
   الموصى به (البحث الهجين الدلالي + BM25) ثم نستكشف طرق التضمين المتناثرة
   البديلة الأخرى وتخصيص أداة إعادة الترتيب الهجين.
 ---
-<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
+<p><a href="https://colab.research.google.com/github/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_parent">
 <img translate="no" src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
 </a>
-<a href="https://github.com/milvus-io/bootcamp/blob/master/bootcamp/tutorials/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
+<a href="https://github.com/milvus-io/bootcamp/blob/master/integration/llamaindex/llamaindex_milvus_hybrid_search.ipynb" target="_blank">
 <img translate="no" src="https://img.shields.io/badge/View%20on%20GitHub-555555?style=flat&logo=github&logoColor=white" alt="GitHub Repository"/>
 </a></p>
 <h1 id="RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="common-anchor-header">RAG باستخدام البحث الهجين مع Milvus وLlamaIndex<button data-href="#RAG-using-Hybrid-Search-with-Milvus-and-LlamaIndex" class="anchor-icon" translate="no">
@@ -147,7 +147,7 @@ Default sparse embedding function: BM25BuiltInFunction(input_field_names='text',
 <li><code translate="no">sparse_embedding_function (Union[BaseSparseEmbeddingFunction, BaseMilvusBuiltInFunction], optional)</code>: إذا كان enable_sparse صحيحًا، فيجب توفير هذا الكائن لتحويل النص إلى تضمين متناثر. إذا كان لا يوجد، فسيتم استخدام دالة التضمين المتناثر الافتراضية (BM25BuiltInFunction)، أو استخدام BGEM3SparseEmbedding في حالة عدم وجود دالة تضمين متناثر في المجموعة الحالية بدون دوال مدمجة.</li>
 <li><code translate="no">sparse_index_config (dict, optional)</code>: التكوين المستخدم لبناء فهرس التضمين المتناثر. الإعداد الافتراضي إلى لا شيء.</li>
 </ul>
-<p>لتمكين البحث الهجين أثناء مرحلة الاستعلام، اضبط <code translate="no">vector_store_query_mode</code> على "هجين". سيؤدي ذلك إلى دمج نتائج البحث وإعادة ترتيبها من كل من البحث الدلالي والبحث بالنص الكامل. دعنا نختبر باستخدام نموذج استعلام: "ما الذي تعلمه المؤلف في Viaweb؟</p>
+<p>لتمكين البحث الهجين أثناء مرحلة الاستعلام، اضبط <code translate="no">vector_store_query_mode</code> على "هجين". سيؤدي هذا إلى دمج نتائج البحث وإعادة ترتيبها من كل من البحث الدلالي والبحث بالنص الكامل. دعنا نختبر باستخدام نموذج استعلام: "ما الذي تعلمه المؤلف في Viaweb؟</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">import</span> textwrap
 
 query_engine = index.as_query_engine(
@@ -159,8 +159,8 @@ response = query_engine.query(<span class="hljs-string">&quot;What did the autho
 <pre><code translate="no">The author learned about retail, the importance of user feedback, and the significance of growth
 rate as the ultimate test of a startup at Viaweb.
 </code></pre>
-<h3 id="Customize-text-analyzer" class="common-anchor-header">تخصيص محلل النص</h3><p>تلعب المحللات دورًا حيويًا في البحث عن النص الكامل من خلال تقسيم الجمل إلى رموز وإجراء معالجة معجمية، مثل الجذعية وإزالة كلمات التوقف. وهي عادةً ما تكون خاصة باللغة. لمزيد من التفاصيل، راجع <a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">دليل محلل ميلفوس</a>.</p>
-<p>يدعم ميلفوس نوعين من المحللات: <strong>المحللات المدمجة</strong> <strong>والمحللات المخصصة</strong>. بشكل افتراضي، إذا تم تعيين <code translate="no">enable_sparse</code> إلى صواب، فإن <code translate="no">MilvusVectorStore</code> يستخدم <code translate="no">BM25BuiltInFunction</code> مع التكوينات الافتراضية، ويستخدم المحلل المدمج القياسي الذي يقوم بترميز النص بناءً على علامات الترقيم.</p>
+<h3 id="Customize-text-analyzer" class="common-anchor-header">تخصيص محلل النص</h3><p>تلعب المحللات دورًا حيويًا في البحث في النص الكامل من خلال تقسيم الجمل إلى رموز وإجراء معالجة معجمية، مثل الجذعية وإزالة كلمات التوقف. وهي عادةً ما تكون خاصة باللغة. لمزيد من التفاصيل، راجع <a href="https://milvus.io/docs/analyzer-overview.md#Analyzer-Overview">دليل محلل ميلفوس</a>.</p>
+<p>يدعم ميلفوس نوعين من المحللات: <strong>المحللات المدمجة</strong> <strong>والمحللات المخصصة</strong>. بشكل افتراضي، إذا تم تعيين <code translate="no">enable_sparse</code> على صواب، فإن <code translate="no">MilvusVectorStore</code> يستخدم <code translate="no">BM25BuiltInFunction</code> مع التكوينات الافتراضية، ويستخدم المحلل المدمج القياسي الذي يقوم بترميز النص بناءً على علامات الترقيم.</p>
 <p>لاستخدام محلل مختلف أو تخصيص المحلل الموجود، يمكنك توفير قيم للوسيطة <code translate="no">analyzer_params</code> عند إنشاء <code translate="no">BM25BuiltInFunction</code>. ثم قم بتعيين هذه الدالة على أنها <code translate="no">sparse_embedding_function</code> في <code translate="no">MilvusVectorStore</code>.</p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> llama_index.vector_stores.milvus.utils <span class="hljs-keyword">import</span> BM25BuiltInFunction
 

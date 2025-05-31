@@ -54,7 +54,7 @@ summary: >-
 <li><p><strong>Kamus Bersarang</strong>: Setiap kamus bersarang dalam nilai bidang JSON diperlakukan sebagai string biasa untuk penyimpanan.</p></li>
 <li><p><strong>Nilai Default</strong>: Bidang JSON tidak mendukung nilai default. Namun, Anda dapat menyetel atribut <code translate="no">nullable</code> ke <code translate="no">True</code> untuk mengizinkan nilai null. Untuk detailnya, lihat <a href="/docs/id/nullable-and-default.md">Nullable &amp; Default</a>.</p></li>
 <li><p><strong>Pencocokan Jenis</strong>: Jika nilai kunci bidang JSON adalah bilangan bulat atau float, nilai tersebut hanya dapat dibandingkan (melalui filter ekspresi) dengan kunci numerik lain dengan jenis yang sama.</p></li>
-<li><p><strong>Penamaan</strong>: Ketika menamai kunci JSON, disarankan untuk hanya menggunakan huruf, angka, dan garis bawah. Menggunakan karakter lain dapat menyebabkan masalah saat melakukan penyaringan atau pencarian.</p></li>
+<li><p><strong>Penamaan</strong>: Ketika menamai kunci JSON, disarankan untuk hanya menggunakan huruf, angka, dan garis bawah. Menggunakan karakter lain dapat menyebabkan masalah ketika melakukan penyaringan atau pencarian.</p></li>
 <li><p><strong>Penanganan String</strong>: Milvus menyimpan nilai string dalam bidang JSON seperti yang dimasukkan, tanpa konversi semantik. Sebagai contoh</p>
 <ul>
 <li><p><code translate="no">'a&quot;b'</code>, <code translate="no">&quot;a'b&quot;</code>, <code translate="no">'a\\'b'</code>, dan <code translate="no">&quot;a\\&quot;b&quot;</code> disimpan persis seperti apa adanya.</p></li>
@@ -389,7 +389,7 @@ curl --request POST \
    </tr>
    <tr>
      <td><p><code translate="no">params.json_cast_type</code></p></td>
-     <td><p>Tipe data yang akan digunakan Milvus untuk meng-cast nilai JSON yang diekstrak ketika membangun indeks. Nilai yang valid:</p><ul><li><p><code translate="no">"bool"</code> atau <code translate="no">"BOOL"</code></p></li><li><p><code translate="no">"double"</code> atau <code translate="no">"DOUBLE"</code></p></li><li><p><code translate="no">"varchar"</code> atau <code translate="no">"VARCHAR"</code></p><p><strong>Catatan</strong>: Untuk nilai bilangan bulat, Milvus secara internal menggunakan double untuk indeks. Bilangan bulat besar di atas 2^53 akan kehilangan presisi. Jika pengecekan tipe gagal (karena ketidakcocokan tipe), tidak ada kesalahan yang dilemparkan, dan nilai baris tersebut tidak diindeks.</p></li></ul></td>
+     <td><p>Tipe data yang akan digunakan Milvus untuk meng-cast nilai JSON yang diekstrak ketika membangun indeks. Nilai yang valid:</p><ul><li><code translate="no">"bool"</code> atau <code translate="no">"BOOL"</code></li><li><code translate="no">"double"</code> atau <code translate="no">"DOUBLE"</code></li><li><code translate="no">"varchar"</code> atau <code translate="no">"VARCHAR"</code><strong>Catatan</strong>: Untuk nilai bilangan bulat, Milvus secara internal menggunakan double untuk indeks. Bilangan bulat besar di atas 2^53 akan kehilangan presisi. Jika pengecekan tipe gagal (karena ketidakcocokan tipe), tidak ada kesalahan yang dilemparkan, dan nilai baris tersebut tidak diindeks.</li></ul></td>
      <td><p><code translate="no">"varchar"</code></p></td>
    </tr>
 </table>
@@ -406,14 +406,14 @@ curl --request POST \
 </ul></li>
 <li><p><strong>Ketepatan numerik</strong>:</p>
 <ul>
-<li>Secara internal, Milvus mengindeks semua bidang numerik sebagai ganda. Jika nilai numerik melebihi 2^{53}, maka nilai tersebut akan kehilangan presisi, dan kueri pada nilai di luar rentang tersebut mungkin tidak akan cocok dengan tepat.</li>
+<li>Secara internal, Milvus mengindeks semua bidang numerik sebagai ganda. Jika nilai numerik melebihi $2^{53}$, maka nilai tersebut akan kehilangan presisi, dan kueri pada nilai di luar jangkauan tersebut mungkin tidak akan cocok dengan tepat.</li>
 </ul></li>
 <li><p><strong>Integritas data</strong>:</p>
 <ul>
 <li>Milvus tidak mem-parsing atau mengubah kunci JSON di luar casting yang Anda tentukan. Jika data sumber tidak konsisten (misalnya, beberapa baris menyimpan string untuk kunci <code translate="no">&quot;k&quot;</code> sementara yang lain menyimpan angka), beberapa baris tidak akan diindeks.</li>
 </ul></li>
 </ul>
-<h3 id="Index-a-vector-field" class="common-anchor-header">Mengindeks bidang vektor</h3><p>Contoh berikut ini membuat indeks pada bidang vektor <code translate="no">embedding</code>, menggunakan tipe indeks <code translate="no">AUTOINDEX</code>. Dengan tipe ini, Milvus secara otomatis memilih indeks yang paling sesuai berdasarkan tipe datanya. Anda juga dapat menyesuaikan tipe indeks dan parameter untuk setiap field. Untuk detailnya, lihat <a href="/docs/id/index-explained.md">Penjelasan Indeks</a>.</p>
+<h3 id="Index-a-vector-field--Milvus-2510+" class="common-anchor-header">Mengindeks bidang vektor<span class="beta-tag" style="background-color:rgb(0, 179, 255);color:white" translate="no">Compatible with Milvus 2.5.10+</span></h3><p>Contoh berikut ini membuat indeks pada bidang vektor <code translate="no">embedding</code>, menggunakan tipe indeks <code translate="no">AUTOINDEX</code>. Dengan tipe ini, Milvus secara otomatis memilih indeks yang paling sesuai berdasarkan tipe datanya. Anda juga dapat menyesuaikan tipe indeks dan parameter untuk setiap field. Untuk detailnya, lihat <a href="/docs/id/index-explained.md">Penjelasan Indeks</a>.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-comment"># Set index params</span>
@@ -474,7 +474,7 @@ indexOpt := milvusclient.NewCreateIndexOption(<span class="hljs-string">&quot;my
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>Setelah skema dan indeks ditentukan, buatlah koleksi yang menyertakan bidang string.</p>
+    </button></h2><p>Setelah skema dan indeks ditentukan, buatlah koleksi yang menyertakan bidang JSON.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">client.create_collection(
