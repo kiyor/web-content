@@ -8,6 +8,104 @@ title: Release Notes
 
 Find out what’s new in Milvus! This page summarizes new features, improvements, known issues, and bug fixes in each release. You can find the release notes for each released version after v2.5.0 in this section. We suggest that you regularly visit this page to learn about updates.
 
+## v2.5.12
+
+| Milvus version | Python SDK version | Node.js SDK version | Java SDK version |
+|----------------|--------------------|---------------------|------------------|
+| 2.5.12          | 2.5.10              | 2.5.9               | 2.5.9            |
+
+We're pleased to bring you Milvus 2.5.12! This release introduces new capabilities such as JSON index support for `contains` expressions, along with several improvements including updated `DescribeCollection` API responses and stricter data expiry compaction. This version also incorporates important dependency updates to fix CVEs and numerous bug fixes to enhance stability and performance.
+We encourage you to upgrade to Milvus 2.5.12 to benefit from these latest enhancements and fixes!
+
+### Features
+
+- Added JSON index support for JSON `contains` expr ([#41658](https://github.com/milvus-io/milvus/pull/41658)).
+
+### Improvements
+
+- The `DescribeCollection` API now includes the update timestamp in its results ([#41600](https://github.com/milvus-io/milvus/pull/41600)).
+- The `DescribeIndex` interface now outputs index version information ([#41841](https://github.com/milvus-io/milvus/pull/41841)).
+- Added support for stricter expiry compaction to clean deleted data without necessarily waiting for a large number of deletions ([#41856](https://github.com/milvus-io/milvus/pull/41856)).
+- Bumped dependency versions to address CVEs ([#41590](https://github.com/milvus-io/milvus/pull/41590), [#41878](https://github.com/milvus-io/milvus/pull/41878), [#41742](https://github.com/milvus-io/milvus/pull/41742), [#41697](https://github.com/milvus-io/milvus/pull/41697)).
+- Added authorization checks for `DescribeCollection` and `DescribeDatabase` tasks ([#41799](https://github.com/milvus-io/milvus/pull/41799)).
+- The RESTful API now supports consistency levels for query/get operations ([#41830](https://github.com/milvus-io/milvus/pull/41830)).
+- Added support for altering collection descriptions ([#41547](https://github.com/milvus-io/milvus/pull/41547)).
+- CDC now supports synchronizing multiple DDL APIs ([#41594](https://github.com/milvus-io/milvus/pull/41594), [#41679](https://github.com/milvus-io/milvus/pull/41679)).
+- Added a timeout for message reception in `MQMsgStream` ([#41603](https://github.com/milvus-io/milvus/pull/41603)).
+- Disk quota checks are now skipped for L0 imports ([#41572](https://github.com/milvus-io/milvus/pull/41572)).
+- Added parameters to ignore configuration type exceptions ([#41773](https://github.com/milvus-io/milvus/pull/41773)).
+- Set worker `totalSlot` in standalone mode to half of that in cluster mode ([#41731](https://github.com/milvus-io/milvus/pull/41731)).
+
+### Bug fixes
+
+- Fixed a goroutine leak in `ants.pool` ([#41893](https://github.com/milvus-io/milvus/pull/41893)).
+- Fixed an issue where the analyzer name was not set in hybrid search sub-requests ([#41897](https://github.com/milvus-io/milvus/pull/41897)).
+- Fixed a double assignment issue in `ChannelManager` ([#41877](https://github.com/milvus-io/milvus/pull/41877)).
+- Fixed an issue where log level settings were ineffective in `ThreadWatcher` ([#41887](https://github.com/milvus-io/milvus/pull/41887)).
+- Prevented index creation for unsorted importing segments when statistics are enabled ([#41865](https://github.com/milvus-io/milvus/pull/41865)).
+- Fixed a goroutine leak in the import reader ([#41870](https://github.com/milvus-io/milvus/pull/41870)).
+- Fixed an analyzer memory leak caused by the function runner not being closed ([#41840](https://github.com/milvus-io/milvus/pull/41840)).
+- Fixed an issue that counts are collected grouped by partition instead of collection ([#41789](https://github.com/milvus-io/milvus/pull/41789)).
+- Fixed an issue with unexpected passwords for the root user ([#41818](https://github.com/milvus-io/milvus/pull/41818)).
+- Prevented crashes when `contains_all` or `contains_any` is used with an empty array ([#41756](https://github.com/milvus-io/milvus/pull/41756)).
+- Fixed issues of compilation on Windows ([#41617](https://github.com/milvus-io/milvus/pull/41617)).
+- Disabled block and mutex profiling on ARM architecture to prevent SIGSEGV errors ([#41823](https://github.com/milvus-io/milvus/pull/41823)).
+- Fixed a `no candidate segments` error for small import tasks ([#41772](https://github.com/milvus-io/milvus/pull/41772)).
+- Ensured fallback to `MixCoord` session when upgrading to `MixCoord` ([#41773](https://github.com/milvus-io/milvus/pull/41773)).
+- `GetValueFromConfig` now returns `nullopt` instead of throwing an exception ([#41711](https://github.com/milvus-io/milvus/pull/41711)).
+- Added an exclusive lock mutex in `DropSegmentsOfPartition` to avoid potential crashes with concurrent DDL upon partitions ([#41619](https://github.com/milvus-io/milvus/pull/41619)).
+
+## v2.5.11
+
+| Milvus version | Python SDK version | Node.js SDK version | Java SDK version |
+|----------------|--------------------|---------------------|------------------|
+| 2.5.11          | 2.5.8              | 2.5.8               | 2.5.8            |
+
+We're excited to announce the release of Milvus 2.5.11! This version introduces powerful new features like the multi-analyzer capability and expanded tokenizer support (Jieba, Lindera, ICU, Language Identifier). We've also made several improvements, including dynamic segment loading thread pool updates and optimized delete filtering during binlog imports. Key bug fixes address potential segment drop issues, BM25 search failures, and JSON stats filtering errors.
+
+We encourage you to upgrade to 2.5.11 to take advantage of these enhancements and fixes!
+
+### Features
+
+- Added the ability to configure multiple analyzers (tokenizers) for multi languages support and select the appropriate one based on the instruction of the input data ([#41444](https://github.com/milvus-io/milvus/pull/41444)).
+- Enhanced the BM25 Analyzer functionality ([#41456](https://github.com/milvus-io/milvus/pull/41456)).
+  - Introduced a `run_analyzer` API for dry runs to help analyze tokenization results. For more information, refer to [Analyzer Overview](analyzer-overview.md).
+  - Tokenizers
+    - Added support for customizing Jieba tokenizer parameters.
+    - Added support for the Lindera tokenizer. For more information, refer to [Lindera](lindera-tokenizer.md).
+    - Added support for the ICU tokenizer. For more information, refer to [ICU](icu-tokenizer.md).
+    - Added a Language Identifier tokenizer for language detection.
+  - Filters
+    - Expanded language support for the built-in stop word filter. For more information, refer to [Stop](stop-filter.md).
+    - Added a `remove_punct` filter to remove punctuation marks. For more information, refer to [Remove Punct](removepunct-filter.md).
+    - Added a `regex` filter for pattern-based text filtering. For more information, refer to [Regex](regex-filter.md).
+- Added support for modifying the maximum capacity of array fields ([#41406](https://github.com/milvus-io/milvus/pull/41406)).
+- Added support for binary range expressions in JSON path indexes ([#41317](https://github.com/milvus-io/milvus/pull/41317)).
+- Added support for infix and suffix match types in JSON stats ([#41388](https://github.com/milvus-io/milvus/pull/41388)).
+
+### Improvements
+
+- Enabled dynamic updates to the size of the Segment loading thread pool ([#41549](https://github.com/milvus-io/milvus/pull/41549)).
+- Accelerated delete filtering during binlog import ([#41552](https://github.com/milvus-io/milvus/pull/41552)).
+- Added monitoring parameters for the expression filter ratio ([#41403](https://github.com/milvus-io/milvus/pull/41403)).
+- Added a configuration option to force rebuilding indexes to the latest version ([#41432](https://github.com/milvus-io/milvus/pull/41432)).
+- Improved the error log message for the list policy ([#41368](https://github.com/milvus-io/milvus/pull/41368)).
+- Adapted handling for hyphens in gRPC metadata headers ([#41372](https://github.com/milvus-io/milvus/pull/41372)).
+- Upgraded Go version to 1.24.1 to address CVEs ([#41522](https://github.com/milvus-io/milvus/pull/41522), [#41319](https://github.com/milvus-io/milvus/pull/41319)).
+
+### Bug fixes
+
+- Fixed an issue where segments might not be correctly dropped when dropping a partition ([#41543](https://github.com/milvus-io/milvus/pull/41543)).
+- Fixed bulk insert to use the function runner's input field list instead of the schema's field list ([#41561](https://github.com/milvus-io/milvus/pull/41561)).
+- Fixed BM25 search failures occurring when `avgdl` (average document length) is NaN ([#41503](https://github.com/milvus-io/milvus/pull/41503)).
+- Corrected inaccurate labels in QueryNode metrics ([#41422](https://github.com/milvus-io/milvus/pull/41422)).
+- Fixed an issue where JSON stats index creation could fail if the data contained an empty map ([#41506](https://github.com/milvus-io/milvus/pull/41506)).
+- Fixed the `AlterCollection` API to correctly save the modification timestamp ([#41469](https://github.com/milvus-io/milvus/pull/41469)).
+- Fixed an intermittent filtering error in JSON stats under `ConjunctExpr` and improved the task slot calculation logic to accelerate JSON stats building ([#41458](https://github.com/milvus-io/milvus/pull/41458)).
+- Fixed an IDF oracle leak in BM25 statistics calculation ([#41426](https://github.com/milvus-io/milvus/pull/41426)).
+- Ensured pre-created topics are checked first during shard number validation ([#41421](https://github.com/milvus-io/milvus/pull/41421)).
+- Fixed an erroneous deadlock report occurring in unit tests ([#41377](https://github.com/milvus-io/milvus/pull/41377)).
+
 ## v2.5.10
 
 Release date: April 21, 2025
