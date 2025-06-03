@@ -25,6 +25,9 @@ summary: >-
         ></path>
       </svg>
     </button></h1><p>Based on an index file recording the sorted order of vector embeddings, the Approximate Nearest Neighbor (ANN) search locates a subset of vector embeddings based on the query vector carried in a received search request, compares the query vector with those in the subgroup, and returns the most similar results. With ANN search, Milvus provides an efficient search experience. This page helps you to learn how to conduct basic ANN searches.</p>
+<div class="alert note">
+<p>If you dynamically add new fields after the collection has been created, searches that include these fields will return the defined default values or NULL for entities that have not explicitly set values. For details, refer to <a href="/docs/add-fields-to-an-existing-collection.md">Add Fields to an Existing Collection</a>.</p>
+</div>
 <h2 id="Overview" class="common-anchor-header">Overview<button data-href="#Overview" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -999,7 +1002,7 @@ curl --request POST \
 <ul>
 <li><p>Filtered Search</p>
 <p>You can include filtering conditions in a search request so that Milvus conducts metadata filtering before conducting ANN searches, reducing the search scope from the whole collection to only the entities matching the specified filtering conditions.</p>
-<p>For more about metadata filtering and filtering conditions, refer to <a href="/docs/filtered-search.md">Filtered Search</a> and <a href="/docs/filtering">Filtering</a>.</p></li>
+<p>For more about metadata filtering and filtering conditions, refer to <a href="/docs/filtered-search.md">Filtered Search</a>, <a href="/docs/boolean.md">Filtering Explained</a>, and related topics.</p></li>
 <li><p>Range Search</p>
 <p>You can improve search result relevancy by restricting the distance or score of the returned entities within a specific range. In Milvus, a range search involves drawing two concentric circles with the vector embedding most similar to the query vector as the center. The search request specifies the radius of both circles, and Milvus returns all vector embeddings that fall within the outer circle but not the inner circle.</p>
 <p>For more about range search, refer to <a href="/docs/range-search.md">Range Search</a>.</p></li>

@@ -22,6 +22,9 @@ summary: >-
         ></path>
       </svg>
     </button></h1><p>In addition to ANN searches, Milvus also supports metadata filtering through queries. This page introduces how to use Query, Get, and QueryIterators to perform metadata filtering.</p>
+<div class="alert note">
+<p>If you dynamically add new fields after the collection has been created, queries that include these fields will return the defined default values or NULL for entities that have not explicitly set values. For details, refer to <a href="/docs/add-fields-to-an-existing-collection.md">Add Fields to an Existing Collection</a>.</p>
+</div>
 <h2 id="Overview" class="common-anchor-header">Overview<button data-href="#Overview" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -59,15 +62,36 @@ summary: >-
    </tr>
    <tr>
      <td><p>Mandatory parameters</p></td>
-     <td><ul><li>Collection name</li><li>Primary keys</li></ul></td>
-     <td><ul><li>Collection name</li><li>Filtering expressions</li></ul></td>
-     <td><ul><li><p>Collection name</p></li><li><p>Filtering expressions</p></li><li><p>Number of entities to return per query</p></li></ul></td>
+     <td><ul>
+<li>Collection name</li>
+<li>Primary keys</li>
+</ul></td>
+     <td><ul>
+<li>Collection name</li>
+<li>Filtering expressions</li>
+</ul></td>
+     <td><ul>
+<li><p>Collection name</p></li>
+<li><p>Filtering expressions</p></li>
+<li><p>Number of entities to return per query</p></li>
+</ul></td>
    </tr>
    <tr>
      <td><p>Optional parameters</p></td>
-     <td><ul><li>Partition name</li><li>Output fields</li></ul></td>
-     <td><ul><li><p>Partition name</p></li><li><p>Number of entities to return</p></li><li><p>Output fields</p></li></ul></td>
-     <td><ul><li><p>Partition name</p></li><li><p>Number of entities to return in total</p></li><li><p>Output fields</p></li></ul></td>
+     <td><ul>
+<li>Partition name</li>
+<li>Output fields</li>
+</ul></td>
+     <td><ul>
+<li><p>Partition name</p></li>
+<li><p>Number of entities to return</p></li>
+<li><p>Output fields</p></li>
+</ul></td>
+     <td><ul>
+<li><p>Partition name</p></li>
+<li><p>Number of entities to return in total</p></li>
+<li><p>Output fields</p></li>
+</ul></td>
    </tr>
    <tr>
      <td><p>Returns</p></td>
@@ -76,7 +100,7 @@ summary: >-
      <td><p>Returns all entities that meet the custom filtering conditions in the specified collection or partition through paginated queries.</p></td>
    </tr>
 </table>
-<p>For more on metadata filtering, refer to <a href="/docs/filtering">Filtering</a>.</p>
+<p>For more on metadata filtering, refer to .</p>
 <h2 id="Use-Get" class="common-anchor-header">Use Get<button data-href="#Use-Get" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"

@@ -75,7 +75,7 @@ title: Integrations Overview
 <tr><td><a href="/docs/build_rag_on_arm.md">Build RAG on Arm Architecture</a></td><td>RAG</td><td>Milvus, Arm</td></tr>
 <tr><td><a href="/docs/build_RAG_with_milvus_and_fireworks.md">Build RAG with Milvus and Fireworks AI</a></td><td>LLMs</td><td>Milvus, Fireworks AI</td></tr>
 <tr><td><a href="/docs/build_RAG_with_milvus_and_lepton.md">Build RAG with Milvus and Lepton AI</a></td><td>LLMs</td><td>Milvus, Lepton AI</td></tr>
-<tr><td><a href="/docs/build_RAG_with_milvus_and_siliconflow">Build RAG with Milvus and SiliconFlow</a></td><td>LLMs</td><td>Milvus, SiliconFlow</td></tr>
+<tr><td><a href="/docs/build_RAG_with_milvus_and_siliconflow.md">Build RAG with Milvus and SiliconFlow</a></td><td>LLMs</td><td>Milvus, SiliconFlow</td></tr>
 <tr><td><a href="/docs/rag_with_milvus_and_unstructured.md">Build a RAG with Milvus and Unstructured</a></td><td>Data Sources</td><td>Milvus, Unstructured</td></tr>
 <tr><td><a href="/docs/RAG_with_pii_and_milvus.md">Build RAG with Milvus + PII Masker</a></td><td>Data Sources</td><td>Milvus, PII Masker</td></tr>
 <tr><td><a href="/docs/knowledge_table_with_milvus.md">Knowledge Table with Milvus</a></td><td>Knowledge Engineering</td><td>Knowledge Table, Milvus</td></tr>
@@ -88,5 +88,9 @@ title: Integrations Overview
 <tr><td><a href="/docs/integration_with_mindsdb.md">Integrate Milvus with MindsDB</a></td><td>Knowledge Engineering</td><td>Milvus, MindsDB</td></tr>
 <tr><td><a href="/docs/build_RAG_with_milvus_and_feast.md">Build RAG with Milvus and Feast</a></td><td>Data Sources</td><td>Milvus, Feast</td></tr>
 <tr><td><a href="/docs/build_RAG_with_milvus_and_docling.md">Build RAG with Milvus and Docling</a></td><td>Data Sources</td><td>Milvus, Docling</td></tr>
+<tr><td><a href="/docs/build_RAG_with_milvus_and_embedAnything.md">Building RAG with Milvus and EmbedAnything</a></td><td>Embedding</td><td>Milvus, EmbedAnything</td></tr>
+<tr><td><a href="/docs/milvus_and_n8n.md">Getting Started with Milvus and n8n</a></td><td>Orchestration</td><td>Milvus, n8n</td></tr>
+<tr><td><a href="/docs/use_milvus_in_anythingllm.md">Use Milvus in AnythingLLM</a></td><td>Orchestration</td><td>Milvus, AnythingLLM</td></tr>
+<tr><td><a href="/docs/NLWeb_with_milvus.md">Using NLWeb with Milvus</a></td><td>Data Sources</td><td>Milvus, NLWeb</td></tr>
 </tbody>
 </table>
