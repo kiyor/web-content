@@ -51,7 +51,7 @@ summary: >-
   
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/sparse-vector.png" alt="Sparse Vector" class="doc-image" id="sparse-vector" />
    </span> <span class="img-wrapper"> <span>Vetor esparso</span> </span></p>
-<p>Os vectores esparsos podem ser gerados utilizando vários métodos, tais como <a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">TF-IDF</a> (Term Frequency-Inverse Document Frequency) e <a href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> no processamento de texto. Além disso, o Milvus oferece métodos convenientes para ajudar a gerar e processar vectores esparsos. Para mais detalhes, consulte Embeddings.</p>
+<p>Os vectores esparsos podem ser gerados utilizando vários métodos, como o <a href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">TF-IDF</a> (Term Frequency-Inverse Document Frequency) e o <a href="https://en.wikipedia.org/wiki/Okapi_BM25">BM25</a> no processamento de texto. Além disso, o Milvus oferece métodos convenientes para ajudar a gerar e processar vectores esparsos. Para mais detalhes, consulte Embeddings.</p>
 <p>Para dados de texto, Milvus também fornece capacidades de pesquisa de texto completo, permitindo-lhe realizar pesquisas vectoriais diretamente em dados de texto em bruto sem utilizar modelos de incorporação externos para gerar vectores esparsos. Para obter mais informações, consulte <a href="/docs/pt/full-text-search.md">Pesquisa de texto completo</a>.</p>
 <p>Após a vectorização, os dados podem ser armazenados no Milvus para gestão e recuperação de vectores. O diagrama abaixo ilustra o processo básico.</p>
 <p>
@@ -76,7 +76,7 @@ summary: >-
           d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"
         ></path>
       </svg>
-    </button></h2><p>O Milvus suporta a representação de vetores esparsos em qualquer um dos seguintes formatos:</p>
+    </button></h2><p>Milvus suporta a representação de vetores esparsos em qualquer um dos seguintes formatos:</p>
 <ul>
 <li><p><strong>Matriz esparsa (usando a classe <code translate="no">scipy.sparse</code> )</strong></p>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> scipy.sparse <span class="hljs-keyword">import</span> csr_matrix

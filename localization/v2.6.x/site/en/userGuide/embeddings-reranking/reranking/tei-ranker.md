@@ -105,6 +105,7 @@ results = milvus_client.search(
     anns_field=<span class="hljs-string">&quot;dense_vector&quot;</span>,                   <span class="hljs-comment"># Vector field to search</span>
     limit=<span class="hljs-number">5</span>,                                     <span class="hljs-comment"># Number of results to return</span>
     output_fields=[<span class="hljs-string">&quot;document&quot;</span>],                  <span class="hljs-comment"># Include text field for reranking</span>
+    <span class="hljs-comment">#  highlight-next-line</span>
     ranker=tei_ranker,                         <span class="hljs-comment"># Apply tei reranking</span>
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>
 )
@@ -147,6 +148,7 @@ sparse_search = AnnSearchRequest(
 hybrid_results = milvus_client.hybrid_search(
     collection_name=<span class="hljs-string">&quot;your_collection&quot;</span>,
     [dense_search, sparse_search],              <span class="hljs-comment"># Multiple search requests</span>
+    <span class="hljs-comment">#  highlight-next-line</span>
     ranker=tei_ranker,                        <span class="hljs-comment"># Apply tei reranking to combined results</span>
     limit=<span class="hljs-number">5</span>,                                   <span class="hljs-comment"># Final number of results</span>
     output_fields=[<span class="hljs-string">&quot;document&quot;</span>]

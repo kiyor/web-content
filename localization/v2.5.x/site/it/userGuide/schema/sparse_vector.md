@@ -298,7 +298,7 @@ indexOption := milvusclient.NewCreateIndexOption(<span class="hljs-string">&quot
 <li><code translate="no">SPARSE_INVERTED_INDEX</code>: Un indice invertito di uso generale per vettori sparsi.</li>
 </ul>
 <p><div class="alert note"></p>
-<p>A partire da Milvus 2.5.4, <code translate="no">SPARSE_WAND</code> sarà deprecato. Si raccomanda invece di utilizzare <code translate="no">&quot;inverted_index_algo&quot;: &quot;DAAT_WAND&quot;</code> per l'equivalenza, pur mantenendo la compatibilità.</p>
+<p>A partire da Milvus 2.5.4, <code translate="no">SPARSE_WAND</code> sarà deprecato. Si raccomanda invece di utilizzare <code translate="no">&quot;inverted_index_algo&quot;: &quot;DAAT_WAND&quot;</code> per l'equivalenza, mantenendo la compatibilità.</p>
 <p></div></p></li>
 <li><p><code translate="no">metric_type</code>: La metrica utilizzata per calcolare la somiglianza tra vettori sparsi. Valori validi:</p>
 <ul>
@@ -308,8 +308,8 @@ indexOption := milvusclient.NewCreateIndexOption(<span class="hljs-string">&quot
 </ul></li>
 <li><p><code translate="no">params.inverted_index_algo</code>: L'algoritmo usato per costruire e interrogare l'indice. Valori validi:</p>
 <ul>
-<li><p><code translate="no">&quot;DAAT_MAXSCORE&quot;</code> (predefinito): Elaborazione ottimizzata delle query Document-at-a-Time (DAAT) con l'algoritmo MaxScore. MaxScore fornisce prestazioni migliori per valori elevati di <em>k</em> o per query con molti termini, saltando termini e documenti che potrebbero avere un impatto minimo. Ciò si ottiene suddividendo i termini in gruppi essenziali e non essenziali in base ai punteggi di impatto massimo, concentrandosi sui termini che possono contribuire ai risultati top-k.</p></li>
-<li><p><code translate="no">&quot;DAAT_WAND&quot;</code>: Elaborazione ottimizzata delle query DAAT con l'algoritmo WAND. WAND valuta un minor numero di documenti trovati, sfruttando i punteggi di impatto massimo per saltare i documenti non competitivi, ma ha un overhead più elevato per ogni singolo colpo. Ciò rende WAND più efficiente per le query con valori <em>k</em> piccoli o per le query brevi, dove il salto è più fattibile.</p></li>
+<li><p><code translate="no">&quot;DAAT_MAXSCORE&quot;</code> (predefinito): Elaborazione ottimizzata delle query Document-at-a-Time (DAAT) con l'algoritmo MaxScore. MaxScore fornisce prestazioni migliori per valori elevati di <em>k</em> o per query con molti termini, saltando termini e documenti che potrebbero avere un impatto minimo. Ciò si ottiene suddividendo i termini in gruppi essenziali e non essenziali in base ai loro punteggi di impatto massimo, concentrandosi sui termini che possono contribuire ai risultati top-k.</p></li>
+<li><p><code translate="no">&quot;DAAT_WAND&quot;</code>: Elaborazione ottimizzata delle query DAAT con l'algoritmo WAND. WAND valuta un minor numero di documenti trovati, sfruttando i punteggi di impatto massimo per saltare i documenti non competitivi, ma ha un overhead più elevato per ogni singolo colpo. Questo rende WAND più efficiente per le query con valori <em>k</em> piccoli o per le query brevi, dove il salto è più fattibile.</p></li>
 <li><p><code translate="no">&quot;TAAT_NAIVE&quot;</code>: Elaborazione di query Basic Term-at-a-Time (TAAT). Pur essendo più lento rispetto a <code translate="no">DAAT_MAXSCORE</code> e <code translate="no">DAAT_WAND</code>, <code translate="no">TAAT_NAIVE</code> offre un vantaggio unico. A differenza degli algoritmi DAAT, che utilizzano punteggi di impatto massimo memorizzati nella cache che rimangono statici indipendentemente dalle modifiche al parametro globale della raccolta (avgdl), <code translate="no">TAAT_NAIVE</code> si adatta dinamicamente a tali modifiche.</p></li>
 </ul></li>
 </ul>
@@ -450,7 +450,7 @@ search_params = {
 <span class="hljs-comment"># Prepare the query vector</span>
 query_vector = [{<span class="hljs-number">1</span>: <span class="hljs-number">0.2</span>, <span class="hljs-number">50</span>: <span class="hljs-number">0.4</span>, <span class="hljs-number">1000</span>: <span class="hljs-number">0.7</span>}]
 <button class="copy-code-btn"></button></code></pre>
-<p>In questo esempio, <code translate="no">drop_ratio_search</code> è un parametro opzionale specifico per i vettori sparsi, che consente di regolare con precisione piccoli valori nel vettore di interrogazione durante la ricerca. Ad esempio, con <code translate="no">{&quot;drop_ratio_search&quot;: 0.2}</code>, il 20% più piccolo dei valori nel vettore di interrogazione sarà ignorato durante la ricerca.</p>
+<p>In questo esempio, <code translate="no">drop_ratio_search</code> è un parametro opzionale specifico per i vettori sparsi, che consente di regolare con precisione i piccoli valori del vettore di interrogazione durante la ricerca. Ad esempio, con <code translate="no">{&quot;drop_ratio_search&quot;: 0.2}</code>, il 20% più piccolo dei valori nel vettore di interrogazione sarà ignorato durante la ricerca.</p>
 <p>Quindi, eseguire la ricerca di similarità con il metodo <code translate="no">search</code>:</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>

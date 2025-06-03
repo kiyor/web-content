@@ -339,6 +339,7 @@ image_search = AnnSearchRequest(
 hybrid_results = milvus_client.hybrid_search(
     collection_name,
     [text_search, image_search],  <span class="hljs-comment"># Multiple search requests</span>
+    <span class="hljs-comment"># highlight-next-line</span>
     ranker=ranker,  <span class="hljs-comment"># Apply the RRF ranker</span>
     limit=<span class="hljs-number">10</span>,
     output_fields=[<span class="hljs-string">&quot;product_name&quot;</span>, <span class="hljs-string">&quot;price&quot;</span>, <span class="hljs-string">&quot;category&quot;</span>]

@@ -562,7 +562,7 @@ client.create_collection(
 <span class="hljs-type">CreateCollectionReq</span> <span class="hljs-variable">customizedSetupReq3</span> <span class="hljs-operator">=</span> CreateCollectionReq.builder()
     .collectionName(<span class="hljs-string">&quot;customized_setup_3&quot;</span>)
     .collectionSchema(collectionSchema)
-    <span class="hljs-comment">// highlight-next-line</span>
+    # highlight-next-line
     .numShards(<span class="hljs-number">1</span>)
     .build();
 client.createCollection(customizedSetupReq3);
@@ -570,7 +570,7 @@ client.createCollection(customizedSetupReq3);
 <pre><code translate="no" class="language-javascript"><span class="hljs-keyword">const</span> createCollectionReq = {
     <span class="hljs-attr">collection_name</span>: <span class="hljs-string">&quot;customized_setup_3&quot;</span>,
     <span class="hljs-attr">schema</span>: schema,
-    <span class="hljs-comment">// highlight-next-line</span>
+    # highlight-next-line
     <span class="hljs-attr">shards_num</span>: <span class="hljs-number">1</span>
 }
 <button class="copy-code-btn"></button></code></pre>
@@ -620,7 +620,7 @@ client.create_collection(
 <span class="hljs-type">CreateCollectionReq</span> <span class="hljs-variable">customizedSetupReq4</span> <span class="hljs-operator">=</span> CreateCollectionReq.builder()
         .collectionName(<span class="hljs-string">&quot;customized_setup_4&quot;</span>)
         .collectionSchema(schema)
-        <span class="hljs-comment">// highlight-next-line</span>
+        # highlight-next-line
         .property(Constant.MMAP_ENABLED, <span class="hljs-string">&quot;false&quot;</span>)
         .build();
 client.createCollection(customizedSetupReq4);
@@ -641,22 +641,22 @@ client.createCollection(customizedSetupReq4);
 }
 fmt.Println(<span class="hljs-string">&quot;collection created&quot;</span>)
 <button class="copy-code-btn"></button></code></pre>
-<pre><code translate="no" class="language-plaintext">export params=&#x27;{
+<pre><code translate="no" class="language-bash"><span class="hljs-built_in">export</span> params=<span class="hljs-string">&#x27;{
     &quot;mmap.enabled&quot;: True
-}&#x27;
+}&#x27;</span>
 
-export CLUSTER_ENDPOINT=&quot;http://localhost:19530&quot;
-export TOKEN=&quot;root:Milvus&quot;
+<span class="hljs-built_in">export</span> CLUSTER_ENDPOINT=<span class="hljs-string">&quot;http://localhost:19530&quot;</span>
+<span class="hljs-built_in">export</span> TOKEN=<span class="hljs-string">&quot;root:Milvus&quot;</span>
 
 curl --request POST \
---url &quot;${CLUSTER_ENDPOINT}/v2/vectordb/collections/create&quot; \
---header &quot;Authorization: Bearer ${TOKEN}&quot; \
---header &quot;Content-Type: application/json&quot; \
--d &quot;{
+--url <span class="hljs-string">&quot;<span class="hljs-variable">${CLUSTER_ENDPOINT}</span>/v2/vectordb/collections/create&quot;</span> \
+--header <span class="hljs-string">&quot;Authorization: Bearer <span class="hljs-variable">${TOKEN}</span>&quot;</span> \
+--header <span class="hljs-string">&quot;Content-Type: application/json&quot;</span> \
+-d <span class="hljs-string">&quot;{
     \&quot;collectionName\&quot;: \&quot;customized_setup_5\&quot;,
-    \&quot;schema\&quot;: $schema,
-    \&quot;params\&quot;: $params
-}&quot;
+    \&quot;schema\&quot;: <span class="hljs-variable">$schema</span>,
+    \&quot;params\&quot;: <span class="hljs-variable">$params</span>
+}&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
 <h3 id="Set-Collection-TTL" class="common-anchor-header">Set Collection TTL</h3><p>If the data in a collection needs to be dropped for a specific period, consider setting its Time-To-Live (TTL) in seconds. Once the TTL times out, Milvus deletes entities in the collection. The deletion is asynchronous, indicating that searches and queries are still possible before the deletion is complete.</p>
 <p>The following code snippet sets the TTL to one day (86400 seconds). You are advised to set the TTL to a couple of days at minimum.</p>
@@ -684,7 +684,7 @@ client.create_collection(
 <span class="hljs-type">CreateCollectionReq</span> <span class="hljs-variable">customizedSetupReq5</span> <span class="hljs-operator">=</span> CreateCollectionReq.builder()
         .collectionName(<span class="hljs-string">&quot;customized_setup_5&quot;</span>)
         .collectionSchema(schema)
-        <span class="hljs-comment">// highlight-next-line</span>
+        # highlight-next-line
         .property(Constant.TTL_SECONDS, <span class="hljs-string">&quot;86400&quot;</span>)
         .build();
 client.createCollection(customizedSetupReq5);
@@ -692,11 +692,11 @@ client.createCollection(customizedSetupReq5);
 <pre><code translate="no" class="language-javascript"><span class="hljs-keyword">const</span> createCollectionReq = {
     <span class="hljs-attr">collection_name</span>: <span class="hljs-string">&quot;customized_setup_5&quot;</span>,
     <span class="hljs-attr">schema</span>: schema,
-    <span class="hljs-comment">// highlight-start</span>
+    # highlight-start
     <span class="hljs-attr">properties</span>: {
         <span class="hljs-string">&quot;collection.ttl.seconds&quot;</span>: <span class="hljs-number">86400</span>
     }
-    <span class="hljs-comment">// highlight-end</span>
+    # highlight-end
 }
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-go">err = client.CreateCollection(ctx, milvusclient.NewCreateCollectionOption(<span class="hljs-string">&quot;customized_setup_5&quot;</span>, schema).
@@ -736,7 +736,7 @@ curl --request POST \
 client.create_collection(
     collection_name=<span class="hljs-string">&quot;customized_setup_6&quot;</span>,
     schema=schema,
-    <span class="hljs-comment"># highlight-next</span>
+    <span class="hljs-comment"># highlight-next-line</span>
     consistency_level=<span class="hljs-string">&quot;Bounded&quot;</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
@@ -746,7 +746,7 @@ client.create_collection(
 <span class="hljs-type">CreateCollectionReq</span> <span class="hljs-variable">customizedSetupReq6</span> <span class="hljs-operator">=</span> CreateCollectionReq.builder()
         .collectionName(<span class="hljs-string">&quot;customized_setup_6&quot;</span>)
         .collectionSchema(schema)
-        <span class="hljs-comment">// highlight-next-line</span>
+        # highlight-next-line
         .consistencyLevel(ConsistencyLevel.BOUNDED)
         .build();
 client.createCollection(customizedSetupReq6);
@@ -754,9 +754,9 @@ client.createCollection(customizedSetupReq6);
 <pre><code translate="no" class="language-javascript"><span class="hljs-keyword">const</span> createCollectionReq = {
     <span class="hljs-attr">collection_name</span>: <span class="hljs-string">&quot;customized_setup_6&quot;</span>,
     <span class="hljs-attr">schema</span>: schema,
-    <span class="hljs-comment">// highlight-next</span>
+    # highlight-next-line
     <span class="hljs-attr">consistency_level</span>: <span class="hljs-string">&quot;Bounded&quot;</span>,
-    <span class="hljs-comment">// highlight-end</span>
+    # highlight-end
 }
 
 client.<span class="hljs-title function_">createCollection</span>(createCollectionReq);

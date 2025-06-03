@@ -4,9 +4,9 @@ title: Sparsamer Vektor
 summary: >-
   Dünne Vektoren sind eine wichtige Methode der Datendarstellung bei der
   Informationsgewinnung und der Verarbeitung natürlicher Sprache. Während dichte
-  Vektoren wegen ihrer ausgezeichneten semantischen Verständnisfähigkeiten
+  Vektoren wegen ihrer hervorragenden semantischen Verständnisfähigkeiten
   beliebt sind, liefern spärliche Vektoren oft genauere Ergebnisse, wenn es um
-  Anwendungen geht, die einen präzisen Abgleich von Schlüsselwörtern oder
+  Anwendungen geht, die eine präzise Übereinstimmung von Schlüsselwörtern oder
   Phrasen erfordern.
 ---
 <h1 id="Sparse-Vector" class="common-anchor-header">Sparsamer Vektor<button data-href="#Sparse-Vector" class="anchor-icon" translate="no">

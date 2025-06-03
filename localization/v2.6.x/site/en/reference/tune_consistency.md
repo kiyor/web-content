@@ -101,14 +101,14 @@ summary: >-
 <pre><code translate="no" class="language-python">client.create_collection(
     collection_name=<span class="hljs-string">&quot;my_collection&quot;</span>,
     schema=schema,
-    <span class="hljs-comment"># highlight-next</span>
+    <span class="hljs-comment"># highlight-next-line</span>
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>,
 )
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-java"><span class="hljs-type">CreateCollectionReq</span> <span class="hljs-variable">createCollectionReq</span> <span class="hljs-operator">=</span> CreateCollectionReq.builder()
         .collectionName(<span class="hljs-string">&quot;my_collection&quot;</span>)
         .collectionSchema(schema)
-        <span class="hljs-comment">// highlight-next</span>
+        <span class="hljs-comment">// highlight-next-line</span>
         .consistencyLevel(ConsistencyLevel.STRONG)
         .build();
 client.createCollection(createCollectionReq);
@@ -177,7 +177,7 @@ curl --request POST \
     search_params={<span class="hljs-string">&quot;metric_type&quot;</span>: <span class="hljs-string">&quot;IP&quot;</span>}，
     <span class="hljs-comment"># highlight-start</span>
     consistency_level=<span class="hljs-string">&quot;Bounded&quot;</span>,
-    <span class="hljs-comment"># highlight-next</span>
+    <span class="hljs-comment"># highlight-next-line</span>
 )
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-java"><span class="hljs-type">SearchReq</span> <span class="hljs-variable">searchReq</span> <span class="hljs-operator">=</span> SearchReq.builder()
@@ -228,7 +228,7 @@ if err != nil {
     limit=<span class="hljs-number">3</span>，
     <span class="hljs-comment"># highlight-start</span>
     consistency_level=<span class="hljs-string">&quot;Eventually&quot;</span>,
-    <span class="hljs-comment"># highlight-next</span>
+    <span class="hljs-comment"># highlight-next-line</span>
 )
 <button class="copy-code-btn"></button></code></pre>
 <pre><code translate="no" class="language-java"><span class="hljs-type">QueryReq</span> <span class="hljs-variable">queryReq</span> <span class="hljs-operator">=</span> QueryReq.builder()

@@ -162,7 +162,7 @@ curl --request POST \​
     search_params={<span class="hljs-string">&quot;metric_type&quot;</span>: <span class="hljs-string">&quot;IP&quot;</span>}，​
     <span class="hljs-comment"># highlight-start​</span>
     consistency_level=<span class="hljs-string">&quot;Bounded&quot;</span>,​
-    <span class="hljs-comment"># highlight-next​</span>
+    <span class="hljs-comment"># highlight-next-line​</span>
 )​
 
 <button class="copy-code-btn"></button></code></pre>
@@ -204,7 +204,7 @@ curl --request POST \​
     limit=<span class="hljs-number">3</span>，​
     <span class="hljs-comment"># highlight-start​</span>
     consistency_level=<span class="hljs-string">&quot;Eventually&quot;</span>,​
-    <span class="hljs-comment"># highlight-next​</span>
+    <span class="hljs-comment"># highlight-next-line​</span>
 )​
 
 <button class="copy-code-btn"></button></code></pre>

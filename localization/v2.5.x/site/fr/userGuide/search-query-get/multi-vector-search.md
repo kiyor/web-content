@@ -48,7 +48,7 @@ summary: >-
 <li><p><strong>Vecteurs denses :</strong> Les vecteurs denses sont des encastrements dérivés des réseaux neuronaux. Lorsqu'ils sont disposés dans un tableau ordonné, ces vecteurs capturent l'essence sémantique du texte d'entrée. Il convient de noter que les vecteurs denses ne sont pas limités au traitement de texte ; ils sont également largement utilisés dans le domaine de la vision par ordinateur pour représenter la sémantique des données visuelles. Ces vecteurs denses, généralement générés par des modèles d'intégration de texte, sont caractérisés par le fait que la plupart ou tous les éléments sont non nuls. Les vecteurs denses sont donc particulièrement efficaces pour les applications de recherche sémantique, car ils peuvent renvoyer les résultats les plus similaires sur la base de la distance vectorielle, même en l'absence de correspondances exactes entre les mots clés. Cette capacité permet d'obtenir des résultats de recherche plus nuancés et tenant compte du contexte, en saisissant souvent des relations entre des concepts qui pourraient échapper aux approches basées sur les mots-clés.</p></li>
 </ul>
 <p>Pour plus de détails, voir <a href="/docs/fr/sparse_vector.md">Vecteur clair</a> et <a href="/docs/fr/dense-vector.md">Vecteur dense</a>.</p>
-<h3 id="Multimodal-Search" class="common-anchor-header">Recherche multimodale</h3><p>La recherche multimodale fait référence à la recherche de similarités entre des données non structurées et plusieurs modalités (images, vidéos, audio, texte, etc.). Par exemple, une personne peut être représentée à l'aide de différentes modalités de données telles que les empreintes digitales, les empreintes vocales et les traits du visage. La recherche hybride permet d'effectuer plusieurs recherches simultanément. Par exemple, la recherche d'une personne avec des empreintes digitales et des empreintes vocales similaires.</p>
+<h3 id="Multimodal-Search" class="common-anchor-header">Recherche multimodale</h3><p>La recherche multimodale fait référence à la recherche de similarités entre des données non structurées et plusieurs modalités (images, vidéos, audio, texte, etc.). Par exemple, une personne peut être représentée à l'aide de différentes modalités de données telles que les empreintes digitales, les empreintes vocales et les caractéristiques faciales. La recherche hybride permet d'effectuer plusieurs recherches simultanément. Par exemple, la recherche d'une personne avec des empreintes digitales et des empreintes vocales similaires.</p>
 <h2 id="Workflow" class="common-anchor-header">Déroulement des opérations<button data-href="#Workflow" class="anchor-icon" translate="no">
       <svg translate="no"
         aria-hidden="true"
@@ -390,7 +390,7 @@ curl --request POST \
     \&quot;indexParams\&quot;: <span class="hljs-variable">$indexParams</span>
 }&quot;</span>
 <button class="copy-code-btn"></button></code></pre>
-<h3 id="Insert-data" class="common-anchor-header">Insérer les données</h3><p>Insérer les vecteurs peu denses dans la collection <code translate="no">demo</code>.</p>
+<h3 id="Insert-data" class="common-anchor-header">Insérer les données</h3><p>Insérez les vecteurs peu denses dans la collection <code translate="no">demo</code>.</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#go">Go</a> <a href="#javascript">NodeJS</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python"><span class="hljs-keyword">from</span> pymilvus <span class="hljs-keyword">import</span> MilvusClient

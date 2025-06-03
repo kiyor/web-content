@@ -372,7 +372,7 @@ schema.WithField(entity.NewField().
 </ul>
 <p><code translate="no">MilvusClient.create_schema</code> 의 <code translate="no">auto_id</code> 는 기본 필드의 속성으로 기본 필드에 대한 자동 증분 활성화 여부를 결정합니다.  <code translate="no">article_id</code> 필드를 기본 키로 설정하고 문서 ID를 수동으로 추가하고자 하므로 <code translate="no">auto_id</code> False를 설정하여 이 기능을 비활성화합니다.</p>
 <p>스키마 객체에 모든 필드를 추가하면 스키마 객체가 위 표의 항목과 일치합니다.</p>
-<h3 id="Define-Index" class="common-anchor-header">색인 정의</h3><p>이미지 및 요약 데이터에 대한 메타데이터와 벡터 필드를 포함한 다양한 필드로 스키마를 정의한 후 다음 단계는 인덱스 매개변수를 준비하는 것입니다. 인덱싱은 벡터의 검색과 검색을 최적화하고 효율적인 쿼리 성능을 보장하는 데 매우 중요합니다. 다음 섹션에서는 컬렉션에서 지정된 벡터 및 스칼라 필드에 대한 인덱스 매개변수를 정의하겠습니다.</p>
+<h3 id="Define-Index" class="common-anchor-header">색인 정의</h3><p>이미지 및 요약 데이터의 메타데이터와 벡터 필드를 포함한 다양한 필드로 스키마를 정의한 후 다음 단계는 인덱스 매개변수를 준비하는 것입니다. 인덱싱은 벡터의 검색과 검색을 최적화하고 효율적인 쿼리 성능을 보장하는 데 매우 중요합니다. 다음 섹션에서는 컬렉션에서 지정된 벡터 및 스칼라 필드에 대한 인덱스 매개변수를 정의하겠습니다.</p>
 <div class="multipleCode">
    <a href="#python">파이썬</a> <a href="#java">자바</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>
 <pre><code translate="no" class="language-python">index_params = client.prepare_index_params()
@@ -585,4 +585,4 @@ curl --request POST \
       </svg>
     </button></h2><h3 id="Loading-Index" class="common-anchor-header">인덱스 로드</h3><p>Milvus에서 컬렉션을 만들 때 인덱스를 즉시 로드하거나 일부 데이터를 대량으로 수집할 때까지 연기하도록 선택할 수 있습니다. 위의 예제에서는 수집 생성 직후 수집된 모든 데이터에 대해 인덱스가 자동으로 생성되므로 일반적으로 이에 대해 명시적으로 선택할 필요가 없습니다. 이렇게 하면 수집된 데이터를 즉시 검색할 수 있습니다. 그러나 컬렉션 생성 후 대량의 대량 삽입이 있고 특정 시점까지 데이터를 검색할 필요가 없는 경우, 컬렉션 생성에서 index_params를 생략하여 인덱스 구축을 연기하고 모든 데이터를 수집한 후 명시적으로 load를 호출하여 인덱스를 구축할 수 있습니다. 이 방법은 대규모 컬렉션에서 인덱스를 구축하는 데 더 효율적이지만 load()를 호출하기 전까지는 검색을 수행할 수 없습니다.</p>
 <h3 id="How-to-Define-Data-Model-For-Multi-tenancy" class="common-anchor-header">멀티테넌시를 위한 데이터 모델을 정의하는 방법</h3><p>다중 테넌트 개념은 단일 소프트웨어 애플리케이션이나 서비스가 각각 고립된 환경을 가진 여러 독립 사용자나 조직에 서비스를 제공해야 하는 시나리오에서 일반적으로 사용됩니다. 이는 클라우드 컴퓨팅, SaaS(서비스형 소프트웨어) 애플리케이션 및 데이터베이스 시스템에서 자주 볼 수 있습니다. 예를 들어, 클라우드 스토리지 서비스는 멀티테넌시를 활용하여 여러 회사가 동일한 기본 인프라를 공유하면서 데이터를 개별적으로 저장하고 관리할 수 있도록 할 수 있습니다. 이 접근 방식은 리소스 활용도와 효율성을 극대화하는 동시에 각 테넌트의 데이터 보안과 개인정보 보호를 보장합니다.</p>
-<p>테넌트를 구분하는 가장 쉬운 방법은 데이터와 리소스를 서로 분리하는 것입니다. 각 테넌트는 특정 리소스에 대한 독점적 액세스 권한을 갖거나 데이터베이스, 컬렉션, 파티션과 같은 Milvus 엔티티를 관리하기 위해 다른 테넌트와 리소스를 공유합니다. 멀티 테넌시를 구현하기 위해 이러한 엔티티에 맞춰진 특정 방법이 있습니다. 자세한 내용은 <a href="/docs/ko/multi_tenancy.md#Multi-tenancy-strategies">Milvus 멀티테넌시 페이지를</a> 참조하세요.</p>
+<p>테넌트를 구분하는 가장 쉬운 방법은 데이터와 리소스를 서로 분리하는 것입니다. 각 테넌트는 특정 리소스에 대한 독점적 액세스 권한을 갖거나 데이터베이스, 컬렉션, 파티션과 같은 Milvus 엔터티를 관리하기 위해 다른 테넌트와 리소스를 공유합니다. 멀티 테넌시를 구현하기 위해 이러한 엔티티에 맞춰진 특정 방법이 있습니다. 자세한 내용은 <a href="/docs/ko/multi_tenancy.md#Multi-tenancy-strategies">Milvus 멀티테넌시 페이지를</a> 참조하세요.</p>

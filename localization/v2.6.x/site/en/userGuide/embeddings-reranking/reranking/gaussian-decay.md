@@ -185,6 +185,7 @@ result = milvus_client.search(
     anns_field=<span class="hljs-string">&quot;dense&quot;</span>,                   <span class="hljs-comment"># Vector field to search</span>
     limit=<span class="hljs-number">10</span>,                             <span class="hljs-comment"># Number of results</span>
     output_fields=[<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;cuisine&quot;</span>, <span class="hljs-string">&quot;distance&quot;</span>],  <span class="hljs-comment"># Fields to return</span>
+    <span class="hljs-comment">#  highlight-next-line</span>
     ranker=ranker,                        <span class="hljs-comment"># Apply the decay ranker</span>
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>
 )
@@ -212,6 +213,7 @@ sparse = AnnSearchRequest(
 hybrid_results = milvus_client.hybrid_search(
     collection_name,
     [dense, sparse],                      <span class="hljs-comment"># Multiple search requests</span>
+    <span class="hljs-comment">#  highlight-next-line</span>
     ranker=ranker,                        <span class="hljs-comment"># Same decay ranker</span>
     limit=<span class="hljs-number">10</span>,
     output_fields=[<span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;cuisine&quot;</span>, <span class="hljs-string">&quot;distance&quot;</span>]

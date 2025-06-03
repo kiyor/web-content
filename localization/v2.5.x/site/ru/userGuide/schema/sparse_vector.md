@@ -58,7 +58,7 @@ summary: >-
    <span class="img-wrapper"> <img translate="no" src="/docs/v2.5.x/assets/use-sparse-vector.png" alt="Use Sparse Vector" class="doc-image" id="use-sparse-vector" />
    </span> <span class="img-wrapper"> <span>Использование разреженного вектора</span> </span></p>
 <div class="alert note">
-<p>Помимо разреженных векторов, Milvus также поддерживает плотные векторы и двоичные векторы. Плотные векторы идеально подходят для фиксации глубоких семантических связей, а двоичные векторы отлично подходят для таких сценариев, как быстрое сравнение сходства и дедупликация контента. Дополнительные сведения см. в разделах <a href="/docs/ru/dense-vector.md">"Плотный вектор"</a> и <a href="/docs/ru/binary-vector.md">"Бинарный вектор"</a>.</p>
+<p>Помимо разреженных векторов, Milvus также поддерживает плотные векторы и двоичные векторы. Плотные векторы идеально подходят для фиксации глубоких семантических связей, а двоичные векторы отлично подходят для таких сценариев, как быстрое сравнение сходства и дедупликация контента. Дополнительные сведения см. в разделах <a href="/docs/ru/dense-vector.md">"Плотный вектор"</a> и <a href="/docs/ru/binary-vector.md">"Двоичный вектор"</a>.</p>
 </div>
 <h2 id="Use-sparse-vectors" class="common-anchor-header">Использование разреженных векторов<button data-href="#Use-sparse-vectors" class="anchor-icon" translate="no">
       <svg translate="no"
@@ -449,7 +449,7 @@ search_params = {
 <span class="hljs-comment"># Prepare the query vector</span>
 query_vector = [{<span class="hljs-number">1</span>: <span class="hljs-number">0.2</span>, <span class="hljs-number">50</span>: <span class="hljs-number">0.4</span>, <span class="hljs-number">1000</span>: <span class="hljs-number">0.7</span>}]
 <button class="copy-code-btn"></button></code></pre>
-<p>В этом примере <code translate="no">drop_ratio_search</code> - необязательный параметр специально для разреженных векторов, позволяющий точно настроить малые значения в векторе запроса во время поиска. Например, при использовании <code translate="no">{&quot;drop_ratio_search&quot;: 0.2}</code> наименьшие 20 % значений в векторе запроса будут игнорироваться во время поиска.</p>
+<p>В этом примере <code translate="no">drop_ratio_search</code> - необязательный параметр специально для разреженных векторов, позволяющий тонко настраивать малые значения в векторе запроса во время поиска. Например, при использовании <code translate="no">{&quot;drop_ratio_search&quot;: 0.2}</code> наименьшие 20 % значений в векторе запроса будут игнорироваться во время поиска.</p>
 <p>Затем выполните поиск сходства, используя метод <code translate="no">search</code>:</p>
 <div class="multipleCode">
    <a href="#python">Python</a> <a href="#java">Java</a> <a href="#javascript">NodeJS</a> <a href="#go">Go</a> <a href="#bash">cURL</a></div>

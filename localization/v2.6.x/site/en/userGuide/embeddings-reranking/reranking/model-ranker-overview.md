@@ -244,6 +244,7 @@ results = client.search(
     anns_field=<span class="hljs-string">&quot;vector_field&quot;</span>,
     <span class="hljs-built_in">limit</span>=10,
     output_fields=[<span class="hljs-string">&quot;document&quot;</span>],  <span class="hljs-comment"># Include the text field in outputs</span>
+    <span class="hljs-comment">#  highlight-next-line</span>
     ranker=model_ranker,  <span class="hljs-comment"># Apply the model ranker here</span>
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>
 )
@@ -270,6 +271,7 @@ sparse_request = AnnSearchRequest(
 hybrid_results = client.hybrid_search(
     collection_name,
     [dense_request, sparse_request],
+    <span class="hljs-comment">#  highlight-next-line</span>
     ranker=model_ranker,  <span class="hljs-comment"># Same model ranker works with hybrid search</span>
     limit=<span class="hljs-number">10</span>,
     output_fields=[<span class="hljs-string">&quot;document&quot;</span>]

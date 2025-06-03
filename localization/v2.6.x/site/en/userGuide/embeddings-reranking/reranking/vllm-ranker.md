@@ -130,6 +130,7 @@ results = client.search(
     anns_field=<span class="hljs-string">&quot;dense_vector&quot;</span>,                   <span class="hljs-comment"># Vector field to search</span>
     limit=<span class="hljs-number">5</span>,                                     <span class="hljs-comment"># Number of results to return</span>
     output_fields=[<span class="hljs-string">&quot;document&quot;</span>],                  <span class="hljs-comment"># Include text field for reranking</span>
+    <span class="hljs-comment">#  highlight-next-line</span>
     ranker=vllm_ranker,                         <span class="hljs-comment"># Apply vLLM reranking</span>
     consistency_level=<span class="hljs-string">&quot;Strong&quot;</span>
 )
