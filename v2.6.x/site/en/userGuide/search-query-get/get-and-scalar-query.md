@@ -8,6 +8,12 @@ summary: "In addition to ANN searches, Milvus also supports metadata filtering t
 
 In addition to ANN searches, Milvus also supports metadata filtering through queries. This page introduces how to use Query, Get, and QueryIterators to perform metadata filtering.
 
+<div class="alert note">
+
+If you dynamically add new fields after the collection has been created, queries that include these fields will return the defined default values or NULL for entities that have not explicitly set values. For details, refer to [Add Fields to an Existing Collection](add-fields-to-an-existing-collection.md).
+
+</div>
+
 ## Overview
 
 A Collection can store various types of scalar fields. You can have Milvus filter Entities based on one or more scalar fields. Milvus offers three types of queries: Query, Get, and QueryIterator. The table below compares these three query types.
@@ -33,15 +39,36 @@ A Collection can store various types of scalar fields. You can have Milvus filte
    </tr>
    <tr>
      <td><p>Mandatory parameters</p></td>
-     <td><ul><li>Collection name</li><li>Primary keys</li></ul></td>
-     <td><ul><li>Collection name</li><li>Filtering expressions</li></ul></td>
-     <td><ul><li><p>Collection name</p></li><li><p>Filtering expressions</p></li><li><p>Number of entities to return per query</p></li></ul></td>
+     <td><ul>
+<li>Collection name</li>
+<li>Primary keys</li>
+</ul></td>
+     <td><ul>
+<li>Collection name</li>
+<li>Filtering expressions</li>
+</ul></td>
+     <td><ul>
+<li><p>Collection name</p></li>
+<li><p>Filtering expressions</p></li>
+<li><p>Number of entities to return per query</p></li>
+</ul></td>
    </tr>
    <tr>
      <td><p>Optional parameters</p></td>
-     <td><ul><li>Partition name</li><li>Output fields</li></ul></td>
-     <td><ul><li><p>Partition name</p></li><li><p>Number of entities to return</p></li><li><p>Output fields</p></li></ul></td>
-     <td><ul><li><p>Partition name</p></li><li><p>Number of entities to return in total</p></li><li><p>Output fields</p></li></ul></td>
+     <td><ul>
+<li>Partition name</li>
+<li>Output fields</li>
+</ul></td>
+     <td><ul>
+<li><p>Partition name</p></li>
+<li><p>Number of entities to return</p></li>
+<li><p>Output fields</p></li>
+</ul></td>
+     <td><ul>
+<li><p>Partition name</p></li>
+<li><p>Number of entities to return in total</p></li>
+<li><p>Output fields</p></li>
+</ul></td>
    </tr>
    <tr>
      <td><p>Returns</p></td>
@@ -51,7 +78,7 @@ A Collection can store various types of scalar fields. You can have Milvus filte
    </tr>
 </table>
 
-For more on metadata filtering, refer to [Filtering](filtering).
+For more on metadata filtering, refer to .
 
 ## Use Get
 

@@ -569,7 +569,7 @@ search_param_1 = {
 }
 request_1 = AnnSearchRequest(**search_param_1)
 
-query_sparse_vector = {3573: 0.34701499565746674}, {5263: 0.2639375518635271}
+query_sparse_vector = {3573: 0.34701499565746674, 5263: 0.2639375518635271}
 search_param_2 = {
     "data": [query_sparse_vector],
     "anns_field": "sparse",
@@ -689,7 +689,7 @@ To merge and rerank the two sets of ANN search results, it is necessary to selec
 
 - **RRFRanker (Reciprocal Rank Fusion Ranker)**: This strategy is recommended when there is no specific emphasis. The RRF can effectively balance the importance of each vector field.
 
-For more details about the mechanisms of these two reranking strategies, refer to [Reranking](reranking.md).
+For more details about the mechanisms of these two reranking strategies, refer to [Reranking](weighted-ranker.md).
 
 The following  two examples demonstrate how to use the WeightedRanker and RRFRanker reranking strategies:
 
