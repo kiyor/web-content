@@ -646,7 +646,7 @@ request2 := milvusclient.NewAnnRequest(<span class="hljs-string">&quot;sparse&qu
 <li><p><strong>WeightedRanker</strong>: This strategy is recommended if you require the results to emphasize a particular vector field. The WeightedRanker allows you to assign higher weights to certain vector fields, emphasizing them more. For instance, in multimodal searches, textual descriptions of an image might be considered more important than the colors in this image.</p></li>
 <li><p><strong>RRFRanker (Reciprocal Rank Fusion Ranker)</strong>: This strategy is recommended when there is no specific emphasis. The RRF can effectively balance the importance of each vector field.</p></li>
 </ul>
-<p>For more details about the mechanisms of these two reranking strategies, refer to <a href="/docs/weighted-ranker.md">Reranking</a>.</p>
+<p>For more details about the mechanisms of these two reranking strategies, refer to <a href="/docs/reranking.md">Reranking</a>.</p>
 <p>The following  two examples demonstrate how to use the WeightedRanker and RRFRanker reranking strategies:</p>
 <ol>
 <li><p><strong>Example 1: Using WeightedRanker</strong></p>
